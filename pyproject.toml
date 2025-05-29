@@ -1,0 +1,21 @@
+[project]
+name = "playwright-ui5-select"
+version = "0.0.1"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "James", email = "jyfchen57@yahoo.com.au" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "playwright>=1.52.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.29.2",
+]
