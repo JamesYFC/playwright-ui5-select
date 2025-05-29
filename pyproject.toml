@@ -1,6 +1,6 @@
 [project]
 name = "playwright-ui5-select"
-version = "0.0.1"
+version = "0.0.3"
 description = "Add your description here"
 readme = "README.md"
 authors = [

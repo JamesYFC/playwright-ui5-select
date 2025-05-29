@@ -15,8 +15,12 @@ def _get_file(name: str) -> str:
         raise ValueError(f"File {name} is not a valid utf-8 text file.")
 
 
-css_raw = _get_file("css.js")
-xpath_raw = _get_file("xpath.js")
-import_version = _get_file("_version.txt")
+css_raw: str = _get_file("css.js")
+xpath_raw: str = _get_file("xpath.js")
+import_version: str = _get_file("_version.txt")
 
-__all__ = ["import_version", "css_raw", "xpath_raw"]
+__all__ = [
+    "import_version",
+    "css_raw",
+    "xpath_raw",
+]

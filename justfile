@@ -13,7 +13,10 @@ lint *args:
 type *args:
     basedpyright "$@"
 
-test-command:
-    uv run --isolated --with ./ --refresh-package playwright_ui5_select python -c \
-    "import playwright_ui5_select; print(playwright_ui5_select.import_version)"
+clean:
+    rm -rf dist
+
+postpub:
+    uv run --isolated --with playwright-ui5-select --index https://test.pypi.org/simple/ --index-strategy unsafe-first-match --refresh-package playwright-ui5-select python -c \
+    "import playwright_ui5_select"
 
