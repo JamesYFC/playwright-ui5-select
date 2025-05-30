@@ -1,18 +1,24 @@
 [project]
 name = "playwright-ui5-select"
 version = "0.0.6"
-description = "Add your description here"
+description = "Use UI5 selectors with Playwright"
 readme = "README.md"
 authors = [
     { name = "James", email = "jyfchen57@yahoo.com.au" }
 ]
-requires-python = ">=3.13"
+requires-python = ">=3.9"
 dependencies = []
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
 
 [project.urls]
-Homepage = "https://example.com"
+Repository = "https://github.com/JamesYFC/playwright-ui5-select"
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.29.2",
+    "pytest-playwright>=0.7.0",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -21,14 +27,10 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 exclude = ["tests"]
 
-[dependency-groups]
-dev = [
-    "basedpyright>=1.29.2",
-    "pytest-playwright>=0.7.0",
-]
+[tool.basedpyright]
+reportIncompatibleUnannotatedOverride = 'error'
+reportUnannotatedClassAttribute = 'none'
+reportUnusedCallResult = false
 
-[[tool.uv.index]]
-name = "testpypi"
-url = "https://test.pypi.org/simple/"
-publish-url = "https://test.pypi.org/legacy/"
-explicit = true
+[tool.pytest.ini_options]
+addopts = "--headed --browser chromium"

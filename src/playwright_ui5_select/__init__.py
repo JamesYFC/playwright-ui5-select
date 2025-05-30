@@ -21,9 +21,17 @@ import_version: str = _get_file(".version")
 css_raw: str = _get_file("css.js")
 xpath_raw: str = _get_file("xpath.js")
 
-# see https://github.com/microsoft/playwright/issues/16705
-css: str = f"(() => {{{css_raw};return module.exports.default}})()"
-xpath: str = f"(() => {{{xpath_raw};return module.exports.default}})()"
+
+def _export_wrap(raw: str) -> str:
+    """
+    Wraps the raw content in a manner that allows it to be executed in a browser context.
+    See https://github.com/microsoft/playwright/issues/16705 for details.
+    """
+    return f"(() => {{{raw};return module.exports.default}})()"
+
+
+css: str = _export_wrap(css_raw)
+xpath: str = _export_wrap(xpath_raw)
 
 __all__ = [
     "import_version",

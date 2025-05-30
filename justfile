@@ -22,10 +22,13 @@ precheck: test type lint
 
 rebuild: clean build
 
-smoke:
+localsmoke: 
     uv run --isolated --with playwright-ui5-select \
-    --index https://test.pypi.org/simple/ \
-    --index-strategy unsafe-first-match \
     --refresh-package playwright-ui5-select \
     python -c "import playwright_ui5_select"
 
+testsmoke:
+    uv run --isolated --with playwright-ui5-select \
+    --index https://test.pypi.org/simple/ \
+    --refresh-package playwright-ui5-select \
+    python -c "import playwright_ui5_select"
