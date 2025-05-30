@@ -3,12 +3,14 @@ set positional-arguments
 
 build *args:
     uv build "$@"
+    unzip -l dist/*.whl
 
 test *args:
     pytest "$@"
 
 lint *args:
-    uv "$@"
+    uvx ruff check --fix
+    uvx ruff format
 
 type *args:
     basedpyright "$@"
@@ -16,7 +18,14 @@ type *args:
 clean:
     rm -rf dist
 
-postpub:
-    uv run --isolated --with playwright-ui5-select --index https://test.pypi.org/simple/ --index-strategy unsafe-first-match --refresh-package playwright-ui5-select python -c \
-    "import playwright_ui5_select"
+precheck: test type lint
+
+rebuild: clean build
+
+smoke:
+    uv run --isolated --with playwright-ui5-select \
+    --index https://test.pypi.org/simple/ \
+    --index-strategy unsafe-first-match \
+    --refresh-package playwright-ui5-select \
+    python -c "import playwright_ui5_select"
 
