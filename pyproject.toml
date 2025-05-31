@@ -30,8 +30,6 @@ exclude = ["tests"]
 
 [tool.basedpyright]
 venvPath = "."
-reportIncompatibleUnannotatedOverride = 'error'
-reportUnannotatedClassAttribute = 'none'
 reportUnusedCallResult = false
 
 [tool.pytest.ini_options]
