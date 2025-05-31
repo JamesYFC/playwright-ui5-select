@@ -1,6 +1,11 @@
 set shell := ["uv", "run", "bash", "-euxo", "pipefail", "-c"]
 set positional-arguments
 
+pkg-name := "playwright-ui5-select"
+pkg-name-py := "playwright_ui5_select"
+npm-name := "playwright-ui5"
+version-file := "src" / pkg-name-py / "import/ui5/.version"
+
 build *args:
     uv build "$@"
     unzip -l dist/*.whl
@@ -23,12 +28,20 @@ precheck: test type lint
 rebuild: clean build
 
 localsmoke: 
-    uv run --isolated --with playwright-ui5-select \
-    --refresh-package playwright-ui5-select \
-    python -c "import playwright_ui5_select"
+    uv run --isolated --with {{pkg-name}} \
+    --refresh-package {{pkg-name}} \
+    python -c "import {{pkg-name-py}}"
 
 testsmoke:
-    uv run --isolated --with playwright-ui5-select \
+    uv run --isolated --with {{pkg-name}} \
     --index https://test.pypi.org/simple/ \
-    --refresh-package playwright-ui5-select \
-    python -c "import playwright_ui5_select"
+    --refresh-package {{pkg-name}} \
+    python -c "import {{pkg-name-py}}"
+
+mitest:
+    if true; then \
+        echo 'True!'; \
+    fi
+
+mirror:
+    ./mirror-check.sh
