@@ -1,0 +1,30 @@
+name: CI
+on: push
+
+jobs:
+  CI:
+    strategy:
+      matrix:
+        python-version:
+          - "3.9"
+          - "3.13"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+      - uses: extractions/setup-just@v3
+      - run: |
+          sudo apt-get install jq
+          just init --only-shell
+          just precheck
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: playwright-report
+          path: test-results

@@ -28,7 +28,7 @@ You can use the [fixture](https://playwright.dev/python/docs/test-runners#fixtur
 
 @fixture(scope="session", autouse=True)
 def _(playwright: Playwright):
-    playwright.selectors.register("ui5", css)
+    playwright.selectors.register("ui5_css", css)
 ```
 
 The registered selector will now be available.
@@ -36,7 +36,7 @@ The registered selector will now be available.
 ```python
 def test_basic(page: Page):
     page.goto("https://ui5.sap.com")
-    page.click("ui5=sap.m.Button[text='Get Started with UI5']")
+    page.click("ui5_css=sap.m.Button[text='Get Started with UI5']")
 ```
 
 See the full api [here](https://github.com/DetachHead/playwright-ui5?tab=readme-ov-file#usage).

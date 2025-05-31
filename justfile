@@ -6,7 +6,9 @@ pkg-name-py := "playwright_ui5_select"
 npm-name := "playwright-ui5"
 version-file := "src" / pkg-name-py / "import/ui5/.version"
 
-init:
+init *pwargs:
+    uv sync --locked --all-extras --dev
+    playwright install --with-deps "$@" chromium
     pre-commit install
 
 build *args:
@@ -14,9 +16,9 @@ build *args:
     unzip -l dist/*.whl
 
 test *args:
-    pytest "$@"
+    pytest --tracing on "$@"
 
-lint *args:
+lint:
     uvx ruff check --fix
     uvx ruff format
 
@@ -41,10 +43,15 @@ testsmoke:
     --refresh-package {{pkg-name}} \
     python -c "import {{pkg-name-py}}"
 
-mitest:
-    if true; then \
-        echo 'True!'; \
-    fi
+smoke:
+    uv run --isolated --with {{pkg-name}} \
+    --index https://pypi.org/simple/ \
+    --refresh-package {{pkg-name}} \
+    python -c "import {{pkg-name-py}}"
 
 mirror:
     ./mirror-check.sh
+
+publish: precheck rebuild
+    uv publish
+    smoke

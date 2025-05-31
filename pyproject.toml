@@ -29,13 +29,17 @@ build-backend = "hatchling.build"
 exclude = ["tests"]
 
 [tool.basedpyright]
-venvPath = "."
+venvPath = ".venv"
 reportIncompatibleUnannotatedOverride = "error"
 reportUnannotatedClassAttribute = "none"
 reportUnusedCallResult = false
 
 [tool.pytest.ini_options]
-addopts = "--headed --browser chromium"
+pythonpath = [
+  "src"
+]
+testpaths = ["src/playwright_ui5_select/tests"]
+addopts = "--browser chromium"
 
 [tool.bumpversion]
 current_version = "0.0.6"

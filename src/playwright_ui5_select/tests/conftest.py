@@ -22,6 +22,18 @@ def __(context: BrowserContext):
     context.add_cookies(
         [
             {
+                "name": "dk_allow_required_cookies",
+                "value": "0",
+                "domain": "ui5.sap.com",
+                "path": "/",
+            },
+            {
+                "name": "dk_approval_requested",
+                "value": "1",
+                "domain": "ui5.sap.com",
+                "path": "/",
+            },
+            {
                 "name": "notice_gdpr_prefs",
                 "value": "0::implied,eu",
                 "domain": "ui5.sap.com",
