@@ -17,6 +17,7 @@ Repository = "https://github.com/JamesYFC/playwright-ui5-select"
 [dependency-groups]
 dev = [
     "basedpyright>=1.29.2",
+    "pre-commit>=4.2.0",
     "pytest-playwright>=0.7.0",
 ]
 
@@ -28,6 +29,7 @@ build-backend = "hatchling.build"
 exclude = ["tests"]
 
 [tool.basedpyright]
+venvPath = "."
 reportIncompatibleUnannotatedOverride = 'error'
 reportUnannotatedClassAttribute = 'none'
 reportUnusedCallResult = false

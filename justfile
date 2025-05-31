@@ -6,6 +6,9 @@ pkg-name-py := "playwright_ui5_select"
 npm-name := "playwright-ui5"
 version-file := "src" / pkg-name-py / "import/ui5/.version"
 
+init:
+    pre-commit install
+
 build *args:
     uv build "$@"
     unzip -l dist/*.whl
