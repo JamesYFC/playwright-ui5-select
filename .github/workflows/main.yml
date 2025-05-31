@@ -1,4 +1,4 @@
-name: CI
+name: CI precheck
 on: push
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
           just precheck
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: playwright-report-${{ matrix.python-version }}
           path: test-results

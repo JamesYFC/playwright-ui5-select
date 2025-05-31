@@ -16,7 +16,10 @@ build *args:
     unzip -l dist/*.whl
 
 test *args:
-    pytest --tracing on "$@"
+    pytest "$@"
+
+test-ci $LANG="en_US" $LC_ALL="en_US":
+    pytest --tracing retain-on-failure
 
 lint:
     uvx ruff check --fix
@@ -28,7 +31,7 @@ type *args:
 clean:
     rm -rf dist
 
-precheck: test type lint
+precheck: type lint test-ci
 
 rebuild: clean build
 
