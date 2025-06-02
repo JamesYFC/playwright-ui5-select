@@ -7,7 +7,6 @@ A mirror of the [playwright-ui5](https://github.com/DetachHead/playwright-ui5) c
 This package:
 
 - mirrors the relevant distribution files `css.js` and `xpath.js`
-  - todo: auto update
 - reads file contents and [exports it](https://github.com/microsoft/playwright/issues/16705) in a manner can be passed straight into the [playwright api](https://playwright.dev/python/docs/extensibility#custom-selector-engines)
 - also provides the raw data if needed
 
