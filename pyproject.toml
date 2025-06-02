@@ -1,6 +1,6 @@
 [project]
 name = "playwright-ui5-select"
-version = "0.0.10"
+version = "0.0.11"
 description = "Use UI5 selectors with Playwright"
 readme = "README.md"
 authors = [
@@ -42,7 +42,7 @@ testpaths = ["src/playwright_ui5_select/tests"]
 addopts = "--browser chromium"
 
 [tool.bumpversion]
-current_version = "0.0.10"
+current_version = "0.0.11"
 parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
 serialize = ["{major}.{minor}.{patch}"]
 search = "{current_version}"
