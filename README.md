@@ -1,5 +1,7 @@
 # playwright-ui5-select
 
+![PyPI - Version](https://img.shields.io/pypi/v/playwright-ui5-select)
+
 A mirror of the [playwright-ui5](https://github.com/DetachHead/playwright-ui5) custom selector engine, to streamline its use in python.
 
 This package:
