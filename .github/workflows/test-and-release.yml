@@ -1,5 +1,8 @@
-name: CI precheck
-on: push
+name: Test and Release
+on:
+  push:
+    tags:
+      - "v*.*.*"
 
 jobs:
   CI:
@@ -18,7 +21,8 @@ jobs:
           enable-cache: true
           cache-dependency-glob: "uv.lock"
       - uses: extractions/setup-just@v3
-      - run: |
+      - name: Init and Test
+        run: |
           sudo apt-get install jq
           just init --only-shell
           just precheck
@@ -28,3 +32,10 @@ jobs:
         with:
           name: playwright-report-${{ matrix.python-version }}
           path: test-results
+      - name: Build and publish
+        run: |
+          just rebuild
+          just publish
+          just smoke
+      - name: Release
+        uses: softprops/action-gh-release@v2
