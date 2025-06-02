@@ -33,9 +33,11 @@ jobs:
           name: playwright-report-${{ matrix.python-version }}
           path: test-results
       - name: Build and publish
+        if: ${{matrix.python-version == '3.9'}}
         run: |
           just rebuild
           just publish
           just smoke
       - name: Release
+        if: ${{matrix.python-version == '3.9'}}
         uses: softprops/action-gh-release@v2
