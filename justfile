@@ -55,8 +55,8 @@ smoke:
 mirror:
     ./mirror-check.sh
 
-bump-patch:
-    uvx bump-my-version bump patch
+bump version="patch":
+    uvx bump-my-version bump {{version}}
 
 publish: precheck rebuild
     uv publish
