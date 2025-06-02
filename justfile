@@ -61,7 +61,6 @@ bump version="patch":
 
 publish: precheck rebuild
     uv publish --trusted-publishing always
-    smoke
 
 push:
     git push
