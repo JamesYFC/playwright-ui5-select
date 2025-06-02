@@ -1,6 +1,6 @@
 # playwright-ui5-select
 
-![PyPI - Version](https://img.shields.io/pypi/v/playwright-ui5-select)
+[![PyPI - Version](https://img.shields.io/pypi/v/playwright-ui5-select)](https://pypi.org/project/playwright-ui5-select/)
 
 A mirror of the [playwright-ui5](https://github.com/DetachHead/playwright-ui5) custom selector engine, to streamline its use in python.
 
@@ -9,6 +9,16 @@ This package:
 - mirrors the relevant distribution files `css.js` and `xpath.js`
 - reads file contents and [exports it](https://github.com/microsoft/playwright/issues/16705) in a manner can be passed straight into the [playwright api](https://playwright.dev/python/docs/extensibility#custom-selector-engines)
 - also provides the raw data if needed
+
+## Installation
+
+uv:
+
+`uv add playwright-ui5-select`
+
+pip:
+
+`pip install playwright-ui5-select`
 
 ## Usage
 
