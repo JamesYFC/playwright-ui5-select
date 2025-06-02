@@ -57,6 +57,7 @@ mirror:
 
 bump version="patch":
     uvx bump-my-version bump {{version}}
+    echo "Version bumped. push to main to run CI and publish."
 
 publish: precheck rebuild
     uv publish
