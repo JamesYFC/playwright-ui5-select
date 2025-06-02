@@ -2,7 +2,7 @@ name: Test and Release
 on:
   push:
     tags:
-      - "v*.*.*"
+      - v*
 
 jobs:
   CI:
@@ -35,7 +35,6 @@ jobs:
       - name: Build and publish
         if: ${{matrix.python-version == '3.9'}}
         run: |
-          just rebuild
           just publish
           just smoke
       - name: Release
