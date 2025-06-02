@@ -1,0 +1,40 @@
+name: Mirror
+on:
+  schedule:
+    - cron: "18 3 * * *"
+
+jobs:
+  mirror:
+    name: Check playwright-ui5 upstream mirror
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+      - uses: extractions/setup-just@v3
+      - name: Check for changes
+        id: mirror_check
+        run: |
+          sudo apt-get install jq
+          just mirror
+      - name: Commit and push changes
+        if: steps.mirror_check.outputs.new_version != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update mirrored playwright-ui5 to ${{ steps.mirror_check.outputs.new_version }}" 
+          just bump
+          just push
+
+  workflow-keepalive:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - uses: liskin/gh-workflow-keepalive@v1
