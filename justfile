@@ -60,5 +60,9 @@ bump version="patch":
     echo "Version bumped. push to main to run CI and publish."
 
 publish: precheck rebuild
-    uv publish
+    uv publish --trusted-publishing always
     smoke
+
+push:
+    git push
+    git push --tags

@@ -6,12 +6,17 @@ on:
 
 jobs:
   CI:
+    name: Test and Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
     strategy:
       matrix:
         python-version:
           - "3.9"
           - "3.13"
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Install uv and set the python version
