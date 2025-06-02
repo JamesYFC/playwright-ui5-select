@@ -298,7 +298,7 @@ wheels = [
 
 [[package]]
 name = "playwright-ui5-select"
-version = "0.0.9"
+version = "0.0.10"
 source = { editable = "." }
 
 [package.dev-dependencies]
