@@ -46,9 +46,6 @@ if [ "$NPM_VERSION" != "$TXT_VERSION" ]; then
 
     echo "Update complete. Local version is now $NPM_VERSION."
 
-    git add .
-    git commit -m "Update mirrored import \`playwright-ui5\` to $NPM_VERSION"
-
     echo "{new_version=$NPM_VERSION}" >> "$GITHUB_ENV"
 else
     echo "Version matches, no update needed."
