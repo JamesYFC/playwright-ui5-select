@@ -14,11 +14,15 @@ This package:
 
 uv:
 
-`uv add playwright-ui5-select`
+```
+uv add playwright-ui5-select
+```
 
 pip:
 
-`pip install playwright-ui5-select`
+```
+pip install playwright-ui5-select
+```
 
 ## Usage
 
