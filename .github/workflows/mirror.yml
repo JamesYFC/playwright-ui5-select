@@ -12,6 +12,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB }}
       - uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
