@@ -1,8 +1,10 @@
 name: Test and Release
 on:
   push:
-    branches-ignore:
-      - "test/**"
+    branches:
+      - master
+    tags:
+      - "v**"
 
 jobs:
   CI:
