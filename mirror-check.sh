@@ -46,7 +46,7 @@ if [ "$NPM_VERSION" != "$TXT_VERSION" ]; then
 
     echo "Update complete. Local version is now $NPM_VERSION."
 
-    echo "{new_version=$NPM_VERSION}" >> "$GITHUB_ENV"
+    echo "new_version=$NPM_VERSION" >> "$GITHUB_OUTPUT"
 else
     echo "Version matches, no update needed."
 fi

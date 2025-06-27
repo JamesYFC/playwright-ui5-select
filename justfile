@@ -53,6 +53,7 @@ smoke:
     python -c "import {{pkg-name-py}}"
 
 mirror:
+    chmod u+r+x mirror-check.sh
     ./mirror-check.sh
 
 bump version="patch":
