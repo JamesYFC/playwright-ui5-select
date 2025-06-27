@@ -37,6 +37,7 @@ jobs:
         with:
           name: playwright-report-${{ matrix.python-version }}
           path: test-results
+      - run: echo "Ref type is ${{ github.ref_type }} and ref is ${{ github.ref }}"
       - name: Build and publish
         if: ${{matrix.python-version == '3.9' && github.ref_type == 'tag'}}
         run: |
