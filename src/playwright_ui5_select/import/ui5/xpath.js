@@ -18599,7 +18599,7 @@ function N2(n4) {
 
 // node_modules/fontoxpath/dist/fontoxpath.esm.js
 var fontoxpath = function(xspattern, prsc) {
-  const VERSION = "3.30.3";
+  const VERSION = "3.33.2";
   const fontoxpathGlobal = {};
   function aa(a4, b3) {
     if (!("0" !== a4 && "-0" !== a4 || "0" !== b3 && "-0" !== b3))
@@ -18631,14 +18631,14 @@ var fontoxpath = function(xspattern, prsc) {
     return c4 > b3 ? e4 ? 1 : -1 : c4 < b3 ? e4 ? -1 : 1 : 0;
   }
   ;
-  function ca(a4, b3) {
+  function ba(a4, b3) {
     a4 = a4.toString();
     if (-1 < a4.indexOf(".") && 0 === b3)
       return false;
     a4 = /^[-+]?0*([1-9]\d*)?(?:\.((?:\d*[1-9])*)0*)?$/.exec(a4);
     return a4[2] ? a4[2].length <= b3 : true;
   }
-  function ea() {
+  function da() {
     return function(a4, b3) {
       return 1 > aa(a4, b3);
     };
@@ -18676,7 +18676,7 @@ var fontoxpath = function(xspattern, prsc) {
       case 3:
         return {};
       case 4:
-        return { ka: ca, wa: ea(), mc: fa(), xa: ha(), nc: ia() };
+        return { ka: ba, wa: da(), nc: fa(), xa: ha(), oc: ia() };
       case 18:
         return {};
       case 9:
@@ -18966,10 +18966,10 @@ var fontoxpath = function(xspattern, prsc) {
     Pa() {
       return this.h.length;
     }
-    G() {
+    F() {
       return false;
     }
-    ua() {
+    oa() {
       return false;
     }
     map(a4) {
@@ -18979,7 +18979,7 @@ var fontoxpath = function(xspattern, prsc) {
     N(a4) {
       return a4(this.h);
     }
-    Y(a4) {
+    X(a4) {
       return a4.multiple ? a4.multiple(this) : a4.default(this);
     }
   };
@@ -19005,10 +19005,10 @@ var fontoxpath = function(xspattern, prsc) {
     Pa() {
       return 0;
     }
-    G() {
+    F() {
       return true;
     }
-    ua() {
+    oa() {
       return false;
     }
     map() {
@@ -19017,7 +19017,7 @@ var fontoxpath = function(xspattern, prsc) {
     N(a4) {
       return a4([]);
     }
-    Y(a4) {
+    X(a4) {
       return a4.empty ? a4.empty(this) : a4.default(this);
     }
   };
@@ -19286,10 +19286,10 @@ var fontoxpath = function(xspattern, prsc) {
       Ma(this, a4);
       return b3;
     }
-    G() {
+    F() {
       return 0 === this.o ? true : null === this.first();
     }
-    ua() {
+    oa() {
       if (null !== this.o)
         return 1 === this.o;
       var a4 = this.value;
@@ -19321,7 +19321,7 @@ var fontoxpath = function(xspattern, prsc) {
       })();
       return this.D.create({ next: () => d4.next(0) });
     }
-    Y(a4) {
+    X(a4) {
       let b3 = null;
       const c4 = (d4) => {
         b3 = d4.value;
@@ -19331,9 +19331,9 @@ var fontoxpath = function(xspattern, prsc) {
       return this.D.create({ next: (d4) => {
         if (b3)
           return b3.next(d4);
-        if (this.G())
+        if (this.F())
           return c4(a4.empty ? a4.empty(this) : a4.default(this)), b3.next(d4);
-        if (this.ua())
+        if (this.oa())
           return c4(a4.m ? a4.m(this) : a4.default(this)), b3.next(d4);
         c4(a4.multiple ? a4.multiple(this) : a4.default(this));
         return b3.next(d4);
@@ -19372,10 +19372,10 @@ var fontoxpath = function(xspattern, prsc) {
     Pa() {
       return 1;
     }
-    G() {
+    F() {
       return false;
     }
-    ua() {
+    oa() {
       return true;
     }
     map(a4) {
@@ -19384,7 +19384,7 @@ var fontoxpath = function(xspattern, prsc) {
     N(a4) {
       return a4([this.h]);
     }
-    Y(a4) {
+    X(a4) {
       return a4.m ? a4.m(this) : a4.default(this);
     }
   };
@@ -19403,7 +19403,7 @@ var fontoxpath = function(xspattern, prsc) {
       }
     return a4.next ? new Na(a4, b3) : new Oa(a4);
   }
-  var w4 = { create: Qa, m: (a4) => new Oa(a4), empty: () => Qa(), aa: () => Qa(va), V: () => Qa(wa) };
+  var w4 = { create: Qa, m: (a4) => new Oa(a4), empty: () => Qa(), aa: () => Qa(va), T: () => Qa(wa) };
   function Ra(a4) {
     const b3 = [], c4 = a4.value;
     return () => {
@@ -19427,23 +19427,23 @@ var fontoxpath = function(xspattern, prsc) {
       return this.prefix ? this.prefix + ":" + this.localName : this.localName;
     }
   };
-  function Ua(a4, b3) {
+  function Ta(a4, b3) {
     const c4 = a4.value, d4 = b3.map((e4) => null === e4 ? null : Ra(e4));
     b3 = b3.reduce((e4, f4, h4) => {
       null === f4 && e4.push(a4.o[h4]);
       return e4;
     }, []);
-    b3 = new Va({ j: b3, arity: b3.length, Ya: true, J: a4.J, localName: "boundFunction", namespaceURI: a4.l, i: a4.s, value: function(e4, f4, h4) {
+    b3 = new Va({ j: b3, arity: b3.length, Ya: true, I: a4.I, localName: "boundFunction", namespaceURI: a4.l, i: a4.s, value: function(e4, f4, h4) {
       const k3 = Array.from(arguments).slice(3), l4 = d4.map((n4) => null === n4 ? k3.shift() : n4());
       return c4.apply(void 0, [e4, f4, h4].concat(l4));
     } });
     return w4.m(b3);
   }
   var Va = class extends Ca {
-    constructor({ j: a4, arity: b3, Ya: c4 = false, J: d4 = false, localName: e4, namespaceURI: f4, i: h4, value: k3 }) {
+    constructor({ j: a4, arity: b3, Ya: c4 = false, I: d4 = false, localName: e4, namespaceURI: f4, i: h4, value: k3 }) {
       super(60, null);
       this.value = k3;
-      this.J = d4;
+      this.I = d4;
       d4 = -1;
       for (k3 = 0; k3 < a4.length; k3++)
         4 === a4[k3] && (d4 = k3);
@@ -19572,8 +19572,8 @@ var fontoxpath = function(xspattern, prsc) {
   ;
   function db(a4, b3, c4) {
     let d4 = null;
-    b3 && (cb(b3.node) ? d4 = { F: b3.F, offset: c4, parent: b3.node } : b3.F && (d4 = b3.F));
-    return { node: a4, F: d4 };
+    b3 && (cb(b3.node) ? d4 = { G: b3.G, offset: c4, parent: b3.node } : b3.G && (d4 = b3.G));
+    return { node: a4, G: d4 };
   }
   function eb(a4, b3, c4 = null) {
     return a4.getAllAttributes(b3.node, c4).map((d4) => db(d4, b3, d4.nodeName));
@@ -19582,13 +19582,13 @@ var fontoxpath = function(xspattern, prsc) {
     b3 = b3.node;
     return cb(b3) ? (a4 = b3.attributes.find((d4) => c4 === d4.name)) ? a4.value : null : (a4 = a4.h.getAttribute(b3, c4)) ? a4 : null;
   }
-  function hb(a4, b3, c4 = null) {
+  function gb(a4, b3, c4 = null) {
     return a4.getChildNodes(b3.node, c4).map((d4, e4) => db(d4, b3, e4));
   }
-  function ib(a4, b3) {
+  function hb(a4, b3) {
     return a4.getData(b3.node);
   }
-  function jb(a4, b3, c4 = null) {
+  function ib(a4, b3, c4 = null) {
     const d4 = b3.node;
     cb(d4) ? a4 = d4.childNodes[0] : ((c4 = a4.h.getFirstChild(d4, c4)) && 10 === c4.nodeType && (c4 = a4.h.getNextSibling(c4)), a4 = c4);
     return a4 ? db(a4, b3, 0) : null;
@@ -19599,21 +19599,21 @@ var fontoxpath = function(xspattern, prsc) {
     return d4 ? db(d4, b3, a4) : null;
   }
   function x3(a4, b3, c4 = null) {
-    const d4 = b3.node, e4 = b3.F;
+    const d4 = b3.node, e4 = b3.G;
     if (e4)
-      "number" === typeof e4.offset && d4 === e4.parent.childNodes[e4.offset] || "string" === typeof e4.offset && d4 === e4.parent.attributes.find((f4) => e4.offset === f4.nodeName) ? (a4 = e4.parent, b3 = e4.F) : (a4 = a4.getParentNode(d4, c4), b3 = e4);
+      "number" === typeof e4.offset && d4 === e4.parent.childNodes[e4.offset] || "string" === typeof e4.offset && d4 === e4.parent.attributes.find((f4) => e4.offset === f4.nodeName) ? (a4 = e4.parent, b3 = e4.G) : (a4 = a4.getParentNode(d4, c4), b3 = e4);
     else {
       if (cb(d4))
         return null;
       a4 = a4.getParentNode(d4, c4);
       b3 = null;
     }
-    return a4 ? { node: a4, F: b3 } : null;
+    return a4 ? { node: a4, G: b3 } : null;
   }
   function lb(a4, b3, c4 = null) {
     const d4 = b3.node;
     let e4, f4, h4;
-    const k3 = b3.F;
+    const k3 = b3.G;
     if (cb(d4))
       k3 && (h4 = k3.offset + 1, e4 = k3.parent.childNodes[h4]);
     else if (k3)
@@ -19621,14 +19621,14 @@ var fontoxpath = function(xspattern, prsc) {
     else {
       for (e4 = d4; e4 && (!(e4 = a4.h.getNextSibling(e4, c4)) || 10 === e4.nodeType); )
         ;
-      return e4 ? { node: e4, F: null } : null;
+      return e4 ? { node: e4, G: null } : null;
     }
     return e4 ? db(e4, f4 || x3(a4, b3, c4), h4) : null;
   }
   function mb(a4, b3, c4 = null) {
     const d4 = b3.node;
     let e4, f4;
-    const h4 = b3.F;
+    const h4 = b3.G;
     let k3;
     if (cb(d4))
       h4 && (k3 = h4.offset - 1, e4 = h4.parent.childNodes[k3]);
@@ -19637,7 +19637,7 @@ var fontoxpath = function(xspattern, prsc) {
     else {
       for (e4 = d4; e4 && (!(e4 = a4.h.getPreviousSibling(e4, c4)) || 10 === e4.nodeType); )
         ;
-      return e4 ? { node: e4, F: null } : null;
+      return e4 ? { node: e4, G: null } : null;
     }
     return e4 ? db(e4, f4 || x3(a4, b3, c4), k3) : null;
   }
@@ -19849,26 +19849,26 @@ var fontoxpath = function(xspattern, prsc) {
   function Lb(a4, b3) {
     switch (b3) {
       case 15:
-        return new Kb(1972, 12, a4.o, 0, 0, 0, 0, a4.X, 15);
+        return new Kb(1972, 12, a4.o, 0, 0, 0, 0, a4.Y, 15);
       case 14:
-        return new Kb(1972, a4.h, 1, 0, 0, 0, 0, a4.X, 14);
+        return new Kb(1972, a4.h, 1, 0, 0, 0, 0, a4.Y, 14);
       case 12:
-        return new Kb(a4.v, 1, 1, 0, 0, 0, 0, a4.X, 12);
+        return new Kb(a4.v, 1, 1, 0, 0, 0, 0, a4.Y, 12);
       case 13:
-        return new Kb(1972, a4.h, a4.o, 0, 0, 0, 0, a4.X, 13);
+        return new Kb(1972, a4.h, a4.o, 0, 0, 0, 0, a4.Y, 13);
       case 11:
-        return new Kb(a4.v, a4.h, 1, 0, 0, 0, 0, a4.X, 11);
+        return new Kb(a4.v, a4.h, 1, 0, 0, 0, 0, a4.Y, 11);
       case 8:
-        return new Kb(1972, 12, 31, a4.l, a4.s, a4.D, a4.pa, a4.X, 8);
+        return new Kb(1972, 12, 31, a4.l, a4.s, a4.D, a4.qa, a4.Y, 8);
       case 7:
-        return new Kb(a4.v, a4.h, a4.o, 0, 0, 0, 0, a4.X, 7);
+        return new Kb(a4.v, a4.h, a4.o, 0, 0, 0, 0, a4.Y, 7);
       default:
-        return new Kb(a4.v, a4.h, a4.o, a4.l, a4.s, a4.D, a4.pa, a4.X, 9);
+        return new Kb(a4.v, a4.h, a4.o, a4.l, a4.s, a4.D, a4.qa, a4.Y, 9);
     }
   }
   function Mb(a4, b3) {
-    b3 = a4.X || b3 || Bb("Z");
-    return new Date(Date.UTC(a4.v, a4.h - 1, a4.o, a4.l - b3.getHours(), a4.s - b3.getMinutes(), a4.D, 1e3 * a4.pa));
+    b3 = a4.Y || b3 || Bb("Z");
+    return new Date(Date.UTC(a4.v, a4.h - 1, a4.o, a4.l - b3.getHours(), a4.s - b3.getMinutes(), a4.D, 1e3 * a4.qa));
   }
   var Kb = class {
     constructor(a4, b3, c4, d4, e4, f4, h4, k3, l4 = 9) {
@@ -19878,8 +19878,8 @@ var fontoxpath = function(xspattern, prsc) {
       this.l = 24 === d4 ? 0 : d4;
       this.s = e4;
       this.D = f4;
-      this.pa = h4;
-      this.X = k3;
+      this.qa = h4;
+      this.Y = k3;
       this.type = l4;
     }
     getDay() {
@@ -19903,21 +19903,21 @@ var fontoxpath = function(xspattern, prsc) {
     toString() {
       switch (this.type) {
         case 9:
-          return Eb(this.v) + "-" + Fb(this.h) + "-" + Fb(this.o) + "T" + Fb(this.l) + ":" + Fb(this.s) + ":" + Hb(this.D + this.pa) + (this.X ? Ib(this.X) : "");
+          return Eb(this.v) + "-" + Fb(this.h) + "-" + Fb(this.o) + "T" + Fb(this.l) + ":" + Fb(this.s) + ":" + Hb(this.D + this.qa) + (this.Y ? Ib(this.Y) : "");
         case 7:
-          return Eb(this.v) + "-" + Fb(this.h) + "-" + Fb(this.o) + (this.X ? Ib(this.X) : "");
+          return Eb(this.v) + "-" + Fb(this.h) + "-" + Fb(this.o) + (this.Y ? Ib(this.Y) : "");
         case 8:
-          return Fb(this.l) + ":" + Fb(this.s) + ":" + Hb(this.D + this.pa) + (this.X ? Ib(this.X) : "");
+          return Fb(this.l) + ":" + Fb(this.s) + ":" + Hb(this.D + this.qa) + (this.Y ? Ib(this.Y) : "");
         case 15:
-          return "---" + Fb(this.o) + (this.X ? Ib(this.X) : "");
+          return "---" + Fb(this.o) + (this.Y ? Ib(this.Y) : "");
         case 14:
-          return "--" + Fb(this.h) + (this.X ? Ib(this.X) : "");
+          return "--" + Fb(this.h) + (this.Y ? Ib(this.Y) : "");
         case 13:
-          return "--" + Fb(this.h) + "-" + Fb(this.o) + (this.X ? Ib(this.X) : "");
+          return "--" + Fb(this.h) + "-" + Fb(this.o) + (this.Y ? Ib(this.Y) : "");
         case 12:
-          return Eb(this.v) + (this.X ? Ib(this.X) : "");
+          return Eb(this.v) + (this.Y ? Ib(this.Y) : "");
         case 11:
-          return Eb(this.v) + "-" + Fb(this.h) + (this.X ? Ib(this.X) : "");
+          return Eb(this.v) + "-" + Fb(this.h) + (this.Y ? Ib(this.Y) : "");
       }
       throw Error("Unexpected subType");
     }
@@ -19925,7 +19925,7 @@ var fontoxpath = function(xspattern, prsc) {
   function Nb(a4, b3, c4) {
     const d4 = Mb(a4, c4).getTime();
     c4 = Mb(b3, c4).getTime();
-    return d4 === c4 ? a4.pa === b3.pa ? 0 : a4.pa > b3.pa ? 1 : -1 : d4 > c4 ? 1 : -1;
+    return d4 === c4 ? a4.qa === b3.qa ? 0 : a4.qa > b3.qa ? 1 : -1 : d4 > c4 ? 1 : -1;
   }
   function Ob(a4, b3, c4) {
     return 0 === Nb(a4, b3, c4);
@@ -19953,7 +19953,7 @@ var fontoxpath = function(xspattern, prsc) {
         return g3(a4, 1);
       case "object":
         if ("nodeType" in a4)
-          return rb({ node: a4, F: null });
+          return rb({ node: a4, G: null });
         if (Array.isArray(a4))
           return new pb(a4.map((c4) => {
             if (void 0 === c4)
@@ -20015,7 +20015,7 @@ var fontoxpath = function(xspattern, prsc) {
       case 58:
         if ("object" !== typeof b3 || !("nodeType" in b3))
           throw Error(`The JavaScript value ${b3} with type ${typeof b3} is not a valid type to be converted to an XPath ${Da[a4]}.`);
-        return rb({ node: b3, F: null });
+        return rb({ node: b3, G: null });
       case 59:
         return Sb(b3, c4);
       case 61:
@@ -20047,7 +20047,7 @@ var fontoxpath = function(xspattern, prsc) {
     }
   }, $b = 2 ** 32;
   function bc(a4, b3, c4, d4) {
-    return new cc({ M: c4, Aa: b3, sa: d4 || a4.sa, qa: a4.qa }, a4.h, a4.o);
+    return new cc({ M: c4, Aa: b3, ta: d4 || a4.ta, ra: a4.ra }, a4.h, a4.o);
   }
   function dc(a4, b3) {
     let c4 = 0;
@@ -20058,27 +20058,27 @@ var fontoxpath = function(xspattern, prsc) {
     } };
   }
   function ec(a4) {
-    a4.h.ib || (a4.h.ib = true, a4.h.pb = Jb(new Date().toISOString()), a4.h.ub = Ab("PT0S"));
-    return a4.h.pb;
+    a4.h.ib || (a4.h.ib = true, a4.h.qb = Jb(new Date().toISOString()), a4.h.vb = Ab("PT0S"));
+    return a4.h.qb;
   }
   function fc(a4) {
-    a4.h.ib || (a4.h.ib = true, a4.h.pb = Jb(new Date().toISOString()), a4.h.ub = Ab("PT0S"));
-    return a4.h.ub;
+    a4.h.ib || (a4.h.ib = true, a4.h.qb = Jb(new Date().toISOString()), a4.h.vb = Ab("PT0S"));
+    return a4.h.vb;
   }
   function gc(a4, b3 = null) {
     a4 = 29421 * (null !== b3 && void 0 !== b3 ? b3 : a4.o.h) % $b;
-    return { qb: Math.floor(a4), Zb: a4 / $b };
+    return { rb: Math.floor(a4), $b: a4 / $b };
   }
   function hc(a4, b3) {
-    return new cc({ M: a4.M, Aa: a4.Aa, sa: a4.sa, qa: Object.assign(/* @__PURE__ */ Object.create(null), a4.qa, b3) }, a4.h, a4.o);
+    return new cc({ M: a4.M, Aa: a4.Aa, ta: a4.ta, ra: Object.assign(/* @__PURE__ */ Object.create(null), a4.ra, b3) }, a4.h, a4.o);
   }
   var cc = class {
-    constructor(a4, b3 = { pb: null, ub: null, ib: false }, c4 = new ac()) {
+    constructor(a4, b3 = { qb: null, vb: null, ib: false }, c4 = new ac()) {
       this.h = b3;
       this.Aa = a4.Aa;
-      this.sa = a4.sa;
+      this.ta = a4.ta;
       this.M = a4.M;
-      this.qa = a4.qa || /* @__PURE__ */ Object.create(null);
+      this.ra = a4.ra || /* @__PURE__ */ Object.create(null);
       this.o = c4;
     }
   };
@@ -20119,14 +20119,14 @@ var fontoxpath = function(xspattern, prsc) {
     if (v3(a4.type, 53)) {
       const d4 = a4.value;
       if (2 === d4.node.nodeType || 3 === d4.node.nodeType)
-        return w4.create(g3(ib(c4, d4), 19));
+        return w4.create(g3(hb(c4, d4), 19));
       if (8 === d4.node.nodeType || 7 === d4.node.nodeType)
-        return w4.create(g3(ib(c4, d4), 1));
+        return w4.create(g3(hb(c4, d4), 1));
       const e4 = [];
       (function k3(h4) {
         if (8 !== d4.node.nodeType && 7 !== d4.node.nodeType) {
           var l4 = h4.nodeType;
-          3 === l4 || 4 === l4 ? e4.push(c4.getData(h4)) : 1 !== l4 && 9 !== l4 || c4.getChildNodes(h4).forEach((n4) => {
+          3 === l4 || 4 === l4 ? e4.push(c4.getData(h4)) : 1 !== l4 && 9 !== l4 && 11 !== l4 || c4.getChildNodes(h4).forEach((n4) => {
             k3(n4);
           });
         }
@@ -20219,7 +20219,7 @@ var fontoxpath = function(xspattern, prsc) {
     return a4(1) || a4(19) ? (b3) => ({ u: true, value: g3(b3, 20) }) : () => ({ u: false, error: Error("XPTY0004: Casting not supported from given type to xs:anyURI or any of its derived types.") });
   }
   ;
-  function Bc(a4) {
+  function yc(a4) {
     return a4(22) ? (b3) => {
       let c4 = "";
       for (let d4 = 0; d4 < b3.length; d4 += 2)
@@ -20228,7 +20228,7 @@ var fontoxpath = function(xspattern, prsc) {
     } : a4(1) || a4(19) ? (b3) => ({ u: true, value: g3(b3, 21) }) : () => ({ error: Error("XPTY0004: Casting not supported from given type to xs:base64Binary or any of its derived types."), u: false });
   }
   ;
-  function Cc(a4) {
+  function zc(a4) {
     return a4(2) ? (b3) => ({ u: true, value: 0 === b3 || isNaN(b3) ? wa : va }) : a4(1) || a4(19) ? (b3) => {
       switch (b3) {
         case "true":
@@ -20500,7 +20500,7 @@ var fontoxpath = function(xspattern, prsc) {
     } : () => ({ u: false, error: Error("XPTY0004: Casting not supported from given type to xs:yearMonthDuration or any of its derived types.") });
   }
   ;
-  const fd = [2, 5, 17, 16];
+  const ed = [2, 5, 17, 16];
   function Zc(a4, b3) {
     const c4 = (d4) => v3(a4, d4);
     if (39 === b3)
@@ -20543,9 +20543,9 @@ var fontoxpath = function(xspattern, prsc) {
       case 14:
         return Rc(c4);
       case 0:
-        return Cc(c4);
+        return zc(c4);
       case 21:
-        return Bc(c4);
+        return yc(c4);
       case 22:
         return Vc(c4);
       case 20:
@@ -20571,7 +20571,7 @@ var fontoxpath = function(xspattern, prsc) {
       return () => ({ u: false, error: Error("FOTY0014: Casting from function item to xs:string is not permitted.") });
     if (a4 === b3)
       return (f4) => ({ u: true, value: { type: b3, value: f4 } });
-    const c4 = fd.includes(a4) ? a4 : rc(a4), d4 = fd.includes(b3) ? b3 : rc(b3);
+    const c4 = ed.includes(a4) ? a4 : rc(a4), d4 = ed.includes(b3) ? b3 : rc(b3);
     if (null === d4 || null === c4)
       return () => ({ u: false, error: Error(`XPST0081: Can not cast: type ${d4 ? Da[a4] : Da[b3]} is unknown.`) });
     const e4 = [];
@@ -20618,15 +20618,15 @@ var fontoxpath = function(xspattern, prsc) {
   }
   ;
   function ld(a4, b3) {
-    return a4 === b3 ? true : a4 && b3 && a4.offset === b3.offset && a4.parent === b3.parent ? ld(a4.F, b3.F) : false;
+    return a4 === b3 ? true : a4 && b3 && a4.offset === b3.offset && a4.parent === b3.parent ? ld(a4.G, b3.G) : false;
   }
   function md(a4, b3) {
-    return a4 === b3 || a4.node === b3.node && ld(a4.F, b3.F) ? true : false;
+    return a4 === b3 || a4.node === b3.node && ld(a4.G, b3.G) ? true : false;
   }
   ;
   function nd(a4, b3, c4) {
     var d4 = x3(a4, b3, null);
-    a4 = hb(a4, d4, null);
+    a4 = gb(a4, d4, null);
     for (let e4 = 0, f4 = a4.length; e4 < f4; ++e4) {
       d4 = a4[e4];
       if (md(d4, b3))
@@ -20648,7 +20648,7 @@ var fontoxpath = function(xspattern, prsc) {
     return c4;
   }
   function qd(a4, b3, c4, d4) {
-    if (c4.F || d4.F || cb(c4.node) || cb(d4.node)) {
+    if (c4.G || d4.G || cb(c4.node) || cb(d4.node)) {
       if (md(c4, d4))
         return 0;
       c4 = od(b3, c4);
@@ -20668,7 +20668,7 @@ var fontoxpath = function(xspattern, prsc) {
     d4 = pd(b3, c4);
     c4 = pd(b3, e4);
     if (d4[0] !== c4[0]) {
-      const f4 = { node: d4[0], F: null }, h4 = { node: c4[0], F: null };
+      const f4 = { node: d4[0], G: null }, h4 = { node: c4[0], G: null };
       b3 = a4.findIndex((k3) => md(k3, f4));
       c4 = a4.findIndex((k3) => md(k3, h4));
       -1 === b3 && (b3 = a4.push(f4));
@@ -20728,8 +20728,7 @@ var fontoxpath = function(xspattern, prsc) {
     return c4.concat(d4.concat(a4));
   }
   ;
-  var wd = xspattern;
-  function xd(a4, b3) {
+  function wd(a4, b3) {
     if (v3(a4.type, 2)) {
       if (v3(a4.type, 6))
         return 3 === b3 ? g3(a4.value, 3) : null;
@@ -20744,7 +20743,7 @@ var fontoxpath = function(xspattern, prsc) {
     return v3(a4.type, 20) && 1 === b3 ? g3(a4.value, 1) : null;
   }
   ;
-  function yd(a4, b3, c4, d4, e4) {
+  function xd(a4, b3, c4, d4, e4) {
     if (v3(a4.type, b3.type))
       return a4;
     v3(b3.type, 46) && v3(a4.type, 53) && (a4 = pc(a4, c4).first());
@@ -20756,12 +20755,12 @@ var fontoxpath = function(xspattern, prsc) {
         throw Error(`XPTY0004 Unable to convert ${e4 ? "return" : "argument"} of type ${Da[a4.type]} to type ${Ha(b3)} while calling ${d4}`);
       return c4;
     }
-    c4 = xd(a4, b3.type);
+    c4 = wd(a4, b3.type);
     if (!c4)
       throw Error(`XPTY0004 Unable to cast ${e4 ? "return" : "argument"} of type ${Da[a4.type]} to type ${Ha(b3)} while calling ${d4}`);
     return c4;
   }
-  function zd(a4) {
+  function yd(a4) {
     switch (a4) {
       case 2:
         return "*";
@@ -20773,29 +20772,39 @@ var fontoxpath = function(xspattern, prsc) {
         return "";
     }
   }
-  var Ad = (a4, b3, c4, d4, e4) => 0 === a4.g ? b3.Y({ default: () => b3.map((f4) => yd(f4, a4, c4, d4, e4)), multiple: () => {
-    throw Error(`XPTY0004: Multiplicity of ${e4 ? "function return value" : "function argument"} of type ${Da[a4.type]}${zd(a4.g)} for ${d4} is incorrect. Expected "?", but got "+".`);
-  } }) : 1 === a4.g ? b3.Y({ empty: () => {
-    throw Error(`XPTY0004: Multiplicity of ${e4 ? "function return value" : "function argument"} of type ${Da[a4.type]}${zd(a4.g)} for ${d4} is incorrect. Expected "+", but got "empty-sequence()"`);
-  }, default: () => b3.map((f4) => yd(
+  var zd = (a4, b3, c4, d4, e4) => 0 === a4.g ? b3.X({ default: () => b3.map((f4) => xd(f4, a4, c4, d4, e4)), multiple: () => {
+    throw Error(`XPTY0004: Multiplicity of ${e4 ? "function return value" : "function argument"} of type ${Da[a4.type]}${yd(a4.g)} for ${d4} is incorrect. Expected "?", but got "+".`);
+  } }) : 1 === a4.g ? b3.X({ empty: () => {
+    throw Error(`XPTY0004: Multiplicity of ${e4 ? "function return value" : "function argument"} of type ${Da[a4.type]}${yd(a4.g)} for ${d4} is incorrect. Expected "+", but got "empty-sequence()"`);
+  }, default: () => b3.map((f4) => xd(
     f4,
     a4,
     c4,
     d4,
     e4
-  )) }) : 2 === a4.g ? b3.map((f4) => yd(f4, a4, c4, d4, e4)) : b3.Y({ m: () => b3.map((f4) => yd(f4, a4, c4, d4, e4)), default: () => {
-    throw Error(`XPTY0004: Multiplicity of ${e4 ? "function return value" : "function argument"} of type ${Da[a4.type]}${zd(a4.g)} for ${d4} is incorrect. Expected exactly one`);
+  )) }) : 2 === a4.g ? b3.map((f4) => xd(f4, a4, c4, d4, e4)) : b3.X({ m: () => b3.map((f4) => xd(f4, a4, c4, d4, e4)), default: () => {
+    throw Error(`XPTY0004: Multiplicity of ${e4 ? "function return value" : "function argument"} of type ${Da[a4.type]}${yd(a4.g)} for ${d4} is incorrect. Expected exactly one`);
   } });
-  function Bd(a4, b3) {
+  function Ad(a4, b3, c4) {
+    return (d4, e4, f4) => {
+      if (null === d4.M)
+        throw lc(`The function ${a4} depends on dynamic context, which is absent.`);
+      const h4 = zd({ type: b3, g: 3 }, w4.m(d4.M), e4, a4, false);
+      return c4(d4, e4, f4, h4);
+    };
+  }
+  ;
+  var Bd = xspattern;
+  function Cd(a4, b3) {
     return v3(a4, 5) ? g3(b3, 5) : v3(a4, 6) ? g3(b3, 6) : v3(a4, 3) ? g3(b3, 3) : g3(b3, 4);
   }
-  const Cd = [{ la: "M", ja: 1e3 }, { la: "CM", ja: 900 }, { la: "D", ja: 500 }, { la: "CD", ja: 400 }, { la: "C", ja: 100 }, { la: "XC", ja: 90 }, { la: "L", ja: 50 }, { la: "XL", ja: 40 }, { la: "X", ja: 10 }, { la: "IX", ja: 9 }, { la: "V", ja: 5 }, { la: "IV", ja: 4 }, { la: "I", ja: 1 }];
-  function Dd(a4, b3) {
+  const Dd = [{ la: "M", ja: 1e3 }, { la: "CM", ja: 900 }, { la: "D", ja: 500 }, { la: "CD", ja: 400 }, { la: "C", ja: 100 }, { la: "XC", ja: 90 }, { la: "L", ja: 50 }, { la: "XL", ja: 40 }, { la: "X", ja: 10 }, { la: "IX", ja: 9 }, { la: "V", ja: 5 }, { la: "IV", ja: 4 }, { la: "I", ja: 1 }];
+  function Ed(a4, b3) {
     const c4 = 0 > a4;
     a4 = Math.abs(a4);
     if (!a4)
       return "-";
-    let d4 = Cd.reduce((e4, f4) => {
+    let d4 = Dd.reduce((e4, f4) => {
       const h4 = Math.floor(a4 / f4.ja);
       a4 -= h4 * f4.ja;
       return e4 + f4.la.repeat(h4);
@@ -20804,27 +20813,27 @@ var fontoxpath = function(xspattern, prsc) {
     c4 && (d4 = `-${d4}`);
     return d4;
   }
-  const Ed = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-  function Fd(a4, b3) {
+  const Fd = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  function Gd(a4, b3) {
     const c4 = 0 > a4;
     a4 = Math.abs(a4);
     if (!a4)
       return "-";
     let d4 = "", e4;
     for (; 0 < a4; )
-      e4 = (a4 - 1) % Ed.length, d4 = Ed[e4] + d4, a4 = (a4 - e4) / Ed.length | 0;
+      e4 = (a4 - 1) % Fd.length, d4 = Fd[e4] + d4, a4 = (a4 - e4) / Fd.length | 0;
     b3 && (d4 = d4.toLowerCase());
     c4 && (d4 = `-${d4}`);
     return d4;
   }
-  function Gd(a4, b3, c4 = []) {
+  function Hd(a4, b3, c4 = []) {
     return Array.from({ length: b3 }, (d4, e4) => e4 + a4).filter((d4) => !c4.includes(d4));
   }
-  const Hd = Gd(1488, 27, [1498, 1501, 1503, 1507, 1509]), Id = Gd(1575, 36, [1577, 1595, 1596, 1597, 1598, 1599, 1600, 1609]), Jd = "\u0623\u0628\u062C\u062F\u0647\u0648\u0632\u062D\u0637\u064A\u0643\u0644\u0645\u0646\u0633\u0639\u0641\u0635\u0642\u0631\u0634\u062A\u062B\u062E\u0630\u0636\u0638\u063A".split(""), Kd = [[1e3, "\u063A"], [900, "\u0638"], [800, "\u0636"], [700, "\u0630"], [600, "\u062E"], [500, "\u062B"], [400, "\u062A"], [300, "\u0634"], [200, "\u0631"], [100, "\u0642"], [90, "\u0635"], [80, "\u0641"], [70, "\u0639"], [60, "\u0633"], [
+  const Id = Hd(1488, 27, [1498, 1501, 1503, 1507, 1509]), Jd = Hd(1575, 36, [1577, 1595, 1596, 1597, 1598, 1599, 1600, 1609]), Kd = "\u0623\u0628\u062C\u062F\u0647\u0648\u0632\u062D\u0637\u064A\u0643\u0644\u0645\u0646\u0633\u0639\u0641\u0635\u0642\u0631\u0634\u062A\u062B\u062E\u0630\u0636\u0638\u063A".split(""), Ld = [[1e3, "\u063A"], [900, "\u0638"], [800, "\u0636"], [700, "\u0630"], [600, "\u062E"], [500, "\u062B"], [400, "\u062A"], [300, "\u0634"], [200, "\u0631"], [100, "\u0642"], [90, "\u0635"], [80, "\u0641"], [70, "\u0639"], [60, "\u0633"], [
     50,
     "\u0646"
-  ], [40, "\u0645"], [30, "\u0644"], [20, "\u0643"], [10, "\u064A"], [9, "\u0637"], [8, "\u062D"], [7, "\u0632"], [6, "\u0648"], [5, "\u0647"], [4, "\u062F"], [3, "\u062C"], [2, "\u0628"], [1, "\u0623"]], Ld = [[400, "\u05EA"], [300, "\u05E9"], [200, "\u05E8"], [100, "\u05E7"], [90, "\u05E6"], [80, "\u05E4"], [70, "\u05E2"], [60, "\u05E1"], [50, "\u05E0"], [40, "\u05DE"], [30, "\u05DC"], [20, "\u05DB"], [10, "\u05D9"], [9, "\u05D8"], [8, "\u05D7"], [7, "\u05D6"], [6, "\u05D5"], [5, "\u05D4"], [4, "\u05D3"], [3, "\u05D2"], [2, "\u05D1"], [1, "\u05D0"]];
-  function Md(a4, b3 = []) {
+  ], [40, "\u0645"], [30, "\u0644"], [20, "\u0643"], [10, "\u064A"], [9, "\u0637"], [8, "\u062D"], [7, "\u0632"], [6, "\u0648"], [5, "\u0647"], [4, "\u062F"], [3, "\u062C"], [2, "\u0628"], [1, "\u0623"]], Md = [[400, "\u05EA"], [300, "\u05E9"], [200, "\u05E8"], [100, "\u05E7"], [90, "\u05E6"], [80, "\u05E4"], [70, "\u05E2"], [60, "\u05E1"], [50, "\u05E0"], [40, "\u05DE"], [30, "\u05DC"], [20, "\u05DB"], [10, "\u05D9"], [9, "\u05D8"], [8, "\u05D7"], [7, "\u05D6"], [6, "\u05D5"], [5, "\u05D4"], [4, "\u05D3"], [3, "\u05D2"], [2, "\u05D1"], [1, "\u05D0"]];
+  function Nd(a4, b3 = []) {
     var c4 = 25;
     b3.sort((d4, e4) => d4 - e4);
     c4 -= b3.length;
@@ -20847,27 +20856,27 @@ var fontoxpath = function(xspattern, prsc) {
       return d4;
     };
   }
-  const Nd = Md(945, [962]), Od = Md(913, [930]);
-  function Pd(a4) {
+  const Od = Nd(945, [962]), Pd = Nd(913, [930]);
+  function Qd(a4) {
     return new Intl.NumberFormat([], { numberingSystem: "arab", useGrouping: false }).format(a4);
   }
-  function Qd(a4) {
+  function Rd(a4) {
     return new Intl.NumberFormat([], { numberingSystem: "arabext", useGrouping: false }).format(a4);
   }
-  const Rd = /* @__PURE__ */ new Map([["A", function(a4) {
-    return Fd(a4, false);
+  const Sd = /* @__PURE__ */ new Map([["A", function(a4) {
+    return Gd(a4, false);
   }], ["a", function(a4) {
-    return Fd(a4, true);
+    return Gd(a4, true);
   }], ["I", function(a4) {
-    return Dd(a4, false);
+    return Ed(a4, false);
   }], ["i", function(a4) {
-    return Dd(a4, true);
-  }], ["lowerGreek", Nd], ["\u03B1", Nd], ["upperGreek", Od], ["\u0391", Od], ["arabicAbjadi", function(a4) {
+    return Ed(a4, true);
+  }], ["lowerGreek", Od], ["\u03B1", Od], ["upperGreek", Pd], ["\u0391", Pd], ["arabicAbjadi", function(a4) {
     const b3 = 0 > a4;
     a4 = Math.abs(a4);
     if (!a4)
       return "-";
-    a4 = Array(Math.floor((a4 - 1) / Jd.length) + 1).fill(Jd[(a4 - 1) % Jd.length]).join(String.fromCodePoint(8204));
+    a4 = Array(Math.floor((a4 - 1) / Kd.length) + 1).fill(Kd[(a4 - 1) % Kd.length]).join(String.fromCodePoint(8204));
     b3 && (a4 = `-${a4}`);
     return a4;
   }], ["arabicAbjadNumeral", function(a4) {
@@ -20878,17 +20887,17 @@ var fontoxpath = function(xspattern, prsc) {
     var c4 = [], d4 = Math.floor(a4 / 1e3);
     a4 -= 1e3 * d4;
     if (1 === d4)
-      c4.push(Kd[0][1]);
+      c4.push(Ld[0][1]);
     else if (1 < d4) {
-      for (const [f4, h4] of Kd) {
+      for (const [f4, h4] of Ld) {
         var e4 = f4;
         const k3 = h4;
         for (; d4 >= e4; )
           c4.push(k3), d4 -= e4;
       }
-      c4.push(Kd[0][1]);
+      c4.push(Ld[0][1]);
     }
-    for (const [f4, h4] of Kd)
+    for (const [f4, h4] of Ld)
       for (d4 = f4, e4 = h4; a4 >= d4; )
         a4 -= d4, c4.push(e4);
     c4 = c4.join("");
@@ -20899,7 +20908,7 @@ var fontoxpath = function(xspattern, prsc) {
     a4 = Math.abs(a4);
     if (!a4)
       return "-";
-    a4 = Array(Math.floor((a4 - 1) / Id.length) + 1).fill(String.fromCodePoint(Id[(a4 - 1) % Id.length])).join(String.fromCodePoint(8204));
+    a4 = Array(Math.floor((a4 - 1) / Jd.length) + 1).fill(String.fromCodePoint(Jd[(a4 - 1) % Jd.length])).join(String.fromCodePoint(8204));
     b3 && (a4 = `-${a4}`);
     return a4;
   }], ["hebrewAlefBet", function(a4) {
@@ -20907,10 +20916,10 @@ var fontoxpath = function(xspattern, prsc) {
     a4 = Math.abs(a4);
     if (!a4)
       return "-";
-    var c4 = Math.floor((a4 - 1) / Hd.length);
+    var c4 = Math.floor((a4 - 1) / Id.length);
     const d4 = String.fromCodePoint(1514);
     c4 = Array(c4).fill(d4);
-    c4.push(String.fromCodePoint(Hd[(a4 - 1) % Hd.length]));
+    c4.push(String.fromCodePoint(Id[(a4 - 1) % Id.length]));
     a4 = c4.join("");
     b3 && (a4 = `-${a4}`);
     return a4;
@@ -20923,7 +20932,7 @@ var fontoxpath = function(xspattern, prsc) {
     a4 -= 400 * d4;
     for (var e4 = 0; e4 < d4; e4++)
       c4.push("\u05EA");
-    for (const [f4, h4] of Ld)
+    for (const [f4, h4] of Md)
       for (d4 = f4, e4 = h4; a4 >= d4; )
         a4 -= d4, c4.push(e4);
     a4 = c4.slice(-2).join("");
@@ -20932,8 +20941,8 @@ var fontoxpath = function(xspattern, prsc) {
     c4 = c4.join("");
     b3 && (c4 = `-${c4}`);
     return c4;
-  }], ["arabicIndicNumeral", Pd], ["\u0661", Pd], ["\u0662", Pd], ["\u0663", Pd], ["\u0664", Pd], ["\u0665", Pd], ["\u0666", Pd], ["\u0667", Pd], ["\u0668", Pd], ["\u0669", Pd], ["persianNumeral", Qd], ["\u06F1", Qd], ["\u06F2", Qd], ["\u06F3", Qd], ["\u06F4", Qd], ["\u06F5", Qd], ["\u06F6", Qd], ["\u06F7", Qd], ["\u06F8", Qd], ["\u06F9", Qd]]);
-  function Sd(a4) {
+  }], ["arabicIndicNumeral", Qd], ["\u0661", Qd], ["\u0662", Qd], ["\u0663", Qd], ["\u0664", Qd], ["\u0665", Qd], ["\u0666", Qd], ["\u0667", Qd], ["\u0668", Qd], ["\u0669", Qd], ["persianNumeral", Rd], ["\u06F1", Rd], ["\u06F2", Rd], ["\u06F3", Rd], ["\u06F4", Rd], ["\u06F5", Rd], ["\u06F6", Rd], ["\u06F7", Rd], ["\u06F8", Rd], ["\u06F9", Rd]]);
+  function Td(a4) {
     if (Math.floor(a4) === a4 || isNaN(a4))
       return 0;
     a4 = /\d+(?:\.(\d*))?(?:[Ee](-)?(\d+))*/.exec(`${a4}`);
@@ -20946,10 +20955,10 @@ var fontoxpath = function(xspattern, prsc) {
     }
     return b3;
   }
-  function Td(a4, b3, c4) {
+  function Ud(a4, b3, c4) {
     return b3 && 0 === a4 * c4 % 1 % 0.5 ? 0 === Math.floor(a4 * c4) % 2 ? Math.floor(a4 * c4) / c4 : Math.ceil(a4 * c4) / c4 : Math.round(a4 * c4) / c4;
   }
-  function Ud(a4, b3, c4, d4, e4, f4) {
+  function Vd(a4, b3, c4, d4, e4, f4) {
     let h4 = false;
     return w4.create({ next: () => {
       if (h4)
@@ -20962,10 +20971,10 @@ var fontoxpath = function(xspattern, prsc) {
       var l4;
       f4 ? l4 = f4.first().value : l4 = 0;
       h4 = true;
-      if (Sd(k3.value) < l4)
+      if (Td(k3.value) < l4)
         return q3(k3);
       const n4 = [5, 4, 3, 6].find((u4) => v3(k3.type, u4)), t4 = jd(k3, 4);
-      l4 = Td(t4.value, a4, Math.pow(10, l4));
+      l4 = Ud(t4.value, a4, Math.pow(10, l4));
       switch (n4) {
         case 4:
           return q3(g3(l4, 4));
@@ -20978,27 +20987,27 @@ var fontoxpath = function(xspattern, prsc) {
       }
     } });
   }
-  const Vd = (a4, b3, c4, d4) => qc(d4, b3).Y({ empty: () => w4.m(g3(NaN, 3)), m: () => {
+  const Wd = (a4, b3, c4, d4) => qc(d4, b3).X({ empty: () => w4.m(g3(NaN, 3)), m: () => {
     const e4 = id(d4.first(), 3);
     return e4.u ? w4.m(e4.value) : w4.m(g3(NaN, 3));
   }, multiple: () => {
     throw Error("fn:number may only be called with zero or one values");
   } });
-  function Wd(a4) {
+  function Xd(a4) {
     let b3 = 5381;
     for (let c4 = 0; c4 < a4.length; ++c4)
       b3 = 33 * b3 + a4.charCodeAt(c4), b3 %= Number.MAX_SAFE_INTEGER;
     return b3;
   }
-  const Xd = (a4, b3, c4, d4 = w4.empty()) => {
+  const Yd = (a4, b3, c4, d4 = w4.empty()) => {
     function e4(f4) {
       const h4 = (k3, l4, n4, t4) => {
-        if (t4.G() || t4.ua())
+        if (t4.F() || t4.oa())
           return t4;
         k3 = t4.O();
         l4 = f4;
         for (n4 = k3.length - 1; 1 < n4; n4--) {
-          l4 = gc(a4, l4).qb;
+          l4 = gc(a4, l4).rb;
           t4 = l4 % n4;
           const u4 = k3[t4];
           k3[t4] = k3[n4];
@@ -21006,7 +21015,7 @@ var fontoxpath = function(xspattern, prsc) {
         }
         return w4.create(k3);
       };
-      return w4.m(new ub([{ key: g3("number", 1), value: () => w4.m(g3(gc(a4, f4).Zb, 3)) }, { key: g3("next", 1), value: () => w4.m(new Va({ value: () => e4(gc(a4, f4).qb), Ya: true, localName: "", namespaceURI: "", j: [], arity: 0, i: { type: 61, g: 3 } })) }, { key: g3("permute", 1), value: () => w4.m(new Va({
+      return w4.m(new ub([{ key: g3("number", 1), value: () => w4.m(g3(gc(a4, f4).$b, 3)) }, { key: g3("next", 1), value: () => w4.m(new Va({ value: () => e4(gc(a4, f4).rb), Ya: true, localName: "", namespaceURI: "", j: [], arity: 0, i: { type: 61, g: 3 } })) }, { key: g3("permute", 1), value: () => w4.m(new Va({
         value: h4,
         Ya: true,
         localName: "",
@@ -21016,15 +21025,15 @@ var fontoxpath = function(xspattern, prsc) {
         i: { type: 59, g: 2 }
       })) }]));
     }
-    b3 = d4.G() ? gc(a4) : gc(a4, Wd(jd(d4.first(), 1).value));
-    return e4(b3.qb);
+    b3 = d4.F() ? gc(a4) : gc(a4, Xd(jd(d4.first(), 1).value));
+    return e4(b3.rb);
   };
-  var Yd = [{ namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "abs", j: [{ type: 2, g: 0 }], i: { type: 2, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.map((e4) => Bd(e4.type, Math.abs(e4.value))) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "format-integer", j: [{ type: 5, g: 0 }, { type: 1, g: 3 }], i: { type: 1, g: 3 }, callFunction: (a4, b3, c4, d4, e4) => {
+  var Zd = [{ namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "abs", j: [{ type: 2, g: 0 }], i: { type: 2, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.map((e4) => Cd(e4.type, Math.abs(e4.value))) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "format-integer", j: [{ type: 5, g: 0 }, { type: 1, g: 3 }], i: { type: 1, g: 3 }, callFunction: (a4, b3, c4, d4, e4) => {
     a4 = d4.first();
     e4 = e4.first();
-    if (d4.G())
+    if (d4.F())
       return w4.m(g3("", 1));
-    d4 = Rd.get(e4.value);
+    d4 = Sd.get(e4.value);
     e4 = a4.value;
     return d4 ? (d4 = d4(e4), w4.m(g3(d4, 1))) : w4.m(g3(e4.toString(), 1));
   } }, {
@@ -21032,31 +21041,26 @@ var fontoxpath = function(xspattern, prsc) {
     localName: "ceiling",
     j: [{ type: 2, g: 0 }],
     i: { type: 2, g: 0 },
-    callFunction: (a4, b3, c4, d4) => d4.map((e4) => Bd(e4.type, Math.ceil(e4.value)))
-  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "floor", j: [{ type: 2, g: 0 }], i: { type: 2, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.map((e4) => Bd(e4.type, Math.floor(e4.value))) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "round", j: [{ type: 2, g: 0 }], i: { type: 2, g: 0 }, callFunction: Ud.bind(null, false) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "round", j: [{
+    callFunction: (a4, b3, c4, d4) => d4.map((e4) => Cd(e4.type, Math.ceil(e4.value)))
+  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "floor", j: [{ type: 2, g: 0 }], i: { type: 2, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.map((e4) => Cd(e4.type, Math.floor(e4.value))) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "round", j: [{ type: 2, g: 0 }], i: { type: 2, g: 0 }, callFunction: Vd.bind(null, false) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "round", j: [{
     type: 2,
     g: 0
-  }, { type: 5, g: 3 }], i: { type: 2, g: 0 }, callFunction: Ud.bind(null, false) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "round-half-to-even", j: [{ type: 2, g: 0 }], i: { type: 2, g: 0 }, callFunction: Ud.bind(null, true) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "round-half-to-even", j: [{ type: 2, g: 0 }, { type: 5, g: 3 }], i: { type: 2, g: 0 }, callFunction: Ud.bind(null, true) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "number", j: [{ type: 46, g: 0 }], i: { type: 3, g: 3 }, callFunction: Vd }, {
+  }, { type: 5, g: 3 }], i: { type: 2, g: 0 }, callFunction: Vd.bind(null, false) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "round-half-to-even", j: [{ type: 2, g: 0 }], i: { type: 2, g: 0 }, callFunction: Vd.bind(null, true) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "round-half-to-even", j: [{ type: 2, g: 0 }, { type: 5, g: 3 }], i: { type: 2, g: 0 }, callFunction: Vd.bind(null, true) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "number", j: [{ type: 46, g: 0 }], i: { type: 3, g: 3 }, callFunction: Wd }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "number",
     j: [],
     i: { type: 3, g: 3 },
     callFunction: (a4, b3, c4) => {
-      const d4 = a4.M && Ad({ type: 46, g: 0 }, w4.m(a4.M), b3, "fn:number", false);
+      const d4 = a4.M && zd({ type: 46, g: 0 }, w4.m(a4.M), b3, "fn:number", false);
       if (!d4)
         throw lc("fn:number needs an atomizable context item.");
-      return Vd(a4, b3, c4, d4);
+      return Wd(a4, b3, c4, d4);
     }
-  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "random-number-generator", j: [], i: { type: 61, g: 3 }, callFunction: Xd }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "random-number-generator", j: [{ type: 46, g: 0 }], i: { type: 61, g: 3 }, callFunction: Xd }];
-  function Zd() {
+  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "random-number-generator", j: [], i: { type: 61, g: 3 }, callFunction: Yd }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "random-number-generator", j: [{ type: 46, g: 0 }], i: { type: 61, g: 3 }, callFunction: Yd }];
+  function $d() {
     throw Error("FOCH0002: No collations are supported");
   }
-  function $d(a4, b3, c4, d4) {
-    if (null === b3.M)
-      throw lc("The function which was called depends on dynamic context, which is absent.");
-    return a4(b3, c4, d4, w4.m(b3.M));
-  }
-  const ae = (a4, b3, c4, d4) => d4.Y({ empty: () => w4.m(g3("", 1)), default: () => d4.map((e4) => {
+  const ae = (a4, b3, c4, d4) => d4.X({ empty: () => w4.m(g3("", 1)), default: () => d4.map((e4) => {
     if (v3(e4.type, 53)) {
       const f4 = pc(e4, b3).first();
       return v3(e4.type, 47) ? jd(f4, 1) : f4;
@@ -21066,12 +21070,12 @@ var fontoxpath = function(xspattern, prsc) {
     h4 = h4.map((k3) => jd(k3, 1).value).join(f4.value);
     return w4.m(g3(h4, 1));
   })), ce = (a4, b3, c4, d4) => {
-    if (d4.G())
+    if (d4.F())
       return w4.m(g3(0, 5));
     a4 = d4.first().value;
     return w4.m(g3(Array.from(a4).length, 5));
   }, ee = (a4, b3, c4, d4, e4, f4) => {
-    const h4 = Ud(false, a4, b3, c4, e4, null), k3 = null !== f4 ? Ud(false, a4, b3, c4, f4, null) : null;
+    const h4 = Vd(false, a4, b3, c4, e4, null), k3 = null !== f4 ? Vd(false, a4, b3, c4, f4, null) : null;
     let l4 = false, n4 = null, t4 = null, u4 = null;
     return w4.create({ next: () => {
       if (l4)
@@ -21084,15 +21088,24 @@ var fontoxpath = function(xspattern, prsc) {
       return q3(g3(Array.from(n4.value).slice(Math.max(t4.value - 1, 0), f4 ? t4.value + u4.value - 1 : void 0).join(""), 1));
     } });
   }, ge = (a4, b3, c4, d4, e4) => {
-    if (d4.G() || 0 === d4.first().value.length)
+    if (d4.F() || 0 === d4.first().value.length)
       return w4.empty();
     a4 = d4.first().value;
     e4 = e4.first().value;
     e4 = fe(e4);
-    return w4.create(a4.split(e4).map((f4) => g3(f4, 1)));
+    e4.lastIndex = 0;
+    b3 = [];
+    c4 = e4.exec(a4);
+    for (d4 = 0; c4; )
+      b3.push(a4.slice(d4, c4.index)), d4 = e4.lastIndex, c4 = e4.exec(a4);
+    b3.push(a4.slice(d4));
+    return w4.create(b3.map((f4) => g3(f4, 1)));
   }, he = (a4, b3, c4, d4) => {
-    if (d4.G())
-      return w4.m(g3("", 1));
+    if (d4.F())
+      return w4.m(g3(
+        "",
+        1
+      ));
     a4 = d4.first().value.trim();
     return w4.m(g3(a4.replace(/\s+/g, " "), 1));
   }, ie = /* @__PURE__ */ new Map(), je = /* @__PURE__ */ new Map();
@@ -21111,12 +21124,12 @@ var fontoxpath = function(xspattern, prsc) {
     return b3;
   }
   var ke = [{ namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "compare", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }], i: { type: 5, g: 0 }, callFunction: (a4, b3, c4, d4, e4) => {
-    if (d4.G() || e4.G())
+    if (d4.F() || e4.F())
       return w4.empty();
     a4 = d4.first().value;
     e4 = e4.first().value;
     return a4 > e4 ? w4.m(g3(1, 5)) : a4 < e4 ? w4.m(g3(-1, 5)) : w4.m(g3(0, 5));
-  } }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "compare", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }, { type: 1, g: 3 }], i: { type: 5, g: 0 }, callFunction: Zd }, {
+  } }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "compare", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }, { type: 1, g: 3 }], i: { type: 5, g: 0 }, callFunction: $d }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "concat",
     j: [{ type: 46, g: 0 }, { type: 46, g: 0 }, 4],
@@ -21125,44 +21138,53 @@ var fontoxpath = function(xspattern, prsc) {
       d4 = d4.map((e4) => qc(e4, b3).N((f4) => w4.m(g3(f4.map((h4) => null === h4 ? "" : jd(h4, 1).value).join(""), 1))));
       return A2(d4, (e4) => w4.m(g3(e4.map((f4) => f4.value).join(""), 1)));
     }
-  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "contains", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }, { type: 1, g: 0 }], i: { type: 0, g: 3 }, callFunction: Zd }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "contains", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }], i: { type: 0, g: 3 }, callFunction: (a4, b3, c4, d4, e4) => {
-    a4 = d4.G() ? "" : d4.first().value;
-    e4 = e4.G() ? "" : e4.first().value;
-    return 0 === e4.length ? w4.aa() : 0 === a4.length ? w4.V() : a4.includes(e4) ? w4.aa() : w4.V();
+  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "contains", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }, { type: 1, g: 0 }], i: { type: 0, g: 3 }, callFunction: $d }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "contains", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }], i: { type: 0, g: 3 }, callFunction: (a4, b3, c4, d4, e4) => {
+    a4 = d4.F() ? "" : d4.first().value;
+    e4 = e4.F() ? "" : e4.first().value;
+    return 0 === e4.length ? w4.aa() : 0 === a4.length ? w4.T() : a4.includes(e4) ? w4.aa() : w4.T();
   } }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "ends-with", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }], i: { type: 0, g: 3 }, callFunction: (a4, b3, c4, d4, e4) => {
-    a4 = e4.G() ? "" : e4.first().value;
+    a4 = e4.F() ? "" : e4.first().value;
     if (0 === a4.length)
       return w4.aa();
-    d4 = d4.G() ? "" : d4.first().value;
-    return 0 === d4.length ? w4.V() : d4.endsWith(a4) ? w4.aa() : w4.V();
+    d4 = d4.F() ? "" : d4.first().value;
+    return 0 === d4.length ? w4.T() : d4.endsWith(a4) ? w4.aa() : w4.T();
   } }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "ends-with",
     j: [{ type: 1, g: 0 }, { type: 1, g: 0 }, { type: 1, g: 3 }],
     i: { type: 0, g: 3 },
-    callFunction: Zd
-  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "normalize-space", j: [{ type: 1, g: 0 }], i: { type: 1, g: 3 }, callFunction: he }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "normalize-space", j: [], i: { type: 1, g: 3 }, callFunction: $d.bind(null, (a4, b3, c4, d4) => he(a4, b3, c4, ae(a4, b3, c4, d4))) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "starts-with", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }], i: { type: 0, g: 3 }, callFunction: (a4, b3, c4, d4, e4) => {
-    a4 = e4.G() ? "" : e4.first().value;
-    if (0 === a4.length)
-      return w4.aa();
-    d4 = d4.G() ? "" : d4.first().value;
-    return 0 === d4.length ? w4.V() : d4.startsWith(a4) ? w4.aa() : w4.V();
-  } }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "starts-with", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }, { type: 1, g: 3 }], i: { type: 0, g: 3 }, callFunction: Zd }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "string", j: [{ type: 59, g: 0 }], i: { type: 1, g: 3 }, callFunction: ae }, {
+    callFunction: $d
+  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "normalize-space", j: [{ type: 1, g: 0 }], i: { type: 1, g: 3 }, callFunction: he }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "normalize-space", j: [], i: { type: 1, g: 3 }, callFunction: Ad("normalize-space", 1, (a4, b3, c4, d4) => he(a4, b3, c4, ae(a4, b3, c4, d4))) }, {
+    namespaceURI: "http://www.w3.org/2005/xpath-functions",
+    localName: "starts-with",
+    j: [{ type: 1, g: 0 }, { type: 1, g: 0 }],
+    i: { type: 0, g: 3 },
+    callFunction: (a4, b3, c4, d4, e4) => {
+      a4 = e4.F() ? "" : e4.first().value;
+      if (0 === a4.length)
+        return w4.aa();
+      d4 = d4.F() ? "" : d4.first().value;
+      return 0 === d4.length ? w4.T() : d4.startsWith(a4) ? w4.aa() : w4.T();
+    }
+  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "starts-with", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }, { type: 1, g: 3 }], i: { type: 0, g: 3 }, callFunction: $d }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "string", j: [{ type: 59, g: 0 }], i: { type: 1, g: 3 }, callFunction: ae }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "string",
     j: [],
     i: { type: 1, g: 3 },
-    callFunction: $d.bind(null, ae)
+    callFunction: Ad("string", 59, ae)
   }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "substring-before", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }], i: { type: 1, g: 3 }, callFunction: (a4, b3, c4, d4, e4) => {
-    a4 = d4.G() ? "" : d4.first().value;
-    e4 = e4.G() ? "" : e4.first().value;
+    a4 = d4.F() ? "" : d4.first().value;
+    e4 = e4.F() ? "" : e4.first().value;
     if ("" === e4)
       return w4.m(g3("", 1));
     e4 = a4.indexOf(e4);
     return -1 === e4 ? w4.m(g3("", 1)) : w4.m(g3(a4.substring(0, e4), 1));
-  } }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "substring-after", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }], i: { type: 1, g: 3 }, callFunction: (a4, b3, c4, d4, e4) => {
-    a4 = d4.G() ? "" : d4.first().value;
-    e4 = e4.G() ? "" : e4.first().value;
+  } }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "substring-after", j: [{ type: 1, g: 0 }, { type: 1, g: 0 }], i: {
+    type: 1,
+    g: 3
+  }, callFunction: (a4, b3, c4, d4, e4) => {
+    a4 = d4.F() ? "" : d4.first().value;
+    e4 = e4.F() ? "" : e4.first().value;
     if ("" === e4)
       return w4.m(g3(a4, 1));
     b3 = a4.indexOf(e4);
@@ -21172,8 +21194,8 @@ var fontoxpath = function(xspattern, prsc) {
     localName: "upper-case",
     j: [{ type: 1, g: 0 }],
     i: { type: 1, g: 3 },
-    callFunction: (a4, b3, c4, d4) => d4.G() ? w4.m(g3("", 1)) : d4.map((e4) => g3(e4.value.toUpperCase(), 1))
-  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "lower-case", j: [{ type: 1, g: 0 }], i: { type: 1, g: 3 }, callFunction: (a4, b3, c4, d4) => d4.G() ? w4.m(g3("", 1)) : d4.map((e4) => g3(e4.value.toLowerCase(), 1)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "string-join", j: [{ type: 46, g: 2 }, { type: 1, g: 3 }], i: { type: 1, g: 3 }, callFunction: be }, {
+    callFunction: (a4, b3, c4, d4) => d4.F() ? w4.m(g3("", 1)) : d4.map((e4) => g3(e4.value.toUpperCase(), 1))
+  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "lower-case", j: [{ type: 1, g: 0 }], i: { type: 1, g: 3 }, callFunction: (a4, b3, c4, d4) => d4.F() ? w4.m(g3("", 1)) : d4.map((e4) => g3(e4.value.toLowerCase(), 1)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "string-join", j: [{ type: 46, g: 2 }, { type: 1, g: 3 }], i: { type: 1, g: 3 }, callFunction: be }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "string-join",
     j: [{ type: 46, g: 2 }],
@@ -21181,10 +21203,10 @@ var fontoxpath = function(xspattern, prsc) {
     callFunction(a4, b3, c4, d4) {
       return be(a4, b3, c4, d4, w4.m(g3("", 1)));
     }
-  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "string-length", j: [{ type: 1, g: 0 }], i: { type: 5, g: 3 }, callFunction: ce }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "string-length", j: [], i: { type: 5, g: 3 }, callFunction: $d.bind(null, (a4, b3, c4, d4) => ce(a4, b3, c4, ae(a4, b3, c4, d4))) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "tokenize", j: [{ type: 1, g: 0 }, {
+  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "string-length", j: [{ type: 1, g: 0 }], i: { type: 5, g: 3 }, callFunction: ce }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "string-length", j: [], i: { type: 5, g: 3 }, callFunction: Ad("string-length", 46, (a4, b3, c4, d4) => ce(a4, b3, c4, ae(a4, b3, c4, d4))) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "tokenize", j: [{
     type: 1,
-    g: 3
-  }, { type: 1, g: 3 }], i: { type: 1, g: 2 }, callFunction() {
+    g: 0
+  }, { type: 1, g: 3 }, { type: 1, g: 3 }], i: { type: 1, g: 2 }, callFunction() {
     throw Error("Not implemented: Using flags in tokenize is not supported");
   } }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "tokenize", j: [{ type: 1, g: 0 }, { type: 1, g: 3 }], i: { type: 1, g: 2 }, callFunction: ge }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "tokenize", j: [{ type: 1, g: 0 }], i: { type: 1, g: 2 }, callFunction(a4, b3, c4, d4) {
     return ge(a4, b3, c4, he(a4, b3, c4, d4), w4.m(g3(" ", 1)));
@@ -21222,12 +21244,12 @@ var fontoxpath = function(xspattern, prsc) {
     f4 = f4.value;
     var k3 = h4.value;
     if (f4.length !== k3.length)
-      return w4.V();
+      return w4.T();
     h4 = f4.split("");
     f4 = k3.split("");
     for (k3 = 0; k3 < h4.length; k3++)
       if (h4[k3].codePointAt(0) !== f4[k3].codePointAt(0))
-        return w4.V();
+        return w4.T();
     return w4.aa();
   }), localName: "codepoint-equal", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 0, g: 0 } }, { j: [{ type: 1, g: 0 }, { type: 1, g: 3 }], callFunction: (a4, b3, c4, d4, e4) => A2([d4, e4], ([f4, h4]) => {
     f4 = f4 ? f4.value : "";
@@ -21235,13 +21257,13 @@ var fontoxpath = function(xspattern, prsc) {
     let k3 = ie.get(h4);
     if (!k3) {
       try {
-        k3 = (0, wd.compile)(h4, { language: "xpath" });
+        k3 = (0, Bd.compile)(h4, { language: "xpath" });
       } catch (l4) {
         throw Error(`FORX0002: ${l4}`);
       }
       ie.set(h4, k3);
     }
-    return k3(f4) ? w4.aa() : w4.V();
+    return k3(f4) ? w4.aa() : w4.T();
   }), localName: "matches", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 0, g: 3 } }, { j: [{ type: 1, g: 0 }, { type: 1, g: 3 }, { type: 1, g: 3 }], callFunction: (a4, b3, c4, d4, e4, f4) => A2([d4, e4, f4], ([h4, k3, l4]) => {
     h4 = h4 ? h4.value : "";
     k3 = k3.value;
@@ -21266,12 +21288,9 @@ var fontoxpath = function(xspattern, prsc) {
   }), localName: "replace", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 1, g: 3 } }, { j: [{ type: 1, g: 0 }, { type: 1, g: 3 }, { type: 1, g: 3 }, { type: 1, g: 3 }], localName: "replace", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 1, g: 3 }, callFunction() {
     throw Error("Not implemented: Using flags in replace is not supported");
   } }];
-  function le(a4, b3, c4, d4, e4) {
-    if (null === c4.M)
-      throw lc(`The function ${a4} depends on dynamic context, which is absent.`);
-    return b3(c4, d4, e4, w4.m(c4.M));
-  }
-  const me = (a4, b3, c4, d4) => A2([d4], ([e4]) => {
+  const le = /* @__PURE__ */ new WeakMap();
+  let me = 0;
+  const ne = (a4, b3, c4, d4) => A2([d4], ([e4]) => {
     if (null === e4)
       return w4.empty();
     e4 = e4.value;
@@ -21284,10 +21303,62 @@ var fontoxpath = function(xspattern, prsc) {
       default:
         return w4.empty();
     }
-  }), ne = (a4, b3, c4, d4) => d4.Y({ default: () => ae(a4, b3, c4, me(a4, b3, c4, d4)), empty: () => w4.m(g3("", 1)) }), oe = (a4, b3, c4, d4) => qc(d4, b3), pe = (a4, b3, c4, d4) => A2([d4], ([e4]) => {
+  }), oe = (a4, b3, c4, d4) => d4.X({ default: () => ae(a4, b3, c4, ne(a4, b3, c4, d4)), empty: () => w4.m(g3("", 1)) }), pe = (a4, b3, c4, d4) => qc(d4, b3), qe = (a4, b3, c4, d4) => {
+    if (d4.F())
+      return w4.m(g3("", 1));
+    if (!v3(d4.first().type, 53))
+      throw Error("XPTY0004: The context item must be a node.");
+    c4 = d4.first().value;
+    a4 = w4;
+    b3 = a4.m;
+    c4 = c4.node;
+    le.has(c4) || le.set(c4, `id${++me}`);
+    c4 = le.get(c4);
+    return b3.call(a4, g3(c4, 1));
+  }, re = (a4, b3, c4, d4) => A2([d4], ([e4]) => {
     e4 = e4 ? e4.value : null;
-    return null !== e4 && jb(b3.h, e4, null) ? w4.aa() : w4.V();
-  }), qe = (a4, b3, c4, d4) => A2([d4], ([e4]) => {
+    return null !== e4 && ib(b3.h, e4, null) ? w4.aa() : w4.T();
+  });
+  function se(a4, b3) {
+    a4 = a4.toLowerCase();
+    b3 = b3.toLowerCase();
+    return a4 === b3 ? true : 5 > a4.length || !a4.startsWith(b3) ? false : se(a4.replace(/-[a-z0-9]+$/, ""), b3);
+  }
+  const te = (a4, b3, c4, d4, e4) => {
+    b3 = b3.h;
+    if (d4.F())
+      d4 = "";
+    else if (v3(d4.first().type, 1))
+      d4 = d4.first().value;
+    else
+      throw Error("XPTY0004: The first argument of lang must be a string.");
+    if (e4)
+      e4 = e4.first().value;
+    else {
+      if (!a4 || !a4.M)
+        throw lc("The function lang depends on dynamic context if a node is not passed as the second argument.");
+      if (!v3(a4.M.type, 53))
+        throw Error("XPTY0004: The context item must be a node.");
+      e4 = a4.M.value;
+    }
+    a: {
+      for (a4 = d4; e4; )
+        if (1 !== e4.node.nodeType)
+          e4 = x3(b3, e4);
+        else if (1 === e4.node.nodeType) {
+          if (d4 = fb(b3, e4, "xml:lang")) {
+            b3 = se(
+              d4,
+              a4
+            ) ? w4.aa() : w4.T();
+            break a;
+          }
+          e4 = x3(b3, e4);
+        }
+      b3 = w4.T();
+    }
+    return b3;
+  }, ue = (a4, b3, c4, d4) => A2([d4], ([e4]) => {
     function f4(n4) {
       let t4 = 0, u4 = n4;
       for (; null !== u4; )
@@ -21319,11 +21390,8 @@ var fontoxpath = function(xspattern, prsc) {
           k3 = `/comment()[${f4(e4)}]${k3}`;
       }
     return 9 === e4.node.nodeType ? w4.create(g3(k3 || "/", 1)) : w4.create(g3("Q{http://www.w3.org/2005/xpath-functions}root()" + k3, 1));
-  }), re = (a4, b3, c4, d4) => d4.map((e4) => g3(e4.value.node.namespaceURI || "", 20)), se = (a4, b3, c4, d4) => d4.Y({ default: () => d4.map((e4) => 7 === e4.value.node.nodeType ? g3(e4.value.node.target, 1) : g3(e4.value.node.localName || "", 1)), empty: () => w4.m(g3(
-    "",
-    1
-  )) });
-  function te(a4, b3, c4) {
+  }), ve = (a4, b3, c4, d4) => d4.map((e4) => g3(e4.value.node.namespaceURI || "", 20)), we = (a4, b3, c4, d4) => d4.X({ default: () => d4.map((e4) => 7 === e4.value.node.nodeType ? g3(e4.value.node.target, 1) : g3(e4.value.node.localName || "", 1)), empty: () => w4.m(g3("", 1)) });
+  function xe(a4, b3, c4) {
     if (2 === b3.node.nodeType)
       return md(b3, c4);
     for (; c4; ) {
@@ -21335,7 +21403,7 @@ var fontoxpath = function(xspattern, prsc) {
     }
     return false;
   }
-  const ue = (a4, b3, c4, d4) => d4.map((e4) => {
+  const ye = (a4, b3, c4, d4) => d4.map((e4) => {
     if (!v3(e4.type, 53))
       throw Error("XPTY0004 Argument passed to fn:root() should be of the type node()");
     let f4;
@@ -21343,9 +21411,9 @@ var fontoxpath = function(xspattern, prsc) {
       f4 = e4, e4 = x3(b3.h, f4, null);
     return rb(f4);
   });
-  var ve = [{ j: [{ type: 53, g: 0 }], callFunction: ne, localName: "name", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 1, g: 3 } }, { j: [], callFunction: le.bind(null, "name", ne), localName: "name", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 1, g: 3 } }, { j: [{ type: 53, g: 3 }], callFunction: re, localName: "namespace-uri", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 20, g: 3 } }, {
+  var ze = [{ j: [{ type: 53, g: 0 }], callFunction: oe, localName: "name", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 1, g: 3 } }, { j: [], callFunction: Ad("name", 53, oe), localName: "name", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 1, g: 3 } }, { j: [{ type: 53, g: 3 }], callFunction: ve, localName: "namespace-uri", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 20, g: 3 } }, {
     j: [],
-    callFunction: le.bind(null, "namespace-uri", re),
+    callFunction: Ad("namespace-uri", 53, ve),
     localName: "namespace-uri",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: { type: 20, g: 3 }
@@ -21355,7 +21423,7 @@ var fontoxpath = function(xspattern, prsc) {
     e4 = td(b3.h, e4).reduceRight((f4, h4, k3, l4) => {
       if (k3 === l4.length - 1)
         return f4.push(h4), f4;
-      if (te(b3.h, h4.value, f4[0].value))
+      if (xe(b3.h, h4.value, f4[0].value))
         return f4;
       f4.unshift(h4);
       return f4;
@@ -21367,32 +21435,38 @@ var fontoxpath = function(xspattern, prsc) {
     e4 = td(b3.h, e4).reduce((f4, h4, k3) => {
       if (0 === k3)
         return f4.push(h4), f4;
-      if (te(b3.h, f4[f4.length - 1].value, h4.value))
+      if (xe(b3.h, f4[f4.length - 1].value, h4.value))
         return f4;
       f4.push(h4);
       return f4;
     }, []);
     return w4.create(e4);
-  }, 1), localName: "outermost", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 53, g: 2 } }, { j: [{ type: 53, g: 0 }], callFunction: pe, localName: "has-children", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 0, g: 3 } }, { j: [], callFunction: le.bind(null, "has-children", pe), localName: "has-children", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 0, g: 3 } }, {
+  }, 1), localName: "outermost", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 53, g: 2 } }, { j: [{ type: 53, g: 0 }], callFunction: re, localName: "has-children", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 0, g: 3 } }, { j: [], callFunction: Ad("has-children", 53, re), localName: "has-children", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 0, g: 3 } }, {
     j: [{ type: 53, g: 0 }],
-    callFunction: qe,
+    callFunction: ue,
     localName: "path",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: { type: 1, g: 0 }
-  }, { j: [], callFunction: le.bind(null, "path", qe), localName: "path", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 1, g: 0 } }, { j: [{ type: 53, g: 0 }], callFunction: me, localName: "node-name", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 23, g: 0 } }, { j: [], callFunction: le.bind(null, "node-name", me), localName: "node-name", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 23, g: 0 } }, {
+  }, { j: [], callFunction: Ad("path", 53, ue), localName: "path", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 1, g: 0 } }, { j: [{ type: 53, g: 0 }], callFunction: ne, localName: "node-name", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 23, g: 0 } }, { j: [], callFunction: Ad("node-name", 53, ne), localName: "node-name", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 23, g: 0 } }, {
     j: [{ type: 53, g: 0 }],
-    callFunction: se,
+    callFunction: we,
     localName: "local-name",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: { type: 1, g: 3 }
-  }, { j: [], callFunction: le.bind(null, "local-name", se), localName: "local-name", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 1, g: 3 } }, { j: [{ type: 53, g: 0 }], callFunction: ue, localName: "root", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 53, g: 0 } }, { j: [], callFunction: le.bind(null, "root", ue), localName: "root", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 53, g: 0 } }, {
+  }, { j: [], callFunction: Ad("local-name", 53, we), localName: "local-name", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 1, g: 3 } }, { j: [{ type: 53, g: 0 }], callFunction: ye, localName: "root", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 53, g: 0 } }, { j: [], callFunction: Ad("root", 53, ye), localName: "root", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 53, g: 0 } }, {
     j: [],
-    callFunction: le.bind(null, "data", oe),
+    callFunction: Ad("data", 59, pe),
     localName: "data",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: { type: 46, g: 2 }
-  }, { j: [{ type: 59, g: 2 }], callFunction: oe, localName: "data", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 2 } }];
-  function we(a4, b3) {
+  }, { j: [{ type: 59, g: 2 }], callFunction: pe, localName: "data", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 2 } }, { j: [{ type: 1, g: 0 }], callFunction: te, localName: "lang", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 0, g: 3 } }, { j: [{ type: 1, g: 0 }, { type: 53, g: 3 }], callFunction: te, localName: "lang", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 0, g: 3 } }, {
+    j: [],
+    callFunction: Ad("generate-id", 53, qe),
+    localName: "generate-id",
+    namespaceURI: "http://www.w3.org/2005/xpath-functions",
+    i: { type: 1, g: 3 }
+  }, { j: [{ type: 53, g: 0 }], callFunction: qe, localName: "generate-id", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 1, g: 3 } }];
+  function Ae(a4, b3) {
     let c4 = 0;
     const d4 = a4.length;
     let e4 = false, f4 = null;
@@ -21413,11 +21487,11 @@ var fontoxpath = function(xspattern, prsc) {
       return p3;
     } };
   }
-  function xe(a4) {
+  function Be(a4) {
     a4 = a4.node.nodeType;
     return 1 === a4 || 3 === a4;
   }
-  function ye(a4, b3) {
+  function Ce(a4, b3) {
     if ((v3(a4.type, 4) || v3(a4.type, 6)) && (v3(b3.type, 4) || v3(b3.type, 6))) {
       var c4 = jd(a4, 6), d4 = jd(b3, 6);
       return c4.value === d4.value || isNaN(a4.value) && isNaN(b3.value);
@@ -21427,11 +21501,11 @@ var fontoxpath = function(xspattern, prsc) {
       13
     ) || v3(a4.type, 14) || v3(a4.type, 15)) && (v3(b3.type, 9) || v3(b3.type, 7) || v3(b3.type, 8) || v3(b3.type, 11) || v3(b3.type, 12) || v3(b3.type, 13) || v3(b3.type, 14) || v3(b3.type, 15)) ? Ob(a4.value, b3.value) : (v3(a4.type, 16) || v3(a4.type, 17) || v3(a4.type, 18)) && (v3(b3.type, 16) || v3(b3.type, 17) || v3(b3.type, 17)) ? vb(a4.value, b3.value) : a4.value === b3.value;
   }
-  function ze(a4, b3, c4) {
+  function De(a4, b3, c4) {
     const [d4, e4] = [b3, c4].map((f4) => ({ type: 1, value: f4.reduce((h4, k3) => h4 += pc(k3, a4).first().value, "") }));
-    return q3(ye(d4, e4));
+    return q3(Ce(d4, e4));
   }
-  function Ae(a4, b3, c4, d4) {
+  function Ee(a4, b3, c4, d4) {
     for (; a4.value && v3(a4.value.type, 56); ) {
       b3.push(a4.value);
       const e4 = lb(d4, a4.value.value);
@@ -21441,57 +21515,57 @@ var fontoxpath = function(xspattern, prsc) {
     }
     return a4;
   }
-  function Be(a4, b3, c4, d4, e4) {
+  function Fe(a4, b3, c4, d4, e4) {
     const f4 = b3.h, h4 = d4.value, k3 = e4.value;
     let l4 = null, n4 = null, t4 = null, u4;
     const z3 = [], y3 = [];
     return { next: () => {
       for (; !u4; )
-        if (l4 ||= h4.next(0), l4 = Ae(l4, z3, h4, f4), n4 ||= k3.next(0), n4 = Ae(n4, y3, k3, f4), z3.length || y3.length) {
-          var F3 = ze(b3, z3, y3);
+        if (l4 ||= h4.next(0), l4 = Ee(l4, z3, h4, f4), n4 ||= k3.next(0), n4 = Ee(n4, y3, k3, f4), z3.length || y3.length) {
+          var G3 = De(b3, z3, y3);
           z3.length = 0;
           y3.length = 0;
-          if (false === F3.value)
-            return u4 = true, F3;
+          if (false === G3.value)
+            return u4 = true, G3;
         } else {
           if (l4.done || n4.done)
             return u4 = true, q3(l4.done === n4.done);
-          t4 ||= Ce(a4, b3, c4, l4.value, n4.value);
-          F3 = t4.next(0);
+          t4 ||= Ge(a4, b3, c4, l4.value, n4.value);
+          G3 = t4.next(0);
           t4 = null;
-          if (false === F3.value)
-            return u4 = true, F3;
+          if (false === G3.value)
+            return u4 = true, G3;
           n4 = l4 = null;
         }
       return p3;
     } };
   }
-  function De(a4, b3, c4, d4, e4) {
-    return d4.h.length !== e4.h.length ? kd(false) : we(d4.h, (f4) => {
-      const h4 = e4.h.find((k3) => ye(k3.key, f4.key));
-      return h4 ? Be(a4, b3, c4, f4.value(), h4.value()) : kd(false);
+  function He(a4, b3, c4, d4, e4) {
+    return d4.h.length !== e4.h.length ? kd(false) : Ae(d4.h, (f4) => {
+      const h4 = e4.h.find((k3) => Ce(k3.key, f4.key));
+      return h4 ? Fe(a4, b3, c4, f4.value(), h4.value()) : kd(false);
     });
   }
-  function Ee(a4, b3, c4, d4, e4) {
-    return d4.h.length !== e4.h.length ? kd(false) : we(d4.h, (f4, h4) => {
+  function Ie(a4, b3, c4, d4, e4) {
+    return d4.h.length !== e4.h.length ? kd(false) : Ae(d4.h, (f4, h4) => {
       h4 = e4.h[h4];
-      return Be(a4, b3, c4, f4(), h4());
+      return Fe(a4, b3, c4, f4(), h4());
     });
   }
-  function Fe(a4, b3, c4, d4, e4) {
-    d4 = hb(b3.h, d4.value);
-    e4 = hb(b3.h, e4.value);
-    d4 = d4.filter((f4) => xe(f4));
-    e4 = e4.filter((f4) => xe(f4));
+  function Je(a4, b3, c4, d4, e4) {
+    d4 = gb(b3.h, d4.value);
+    e4 = gb(b3.h, e4.value);
+    d4 = d4.filter((f4) => Be(f4));
+    e4 = e4.filter((f4) => Be(f4));
     d4 = w4.create(d4.map((f4) => rb(f4)));
     e4 = w4.create(e4.map((f4) => rb(f4)));
-    return Be(a4, b3, c4, d4, e4);
+    return Fe(a4, b3, c4, d4, e4);
   }
-  function Ge(a4, b3, c4, d4, e4) {
-    const f4 = Be(a4, b3, c4, me(a4, b3, c4, w4.m(d4)), me(a4, b3, c4, w4.m(e4))), h4 = Fe(a4, b3, c4, d4, e4);
+  function Ke(a4, b3, c4, d4, e4) {
+    const f4 = Fe(a4, b3, c4, ne(a4, b3, c4, w4.m(d4)), ne(a4, b3, c4, w4.m(e4))), h4 = Je(a4, b3, c4, d4, e4);
     d4 = eb(b3.h, d4.value).filter((n4) => "http://www.w3.org/2000/xmlns/" !== n4.node.namespaceURI).sort((n4, t4) => n4.node.nodeName > t4.node.nodeName ? 1 : -1).map((n4) => rb(n4));
     e4 = eb(b3.h, e4.value).filter((n4) => "http://www.w3.org/2000/xmlns/" !== n4.node.namespaceURI).sort((n4, t4) => n4.node.nodeName > t4.node.nodeName ? 1 : -1).map((n4) => rb(n4));
-    const k3 = Be(a4, b3, c4, w4.create(d4), w4.create(e4));
+    const k3 = Fe(a4, b3, c4, w4.create(d4), w4.create(e4));
     let l4 = false;
     return { next: () => {
       if (l4)
@@ -21507,55 +21581,55 @@ var fontoxpath = function(xspattern, prsc) {
       return n4;
     } };
   }
-  function He(a4, b3, c4, d4, e4) {
-    const f4 = Be(a4, b3, c4, me(a4, b3, c4, w4.m(d4)), me(a4, b3, c4, w4.m(e4)));
+  function Le(a4, b3, c4, d4, e4) {
+    const f4 = Fe(a4, b3, c4, ne(a4, b3, c4, w4.m(d4)), ne(a4, b3, c4, w4.m(e4)));
     let h4 = false;
     return { next: () => {
       if (h4)
         return p3;
       const k3 = f4.next(0);
-      return k3.done || false !== k3.value ? q3(ye(pc(d4, b3).first(), pc(e4, b3).first())) : (h4 = true, k3);
+      return k3.done || false !== k3.value ? q3(Ce(pc(d4, b3).first(), pc(e4, b3).first())) : (h4 = true, k3);
     } };
   }
-  function Ce(a4, b3, c4, d4, e4) {
+  function Ge(a4, b3, c4, d4, e4) {
     if (v3(d4.type, 46) && v3(e4.type, 46))
-      return kd(ye(d4, e4));
+      return kd(Ce(d4, e4));
     if (v3(d4.type, 61) && v3(e4.type, 61))
-      return De(a4, b3, c4, d4, e4);
+      return He(a4, b3, c4, d4, e4);
     if (v3(d4.type, 62) && v3(e4.type, 62))
-      return Ee(a4, b3, c4, d4, e4);
+      return Ie(a4, b3, c4, d4, e4);
     if (v3(d4.type, 53) && v3(e4.type, 53)) {
       if (v3(d4.type, 55) && v3(e4.type, 55))
-        return Fe(a4, b3, c4, d4, e4);
+        return Je(a4, b3, c4, d4, e4);
       if (v3(d4.type, 54) && v3(e4.type, 54))
-        return Ge(a4, b3, c4, d4, e4);
+        return Ke(a4, b3, c4, d4, e4);
       if (v3(d4.type, 47) && v3(e4.type, 47) || v3(d4.type, 57) && v3(e4.type, 57) || v3(d4.type, 58) && v3(e4.type, 58))
-        return He(a4, b3, c4, d4, e4);
+        return Le(a4, b3, c4, d4, e4);
     }
     return kd(false);
   }
   ;
-  var Ie = class extends cc {
+  var Me = class extends cc {
     constructor() {
-      super({ M: null, Aa: -1, sa: w4.empty(), qa: {} });
+      super({ M: null, Aa: -1, ta: w4.empty(), ra: {} });
     }
   };
-  var Je = (a4 = "Can not execute an updating expression in a non-updating context.") => Error(`XUST0001: ${a4}`), Ke = (a4) => Error(`XUTY0004: The attribute ${a4.name}="${a4.value}" follows a node that is not an attribute node.`), Le = () => Error("XUTY0005: The target of a insert expression with into must be a single element or document node."), Me = () => Error("XUTY0006: The target of a insert expression with before or after must be a single element, text, comment, or processing instruction node."), Ne = () => Error("XUTY0008: The target of a replace expression must be a single element, attribute, text, comment, or processing instruction node."), Oe = () => Error("XUTY0012: The target of a rename expression must be a single element, attribute, or processing instruction node."), Pe = (a4) => Error(`XUDY0017: The target ${a4.outerHTML} is used in more than one replace value of expression.`), Qe = (a4) => Error(`XUDY0021: Applying the updates will result in the XDM instance violating constraint: '${a4}'`), Re = (a4) => Error(`XUDY0023: The namespace binding ${a4} is conflicting.`), Se = (a4) => Error(`XUDY0024: The namespace binding ${a4} is conflicting.`), Te = () => Error("XUDY0027: The target for an insert, replace, or rename expression expression should not be empty.");
+  var Ne = (a4 = "Can not execute an updating expression in a non-updating context.") => Error(`XUST0001: ${a4}`), Oe = (a4) => Error(`XUTY0004: The attribute ${a4.name}="${a4.value}" follows a node that is not an attribute node.`), Pe = () => Error("XUTY0005: The target of a insert expression with into must be a single element or document node."), Qe = () => Error("XUTY0006: The target of a insert expression with before or after must be a single element, text, comment, or processing instruction node."), Re = () => Error("XUTY0008: The target of a replace expression must be a single element, attribute, text, comment, or processing instruction node."), Se = () => Error("XUTY0012: The target of a rename expression must be a single element, attribute, or processing instruction node."), Te = (a4) => Error(`XUDY0017: The target ${a4.outerHTML} is used in more than one replace value of expression.`), Ue = (a4) => Error(`XUDY0021: Applying the updates will result in the XDM instance violating constraint: '${a4}'`), Ve = (a4) => Error(`XUDY0023: The namespace binding ${a4} is conflicting.`), We = (a4) => Error(`XUDY0024: The namespace binding ${a4} is conflicting.`), Xe = () => Error("XUDY0027: The target for an insert, replace, or rename expression expression should not be empty.");
   function C3(a4, b3, c4) {
-    b3 && null !== b3.M ? a4.B ? (null === a4.ob && (a4.ob = Ra(a4.h(new Ie(), c4).hb())), a4 = a4.ob()) : a4 = a4.h(b3, c4) : a4 = a4.h(b3, c4);
+    b3 && null !== b3.M ? a4.B ? (null === a4.ob && (a4.ob = Ra(a4.h(new Me(), c4).hb())), a4 = a4.ob()) : a4 = a4.h(b3, c4) : a4 = a4.h(b3, c4);
     return a4;
   }
   var D3 = class {
-    constructor(a4, b3, c4 = { B: false, W: false, P: "unsorted", subtree: false }, d4 = false, e4) {
+    constructor(a4, b3, c4 = { B: false, W: false, R: "unsorted", subtree: false }, d4 = false, e4) {
       this.o = a4;
-      this.ia = c4.P || "unsorted";
+      this.ia = c4.R || "unsorted";
       this.subtree = !!c4.subtree;
       this.W = !!c4.W;
       this.B = !!c4.B;
       this.Fa = b3;
-      this.J = false;
+      this.I = false;
       this.ob = null;
-      this.Ob = d4;
+      this.Qb = d4;
       this.type = e4;
     }
     D() {
@@ -21563,17 +21637,17 @@ var fontoxpath = function(xspattern, prsc) {
     }
     v(a4) {
       this.Fa.forEach((b3) => b3.v(a4));
-      if (!this.Ob && this.Fa.some((b3) => b3.J))
-        throw Je();
+      if (!this.Qb && this.Fa.some((b3) => b3.I))
+        throw Ne();
     }
   };
-  var Ue = class {
+  var Ye = class {
     constructor(a4, b3) {
-      this.I = a4;
+      this.J = a4;
       this.da = b3;
     }
   };
-  var Ve = class {
+  var Ze = class {
     constructor(a4) {
       a4 && "object" === typeof a4 && "nodeType" in a4 && (a4 = a4.ownerDocument || a4, "function" === typeof a4.createElementNS && "function" === typeof a4.createProcessingInstruction && "function" === typeof a4.createTextNode && "function" === typeof a4.createComment && (this.h = a4));
       this.h || (this.h = null);
@@ -21617,42 +21691,42 @@ var fontoxpath = function(xspattern, prsc) {
       return this.h.createTextNode(a4);
     }
   };
-  function We(a4, b3, c4, d4) {
+  function $e(a4, b3, c4, d4) {
     return eb(d4, a4, `name-${b3}`).some((e4) => e4.node.localName === b3 && e4.node.namespaceURI === c4);
   }
-  var Xe = (a4, b3, c4, d4) => {
+  var af = (a4, b3, c4, d4) => {
     const e4 = x3(c4, a4).node, f4 = (a4 = lb(c4, a4)) ? a4.node : null;
     b3.forEach((h4) => {
       d4.insertBefore(e4, h4.node, f4);
     });
-  }, Ye = (a4, b3, c4, d4) => {
+  }, bf = (a4, b3, c4, d4) => {
     const e4 = x3(c4, a4).node;
     b3.forEach((f4) => {
       d4.insertBefore(e4, f4.node, a4.node);
     });
-  }, Ze = (a4, b3, c4, d4) => {
-    const e4 = (c4 = jb(c4, a4)) ? c4.node : null;
+  }, cf = (a4, b3, c4, d4) => {
+    const e4 = (c4 = ib(c4, a4)) ? c4.node : null;
     b3.forEach((f4) => {
       d4.insertBefore(a4.node, f4.node, e4);
     });
-  }, $e = (a4, b3, c4) => {
+  }, df = (a4, b3, c4) => {
     b3.forEach((d4) => {
       c4.insertBefore(a4.node, d4.node, null);
     });
-  }, af = (a4, b3, c4, d4) => {
+  }, ef = (a4, b3, c4, d4) => {
     b3.forEach((e4) => {
       const f4 = e4.node.localName, h4 = e4.node.namespaceURI;
-      if (We(a4, f4, h4, c4))
-        throw Qe(`An attribute ${h4 ? `Q{${h4}}${f4}` : f4} already exists.`);
-      d4.setAttributeNS(a4.node, h4, f4, ib(c4, e4));
+      if ($e(a4, f4, h4, c4))
+        throw Ue(`An attribute ${h4 ? `Q{${h4}}${f4}` : f4} already exists.`);
+      d4.setAttributeNS(a4.node, h4, f4, hb(c4, e4));
     });
-  }, cf = (a4, b3, c4, d4, e4) => {
-    d4 ||= new Ve(a4 ? a4.node : null);
+  }, gf = (a4, b3, c4, d4, e4) => {
+    d4 ||= new Ze(a4 ? a4.node : null);
     let f4;
     switch (a4.node.nodeType) {
       case 1:
         const h4 = c4.getAllAttributes(a4.node), k3 = c4.getChildNodes(a4.node), l4 = d4.createElementNS(b3.namespaceURI, b3.za());
-        f4 = { node: l4, F: null };
+        f4 = { node: l4, G: null };
         h4.forEach((n4) => {
           e4.setAttributeNS(l4, n4.namespaceURI, n4.nodeName, n4.value);
         });
@@ -21662,22 +21736,22 @@ var fontoxpath = function(xspattern, prsc) {
         break;
       case 2:
         b3 = d4.createAttributeNS(b3.namespaceURI, b3.za());
-        b3.value = ib(c4, a4);
-        f4 = { node: b3, F: null };
+        b3.value = hb(c4, a4);
+        f4 = { node: b3, G: null };
         break;
       case 7:
         f4 = { node: d4.createProcessingInstruction(
           b3.za(),
-          ib(c4, a4)
-        ), F: null };
+          hb(c4, a4)
+        ), G: null };
     }
     if (!x3(c4, a4))
       throw Error("Not supported: renaming detached nodes.");
-    bf(a4, [f4], c4, e4);
-  }, df = (a4, b3, c4, d4) => {
+    ff(a4, [f4], c4, e4);
+  }, hf = (a4, b3, c4, d4) => {
     c4.getChildNodes(a4.node).forEach((e4) => d4.removeChild(a4.node, e4));
     b3 && d4.insertBefore(a4.node, b3.node, null);
-  }, bf = (a4, b3, c4, d4) => {
+  }, ff = (a4, b3, c4, d4) => {
     const e4 = x3(c4, a4);
     var f4 = a4.node.nodeType;
     if (2 === f4) {
@@ -21687,9 +21761,9 @@ var fontoxpath = function(xspattern, prsc) {
       d4.removeAttributeNS(h4, a4.node.namespaceURI, a4.node.localName);
       b3.forEach((k3) => {
         const l4 = k3.node.localName, n4 = k3.node.namespaceURI;
-        if (We(e4, l4, n4, c4))
-          throw Qe(`An attribute ${n4 ? `Q{${n4}}${l4}` : l4} already exists.`);
-        d4.setAttributeNS(h4, n4, l4, ib(c4, k3));
+        if ($e(e4, l4, n4, c4))
+          throw Ue(`An attribute ${n4 ? `Q{${n4}}${l4}` : l4} already exists.`);
+        d4.setAttributeNS(h4, n4, l4, hb(c4, k3));
       });
     }
     if (1 === f4 || 3 === f4 || 8 === f4 || 7 === f4) {
@@ -21700,18 +21774,18 @@ var fontoxpath = function(xspattern, prsc) {
       });
     }
   };
-  var ff = (a4, b3, c4, d4) => {
-    ef(a4, b3);
+  var kf = (a4, b3, c4, d4) => {
+    jf(a4, b3);
     a4.filter((e4) => -1 !== ["insertInto", "insertAttributes", "replaceValue", "rename"].indexOf(e4.type)).forEach((e4) => {
       switch (e4.type) {
         case "insertInto":
-          $e(e4.target, e4.content, d4);
+          df(e4.target, e4.content, d4);
           break;
         case "insertAttributes":
-          af(e4.target, e4.content, b3, d4);
+          ef(e4.target, e4.content, b3, d4);
           break;
         case "rename":
-          cf(e4.target, e4.o, b3, c4, d4);
+          gf(e4.target, e4.o, b3, c4, d4);
           break;
         case "replaceValue":
           var f4 = e4.target;
@@ -21726,23 +21800,23 @@ var fontoxpath = function(xspattern, prsc) {
     a4.filter((e4) => -1 !== ["insertBefore", "insertAfter", "insertIntoAsFirst", "insertIntoAsLast"].indexOf(e4.type)).forEach((e4) => {
       switch (e4.type) {
         case "insertAfter":
-          Xe(e4.target, e4.content, b3, d4);
+          af(e4.target, e4.content, b3, d4);
           break;
         case "insertBefore":
-          Ye(e4.target, e4.content, b3, d4);
+          bf(e4.target, e4.content, b3, d4);
           break;
         case "insertIntoAsFirst":
-          Ze(e4.target, e4.content, b3, d4);
+          cf(e4.target, e4.content, b3, d4);
           break;
         case "insertIntoAsLast":
-          $e(e4.target, e4.content, d4);
+          df(e4.target, e4.content, d4);
       }
     });
     a4.filter((e4) => "replaceNode" === e4.type).forEach((e4) => {
-      bf(e4.target, e4.o, b3, d4);
+      ff(e4.target, e4.o, b3, d4);
     });
     a4.filter((e4) => "replaceElementContent" === e4.type).forEach((e4) => {
-      df(e4.target, e4.text, b3, d4);
+      hf(e4.target, e4.text, b3, d4);
     });
     a4.filter((e4) => "delete" === e4.type).forEach((e4) => {
       e4 = e4.target;
@@ -21752,7 +21826,7 @@ var fontoxpath = function(xspattern, prsc) {
     if (a4.some((e4) => "put" === e4.type))
       throw Error('Not implemented: the execution for pendingUpdate "put" is not yet implemented.');
   };
-  const ef = (a4, b3) => {
+  const jf = (a4, b3) => {
     function c4(f4, h4) {
       const k3 = /* @__PURE__ */ new Set();
       a4.filter((l4) => l4.type === f4).map((l4) => l4.target).forEach((l4) => {
@@ -21768,10 +21842,10 @@ var fontoxpath = function(xspattern, prsc) {
       throw Error(`XUDY0016: The target ${f4.outerHTML} is used in more than one replace expression.`);
     });
     c4("replaceValue", (f4) => {
-      throw Pe(f4);
+      throw Te(f4);
     });
     c4("replaceElementContent", (f4) => {
-      throw Pe(f4);
+      throw Te(f4);
     });
     const d4 = /* @__PURE__ */ new Map(), e4 = (f4) => new Sa(
       f4.node.prefix,
@@ -21797,50 +21871,50 @@ var fontoxpath = function(xspattern, prsc) {
       f4.forEach((k3) => {
         h4[k3.prefix] || (h4[k3.prefix] = k3.namespaceURI);
         if (h4[k3.prefix] !== k3.namespaceURI)
-          throw Se(k3.namespaceURI);
+          throw We(k3.namespaceURI);
       });
     });
   };
-  var gf = (a4, ...b3) => a4.concat(...b3.filter(Boolean));
-  function hf(a4) {
-    return a4.J ? (b3, c4) => a4.s(b3, c4) : (b3, c4) => {
+  var lf = (a4, ...b3) => a4.concat(...b3.filter(Boolean));
+  function mf(a4) {
+    return a4.I ? (b3, c4) => a4.s(b3, c4) : (b3, c4) => {
       const d4 = a4.h(b3, c4);
       return { next: () => {
         const e4 = d4.O();
-        return q3({ da: [], I: e4 });
+        return q3({ da: [], J: e4 });
       } };
     };
   }
-  var jf = class extends D3 {
+  var nf = class extends D3 {
     constructor(a4, b3, c4, d4) {
       super(a4, b3, c4, true, d4);
-      this.J = true;
+      this.I = true;
     }
     h() {
-      throw Je();
+      throw Ne();
     }
   };
-  function kf(a4, b3) {
+  function of(a4, b3) {
     a4 = a4.next(0);
     b3(a4.value.da);
-    return w4.create(a4.value.I);
+    return w4.create(a4.value.J);
   }
-  function lf(a4) {
-    a4.Fa.some((b3) => b3.J) && (a4.J = true);
+  function pf(a4) {
+    a4.Fa.some((b3) => b3.I) && (a4.I = true);
   }
-  var mf = class extends jf {
+  var qf = class extends nf {
     constructor(a4, b3, c4, d4) {
       super(a4, b3, c4, d4);
-      this.J = this.Fa.some((e4) => e4.J);
+      this.I = this.Fa.some((e4) => e4.I);
     }
     h(a4, b3) {
       return this.A(a4, b3, this.Fa.map((c4) => (d4) => c4.h(d4, b3)));
     }
     s(a4, b3) {
       let c4 = [];
-      const d4 = this.A(a4, b3, this.Fa.map((f4) => f4.J ? (h4) => {
+      const d4 = this.A(a4, b3, this.Fa.map((f4) => f4.I ? (h4) => {
         h4 = f4.s(h4, b3);
-        return kf(h4, (k3) => c4 = gf(c4, k3));
+        return of(h4, (k3) => c4 = lf(c4, k3));
       } : (h4) => f4.h(h4, b3)));
       let e4 = false;
       return { next: () => {
@@ -21848,17 +21922,17 @@ var fontoxpath = function(xspattern, prsc) {
           return p3;
         const f4 = d4.O();
         e4 = true;
-        return q3(new Ue(f4, c4));
+        return q3(new Ye(f4, c4));
       } };
     }
     v(a4) {
       super.v(a4);
-      lf(this);
+      pf(this);
     }
   };
-  const nf = ["external", "attribute", "nodeName", "nodeType", "universal"], of = nf.length;
-  function pf(a4, b3) {
-    for (let c4 = 0; c4 < of; ++c4) {
+  const rf = ["external", "attribute", "nodeName", "nodeType", "universal"], sf = rf.length;
+  function tf(a4, b3) {
+    for (let c4 = 0; c4 < sf; ++c4) {
       if (b3.h[c4] < a4.h[c4])
         return 1;
       if (b3.h[c4] > a4.h[c4])
@@ -21866,66 +21940,66 @@ var fontoxpath = function(xspattern, prsc) {
     }
     return 0;
   }
-  var qf = class {
+  var uf = class {
     constructor(a4) {
-      this.h = nf.map((b3) => a4[b3] || 0);
-      if (Object.keys(a4).some((b3) => !nf.includes(b3)))
+      this.h = rf.map((b3) => a4[b3] || 0);
+      if (Object.keys(a4).some((b3) => !rf.includes(b3)))
         throw Error("Invalid specificity kind passed");
     }
     add(a4) {
-      const b3 = nf.reduce((c4, d4, e4) => {
+      const b3 = rf.reduce((c4, d4, e4) => {
         c4[d4] = this.h[e4] + a4.h[e4];
         return c4;
       }, /* @__PURE__ */ Object.create(null));
-      return new qf(b3);
+      return new uf(b3);
     }
   };
-  const rf = () => mc("Expected base expression of a function call to evaluate to a sequence of single function item");
-  function sf(a4, b3, c4, d4) {
+  const vf = () => mc("Expected base expression of a function call to evaluate to a sequence of single function item");
+  function wf(a4, b3, c4, d4) {
     const e4 = [];
     for (let f4 = 0; f4 < b3.length; ++f4) {
       if (null === b3[f4]) {
         e4.push(null);
         continue;
       }
-      const h4 = Ad(a4[f4], b3[f4], c4, d4, false);
+      const h4 = zd(a4[f4], b3[f4], c4, d4, false);
       e4.push(h4);
     }
     return e4;
   }
-  function tf(a4, b3) {
+  function Cf(a4, b3) {
     if (!v3(a4.type, 60))
       throw mc("Expected base expression to evaluate to a function item");
     if (a4.v !== b3)
-      throw rf();
+      throw vf();
     return a4;
   }
-  function uf(a4, b3, c4, d4, e4, f4, h4) {
+  function Df(a4, b3, c4, d4, e4, f4, h4) {
     let k3 = 0;
     e4 = e4.map((l4) => l4 ? null : f4[k3++](c4));
-    e4 = sf(a4.o, e4, d4, a4.D);
+    e4 = wf(a4.o, e4, d4, a4.D);
     if (0 <= e4.indexOf(null))
-      return Ua(a4, e4);
+      return Ta(a4, e4);
     b3 = b3.apply(void 0, [c4, d4, h4, ...e4]);
-    return Ad(a4.s, b3, d4, a4.D, true);
+    return zd(a4.s, b3, d4, a4.D, true);
   }
-  var Bf = class extends mf {
+  var Ff = class extends qf {
     constructor(a4, b3, c4) {
-      super(new qf({ external: 1 }), [a4].concat(b3.filter((d4) => !!d4)), { P: "unsorted", W: false, subtree: false, B: false }, c4);
+      super(new uf({ external: 1 }), [a4].concat(b3.filter((d4) => !!d4)), { R: "unsorted", W: false, subtree: false, B: false }, c4);
       this.ma = b3.length;
-      this.R = b3.map((d4) => null === d4);
+      this.P = b3.map((d4) => null === d4);
       this.L = null;
       this.ya = a4;
       this.La = b3;
     }
     s(a4, b3) {
-      if (!this.l || !this.l.J)
+      if (!this.l || !this.l.I)
         return super.s(a4, b3);
       let c4 = [];
-      const d4 = uf(this.l, (f4, h4, k3, ...l4) => kf(this.l.value(f4, h4, k3, ...l4), (n4) => {
-        c4 = gf(c4, n4);
-      }), a4, b3, this.R, this.La.map((f4) => () => f4.J ? kf(f4.s(a4, b3), (h4) => {
-        c4 = gf(c4, h4);
+      const d4 = Df(this.l, (f4, h4, k3, ...l4) => of(this.l.value(f4, h4, k3, ...l4), (n4) => {
+        c4 = lf(c4, n4);
+      }), a4, b3, this.P, this.La.map((f4) => () => f4.I ? of(f4.s(a4, b3), (h4) => {
+        c4 = lf(c4, h4);
       }) : C3(f4, a4, b3)), this.L);
       let e4 = false;
       return { next: () => {
@@ -21935,36 +22009,36 @@ var fontoxpath = function(xspattern, prsc) {
         e4 = true;
         return q3({
           da: c4,
-          I: f4
+          J: f4
         });
       } };
     }
     A(a4, b3, [c4, ...d4]) {
       if (this.l)
-        return uf(this.l, (f4, h4, k3, ...l4) => this.l.value(f4, h4, k3, ...l4), a4, b3, this.R, d4, this.L);
+        return Df(this.l, (f4, h4, k3, ...l4) => this.l.value(f4, h4, k3, ...l4), a4, b3, this.P, d4, this.L);
       const e4 = c4(a4);
-      return e4.Y({ default: () => {
-        throw rf();
+      return e4.X({ default: () => {
+        throw vf();
       }, m: () => e4.N(([f4]) => {
-        f4 = tf(f4, this.ma);
-        if (f4.J)
+        f4 = Cf(f4, this.ma);
+        if (f4.I)
           throw Error("XUDY0038: The function returned by the PrimaryExpr of a dynamic function invocation can not be an updating function");
-        return uf(f4, f4.value, a4, b3, this.R, d4, this.L);
+        return Df(f4, f4.value, a4, b3, this.P, d4, this.L);
       }) });
     }
     v(a4) {
-      this.L = Af(a4);
+      this.L = Ef(a4);
       super.v(a4);
       if (this.ya.B) {
         a4 = C3(this.ya, null, null);
-        if (!a4.ua())
-          throw rf();
-        this.l = tf(a4.first(), this.ma);
-        this.l.J && (this.J = true);
+        if (!a4.oa())
+          throw vf();
+        this.l = Cf(a4.first(), this.ma);
+        this.l.I && (this.I = true);
       }
     }
   };
-  const Cf = (a4, b3, c4, d4, e4, f4) => A2([d4, e4, f4], ([h4, k3, l4]) => {
+  const Gf = (a4, b3, c4, d4, e4, f4) => A2([d4, e4, f4], ([h4, k3, l4]) => {
     k3 = k3.value;
     l4 = l4.value;
     if (k3 > h4.h.length || 0 >= k3)
@@ -21974,7 +22048,7 @@ var fontoxpath = function(xspattern, prsc) {
     if (k3 + l4 > h4.h.length + 1)
       throw Error("FOAY0001: subarray start + length out of bounds.");
     return w4.m(new pb(h4.h.slice(k3 - 1, l4 + k3 - 1)));
-  }), Df = (a4, b3, c4, d4, e4) => A2([d4], ([f4]) => e4.N((h4) => {
+  }), Hf = (a4, b3, c4, d4, e4) => A2([d4], ([f4]) => e4.N((h4) => {
     h4 = h4.map((l4) => l4.value).sort((l4, n4) => n4 - l4).filter((l4, n4, t4) => t4[n4 - 1] !== l4);
     const k3 = f4.h.concat();
     for (let l4 = 0, n4 = h4.length; l4 < n4; ++l4) {
@@ -21984,14 +22058,14 @@ var fontoxpath = function(xspattern, prsc) {
       k3.splice(t4 - 1, 1);
     }
     return w4.m(new pb(k3));
-  })), Ef = (a4) => v3(a4, 1) || v3(a4, 20) || v3(a4, 19), Ff = (a4, b3, c4, d4, e4) => 0 === d4.length ? 0 !== e4.length : 0 !== e4.length && Ce(a4, b3, c4, d4[0], e4[0]).next(0).value ? Ff(a4, b3, c4, d4.slice(1), e4.slice(1)) : d4[0].value !== d4[0].value ? true : Ef(d4[0].type) && 0 !== e4.length && Ef(e4[0].type) ? d4[0].value < e4[0].value : 0 === e4.length ? false : d4[0].value < e4[0].value, Gf = (a4, b3, c4, d4) => {
-    d4.sort((e4, f4) => Be(a4, b3, c4, w4.create(e4), w4.create(f4)).next(0).value ? 0 : Ff(a4, b3, c4, e4, f4) ? -1 : 1);
+  })), If = (a4) => v3(a4, 1) || v3(a4, 20) || v3(a4, 19), Jf = (a4, b3, c4, d4, e4) => 0 === d4.length ? 0 !== e4.length : 0 !== e4.length && Ge(a4, b3, c4, d4[0], e4[0]).next(0).value ? Jf(a4, b3, c4, d4.slice(1), e4.slice(1)) : d4[0].value !== d4[0].value ? true : If(d4[0].type) && 0 !== e4.length && If(e4[0].type) ? d4[0].value < e4[0].value : 0 === e4.length ? false : d4[0].value < e4[0].value, Kf = (a4, b3, c4, d4) => {
+    d4.sort((e4, f4) => Fe(a4, b3, c4, w4.create(e4), w4.create(f4)).next(0).value ? 0 : Jf(a4, b3, c4, e4, f4) ? -1 : 1);
     return w4.m(new pb(d4.map((e4) => () => w4.create(e4))));
   };
-  function Hf(a4) {
-    return v3(a4.type, 62) ? jc(a4.h.map((b3) => b3().N((c4) => jc(c4.map(Hf))))) : w4.m(a4);
+  function Lf(a4) {
+    return v3(a4.type, 62) ? jc(a4.h.map((b3) => b3().N((c4) => jc(c4.map(Lf))))) : w4.m(a4);
   }
-  var If = [
+  var Mf = [
     { namespaceURI: "http://www.w3.org/2005/xpath-functions/array", localName: "size", j: [{ type: 62, g: 3 }], i: { type: 5, g: 3 }, callFunction: (a4, b3, c4, d4) => A2([d4], ([e4]) => w4.m(g3(e4.h.length, 5))) },
     { namespaceURI: "http://www.w3.org/2005/xpath-functions/array", localName: "get", j: [{ type: 62, g: 3 }, { type: 5, g: 3 }], i: { type: 59, g: 2 }, callFunction: ob },
     { namespaceURI: "http://www.w3.org/2005/xpath-functions/array", localName: "put", j: [{ type: 62, g: 3 }, { type: 5, g: 3 }, { type: 59, g: 2 }], i: { type: 62, g: 3 }, callFunction: (a4, b3, c4, d4, e4, f4) => A2([e4, d4], ([h4, k3]) => {
@@ -22003,12 +22077,12 @@ var fontoxpath = function(xspattern, prsc) {
       return w4.m(new pb(k3));
     }) },
     { namespaceURI: "http://www.w3.org/2005/xpath-functions/array", localName: "append", j: [{ type: 62, g: 3 }, { type: 59, g: 2 }], i: { type: 62, g: 3 }, callFunction: (a4, b3, c4, d4, e4) => A2([d4], ([f4]) => w4.m(new pb(f4.h.concat([Ra(e4)])))) },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions/array", localName: "subarray", j: [{ type: 62, g: 3 }, { type: 5, g: 3 }, { type: 5, g: 3 }], i: { type: 62, g: 3 }, callFunction: Cf },
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions/array", localName: "subarray", j: [{ type: 62, g: 3 }, { type: 5, g: 3 }, { type: 5, g: 3 }], i: { type: 62, g: 3 }, callFunction: Gf },
     { namespaceURI: "http://www.w3.org/2005/xpath-functions/array", localName: "subarray", j: [{ type: 62, g: 3 }, { type: 5, g: 3 }], i: { type: 62, g: 3 }, callFunction(a4, b3, c4, d4, e4) {
       const f4 = w4.m(g3(d4.first().value.length - e4.first().value + 1, 5));
-      return Cf(a4, b3, c4, d4, e4, f4);
+      return Gf(a4, b3, c4, d4, e4, f4);
     } },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions/array", localName: "remove", j: [{ type: 62, g: 3 }, { type: 5, g: 2 }], i: { type: 62, g: 3 }, callFunction: Df },
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions/array", localName: "remove", j: [{ type: 62, g: 3 }, { type: 5, g: 2 }], i: { type: 62, g: 3 }, callFunction: Hf },
     { namespaceURI: "http://www.w3.org/2005/xpath-functions/array", localName: "insert-before", j: [{ type: 62, g: 3 }, { type: 5, g: 3 }, {
       type: 59,
       g: 2
@@ -22029,7 +22103,7 @@ var fontoxpath = function(xspattern, prsc) {
       j: [{ type: 62, g: 3 }],
       i: { type: 59, g: 2 },
       callFunction(a4, b3, c4, d4) {
-        return Df(a4, b3, c4, d4, w4.m(g3(1, 5)));
+        return Hf(a4, b3, c4, d4, w4.m(g3(1, 5)));
       }
     },
     { namespaceURI: "http://www.w3.org/2005/xpath-functions/array", localName: "reverse", j: [{ type: 62, g: 3 }], i: { type: 62, g: 3 }, callFunction: (a4, b3, c4, d4) => A2([d4], ([e4]) => w4.m(new pb(e4.h.concat().reverse()))) },
@@ -22045,7 +22119,7 @@ var fontoxpath = function(xspattern, prsc) {
       callFunction: (a4, b3, c4, d4, e4) => A2([d4, e4], ([f4, h4]) => {
         if (1 !== h4.v)
           throw mc("The callback passed into array:for-each has a wrong arity.");
-        f4 = f4.h.map((k3) => Ra(h4.value.call(void 0, a4, b3, c4, sf(h4.o, [k3()], b3, "array:for-each")[0])));
+        f4 = f4.h.map((k3) => Ra(h4.value.call(void 0, a4, b3, c4, wf(h4.o, [k3()], b3, "array:for-each")[0])));
         return w4.m(new pb(f4));
       })
     },
@@ -22053,7 +22127,7 @@ var fontoxpath = function(xspattern, prsc) {
       if (1 !== h4.v)
         throw mc("The callback passed into array:filter has a wrong arity.");
       const k3 = f4.h.map((t4) => {
-        t4 = sf(h4.o, [t4()], b3, "array:filter")[0];
+        t4 = wf(h4.o, [t4()], b3, "array:filter")[0];
         const u4 = h4.value;
         return u4(a4, b3, c4, t4);
       }), l4 = [];
@@ -22074,7 +22148,7 @@ var fontoxpath = function(xspattern, prsc) {
       if (2 !== k3.v)
         throw mc("The callback passed into array:fold-left has a wrong arity.");
       return h4.h.reduce((l4, n4) => {
-        n4 = sf(k3.o, [n4()], b3, "array:fold-left")[0];
+        n4 = wf(k3.o, [n4()], b3, "array:fold-left")[0];
         return k3.value.call(void 0, a4, b3, c4, l4, n4);
       }, e4);
     }) },
@@ -22082,7 +22156,7 @@ var fontoxpath = function(xspattern, prsc) {
       if (2 !== k3.v)
         throw mc("The callback passed into array:fold-right has a wrong arity.");
       return h4.h.reduceRight((l4, n4) => {
-        n4 = sf(k3.o, [n4()], b3, "array:fold-right")[0];
+        n4 = wf(k3.o, [n4()], b3, "array:fold-right")[0];
         return k3.value.call(void 0, a4, b3, c4, l4, n4);
       }, e4);
     }) },
@@ -22091,7 +22165,7 @@ var fontoxpath = function(xspattern, prsc) {
         throw mc("The callback passed into array:for-each-pair has a wrong arity.");
       const n4 = [];
       for (let t4 = 0, u4 = Math.min(h4.h.length, k3.h.length); t4 < u4; ++t4) {
-        const [z3, y3] = sf(l4.o, [h4.h[t4](), k3.h[t4]()], b3, "array:for-each-pair");
+        const [z3, y3] = wf(l4.o, [h4.h[t4](), k3.h[t4]()], b3, "array:for-each-pair");
         n4[t4] = Ra(l4.value.call(void 0, a4, b3, c4, z3, y3));
       }
       return w4.m(new pb(n4));
@@ -22103,15 +22177,15 @@ var fontoxpath = function(xspattern, prsc) {
       i: { type: 62, g: 3 },
       callFunction: (a4, b3, c4, d4) => A2([d4], ([e4]) => {
         e4 = e4.h.map((f4) => f4().O());
-        return Gf(a4, b3, c4, e4);
+        return Kf(a4, b3, c4, e4);
       })
     },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions/array", localName: "flatten", j: [{ type: 59, g: 2 }], i: { type: 59, g: 2 }, callFunction: (a4, b3, c4, d4) => d4.N((e4) => jc(e4.map(Hf))) }
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions/array", localName: "flatten", j: [{ type: 59, g: 2 }], i: { type: 59, g: 2 }, callFunction: (a4, b3, c4, d4) => d4.N((e4) => jc(e4.map(Lf))) }
   ];
   function E3(a4, b3, c4, d4, e4) {
-    return e4.G() ? e4 : w4.m(jd(e4.first(), a4));
+    return e4.F() ? e4 : w4.m(jd(e4.first(), a4));
   }
-  var Jf = [{ namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "untypedAtomic", j: [{ type: 46, g: 0 }], i: { type: 19, g: 0 }, callFunction: E3.bind(null, 19) }, { namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "error", j: [{ type: 46, g: 0 }], i: { type: 39, g: 0 }, callFunction: E3.bind(null, 39) }, { namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "string", j: [{ type: 46, g: 0 }], i: { type: 1, g: 0 }, callFunction: E3.bind(null, 1) }, { namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "boolean", j: [{ type: 46, g: 0 }], i: {
+  var Nf = [{ namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "untypedAtomic", j: [{ type: 46, g: 0 }], i: { type: 19, g: 0 }, callFunction: E3.bind(null, 19) }, { namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "error", j: [{ type: 46, g: 0 }], i: { type: 39, g: 0 }, callFunction: E3.bind(null, 39) }, { namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "string", j: [{ type: 46, g: 0 }], i: { type: 1, g: 0 }, callFunction: E3.bind(null, 1) }, { namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "boolean", j: [{ type: 46, g: 0 }], i: {
     type: 0,
     g: 0
   }, callFunction: E3.bind(null, 0) }, { namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "decimal", j: [{ type: 46, g: 0 }], i: { type: 4, g: 0 }, callFunction: E3.bind(null, 4) }, { namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "float", j: [{ type: 46, g: 0 }], i: { type: 6, g: 0 }, callFunction: E3.bind(null, 6) }, { namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "double", j: [{ type: 46, g: 0 }], i: { type: 3, g: 0 }, callFunction: E3.bind(null, 3) }, { namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "duration", j: [{
@@ -22135,7 +22209,7 @@ var fontoxpath = function(xspattern, prsc) {
     j: [{ type: 46, g: 0 }],
     i: { type: 23, g: 0 },
     callFunction: (a4, b3, c4, d4) => {
-      if (d4.G())
+      if (d4.F())
         return d4;
       a4 = d4.first();
       if (v3(a4.type, 2))
@@ -22196,20 +22270,20 @@ var fontoxpath = function(xspattern, prsc) {
     null,
     16
   ) }, { namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "dayTimeDuration", j: [{ type: 46, g: 0 }], i: { type: 17, g: 0 }, callFunction: E3.bind(null, 17) }, { namespaceURI: "http://www.w3.org/2001/XMLSchema", localName: "dateTimeStamp", j: [{ type: 46, g: 0 }], i: { type: 10, g: 0 }, callFunction: E3.bind(null, 10) }];
-  const Kf = (a4, b3, c4, d4) => d4.G() ? d4 : w4.m(g3(d4.first().value.getYear(), 5)), Lf = (a4, b3, c4, d4) => d4.G() ? d4 : w4.m(g3(d4.first().value.getMonth(), 5)), Mf = (a4, b3, c4, d4) => d4.G() ? d4 : w4.m(g3(d4.first().value.getDay(), 5)), Nf = (a4, b3, c4, d4) => d4.G() ? d4 : w4.m(g3(d4.first().value.getHours(), 5)), Of = (a4, b3, c4, d4) => d4.G() ? d4 : w4.m(g3(d4.first().value.getMinutes(), 5)), Pf = (a4, b3, c4, d4) => {
-    d4.G() || (a4 = w4, b3 = a4.m, d4 = d4.first().value, d4 = b3.call(a4, g3(d4.D + d4.pa, 4)));
+  const Of = (a4, b3, c4, d4) => d4.F() ? d4 : w4.m(g3(d4.first().value.getYear(), 5)), Pf = (a4, b3, c4, d4) => d4.F() ? d4 : w4.m(g3(d4.first().value.getMonth(), 5)), Qf = (a4, b3, c4, d4) => d4.F() ? d4 : w4.m(g3(d4.first().value.getDay(), 5)), Rf = (a4, b3, c4, d4) => d4.F() ? d4 : w4.m(g3(d4.first().value.getHours(), 5)), Sf = (a4, b3, c4, d4) => d4.F() ? d4 : w4.m(g3(d4.first().value.getMinutes(), 5)), Tf = (a4, b3, c4, d4) => {
+    d4.F() || (a4 = w4, b3 = a4.m, d4 = d4.first().value, d4 = b3.call(a4, g3(d4.D + d4.qa, 4)));
     return d4;
-  }, Qf = (a4, b3, c4, d4) => d4.G() ? d4 : (a4 = d4.first().value.X) ? w4.m(g3(a4, 17)) : w4.empty();
-  var Rf = [
+  }, Uf = (a4, b3, c4, d4) => d4.F() ? d4 : (a4 = d4.first().value.Y) ? w4.m(g3(a4, 17)) : w4.empty();
+  var Vf = [
     { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "dateTime", j: [{ type: 7, g: 0 }, { type: 8, g: 0 }], i: { type: 9, g: 0 }, callFunction: (a4, b3, c4, d4, e4) => {
-      if (d4.G())
+      if (d4.F())
         return d4;
-      if (e4.G())
+      if (e4.F())
         return e4;
       a4 = d4.first().value;
       e4 = e4.first().value;
-      b3 = a4.X;
-      c4 = e4.X;
+      b3 = a4.Y;
+      c4 = e4.Y;
       if (b3 || c4) {
         if (!b3 || c4) {
           if (!b3 && c4)
@@ -22219,108 +22293,108 @@ var fontoxpath = function(xspattern, prsc) {
         }
       } else
         b3 = null;
-      return w4.m(g3(new Kb(a4.getYear(), a4.getMonth(), a4.getDay(), e4.getHours(), e4.getMinutes(), e4.getSeconds(), e4.pa, b3), 9));
+      return w4.m(g3(new Kb(a4.getYear(), a4.getMonth(), a4.getDay(), e4.getHours(), e4.getMinutes(), e4.getSeconds(), e4.qa, b3), 9));
     } },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "year-from-dateTime", j: [{ type: 9, g: 0 }], i: { type: 5, g: 0 }, callFunction: Kf },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "month-from-dateTime", j: [{ type: 9, g: 0 }], i: { type: 5, g: 0 }, callFunction: Lf },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "day-from-dateTime", j: [{ type: 9, g: 0 }], i: { type: 5, g: 0 }, callFunction: Mf },
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "year-from-dateTime", j: [{ type: 9, g: 0 }], i: { type: 5, g: 0 }, callFunction: Of },
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "month-from-dateTime", j: [{ type: 9, g: 0 }], i: { type: 5, g: 0 }, callFunction: Pf },
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "day-from-dateTime", j: [{ type: 9, g: 0 }], i: { type: 5, g: 0 }, callFunction: Qf },
     { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "hours-from-dateTime", j: [{
       type: 9,
       g: 0
-    }], i: { type: 5, g: 0 }, callFunction: Nf },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "minutes-from-dateTime", j: [{ type: 9, g: 0 }], i: { type: 5, g: 0 }, callFunction: Of },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "seconds-from-dateTime", j: [{ type: 9, g: 0 }], i: { type: 4, g: 0 }, callFunction: Pf },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "timezone-from-dateTime", j: [{ type: 9, g: 0 }], i: { type: 17, g: 0 }, callFunction: Qf },
+    }], i: { type: 5, g: 0 }, callFunction: Rf },
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "minutes-from-dateTime", j: [{ type: 9, g: 0 }], i: { type: 5, g: 0 }, callFunction: Sf },
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "seconds-from-dateTime", j: [{ type: 9, g: 0 }], i: { type: 4, g: 0 }, callFunction: Tf },
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "timezone-from-dateTime", j: [{ type: 9, g: 0 }], i: { type: 17, g: 0 }, callFunction: Uf },
     {
       namespaceURI: "http://www.w3.org/2005/xpath-functions",
       localName: "year-from-date",
       j: [{ type: 7, g: 0 }],
       i: { type: 5, g: 0 },
-      callFunction: Kf
+      callFunction: Of
     },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "month-from-date", j: [{ type: 7, g: 0 }], i: { type: 5, g: 0 }, callFunction: Lf },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "day-from-date", j: [{ type: 7, g: 0 }], i: { type: 5, g: 0 }, callFunction: Mf },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "timezone-from-date", j: [{ type: 7, g: 0 }], i: { type: 17, g: 0 }, callFunction: Qf },
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "month-from-date", j: [{ type: 7, g: 0 }], i: { type: 5, g: 0 }, callFunction: Pf },
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "day-from-date", j: [{ type: 7, g: 0 }], i: { type: 5, g: 0 }, callFunction: Qf },
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "timezone-from-date", j: [{ type: 7, g: 0 }], i: { type: 17, g: 0 }, callFunction: Uf },
     {
       namespaceURI: "http://www.w3.org/2005/xpath-functions",
       localName: "hours-from-time",
       j: [{ type: 8, g: 0 }],
       i: { type: 5, g: 0 },
-      callFunction: Nf
+      callFunction: Rf
     },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "minutes-from-time", j: [{ type: 8, g: 0 }], i: { type: 5, g: 0 }, callFunction: Of },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "seconds-from-time", j: [{ type: 8, g: 0 }], i: { type: 4, g: 0 }, callFunction: Pf },
-    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "timezone-from-time", j: [{ type: 8, g: 0 }], i: { type: 17, g: 0 }, callFunction: Qf }
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "minutes-from-time", j: [{ type: 8, g: 0 }], i: { type: 5, g: 0 }, callFunction: Sf },
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "seconds-from-time", j: [{ type: 8, g: 0 }], i: { type: 4, g: 0 }, callFunction: Tf },
+    { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "timezone-from-time", j: [{ type: 8, g: 0 }], i: { type: 17, g: 0 }, callFunction: Uf }
   ];
-  function Sf(a4, b3) {
+  function Wf(a4, b3) {
     const c4 = b3.h, d4 = b3.Ja, e4 = b3.Ma;
     switch (a4.node.nodeType) {
       case 1:
         const h4 = d4.createElementNS(a4.node.namespaceURI, a4.node.nodeName);
         c4.getAllAttributes(a4.node).forEach((k3) => e4.setAttributeNS(h4, k3.namespaceURI, k3.nodeName, k3.value));
-        for (var f4 of hb(c4, a4))
-          a4 = Sf(f4, b3), e4.insertBefore(h4, a4.node, null);
-        return { node: h4, F: null };
+        for (var f4 of gb(c4, a4))
+          a4 = Wf(f4, b3), e4.insertBefore(h4, a4.node, null);
+        return { node: h4, G: null };
       case 2:
-        return b3 = d4.createAttributeNS(a4.node.namespaceURI, a4.node.nodeName), b3.value = ib(c4, a4), { node: b3, F: null };
+        return b3 = d4.createAttributeNS(a4.node.namespaceURI, a4.node.nodeName), b3.value = hb(c4, a4), { node: b3, G: null };
       case 4:
-        return { node: d4.createCDATASection(ib(c4, a4)), F: null };
+        return { node: d4.createCDATASection(hb(c4, a4)), G: null };
       case 8:
-        return { node: d4.createComment(ib(
+        return { node: d4.createComment(hb(
           c4,
           a4
-        )), F: null };
+        )), G: null };
       case 9:
         f4 = d4.createDocument();
-        for (const k3 of hb(c4, a4))
-          a4 = Sf(k3, b3), e4.insertBefore(f4, a4.node, null);
-        return { node: f4, F: null };
+        for (const k3 of gb(c4, a4))
+          a4 = Wf(k3, b3), e4.insertBefore(f4, a4.node, null);
+        return { node: f4, G: null };
       case 7:
-        return { node: d4.createProcessingInstruction(a4.node.target, ib(c4, a4)), F: null };
+        return { node: d4.createProcessingInstruction(a4.node.target, hb(c4, a4)), G: null };
       case 3:
-        return { node: d4.createTextNode(ib(c4, a4)), F: null };
+        return { node: d4.createTextNode(hb(c4, a4)), G: null };
     }
   }
   ;
-  function Tf(a4, b3) {
+  function Xf(a4, b3) {
     const c4 = b3.Ma;
     var d4 = b3.Ja;
     const e4 = b3.h;
     if (cb(a4.node))
       switch (a4.node.nodeType) {
         case 2:
-          return d4 = d4.createAttributeNS(a4.node.namespaceURI, a4.node.nodeName), d4.value = ib(e4, a4), d4;
+          return d4 = d4.createAttributeNS(a4.node.namespaceURI, a4.node.nodeName), d4.value = hb(e4, a4), d4;
         case 8:
-          return d4.createComment(ib(e4, a4));
+          return d4.createComment(hb(e4, a4));
         case 1:
           const f4 = a4.node.prefix, h4 = a4.node.localName, k3 = d4.createElementNS(a4.node.namespaceURI, f4 ? f4 + ":" + h4 : h4);
-          hb(e4, a4).forEach((l4) => {
-            l4 = Tf(l4, b3);
+          gb(e4, a4).forEach((l4) => {
+            l4 = Xf(l4, b3);
             c4.insertBefore(k3, l4, null);
           });
           eb(e4, a4).forEach((l4) => {
-            c4.setAttributeNS(k3, l4.node.namespaceURI, l4.node.nodeName, ib(e4, l4));
+            c4.setAttributeNS(k3, l4.node.namespaceURI, l4.node.nodeName, hb(e4, l4));
           });
           k3.normalize();
           return k3;
         case 7:
           return d4.createProcessingInstruction(
             a4.node.target,
-            ib(e4, a4)
+            hb(e4, a4)
           );
         case 3:
-          return d4.createTextNode(ib(e4, a4));
+          return d4.createTextNode(hb(e4, a4));
       }
     else
-      return Sf(a4, b3).node;
+      return Wf(a4, b3).node;
   }
-  function Uf(a4, b3, c4) {
+  function Yf(a4, b3, c4) {
     let d4 = a4;
     for (a4 = x3(c4, d4); null !== a4; ) {
       if (2 === d4.node.nodeType)
         b3.push(d4.node.nodeName);
       else {
-        const e4 = hb(c4, a4);
+        const e4 = gb(c4, a4);
         b3.push(e4.findIndex((f4) => md(f4, d4)));
       }
       d4 = a4;
@@ -22328,32 +22402,32 @@ var fontoxpath = function(xspattern, prsc) {
     }
     return d4;
   }
-  function Vf(a4, b3, c4) {
+  function Zf(a4, b3, c4) {
     for (; 0 < b3.length; ) {
       const d4 = b3.pop();
-      "string" === typeof d4 ? a4 = eb(c4, a4).find((e4) => e4.node.nodeName === d4) : a4 = hb(c4, a4)[d4];
+      "string" === typeof d4 ? a4 = eb(c4, a4).find((e4) => e4.node.nodeName === d4) : a4 = gb(c4, a4)[d4];
     }
     return a4.node;
   }
-  function Wf(a4, b3, c4) {
+  function $f(a4, b3, c4) {
     var d4 = a4.node;
-    if (!(cb(d4) || c4 || a4.F))
+    if (!(cb(d4) || c4 || a4.G))
       return d4;
     d4 = b3.v;
     const e4 = [];
     if (c4)
-      return Tf(a4, b3);
-    a4 = Uf(a4, e4, b3.h);
+      return Xf(a4, b3);
+    a4 = Yf(a4, e4, b3.h);
     c4 = d4.get(a4.node);
-    c4 || (c4 = { node: Tf(a4, b3), F: null }, d4.set(a4.node, c4));
-    return Vf(c4, e4, b3.h);
+    c4 || (c4 = { node: Xf(a4, b3), G: null }, d4.set(a4.node, c4));
+    return Zf(c4, e4, b3.h);
   }
   ;
-  const Xf = (a4, b3, c4, d4, e4) => d4.N((f4) => {
+  const ag = (a4, b3, c4, d4, e4) => d4.N((f4) => {
     var h4;
     let k3 = "";
     for (let l4 = 0; l4 < f4.length; l4++) {
-      const n4 = f4[l4], t4 = b3.Ua && v3(n4.type, 53) ? b3.Ua.serializeToString(Wf(n4.value, b3, false)) : null === (h4 = qc(w4.m(n4), b3).map((u4) => jd(u4, 1)).first()) || void 0 === h4 ? void 0 : h4.value;
+      const n4 = f4[l4], t4 = b3.Ua && v3(n4.type, 53) ? b3.Ua.serializeToString($f(n4.value, b3, false)) : null === (h4 = qc(w4.m(n4), b3).map((u4) => jd(u4, 1)).first()) || void 0 === h4 ? void 0 : h4.value;
       t4 && (k3 += `{type: ${Da[n4.type]}, value: ${t4}}
 `);
     }
@@ -22361,34 +22435,34 @@ var fontoxpath = function(xspattern, prsc) {
     b3.jb.trace(k3);
     return w4.create(f4);
   });
-  var Yf = [{ j: [{ type: 59, g: 2 }], callFunction: Xf, localName: "trace", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 2 } }, { j: [{ type: 59, g: 2 }, { type: 1, g: 3 }], callFunction: Xf, localName: "trace", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 2 } }];
-  const Zf = (a4, b3, c4, d4, e4) => {
-    a4 = void 0 === d4 || d4.G() ? new Sa("err", "http://www.w3.org/2005/xqt-errors", "FOER0000") : d4.first().value;
+  var bg = [{ j: [{ type: 59, g: 2 }], callFunction: ag, localName: "trace", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 2 } }, { j: [{ type: 59, g: 2 }, { type: 1, g: 3 }], callFunction: ag, localName: "trace", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 2 } }];
+  const cg = (a4, b3, c4, d4, e4) => {
+    a4 = void 0 === d4 || d4.F() ? new Sa("err", "http://www.w3.org/2005/xqt-errors", "FOER0000") : d4.first().value;
     b3 = "";
-    void 0 === e4 || e4.G() || (b3 = `: ${e4.first().value}`);
+    void 0 === e4 || e4.F() || (b3 = `: ${e4.first().value}`);
     throw Error(`${a4.localName}${b3}`);
   };
-  var $f = [{ namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "error", j: [], i: { type: 63, g: 3 }, callFunction: Zf }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "error", j: [{ type: 23, g: 0 }], i: { type: 63, g: 3 }, callFunction: Zf }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "error", j: [{ type: 23, g: 0 }, { type: 1, g: 3 }], i: { type: 63, g: 3 }, callFunction: Zf }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "error", j: [{ type: 23, g: 0 }, { type: 1, g: 3 }, { type: 59, g: 2 }], i: {
+  var dg = [{ namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "error", j: [], i: { type: 63, g: 3 }, callFunction: cg }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "error", j: [{ type: 23, g: 0 }], i: { type: 63, g: 3 }, callFunction: cg }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "error", j: [{ type: 23, g: 0 }, { type: 1, g: 3 }], i: { type: 63, g: 3 }, callFunction: cg }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "error", j: [{ type: 23, g: 0 }, { type: 1, g: 3 }, { type: 59, g: 2 }], i: {
     type: 63,
     g: 3
   }, callFunction() {
     throw Error("Not implemented: Using an error object in error is not supported");
   } }];
-  function ag(a4) {
+  function eg(a4) {
     return "string" === typeof a4 ? a4 : (a4 = new Za().getChildNodes(a4).find((b3) => 8 === b3.nodeType)) ? a4.data : "some expression";
   }
   ;
-  var bg = class extends Error {
+  var fg = class extends Error {
     constructor(a4, b3) {
       super(a4);
       this.position = { end: { ha: b3.end.ha, line: b3.end.line, offset: b3.end.offset }, start: { ha: b3.start.ha, line: b3.start.line, offset: b3.start.offset } };
     }
   };
-  function cg(a4, b3) {
+  function gg(a4, b3) {
     if (b3 instanceof Error)
       throw b3;
-    "string" !== typeof a4 && (a4 = ag(a4));
-    const c4 = dg(b3);
+    "string" !== typeof a4 && (a4 = eg(a4));
+    const c4 = hg(b3);
     a4 = a4.replace(/\r/g, "").split("\n");
     const d4 = Math.floor(Math.log10(Math.min(c4.end.line + 2, a4.length))) + 1;
     a4 = a4.reduce((e4, f4, h4) => {
@@ -22405,12 +22479,12 @@ var fontoxpath = function(xspattern, prsc) {
       }
       return e4;
     }, []);
-    b3 = eg(b3).join("\n");
-    throw new bg(a4.join("\n") + "\n\n" + b3, c4);
+    b3 = ig(b3).join("\n");
+    throw new fg(a4.join("\n") + "\n\n" + b3, c4);
   }
   ;
-  const fg = /* @__PURE__ */ Object.create(null);
-  function gg(a4, b3) {
+  const jg = /* @__PURE__ */ Object.create(null);
+  function kg(a4, b3) {
     const c4 = /* @__PURE__ */ new Map();
     for (let d4 = 0; d4 < a4.length + 1; ++d4)
       c4.set(d4, /* @__PURE__ */ new Map());
@@ -22428,21 +22502,21 @@ var fontoxpath = function(xspattern, prsc) {
       return k3;
     }(a4.length, b3.length);
   }
-  function hg(a4) {
-    const b3 = fg[a4] ? fg[a4] : Object.keys(fg).map((c4) => ({ name: c4, rb: gg(a4, c4.slice(c4.lastIndexOf(":") + 1)) })).sort((c4, d4) => c4.rb - d4.rb).slice(0, 5).filter((c4) => c4.rb < a4.length / 2).reduce((c4, d4) => c4.concat(fg[d4.name]), []).slice(0, 5);
+  function lg(a4) {
+    const b3 = jg[a4] ? jg[a4] : Object.keys(jg).map((c4) => ({ name: c4, sb: kg(a4, c4.slice(c4.lastIndexOf(":") + 1)) })).sort((c4, d4) => c4.sb - d4.sb).slice(0, 5).filter((c4) => c4.sb < a4.length / 2).reduce((c4, d4) => c4.concat(jg[d4.name]), []).slice(0, 5);
     return b3.length ? b3.map((c4) => `"Q{${c4.namespaceURI}}${c4.localName} (${c4.j.map((d4) => 4 === d4 ? "..." : Ha(d4)).join(", ")})"`).reduce((c4, d4, e4, f4) => 0 === e4 ? c4 + d4 : c4 + ((e4 !== f4.length - 1 ? ", " : " or ") + d4), "Did you mean ") + "?" : "No similar functions found.";
   }
-  function ig(a4, b3, c4) {
-    var d4 = fg[a4 + ":" + b3];
-    return d4 ? (d4 = d4.find((e4) => e4.j.some((f4) => 4 === f4) ? e4.j.length - 1 <= c4 : e4.j.length === c4)) ? { j: d4.j, arity: c4, callFunction: d4.callFunction, J: d4.J, localName: b3, namespaceURI: a4, i: d4.i } : null : null;
+  function mg(a4, b3, c4) {
+    var d4 = jg[a4 + ":" + b3];
+    return d4 ? (d4 = d4.find((e4) => e4.j.some((f4) => 4 === f4) ? e4.j.length - 1 <= c4 : e4.j.length === c4)) ? { j: d4.j, arity: c4, callFunction: d4.callFunction, I: d4.I, localName: b3, namespaceURI: a4, i: d4.i } : null : null;
   }
-  function jg(a4, b3, c4, d4, e4) {
-    fg[a4 + ":" + b3] || (fg[a4 + ":" + b3] = []);
-    fg[a4 + ":" + b3].push({ j: c4, arity: c4.length, callFunction: e4, J: false, localName: b3, namespaceURI: a4, i: d4 });
+  function ng(a4, b3, c4, d4, e4) {
+    jg[a4 + ":" + b3] || (jg[a4 + ":" + b3] = []);
+    jg[a4 + ":" + b3].push({ j: c4, arity: c4.length, callFunction: e4, I: false, localName: b3, namespaceURI: a4, i: d4 });
   }
   ;
-  var kg = { xml: "http://www.w3.org/XML/1998/namespace", xs: "http://www.w3.org/2001/XMLSchema", fn: "http://www.w3.org/2005/xpath-functions", map: "http://www.w3.org/2005/xpath-functions/map", array: "http://www.w3.org/2005/xpath-functions/array", math: "http://www.w3.org/2005/xpath-functions/math", fontoxpath: "http://fontoxml.com/fontoxpath", local: "http://www.w3.org/2005/xquery-local-functions" };
-  var lg = class {
+  var og = { xml: "http://www.w3.org/XML/1998/namespace", xs: "http://www.w3.org/2001/XMLSchema", fn: "http://www.w3.org/2005/xpath-functions", map: "http://www.w3.org/2005/xpath-functions/map", array: "http://www.w3.org/2005/xpath-functions/array", math: "http://www.w3.org/2005/xpath-functions/math", fontoxpath: "http://fontoxml.com/fontoxpath", local: "http://www.w3.org/2005/xquery-local-functions" };
+  var pg = class {
     constructor(a4, b3, c4, d4) {
       this.Da = [/* @__PURE__ */ Object.create(null)];
       this.Ea = /* @__PURE__ */ Object.create(null);
@@ -22460,7 +22534,7 @@ var fontoxpath = function(xspattern, prsc) {
       this.D = [];
     }
     va(a4, b3, c4) {
-      return ig(a4, b3, c4);
+      return mg(a4, b3, c4);
     }
     eb(a4, b3) {
       if (a4)
@@ -22472,7 +22546,7 @@ var fontoxpath = function(xspattern, prsc) {
     Sa(a4, b3) {
       const c4 = this.l(a4, b3);
       if (c4)
-        this.D.push({ bc: a4, arity: b3, Cb: c4 });
+        this.D.push({ dc: a4, arity: b3, Db: c4 });
       else if ("" === a4.prefix) {
         if (this.v)
           return {
@@ -22486,62 +22560,62 @@ var fontoxpath = function(xspattern, prsc) {
     $(a4, b3 = true) {
       if (!b3)
         return null;
-      if (kg[a4])
-        return kg[a4];
+      if (og[a4])
+        return og[a4];
       b3 = this.s(a4);
       this.h[a4] || (this.h[a4] = { namespaceURI: b3, prefix: a4 });
       return void 0 !== b3 || a4 ? b3 : null;
     }
   };
-  var mg = (a4, b3) => {
-    a4 = 2 === a4.node.nodeType ? `${a4.node.nodeName}="${ib(b3, a4)}"` : a4.node.outerHTML;
+  var qg = (a4, b3) => {
+    a4 = 2 === a4.node.nodeType ? `${a4.node.nodeName}="${hb(b3, a4)}"` : a4.node.outerHTML;
     return Error(`XQTY0024: The node ${a4} follows a node that is not an attribute node or a namespace node.`);
-  }, ng = (a4) => Error(`XQDY0044: The node name "${a4.za()}" is invalid for a computed attribute constructor.`), og = () => Error("XQST0045: Functions and variables may not be declared in one of the reserved namespace URIs."), pg = (a4, b3) => Error(`XQST0049: The function or variable "Q{${a4}}${b3}" is declared more than once.`), qg = () => Error("XQST0060: Functions declared in a module or as an external function must reside in a namespace."), rg = () => Error("XQST0066: A Prolog may contain at most one default function namespace declaration."), sg = () => Error("XQST0070: The prefixes xml and xmlns may not be used in a namespace declaration or be bound to another namespaceURI."), tg = (a4) => Error(`XQDY0074: The value "${a4}" of a name expressions cannot be converted to an expanded QName.`), ug = (a4) => Error(`XPST0081: The prefix "${a4}" could not be resolved`);
-  function vg(a4, b3) {
+  }, rg = (a4) => Error(`XQDY0044: The node name "${a4.za()}" is invalid for a computed attribute constructor.`), sg = () => Error("XQST0045: Functions and variables may not be declared in one of the reserved namespace URIs."), tg = (a4, b3) => Error(`XQST0049: The function or variable "Q{${a4}}${b3}" is declared more than once.`), ug = () => Error("XQST0060: Functions declared in a module or as an external function must reside in a namespace."), vg = () => Error("XQST0066: A Prolog may contain at most one default function namespace declaration."), wg = () => Error("XQST0070: The prefixes xml and xmlns may not be used in a namespace declaration or be bound to another namespaceURI."), xg = (a4) => Error(`XQDY0074: The value "${a4}" of a name expressions cannot be converted to an expanded QName.`), yg = (a4) => Error(`XPST0081: The prefix "${a4}" could not be resolved`);
+  function zg(a4, b3) {
     return `Q{${a4 || ""}}${b3}`;
   }
-  function wg(a4, b3) {
+  function Ag(a4, b3) {
     for (let c4 = a4.length - 1; 0 <= c4; --c4)
       if (b3 in a4[c4])
         return a4[c4][b3];
   }
-  function Af(a4) {
-    const b3 = new xg(a4.o);
+  function Ef(a4) {
+    const b3 = new Bg(a4.o);
     for (let c4 = 0; c4 < a4.h + 1; ++c4)
       b3.D = [Object.assign(/* @__PURE__ */ Object.create(null), b3.D[0], a4.D[c4])], b3.Da = [Object.assign(/* @__PURE__ */ Object.create(null), b3.Da[0], a4.Da[c4])], b3.l = Object.assign(/* @__PURE__ */ Object.create(null), a4.l), b3.Ea = a4.Ea, b3.v = a4.v;
     return b3;
   }
-  function yg(a4) {
+  function Cg(a4) {
     a4.s++;
     a4.h++;
     a4.D[a4.h] = /* @__PURE__ */ Object.create(null);
     a4.Da[a4.h] = /* @__PURE__ */ Object.create(null);
   }
-  function zg(a4, b3, c4) {
-    return (a4 = a4.Ea[vg(b3, c4)]) ? a4 : null;
+  function Dg(a4, b3, c4) {
+    return (a4 = a4.Ea[zg(b3, c4)]) ? a4 : null;
   }
-  function Ag(a4, b3, c4, d4, e4) {
-    d4 = vg(b3, c4) + "~" + d4;
+  function Eg(a4, b3, c4, d4, e4) {
+    d4 = zg(b3, c4) + "~" + d4;
     if (a4.l[d4])
-      throw pg(b3, c4);
+      throw tg(b3, c4);
     a4.l[d4] = e4;
   }
-  function Bg(a4, b3, c4) {
+  function Fg(a4, b3, c4) {
     a4.D[a4.h][b3] = c4;
   }
-  function Cg(a4, b3, c4) {
-    b3 = vg(b3 || "", c4);
+  function Gg(a4, b3, c4) {
+    b3 = zg(b3 || "", c4);
     return a4.Da[a4.h][b3] = `${b3}[${a4.s}]`;
   }
-  function Dg(a4, b3, c4, d4) {
-    a4.Ea[`${vg(b3 || "", c4)}[${a4.s}]`] = d4;
+  function Hg(a4, b3, c4, d4) {
+    a4.Ea[`${zg(b3 || "", c4)}[${a4.s}]`] = d4;
   }
-  function Eg(a4) {
+  function Ig(a4) {
     a4.D.length = a4.h;
     a4.Da.length = a4.h;
     a4.h--;
   }
-  var xg = class {
+  var Bg = class {
     constructor(a4) {
       this.o = a4;
       this.s = this.h = 0;
@@ -22552,11 +22626,11 @@ var fontoxpath = function(xspattern, prsc) {
       this.Da = a4 && a4.Da;
     }
     va(a4, b3, c4, d4 = false) {
-      const e4 = this.l[vg(a4, b3) + "~" + c4];
-      return !e4 || d4 && e4.vb ? null === this.o ? null : this.o.va(a4, b3, c4, d4) : e4;
+      const e4 = this.l[zg(a4, b3) + "~" + c4];
+      return !e4 || d4 && e4.wb ? null === this.o ? null : this.o.va(a4, b3, c4, d4) : e4;
     }
     eb(a4, b3) {
-      const c4 = wg(this.Da, vg(a4, b3));
+      const c4 = Ag(this.Da, zg(a4, b3));
       return c4 ? c4 : null === this.o ? null : this.o.eb(a4, b3);
     }
     Sa(a4, b3) {
@@ -22565,11 +22639,11 @@ var fontoxpath = function(xspattern, prsc) {
       return "" === c4 && this.v ? { localName: d4, namespaceURI: this.v } : c4 && (c4 = this.$(c4, false)) ? { localName: d4, namespaceURI: c4 } : null === this.o ? null : this.o.Sa(a4, b3);
     }
     $(a4, b3 = true) {
-      const c4 = wg(this.D, a4 || "");
+      const c4 = Ag(this.D, a4 || "");
       return void 0 === c4 ? null === this.o ? void 0 : this.o.$(a4 || "", b3) : c4;
     }
   };
-  function G3(a4, b3) {
+  function F3(a4, b3) {
     "*" === b3 || Array.isArray(b3) || (b3 = [b3]);
     for (let c4 = 1; c4 < a4.length; ++c4) {
       if (!Array.isArray(a4[c4]))
@@ -22590,7 +22664,7 @@ var fontoxpath = function(xspattern, prsc) {
     return "object" !== typeof a4 || Array.isArray(a4) ? null : b3 in a4 ? a4[b3] : null;
   }
   function J3(a4, b3) {
-    return b3.reduce(G3, a4);
+    return b3.reduce(F3, a4);
   }
   function K3(a4, b3) {
     const c4 = [];
@@ -22602,12 +22676,12 @@ var fontoxpath = function(xspattern, prsc) {
     }
     return c4;
   }
-  function Fg(a4) {
+  function Jg(a4) {
     return { localName: H3(a4), namespaceURI: I3(a4, "URI"), prefix: I3(a4, "prefix") };
   }
-  function Gg(a4) {
-    const b3 = G3(a4, "typeDeclaration");
-    if (!b3 || G3(b3, "voidSequenceType"))
+  function Kg(a4) {
+    const b3 = F3(a4, "typeDeclaration");
+    if (!b3 || F3(b3, "voidSequenceType"))
       return { type: 59, g: 2 };
     const c4 = (f4) => {
       switch (f4[0]) {
@@ -22640,14 +22714,14 @@ var fontoxpath = function(xspattern, prsc) {
         case "atomicType":
           return Ia([I3(f4, "prefix"), H3(f4)].join(":"));
         case "parenthesizedItemType":
-          return c4(G3(f4, "*"));
+          return c4(F3(f4, "*"));
         default:
-          throw Error(`Type declaration "${G3(b3, "*")[0]}" is not supported.`);
+          throw Error(`Type declaration "${F3(b3, "*")[0]}" is not supported.`);
       }
     };
-    a4 = { type: c4(G3(b3, "*")), g: 3 };
+    a4 = { type: c4(F3(b3, "*")), g: 3 };
     let d4 = null;
-    const e4 = G3(b3, "occurrenceIndicator");
+    const e4 = F3(b3, "occurrenceIndicator");
     e4 && (d4 = H3(e4));
     switch (d4) {
       case "*":
@@ -22670,22 +22744,22 @@ var fontoxpath = function(xspattern, prsc) {
       a4[1][b3] = c4;
   }
   ;
-  function Hg(a4) {
+  function Lg(a4) {
     const b3 = { type: 62, g: 3 };
     L3(a4, "type", b3);
     return b3;
   }
   ;
-  function Ig(a4, b3) {
+  function Mg(a4, b3) {
     if (!b3 || !b3.ga)
       return { type: 59, g: 2 };
-    var c4 = G3(a4, "EQName");
+    var c4 = F3(a4, "EQName");
     if (!c4)
       return { type: 59, g: 2 };
-    var d4 = Fg(c4);
+    var d4 = Jg(c4);
     c4 = d4.localName;
     const e4 = d4.prefix;
-    d4 = K3(G3(a4, "arguments"), "*");
+    d4 = K3(F3(a4, "arguments"), "*");
     c4 = b3.ga.Sa({ localName: c4, prefix: e4 }, d4.length);
     if (!c4)
       return { type: 59, g: 2 };
@@ -22699,11 +22773,11 @@ var fontoxpath = function(xspattern, prsc) {
   function M3(a4, b3, c4) {
     return (a4 << 20) + (b3 << 12) + (c4.charCodeAt(0) << 8) + c4.charCodeAt(1);
   }
-  var Jg = { [M3(2, 2, "idivOp")]: 5, [M3(16, 16, "addOp")]: 16, [M3(16, 16, "subtractOp")]: 16, [M3(16, 16, "divOp")]: 4, [M3(16, 2, "multiplyOp")]: 16, [M3(16, 2, "divOp")]: 16, [M3(2, 16, "multiplyOp")]: 16, [M3(17, 17, "addOp")]: 17, [M3(17, 17, "subtractOp")]: 17, [M3(17, 17, "divOp")]: 4, [M3(17, 2, "multiplyOp")]: 17, [M3(17, 2, "divOp")]: 17, [M3(2, 17, "multiplyOp")]: 17, [M3(9, 9, "subtractOp")]: 17, [M3(7, 7, "subtractOp")]: 17, [M3(8, 8, "subtractOp")]: 17, [M3(9, 16, "addOp")]: 9, [M3(9, 16, "subtractOp")]: 9, [M3(9, 17, "addOp")]: 9, [M3(9, 17, "subtractOp")]: 9, [M3(7, 16, "addOp")]: 7, [M3(
+  var Ng = { [M3(2, 2, "idivOp")]: 5, [M3(16, 16, "addOp")]: 16, [M3(16, 16, "subtractOp")]: 16, [M3(16, 16, "divOp")]: 4, [M3(16, 2, "multiplyOp")]: 16, [M3(16, 2, "divOp")]: 16, [M3(2, 16, "multiplyOp")]: 16, [M3(17, 17, "addOp")]: 17, [M3(17, 17, "subtractOp")]: 17, [M3(17, 17, "divOp")]: 4, [M3(17, 2, "multiplyOp")]: 17, [M3(17, 2, "divOp")]: 17, [M3(2, 17, "multiplyOp")]: 17, [M3(9, 9, "subtractOp")]: 17, [M3(7, 7, "subtractOp")]: 17, [M3(8, 8, "subtractOp")]: 17, [M3(9, 16, "addOp")]: 9, [M3(9, 16, "subtractOp")]: 9, [M3(9, 17, "addOp")]: 9, [M3(9, 17, "subtractOp")]: 9, [M3(7, 16, "addOp")]: 7, [M3(
     7,
     16,
     "subtractOp"
-  )]: 7, [M3(7, 17, "addOp")]: 7, [M3(7, 17, "subtractOp")]: 7, [M3(8, 17, "addOp")]: 8, [M3(8, 17, "subtractOp")]: 8, [M3(9, 16, "addOp")]: 9, [M3(9, 16, "subtractOp")]: 9, [M3(9, 17, "addOp")]: 9, [M3(9, 17, "subtractOp")]: 9, [M3(7, 17, "addOp")]: 7, [M3(7, 17, "subtractOp")]: 7, [M3(7, 16, "addOp")]: 7, [M3(7, 16, "subtractOp")]: 7, [M3(8, 17, "addOp")]: 8, [M3(8, 17, "subtractOp")]: 8 }, Kg = {
+  )]: 7, [M3(7, 17, "addOp")]: 7, [M3(7, 17, "subtractOp")]: 7, [M3(8, 17, "addOp")]: 8, [M3(8, 17, "subtractOp")]: 8, [M3(9, 16, "addOp")]: 9, [M3(9, 16, "subtractOp")]: 9, [M3(9, 17, "addOp")]: 9, [M3(9, 17, "subtractOp")]: 9, [M3(7, 17, "addOp")]: 7, [M3(7, 17, "subtractOp")]: 7, [M3(7, 16, "addOp")]: 7, [M3(7, 16, "subtractOp")]: 7, [M3(8, 17, "addOp")]: 8, [M3(8, 17, "subtractOp")]: 8 }, Og = {
     [M3(2, 2, "addOp")]: (a4, b3) => a4 + b3,
     [M3(2, 2, "subtractOp")]: (a4, b3) => a4 - b3,
     [M3(2, 2, "multiplyOp")]: (a4, b3) => a4 * b3,
@@ -22774,44 +22848,44 @@ var fontoxpath = function(xspattern, prsc) {
     [M3(8, 17, "addOp")]: Qb,
     [M3(8, 17, "subtractOp")]: Rb
   };
-  function Lg(a4, b3) {
+  function Pg(a4, b3) {
     return v3(a4, 5) && v3(b3, 5) ? 5 : v3(a4, 4) && v3(b3, 4) ? 4 : v3(a4, 6) && v3(b3, 6) ? 6 : 3;
   }
-  const Mg = [2, 16, 17, 9, 7, 8];
-  function Ng(a4, b3, c4) {
+  const Qg = [2, 16, 17, 9, 7, 8];
+  function Rg(a4, b3, c4) {
     function d4(l4, n4) {
-      return { T: e4 ? e4(l4) : l4, U: f4 ? f4(n4) : n4 };
+      return { U: e4 ? e4(l4) : l4, V: f4 ? f4(n4) : n4 };
     }
     let e4 = null, f4 = null;
     v3(b3, 19) && (e4 = (l4) => jd(l4, 3), b3 = 3);
     v3(c4, 19) && (f4 = (l4) => jd(l4, 3), c4 = 3);
-    const h4 = Mg.filter((l4) => v3(b3, l4)), k3 = Mg.filter((l4) => v3(c4, l4));
+    const h4 = Qg.filter((l4) => v3(b3, l4)), k3 = Qg.filter((l4) => v3(c4, l4));
     if (h4.includes(2) && k3.includes(2)) {
-      const l4 = Kg[M3(2, 2, a4)];
-      let n4 = Jg[M3(2, 2, a4)];
-      n4 ||= Lg(b3, c4);
+      const l4 = Og[M3(2, 2, a4)];
+      let n4 = Ng[M3(2, 2, a4)];
+      n4 ||= Pg(b3, c4);
       "divOp" === a4 && 5 === n4 && (n4 = 4);
-      return "idivOp" === a4 ? Og(d4, l4)[0] : (t4, u4) => {
-        const { T: z3, U: y3 } = d4(t4, u4);
+      return "idivOp" === a4 ? Sg(d4, l4)[0] : (t4, u4) => {
+        const { U: z3, V: y3 } = d4(t4, u4);
         return g3(l4(z3.value, y3.value), n4);
       };
     }
     for (const l4 of h4)
       for (const n4 of k3) {
-        const t4 = Kg[M3(l4, n4, a4)], u4 = Jg[M3(l4, n4, a4)];
+        const t4 = Og[M3(l4, n4, a4)], u4 = Ng[M3(l4, n4, a4)];
         if (t4 && void 0 !== u4)
           return (z3, y3) => {
             const {
-              T: F3,
-              U: N3
+              U: G3,
+              V: N3
             } = d4(z3, y3);
-            return g3(t4(F3.value, N3.value), u4);
+            return g3(t4(G3.value, N3.value), u4);
           };
       }
   }
-  function Pg(a4, b3, c4) {
+  function Tg(a4, b3, c4) {
     function d4(n4, t4) {
-      return { T: f4 ? f4(n4) : n4, U: h4 ? h4(t4) : t4 };
+      return { U: f4 ? f4(n4) : n4, V: h4 ? h4(t4) : t4 };
     }
     var e4 = [2, 53, 59, 46, 47];
     if (e4.includes(b3) || e4.includes(c4))
@@ -22819,22 +22893,22 @@ var fontoxpath = function(xspattern, prsc) {
     let f4 = null, h4 = null;
     v3(b3, 19) && (f4 = (n4) => jd(n4, 3), b3 = 3);
     v3(c4, 19) && (h4 = (n4) => jd(n4, 3), c4 = 3);
-    var k3 = Mg.filter((n4) => v3(b3, n4));
-    e4 = Mg.filter((n4) => v3(c4, n4));
+    var k3 = Qg.filter((n4) => v3(b3, n4));
+    e4 = Qg.filter((n4) => v3(c4, n4));
     if (k3.includes(2) && e4.includes(2)) {
-      var l4 = Jg[M3(2, 2, a4)];
-      void 0 === l4 && (l4 = Lg(b3, c4));
+      var l4 = Ng[M3(2, 2, a4)];
+      void 0 === l4 && (l4 = Pg(b3, c4));
       "divOp" === a4 && 5 === l4 && (l4 = 4);
-      return "idivOp" === a4 ? Og(d4, (n4, t4) => Math.trunc(n4 / t4))[1] : l4;
+      return "idivOp" === a4 ? Sg(d4, (n4, t4) => Math.trunc(n4 / t4))[1] : l4;
     }
     for (l4 of k3)
       for (const n4 of e4)
-        if (k3 = Jg[M3(l4, n4, a4)], void 0 !== k3)
+        if (k3 = Ng[M3(l4, n4, a4)], void 0 !== k3)
           return k3;
   }
-  function Og(a4, b3) {
+  function Sg(a4, b3) {
     return [(c4, d4) => {
-      const { T: e4, U: f4 } = a4(c4, d4);
+      const { U: e4, V: f4 } = a4(c4, d4);
       if (0 === f4.value)
         throw Error("FOAR0001: Divisor of idiv operator cannot be (-)0");
       if (Number.isNaN(e4.value) || Number.isNaN(f4.value) || !Number.isFinite(e4.value))
@@ -22842,8 +22916,8 @@ var fontoxpath = function(xspattern, prsc) {
       return Number.isFinite(e4.value) && !Number.isFinite(f4.value) ? g3(0, 5) : g3(b3(e4.value, f4.value), 5);
     }, 5];
   }
-  const Qg = /* @__PURE__ */ Object.create(null);
-  var Rg = class extends D3 {
+  const Ug = /* @__PURE__ */ Object.create(null);
+  var Vg = class extends D3 {
     constructor(a4, b3, c4, d4, e4) {
       super(b3.o.add(c4.o), [b3, c4], { B: false }, false, d4);
       this.A = b3;
@@ -22864,8 +22938,8 @@ var fontoxpath = function(xspattern, prsc) {
         var f4 = e4.type;
         var h4 = d4.type, k3 = this.l;
         const l4 = `${f4}~${h4}~${k3}`;
-        let n4 = Qg[l4];
-        n4 ||= Qg[l4] = Ng(k3, f4, h4);
+        let n4 = Ug[l4];
+        n4 ||= Ug[l4] = Rg(k3, f4, h4);
         f4 = n4;
         if (!f4)
           throw Error(`XPTY0004: ${this.l} not available for types ${Da[e4.type]} and ${Da[d4.type]}`);
@@ -22873,32 +22947,32 @@ var fontoxpath = function(xspattern, prsc) {
       }));
     }
   };
-  function Sg(a4, b3) {
+  function Wg(a4, b3) {
     var c4 = O2;
     let d4 = false;
     for (var e4 = 1; e4 < a4.length; e4++)
       switch (a4[e4][0]) {
         case "letClause":
-          Tg(b3);
+          Xg(b3);
           var f4 = a4[e4], h4 = b3, k3 = c4, l4 = J3(f4, ["letClauseItem", "typedVariableBinding", "varName"]);
-          l4 = Fg(l4);
+          l4 = Jg(l4);
           f4 = J3(f4, ["letClauseItem", "letExpr"]);
           k3 = k3(f4[1], h4);
-          Ug(h4, l4.localName, k3);
+          Yg(h4, l4.localName, k3);
           break;
         case "forClause":
           d4 = true;
-          Tg(b3);
-          Vg(a4[e4], b3, c4);
+          Xg(b3);
+          Zg(a4[e4], b3, c4);
           break;
         case "whereClause":
-          Tg(b3);
+          Xg(b3);
           h4 = a4[e4];
           c4(h4, b3);
           L3(h4, "type", { type: 0, g: 3 });
           break;
         case "orderByClause":
-          Tg(b3);
+          Xg(b3);
           break;
         case "returnClause":
           e4 = a4[e4];
@@ -22929,24 +23003,24 @@ var fontoxpath = function(xspattern, prsc) {
     else
       throw Error("Variable scope out of bound");
   }
-  function Vg(a4, b3, c4) {
-    const d4 = Fg(J3(a4, ["forClauseItem", "typedVariableBinding", "varName"]));
+  function Zg(a4, b3, c4) {
+    const d4 = Jg(J3(a4, ["forClauseItem", "typedVariableBinding", "varName"]));
     if (a4 = J3(a4, ["forClauseItem", "forExpr", "sequenceExpr"]))
-      a4 = K3(a4, "*").map((e4) => c4(e4, b3)), a4.includes(void 0) || a4.includes(null) || (a4 = Wg(a4), 1 === a4.length && Ug(b3, d4.localName, a4[0]));
+      a4 = K3(a4, "*").map((e4) => c4(e4, b3)), a4.includes(void 0) || a4.includes(null) || (a4 = $g(a4), 1 === a4.length && Yg(b3, d4.localName, a4[0]));
   }
-  function Wg(a4) {
+  function $g(a4) {
     return a4.filter((b3, c4, d4) => d4.findIndex((e4) => e4.type === b3.type && e4.g === b3.g) === c4);
   }
   ;
-  function Xg(a4, b3) {
+  function ah(a4, b3) {
     if (!b3 || !b3.ga)
       return { type: 59, g: 2 };
-    const c4 = G3(a4, "functionName");
-    var d4 = Fg(c4);
+    const c4 = F3(a4, "functionName");
+    var d4 = Jg(c4);
     let e4 = d4.localName;
     var f4 = d4.prefix;
     let h4 = d4.namespaceURI;
-    d4 = K3(G3(a4, "arguments"), "*");
+    d4 = K3(F3(a4, "arguments"), "*");
     if (null === h4) {
       f4 = b3.ga.Sa({ localName: e4, prefix: f4 }, d4.length);
       if (!f4)
@@ -22963,17 +23037,17 @@ var fontoxpath = function(xspattern, prsc) {
     return b3.i;
   }
   ;
-  function Yg(a4) {
+  function bh(a4) {
     const b3 = { type: 61, g: 3 };
     L3(a4, "type", b3);
     return b3;
   }
   ;
-  function Zg(a4, b3) {
+  function ch(a4, b3) {
     if (!b3 || !b3.ga)
       return { type: 59, g: 2 };
-    const c4 = G3(a4, "functionName");
-    var d4 = Fg(c4);
+    const c4 = F3(a4, "functionName");
+    var d4 = Jg(c4);
     let e4 = d4.localName;
     var f4 = d4.namespaceURI;
     const h4 = d4.prefix;
@@ -22993,7 +23067,7 @@ var fontoxpath = function(xspattern, prsc) {
     return b3.i;
   }
   ;
-  function $g(a4, b3) {
+  function dh(a4, b3) {
     var c4 = K3(a4, "stepExpr");
     if (!c4)
       return { type: 59, g: 2 };
@@ -23037,7 +23111,7 @@ var fontoxpath = function(xspattern, prsc) {
               }
               break;
             case "nameTest":
-              e4 = Fg(l4);
+              e4 = Jg(l4);
               if (null !== e4.namespaceURI)
                 break;
               if ("attribute" === k3 && !e4.prefix)
@@ -23056,32 +23130,32 @@ var fontoxpath = function(xspattern, prsc) {
     return d4;
   }
   ;
-  function ah(a4) {
+  function eh(a4) {
     const b3 = { type: 0, g: 3 };
     L3(a4, "type", b3);
     return b3;
   }
   ;
-  function bh(a4, b3, c4) {
-    0 === b3 ? b3 = { type: 53, g: 2 } : 1 === b3 ? b3 = c4[0] : c4.includes(void 0) || c4.includes(null) ? b3 = { type: 59, g: 2 } : (b3 = Wg(c4), b3 = 1 < b3.length ? { type: 59, g: 2 } : { type: b3[0].type, g: 2 });
+  function fh(a4, b3, c4) {
+    0 === b3 ? b3 = { type: 53, g: 2 } : 1 === b3 ? b3 = c4[0] : c4.includes(void 0) || c4.includes(null) ? b3 = { type: 59, g: 2 } : (b3 = $g(c4), b3 = 1 < b3.length ? { type: 59, g: 2 } : { type: b3[0].type, g: 2 });
     b3 && 59 !== b3.type && L3(a4, "type", b3);
     return b3;
   }
   ;
-  function ch(a4, b3, c4, d4) {
+  function gh(a4, b3, c4, d4) {
     if (!b3 || c4.includes(void 0))
       return { type: 59, g: 2 };
     var e4 = K3(a4, "typeswitchExprCaseClause");
     for (let h4 = 0; h4 < c4.length; h4++) {
-      var f4 = G3(e4[h4], "*");
+      var f4 = F3(e4[h4], "*");
       switch (f4[0]) {
         case "sequenceType":
-          if (f4 = dh(f4, b3, c4[h4]))
+          if (f4 = hh(f4, b3, c4[h4]))
             return 59 !== f4.type && L3(a4, "type", f4), f4;
           continue;
         case "sequenceTypeUnion":
           for (d4 = K3(f4, "*"), e4 = 0; 2 > e4; e4++)
-            if (f4 = dh(d4[e4], b3, c4[h4]))
+            if (f4 = hh(d4[e4], b3, c4[h4]))
               return 59 !== f4.type && L3(a4, "type", f4), f4;
         default:
           return { type: 59, g: 2 };
@@ -23090,44 +23164,44 @@ var fontoxpath = function(xspattern, prsc) {
     59 !== d4.type && L3(a4, "type", d4);
     return d4;
   }
-  function dh(a4, b3, c4) {
-    const d4 = K3(a4, "*"), e4 = G3(a4, "atomicType");
+  function hh(a4, b3, c4) {
+    const d4 = K3(a4, "*"), e4 = F3(a4, "atomicType");
     if (!e4)
       return { type: 59, g: 2 };
     if (Ia(I3(e4, "prefix") + ":" + e4[2]) === b3.type) {
       if (1 === d4.length) {
         if (3 === b3.g)
           return c4;
-      } else if (a4 = G3(a4, "occurrenceIndicator")[1], b3.g === Ka(a4))
+      } else if (a4 = F3(a4, "occurrenceIndicator")[1], b3.g === Ka(a4))
         return c4;
     }
   }
   ;
-  function eh(a4, b3) {
+  function ih(a4, b3) {
     O2(a4, b3);
   }
   function O2(a4, b3) {
-    var c4 = fh.get(a4[0]);
+    var c4 = jh.get(a4[0]);
     if (c4)
       return c4(a4, b3);
     for (c4 = 1; c4 < a4.length; c4++)
       a4[c4] && O2(a4[c4], b3);
   }
-  const gh = (a4, b3) => {
-    var c4 = O2(G3(a4, "firstOperand")[1], b3);
-    const d4 = O2(G3(a4, "secondOperand")[1], b3);
+  const kh = (a4, b3) => {
+    var c4 = O2(F3(a4, "firstOperand")[1], b3);
+    const d4 = O2(F3(a4, "secondOperand")[1], b3);
     var e4 = a4[0];
     if (c4 && d4)
-      if (b3 = Pg(e4, c4.type, d4.type))
+      if (b3 = Tg(e4, c4.type, d4.type))
         c4 = { type: b3, g: c4.g }, 2 !== b3 && 59 !== b3 && L3(a4, "type", c4), a4 = c4;
       else
         throw Error(`XPTY0004: ${e4} not available for types ${Ha(c4)} and ${Ha(d4)}`);
     else
       a4 = { type: 2, g: 3 };
     return a4;
-  }, hh = (a4, b3) => {
-    O2(G3(a4, "firstOperand")[1], b3);
-    O2(G3(a4, "secondOperand")[1], b3);
+  }, lh = (a4, b3) => {
+    O2(F3(a4, "firstOperand")[1], b3);
+    O2(F3(a4, "secondOperand")[1], b3);
     a: {
       switch (a4[0]) {
         case "orOp":
@@ -23144,9 +23218,9 @@ var fontoxpath = function(xspattern, prsc) {
       a4 = void 0;
     }
     return a4;
-  }, ih = (a4, b3) => {
-    O2(G3(a4, "firstOperand")[1], b3);
-    O2(G3(a4, "secondOperand")[1], b3);
+  }, mh = (a4, b3) => {
+    O2(F3(a4, "firstOperand")[1], b3);
+    O2(F3(a4, "secondOperand")[1], b3);
     a: {
       switch (a4[0]) {
         case "unionOp":
@@ -23168,15 +23242,15 @@ var fontoxpath = function(xspattern, prsc) {
       a4 = void 0;
     }
     return a4;
-  }, jh = (a4, b3) => {
-    O2(G3(a4, "firstOperand")[1], b3);
-    O2(G3(a4, "secondOperand")[1], b3);
+  }, nh = (a4, b3) => {
+    O2(F3(a4, "firstOperand")[1], b3);
+    O2(F3(a4, "secondOperand")[1], b3);
     b3 = { type: 0, g: 3 };
     L3(a4, "type", b3);
     return b3;
-  }, kh = (a4, b3) => {
-    O2(G3(a4, "firstOperand")[1], b3);
-    O2(G3(a4, "secondOperand")[1], b3);
+  }, oh = (a4, b3) => {
+    O2(F3(a4, "firstOperand")[1], b3);
+    O2(F3(a4, "secondOperand")[1], b3);
     b3 = I3(J3(a4, ["firstOperand", "*"]), "type");
     const c4 = I3(J3(
       a4,
@@ -23185,59 +23259,59 @@ var fontoxpath = function(xspattern, prsc) {
     b3 = { type: 0, g: wc(b3) || wc(c4) ? 0 : 3 };
     L3(a4, "type", b3);
     return b3;
-  }, lh = (a4, b3) => {
-    O2(G3(a4, "firstOperand")[1], b3);
-    O2(G3(a4, "secondOperand")[1], b3);
+  }, ph = (a4, b3) => {
+    O2(F3(a4, "firstOperand")[1], b3);
+    O2(F3(a4, "secondOperand")[1], b3);
     b3 = I3(J3(a4, ["firstOperand", "*"]), "type");
     const c4 = I3(J3(a4, ["secondOperand", "*"]), "type");
     b3 = { type: 0, g: wc(b3) || wc(c4) ? 0 : 3 };
     L3(a4, "type", b3);
     return b3;
-  }, fh = /* @__PURE__ */ new Map([["unaryMinusOp", (a4, b3) => {
-    b3 = O2(G3(a4, "operand")[1], b3);
+  }, jh = /* @__PURE__ */ new Map([["unaryMinusOp", (a4, b3) => {
+    b3 = O2(F3(a4, "operand")[1], b3);
     b3 ? v3(b3.type, 2) ? (b3 = { type: b3.type, g: b3.g }, L3(a4, "type", b3), a4 = b3) : (b3 = { type: 3, g: 3 }, L3(a4, "type", b3), a4 = b3) : (b3 = { type: 2, g: 2 }, L3(a4, "type", b3), a4 = b3);
     return a4;
   }], [
     "unaryPlusOp",
     (a4, b3) => {
-      b3 = O2(G3(a4, "operand")[1], b3);
+      b3 = O2(F3(a4, "operand")[1], b3);
       b3 ? v3(b3.type, 2) ? (b3 = { type: b3.type, g: b3.g }, L3(a4, "type", b3), a4 = b3) : (b3 = { type: 3, g: 3 }, L3(a4, "type", b3), a4 = b3) : (b3 = { type: 2, g: 2 }, L3(a4, "type", b3), a4 = b3);
       return a4;
     }
-  ], ["addOp", gh], ["subtractOp", gh], ["divOp", gh], ["idivOp", gh], ["modOp", gh], ["multiplyOp", gh], ["andOp", hh], ["orOp", hh], ["sequenceExpr", (a4, b3) => {
+  ], ["addOp", kh], ["subtractOp", kh], ["divOp", kh], ["idivOp", kh], ["modOp", kh], ["multiplyOp", kh], ["andOp", lh], ["orOp", lh], ["sequenceExpr", (a4, b3) => {
     const c4 = K3(a4, "*"), d4 = c4.map((e4) => O2(e4, b3));
-    return bh(a4, c4.length, d4);
-  }], ["unionOp", ih], ["intersectOp", ih], ["exceptOp", ih], ["stringConcatenateOp", (a4, b3) => {
-    O2(G3(a4, "firstOperand")[1], b3);
+    return fh(a4, c4.length, d4);
+  }], ["unionOp", mh], ["intersectOp", mh], ["exceptOp", mh], ["stringConcatenateOp", (a4, b3) => {
+    O2(F3(a4, "firstOperand")[1], b3);
     O2(
-      G3(a4, "secondOperand")[1],
+      F3(a4, "secondOperand")[1],
       b3
     );
     b3 = { type: 1, g: 3 };
     L3(a4, "type", b3);
     return b3;
   }], ["rangeSequenceExpr", (a4, b3) => {
-    O2(G3(a4, "startExpr")[1], b3);
-    O2(G3(a4, "endExpr")[1], b3);
+    O2(F3(a4, "startExpr")[1], b3);
+    O2(F3(a4, "endExpr")[1], b3);
     b3 = { type: 5, g: 1 };
     L3(a4, "type", b3);
     return b3;
-  }], ["equalOp", jh], ["notEqualOp", jh], ["lessThanOrEqualOp", jh], ["lessThanOp", jh], ["greaterThanOrEqualOp", jh], ["greaterThanOp", jh], ["eqOp", kh], ["neOp", kh], ["ltOp", kh], ["leOp", kh], ["gtOp", kh], ["geOp", kh], ["isOp", lh], ["nodeBeforeOp", lh], ["nodeAfterOp", lh], ["pathExpr", (a4, b3) => {
-    const c4 = G3(a4, "rootExpr");
+  }], ["equalOp", nh], ["notEqualOp", nh], ["lessThanOrEqualOp", nh], ["lessThanOp", nh], ["greaterThanOrEqualOp", nh], ["greaterThanOp", nh], ["eqOp", oh], ["neOp", oh], ["ltOp", oh], ["leOp", oh], ["gtOp", oh], ["geOp", oh], ["isOp", ph], ["nodeBeforeOp", ph], ["nodeAfterOp", ph], ["pathExpr", (a4, b3) => {
+    const c4 = F3(a4, "rootExpr");
     c4 && c4[1] && O2(c4[1], b3);
     K3(a4, "stepExpr").map((d4) => O2(d4, b3));
-    return $g(a4, b3);
+    return dh(a4, b3);
   }], ["contextItemExpr", () => ({ type: 59, g: 2 })], ["ifThenElseExpr", (a4, b3) => {
-    var c4 = G3(a4, "ifClause") || G3(K3(a4, "x:stackTrace")[0], "ifClause");
-    const d4 = G3(a4, "thenClause") || G3(K3(a4, "x:stackTrace")[1], "thenClause"), e4 = G3(a4, "elseClause") || G3(K3(a4, "x:stackTrace")[2], "elseClause");
-    O2(G3(c4, "*"), b3);
-    c4 = O2(G3(d4, "*"), b3);
-    b3 = O2(G3(e4, "*"), b3);
+    var c4 = F3(a4, "ifClause") || F3(K3(a4, "x:stackTrace")[0], "ifClause");
+    const d4 = F3(a4, "thenClause") || F3(K3(a4, "x:stackTrace")[1], "thenClause"), e4 = F3(a4, "elseClause") || F3(K3(a4, "x:stackTrace")[2], "elseClause");
+    O2(F3(c4, "*"), b3);
+    c4 = O2(F3(d4, "*"), b3);
+    b3 = O2(F3(e4, "*"), b3);
     c4 && b3 ? c4.type === b3.type && c4.g === b3.g ? (59 !== c4.type && L3(a4, "type", c4), a4 = c4) : a4 = { type: 59, g: 2 } : a4 = { type: 59, g: 2 };
     return a4;
   }], ["instanceOfExpr", (a4, b3) => {
-    O2(G3(a4, "argExpr"), b3);
-    O2(G3(a4, "sequenceType"), b3);
+    O2(F3(a4, "argExpr"), b3);
+    O2(F3(a4, "sequenceType"), b3);
     b3 = {
       type: 0,
       g: 3
@@ -23261,21 +23335,21 @@ var fontoxpath = function(xspattern, prsc) {
     L3(a4, "type", b3);
     return b3;
   }], ["functionCallExpr", (a4, b3) => {
-    const c4 = G3(a4, "arguments");
+    const c4 = F3(a4, "arguments");
     K3(c4, "*").map((d4) => O2(d4, b3));
-    return Xg(a4, b3);
+    return ah(a4, b3);
   }], ["arrowExpr", (a4, b3) => {
-    O2(G3(a4, "argExpr")[1], b3);
-    return Ig(a4, b3);
+    O2(F3(a4, "argExpr")[1], b3);
+    return Mg(a4, b3);
   }], [
     "dynamicFunctionInvocationExpr",
     (a4, b3) => {
       O2(J3(a4, ["functionItem", "*"]), b3);
-      (a4 = G3(a4, "arguments")) && O2(a4, b3);
+      (a4 = F3(a4, "arguments")) && O2(a4, b3);
       return { type: 59, g: 2 };
     }
-  ], ["namedFunctionRef", (a4, b3) => Zg(a4, b3)], ["inlineFunctionExpr", (a4, b3) => {
-    O2(G3(a4, "functionBody")[1], b3);
+  ], ["namedFunctionRef", (a4, b3) => ch(a4, b3)], ["inlineFunctionExpr", (a4, b3) => {
+    O2(F3(a4, "functionBody")[1], b3);
     b3 = { type: 60, g: 3 };
     L3(a4, "type", b3);
     return b3;
@@ -23297,27 +23371,27 @@ var fontoxpath = function(xspattern, prsc) {
     return a4;
   }], ["mapConstructor", (a4, b3) => {
     K3(a4, "mapConstructorEntry").map((c4) => ({ key: O2(J3(c4, ["mapKeyExpr", "*"]), b3), value: O2(J3(c4, ["mapValueExpr", "*"]), b3) }));
-    return Yg(a4);
+    return bh(a4);
   }], ["arrayConstructor", (a4, b3) => {
-    K3(G3(a4, "*"), "arrayElem").map((c4) => O2(c4, b3));
-    return Hg(a4);
+    K3(F3(a4, "*"), "arrayElem").map((c4) => O2(c4, b3));
+    return Lg(a4);
   }], ["unaryLookup", (a4) => {
-    G3(a4, "NCName");
+    F3(a4, "NCName");
     return { type: 59, g: 2 };
   }], ["typeswitchExpr", (a4, b3) => {
-    const c4 = O2(G3(a4, "argExpr")[1], b3), d4 = K3(a4, "typeswitchExprCaseClause").map((f4) => O2(J3(
+    const c4 = O2(F3(a4, "argExpr")[1], b3), d4 = K3(a4, "typeswitchExprCaseClause").map((f4) => O2(J3(
       f4,
       ["resultExpr"]
     )[1], b3)), e4 = O2(J3(a4, ["typeswitchExprDefaultClause", "resultExpr"])[1], b3);
-    return ch(a4, c4, d4, e4);
+    return gh(a4, c4, d4, e4);
   }], ["quantifiedExpr", (a4, b3) => {
     K3(a4, "*").map((c4) => O2(c4, b3));
-    return ah(a4);
+    return eh(a4);
   }], ["x:stackTrace", (a4, b3) => {
     a4 = K3(a4, "*");
     return O2(a4[0], b3);
-  }], ["queryBody", (a4, b3) => O2(a4[1], b3)], ["flworExpr", (a4, b3) => Sg(a4, b3)], ["varRef", (a4, b3) => {
-    const c4 = Fg(G3(a4, "name"));
+  }], ["queryBody", (a4, b3) => O2(a4[1], b3)], ["flworExpr", (a4, b3) => Wg(a4, b3)], ["varRef", (a4, b3) => {
+    const c4 = Jg(F3(a4, "name"));
     var d4;
     a: {
       for (d4 = b3.h; 0 <= d4; d4--) {
@@ -23337,17 +23411,17 @@ var fontoxpath = function(xspattern, prsc) {
     ));
     return d4;
   }]]);
-  function Tg(a4) {
+  function Xg(a4) {
     a4.h++;
     a4.o.push({});
     a4.v.push({});
   }
-  function Ug(a4, b3, c4) {
+  function Yg(a4, b3, c4) {
     if (a4.o[a4.h][b3])
       throw Error(`Another variable of in the scope ${a4.h} with the same name ${b3} already exists`);
     a4.o[a4.h][b3] = c4;
   }
-  var mh = class {
+  var qh = class {
     constructor(a4) {
       this.h = 0;
       this.ga = a4;
@@ -23363,25 +23437,25 @@ var fontoxpath = function(xspattern, prsc) {
       return this.ga ? this.ga.$(a4) : void 0;
     }
   };
-  var nh = class extends D3 {
+  var rh = class extends D3 {
     constructor(a4, b3) {
-      super(new qf({ external: 1 }), a4, { B: a4.every((c4) => c4.B) }, false, b3);
+      super(new uf({ external: 1 }), a4, { B: a4.every((c4) => c4.B) }, false, b3);
       this.l = a4;
     }
     h(a4, b3) {
       return 0 === this.l.length ? w4.m(new pb([])) : C3(this.l[0], a4, b3).N((c4) => w4.m(new pb(c4.map((d4) => Ra(w4.m(d4))))));
     }
   };
-  var oh = class extends D3 {
+  var sh = class extends D3 {
     constructor(a4, b3) {
-      super(new qf({ external: 1 }), a4, { B: a4.every((c4) => c4.B) }, false, b3);
+      super(new uf({ external: 1 }), a4, { B: a4.every((c4) => c4.B) }, false, b3);
       this.l = a4;
     }
     h(a4, b3) {
       return w4.m(new pb(this.l.map((c4) => Ra(C3(c4, a4, b3)))));
     }
   };
-  function ph(a4) {
+  function th(a4) {
     if (null === a4)
       throw lc("context is absent, it needs to be present to use axes.");
     if (!v3(a4.type, 53))
@@ -23389,7 +23463,7 @@ var fontoxpath = function(xspattern, prsc) {
     return a4.value;
   }
   ;
-  function qh(a4, b3, c4) {
+  function uh(a4, b3, c4) {
     let d4 = b3;
     return { next: () => {
       if (!d4)
@@ -23399,43 +23473,43 @@ var fontoxpath = function(xspattern, prsc) {
       return q3(rb(e4));
     } };
   }
-  var rh = class extends D3 {
+  var vh = class extends D3 {
     constructor(a4, b3) {
       b3 = b3 || { Qa: false };
-      super(a4.o, [a4], { P: "reverse-sorted", W: false, subtree: false, B: false });
+      super(a4.o, [a4], { R: "reverse-sorted", W: false, subtree: false, B: false });
       this.l = a4;
       this.s = !!b3.Qa;
     }
     h(a4, b3) {
       b3 = b3.h;
-      a4 = ph(a4.M);
+      a4 = th(a4.M);
       var c4 = this.l.D();
       c4 = c4 && (c4.startsWith("name-") || "type-1" === c4) ? "type-1" : null;
-      return w4.create(qh(b3, this.s ? a4 : x3(b3, a4, c4), c4)).filter((d4) => this.l.l(d4));
+      return w4.create(uh(b3, this.s ? a4 : x3(b3, a4, c4), c4)).filter((d4) => this.l.l(d4));
     }
   };
-  const sh = /* @__PURE__ */ new Map([["type-1-or-type-2", ["name", "type-1", "type-2"]], ["type-1", ["name"]], ["type-2", ["name"]]]);
-  function th(a4, b3) {
+  const wh = /* @__PURE__ */ new Map([["type-1-or-type-2", ["name", "type-1", "type-2"]], ["type-1", ["name"]], ["type-2", ["name"]]]);
+  function xh(a4, b3) {
     if (null === a4)
       return b3;
     if (null === b3 || a4 === b3)
       return a4;
-    const c4 = a4.startsWith("name-") ? "name" : a4, d4 = b3.startsWith("name-") ? "name" : b3, e4 = sh.get(c4);
+    const c4 = a4.startsWith("name-") ? "name" : a4, d4 = b3.startsWith("name-") ? "name" : b3, e4 = wh.get(c4);
     if (void 0 !== e4 && e4.includes(d4))
       return b3;
-    b3 = sh.get(d4);
+    b3 = wh.get(d4);
     return void 0 !== b3 && b3.includes(c4) ? a4 : "empty";
   }
   ;
-  var uh = class extends D3 {
+  var yh = class extends D3 {
     constructor(a4, b3) {
-      super(new qf({ attribute: 1 }), [a4], { P: "unsorted", subtree: true, W: true, B: false });
+      super(new uf({ attribute: 1 }), [a4], { R: "unsorted", subtree: true, W: true, B: false });
       this.l = a4;
-      this.s = th(this.l.D(), b3);
+      this.s = xh(this.l.D(), b3);
     }
     h(a4, b3) {
       b3 = b3.h;
-      a4 = ph(a4.M);
+      a4 = th(a4.M);
       if (1 !== a4.node.nodeType)
         return w4.empty();
       a4 = eb(b3, a4, this.s).filter((c4) => "http://www.w3.org/2000/xmlns/" !== c4.node.namespaceURI).map((c4) => rb(c4)).filter((c4) => this.l.l(c4));
@@ -23445,14 +23519,14 @@ var fontoxpath = function(xspattern, prsc) {
       return "type-1";
     }
   };
-  var vh = class extends D3 {
+  var zh = class extends D3 {
     constructor(a4, b3) {
-      super(a4.o, [a4], { P: "sorted", subtree: true, W: true, B: false });
+      super(a4.o, [a4], { R: "sorted", subtree: true, W: true, B: false });
       this.s = a4;
-      this.l = th(b3, a4.D());
+      this.l = xh(b3, a4.D());
     }
     h(a4, b3) {
-      const c4 = b3.h, d4 = ph(a4.M);
+      const c4 = b3.h, d4 = th(a4.M);
       a4 = d4.node.nodeType;
       if (1 !== a4 && 9 !== a4)
         return w4.empty();
@@ -23460,7 +23534,7 @@ var fontoxpath = function(xspattern, prsc) {
       return w4.create({ next: () => {
         for (; !f4; ) {
           if (!e4) {
-            e4 = jb(c4, d4, this.l);
+            e4 = ib(c4, d4, this.l);
             if (!e4) {
               f4 = true;
               continue;
@@ -23475,11 +23549,11 @@ var fontoxpath = function(xspattern, prsc) {
       } }).filter((h4) => this.s.l(h4));
     }
   };
-  function wh(a4, b3, c4) {
+  function Ah(a4, b3, c4) {
     const d4 = b3.node.nodeType;
     if (1 !== d4 && 9 !== d4)
       return { next: () => p3 };
-    let e4 = jb(a4, b3, c4);
+    let e4 = ib(a4, b3, c4);
     return { next() {
       if (!e4)
         return p3;
@@ -23489,7 +23563,7 @@ var fontoxpath = function(xspattern, prsc) {
     } };
   }
   ;
-  function xh(a4, b3, c4) {
+  function Bh(a4, b3, c4) {
     const d4 = [kd(b3)];
     return { next: (e4) => {
       0 < d4.length && 0 !== (e4 & 1) && d4.shift();
@@ -23501,27 +23575,27 @@ var fontoxpath = function(xspattern, prsc) {
           return p3;
         e4 = d4[0].next(0);
       }
-      d4.unshift(wh(a4, e4.value, c4));
+      d4.unshift(Ah(a4, e4.value, c4));
       return q3(rb(e4.value));
     } };
   }
-  var yh = class extends D3 {
+  var Ch = class extends D3 {
     constructor(a4, b3) {
       b3 = b3 || { Qa: false };
-      super(a4.o, [a4], { B: false, W: false, P: "sorted", subtree: true });
+      super(a4.o, [a4], { B: false, W: false, R: "sorted", subtree: true });
       this.l = a4;
       this.s = !!b3.Qa;
       this.A = (a4 = this.l.D()) && (a4.startsWith("name-") || "type-1" === a4) || "type-1-or-type-2" === a4 ? "type-1" : null;
     }
     h(a4, b3) {
       b3 = b3.h;
-      a4 = ph(a4.M);
-      a4 = xh(b3, a4, this.A);
+      a4 = th(a4.M);
+      a4 = Bh(b3, a4, this.A);
       this.s || a4.next(0);
       return w4.create(a4).filter((c4) => this.l.l(c4));
     }
   };
-  function zh(a4, b3, c4) {
+  function Dh(a4, b3, c4) {
     var d4 = a4.node.nodeType;
     if (1 !== d4 && 9 !== d4)
       return a4;
@@ -23533,22 +23607,22 @@ var fontoxpath = function(xspattern, prsc) {
     }
     return a4;
   }
-  function Ah(a4, b3, c4 = false, d4) {
+  function Eh(a4, b3, c4 = false, d4) {
     if (c4) {
       let f4 = b3, h4 = false;
       return { next: () => {
         if (h4)
           return p3;
         if (md(f4, b3))
-          return f4 = zh(b3, a4, d4), md(f4, b3) ? (h4 = true, p3) : q3(rb(f4));
+          return f4 = Dh(b3, a4, d4), md(f4, b3) ? (h4 = true, p3) : q3(rb(f4));
         const k3 = f4.node.nodeType, l4 = 9 === k3 || 2 === k3 ? null : mb(a4, f4, d4);
         if (null !== l4)
-          return f4 = zh(l4, a4, d4), q3(rb(f4));
+          return f4 = Dh(l4, a4, d4), q3(rb(f4));
         f4 = 9 === k3 ? null : x3(a4, f4, d4);
         return md(f4, b3) ? (h4 = true, p3) : q3(rb(f4));
       } };
     }
-    const e4 = [wh(a4, b3, d4)];
+    const e4 = [Ah(a4, b3, d4)];
     return { next: () => {
       if (!e4.length)
         return p3;
@@ -23559,12 +23633,12 @@ var fontoxpath = function(xspattern, prsc) {
           return p3;
         f4 = e4[0].next(0);
       }
-      e4.unshift(wh(a4, f4.value, d4));
+      e4.unshift(Ah(a4, f4.value, d4));
       return q3(rb(f4.value));
     } };
   }
   ;
-  function Bh(a4, b3, c4) {
+  function Fh(a4, b3, c4) {
     const d4 = [];
     for (; b3 && 9 !== b3.node.nodeType; b3 = x3(a4, b3, null)) {
       const f4 = lb(a4, b3, c4);
@@ -23574,7 +23648,7 @@ var fontoxpath = function(xspattern, prsc) {
     return { next: () => {
       for (; e4 || d4.length; ) {
         if (!e4) {
-          e4 = Ah(a4, d4[0], false, c4);
+          e4 = Eh(a4, d4[0], false, c4);
           var f4 = q3(rb(d4[0]));
           const h4 = lb(a4, d4[0], c4);
           h4 ? d4[0] = h4 : d4.shift();
@@ -23589,42 +23663,42 @@ var fontoxpath = function(xspattern, prsc) {
       return p3;
     } };
   }
-  var Ch = class extends D3 {
+  var Gh = class extends D3 {
     constructor(a4) {
-      super(a4.o, [a4], { P: "sorted", W: true, subtree: false, B: false });
+      super(a4.o, [a4], { R: "sorted", W: true, subtree: false, B: false });
       this.l = a4;
       this.s = (a4 = this.l.D()) && (a4.startsWith("name-") || "type-1" === a4) ? "type-1" : null;
     }
     h(a4, b3) {
       b3 = b3.h;
-      a4 = ph(a4.M);
-      return w4.create(Bh(b3, a4, this.s)).filter((c4) => this.l.l(c4));
+      a4 = th(a4.M);
+      return w4.create(Fh(b3, a4, this.s)).filter((c4) => this.l.l(c4));
     }
   };
-  function Dh(a4, b3, c4) {
+  function Hh(a4, b3, c4) {
     return { next: () => (b3 = b3 && lb(a4, b3, c4)) ? q3(rb(b3)) : p3 };
   }
-  var Eh = class extends D3 {
+  var Ih = class extends D3 {
     constructor(a4, b3) {
-      super(a4.o, [a4], { P: "sorted", W: true, subtree: false, B: false });
+      super(a4.o, [a4], { R: "sorted", W: true, subtree: false, B: false });
       this.l = a4;
-      this.s = th(this.l.D(), b3);
+      this.s = xh(this.l.D(), b3);
     }
     h(a4, b3) {
       b3 = b3.h;
-      a4 = ph(a4.M);
-      return w4.create(Dh(b3, a4, this.s)).filter((c4) => this.l.l(c4));
+      a4 = th(a4.M);
+      return w4.create(Hh(b3, a4, this.s)).filter((c4) => this.l.l(c4));
     }
   };
-  var Fh = class extends D3 {
+  var Jh = class extends D3 {
     constructor(a4, b3) {
-      super(a4.o, [a4], { P: "reverse-sorted", W: true, subtree: true, B: false });
+      super(a4.o, [a4], { R: "reverse-sorted", W: true, subtree: true, B: false });
       this.l = a4;
-      this.s = th(b3, this.l.D());
+      this.s = xh(b3, this.l.D());
     }
     h(a4, b3) {
       b3 = b3.h;
-      a4 = ph(a4.M);
+      a4 = th(a4.M);
       a4 = x3(b3, a4, this.s);
       if (!a4)
         return w4.empty();
@@ -23632,7 +23706,7 @@ var fontoxpath = function(xspattern, prsc) {
       return this.l.l(a4) ? w4.m(a4) : w4.empty();
     }
   };
-  function Gh(a4, b3, c4) {
+  function Kh(a4, b3, c4) {
     const d4 = [];
     for (; b3 && 9 !== b3.node.nodeType; b3 = x3(a4, b3, null)) {
       const f4 = mb(a4, b3, c4);
@@ -23641,7 +23715,7 @@ var fontoxpath = function(xspattern, prsc) {
     let e4 = null;
     return { next: () => {
       for (; e4 || d4.length; ) {
-        e4 ||= Ah(a4, d4[0], true, c4);
+        e4 ||= Eh(a4, d4[0], true, c4);
         var f4 = e4.next(0);
         if (f4.done) {
           e4 = null;
@@ -23655,50 +23729,50 @@ var fontoxpath = function(xspattern, prsc) {
       return p3;
     } };
   }
-  var Hh = class extends D3 {
+  var Lh = class extends D3 {
     constructor(a4) {
-      super(a4.o, [a4], { B: false, W: true, P: "reverse-sorted", subtree: false });
+      super(a4.o, [a4], { B: false, W: true, R: "reverse-sorted", subtree: false });
       this.l = a4;
       this.s = (a4 = this.l.D()) && (a4.startsWith("name-") || "type-1" === a4) ? "type-1" : null;
     }
     h(a4, b3) {
       b3 = b3.h;
-      a4 = ph(a4.M);
-      return w4.create(Gh(b3, a4, this.s)).filter((c4) => this.l.l(c4));
+      a4 = th(a4.M);
+      return w4.create(Kh(b3, a4, this.s)).filter((c4) => this.l.l(c4));
     }
   };
-  function Ih(a4, b3, c4) {
+  function Mh(a4, b3, c4) {
     return { next: () => (b3 = b3 && mb(a4, b3, c4)) ? q3(rb(b3)) : p3 };
   }
-  var Jh = class extends D3 {
+  var Nh = class extends D3 {
     constructor(a4, b3) {
-      super(a4.o, [a4], { B: false, W: true, P: "reverse-sorted", subtree: false });
+      super(a4.o, [a4], { B: false, W: true, R: "reverse-sorted", subtree: false });
       this.l = a4;
-      this.s = th(this.l.D(), b3);
+      this.s = xh(this.l.D(), b3);
     }
     h(a4, b3) {
       b3 = b3.h;
-      a4 = ph(a4.M);
-      return w4.create(Ih(b3, a4, this.s)).filter((c4) => this.l.l(c4));
+      a4 = th(a4.M);
+      return w4.create(Mh(b3, a4, this.s)).filter((c4) => this.l.l(c4));
     }
   };
-  var Kh = class extends D3 {
+  var Oh = class extends D3 {
     constructor(a4, b3) {
-      super(a4.o, [a4], { P: "sorted", subtree: true, W: true, B: false });
+      super(a4.o, [a4], { R: "sorted", subtree: true, W: true, B: false });
       this.l = a4;
-      this.s = th(this.l.D(), b3);
+      this.s = xh(this.l.D(), b3);
     }
     h(a4) {
-      ph(a4.M);
+      th(a4.M);
       return this.l.l(a4.M) ? w4.m(a4.M) : w4.empty();
     }
     D() {
       return this.s;
     }
   };
-  var Lh = class extends mf {
+  var Ph = class extends qf {
     constructor(a4, b3, c4, d4) {
-      super(a4.o.add(b3.o).add(c4.o), [a4, b3, c4], { B: a4.B && b3.B && c4.B, W: b3.W === c4.W && b3.W, P: b3.ia === c4.ia ? b3.ia : "unsorted", subtree: b3.subtree === c4.subtree && b3.subtree }, d4);
+      super(a4.o.add(b3.o).add(c4.o), [a4, b3, c4], { B: a4.B && b3.B && c4.B, W: b3.W === c4.W && b3.W, R: b3.ia === c4.ia ? b3.ia : "unsorted", subtree: b3.subtree === c4.subtree && b3.subtree }, d4);
       this.l = a4;
     }
     A(a4, b3, c4) {
@@ -23711,20 +23785,20 @@ var fontoxpath = function(xspattern, prsc) {
     }
     v(a4) {
       super.v(a4);
-      if (this.l.J)
-        throw Je();
+      if (this.l.I)
+        throw Ne();
     }
   };
-  function dg(a4) {
-    return a4.h instanceof Error ? a4.location : dg(a4.h);
+  function hg(a4) {
+    return a4.h instanceof Error ? a4.location : hg(a4.h);
   }
-  function eg(a4) {
+  function ig(a4) {
     let b3;
-    b3 = a4.h instanceof bg ? ["Inner error:", a4.h.message] : a4.h instanceof Error ? [a4.h.toString()] : eg(a4.h);
+    b3 = a4.h instanceof fg ? ["Inner error:", a4.h.message] : a4.h instanceof Error ? [a4.h.toString()] : ig(a4.h);
     b3.push(`  at <${a4.o}${a4.Wa ? ` (${a4.Wa})` : ""}>:${a4.location.start.line}:${a4.location.start.ha} - ${a4.location.end.line}:${a4.location.end.ha}`);
     return b3;
   }
-  var Mh = class {
+  var Qh = class {
     constructor(a4, b3, c4, d4) {
       this.location = a4;
       this.o = b3;
@@ -23732,11 +23806,11 @@ var fontoxpath = function(xspattern, prsc) {
       this.h = d4;
     }
   };
-  var Nh = class extends mf {
+  var Rh = class extends qf {
     constructor(a4, b3, c4, d4) {
-      super(c4.o, [c4], { B: c4.B, W: c4.W, P: c4.ia, subtree: c4.subtree });
+      super(c4.o, [c4], { B: c4.B, W: c4.W, R: c4.ia, subtree: c4.subtree });
       this.L = b3;
-      this.R = { end: { ha: a4.end.ha, line: a4.end.line, offset: a4.end.offset }, start: { ha: a4.start.ha, line: a4.start.line, offset: a4.start.offset } };
+      this.P = { end: { ha: a4.end.ha, line: a4.end.line, offset: a4.end.offset }, start: { ha: a4.start.ha, line: a4.start.line, offset: a4.start.offset } };
       this.l = d4;
     }
     A(a4, b3, [c4]) {
@@ -23744,13 +23818,13 @@ var fontoxpath = function(xspattern, prsc) {
       try {
         d4 = c4(a4);
       } catch (e4) {
-        throw new Mh(this.R, this.L, this.l, e4);
+        throw new Qh(this.P, this.L, this.l, e4);
       }
       return w4.create({ next: (e4) => {
         try {
           return d4.value.next(e4);
         } catch (f4) {
-          throw new Mh(this.R, this.L, this.l, f4);
+          throw new Qh(this.P, this.L, this.l, f4);
         }
       } });
     }
@@ -23758,19 +23832,19 @@ var fontoxpath = function(xspattern, prsc) {
       try {
         super.v(a4);
       } catch (b3) {
-        throw new Mh(this.R, this.L, this.l, b3);
+        throw new Qh(this.P, this.L, this.l, b3);
       }
     }
     D() {
       return this.Fa[0].D();
     }
   };
-  function Oh(a4, b3, c4, d4) {
+  function Sh(a4, b3, c4, d4) {
     let e4 = [];
     const f4 = a4.L(b3, c4, d4, (k3) => {
-      if (a4.l instanceof Ph) {
-        const n4 = Oh(a4.l, b3, k3, d4);
-        return kf(n4, (t4) => e4 = t4);
+      if (a4.l instanceof Th) {
+        const n4 = Sh(a4.l, b3, k3, d4);
+        return of(n4, (t4) => e4 = t4);
       }
       let l4 = null;
       return w4.create({ next: () => {
@@ -23780,7 +23854,7 @@ var fontoxpath = function(xspattern, prsc) {
             if (n4.done)
               return p3;
             n4 = a4.l.s(n4.value, d4);
-            l4 = kf(n4, (t4) => e4 = gf(e4, t4)).value;
+            l4 = of(n4, (t4) => e4 = lf(e4, t4)).value;
           }
           n4 = l4.next(0);
           if (n4.done)
@@ -23796,13 +23870,13 @@ var fontoxpath = function(xspattern, prsc) {
         return p3;
       const k3 = f4.O();
       h4 = true;
-      return q3(new Ue(k3, e4));
+      return q3(new Ye(k3, e4));
     } };
   }
-  function Qh(a4, b3, c4, d4) {
+  function Uh(a4, b3, c4, d4) {
     return a4.L(b3, c4, d4, (e4) => {
-      if (a4.l instanceof Ph)
-        return Qh(a4.l, b3, e4, d4);
+      if (a4.l instanceof Th)
+        return Uh(a4.l, b3, e4, d4);
       let f4 = null;
       return w4.create({ next: () => {
         for (; ; ) {
@@ -23821,16 +23895,16 @@ var fontoxpath = function(xspattern, prsc) {
       } });
     });
   }
-  var Ph = class extends D3 {
+  var Th = class extends D3 {
     constructor(a4, b3, c4, d4) {
       super(a4, b3, c4, true);
       this.l = d4;
-      this.J = this.l.J;
+      this.I = this.l.I;
     }
     h(a4, b3) {
       return this.L(a4, kd(a4), b3, (c4) => {
-        if (this.l instanceof Ph)
-          return Qh(this.l, a4, c4, b3);
+        if (this.l instanceof Th)
+          return Uh(this.l, a4, c4, b3);
         let d4 = null;
         return w4.create({ next: (e4) => {
           for (; ; ) {
@@ -23850,23 +23924,23 @@ var fontoxpath = function(xspattern, prsc) {
       });
     }
     s(a4, b3) {
-      return Oh(this, a4, kd(a4), b3);
+      return Sh(this, a4, kd(a4), b3);
     }
     v(a4) {
       super.v(a4);
-      this.J = this.l.J;
+      this.I = this.l.I;
       for (const b3 of this.Fa)
-        if (b3 !== this.l && b3.J)
-          throw Je();
+        if (b3 !== this.l && b3.I)
+          throw Ne();
     }
   };
-  var Rh = class extends Ph {
+  var Vh = class extends Th {
     constructor(a4, b3, c4, d4) {
       super(b3.o.add(d4.o), [b3, d4], { B: false }, d4);
-      this.R = a4.prefix;
+      this.P = a4.prefix;
       this.ma = a4.namespaceURI;
-      this.Nb = a4.localName;
-      this.xb = null;
+      this.Pb = a4.localName;
+      this.yb = null;
       this.A = c4;
       this.La = null;
       this.ya = b3;
@@ -23887,39 +23961,39 @@ var fontoxpath = function(xspattern, prsc) {
           if (l4.done)
             e4 = null;
           else
-            return h4++, k3 = { [this.xb]: () => w4.m(l4.value) }, this.La && (k3[this.La] = () => w4.m(new Ca(5, h4))), q3(hc(f4, k3));
+            return h4++, k3 = { [this.yb]: () => w4.m(l4.value) }, this.La && (k3[this.La] = () => w4.m(new Ca(5, h4))), q3(hc(f4, k3));
         }
       } });
     }
     v(a4) {
-      if (this.R && (this.ma = a4.$(this.R), !this.ma && this.R))
-        throw Error(`XPST0081: Could not resolve namespace for prefix ${this.R} in a for expression`);
+      if (this.P && (this.ma = a4.$(this.P), !this.ma && this.P))
+        throw Error(`XPST0081: Could not resolve namespace for prefix ${this.P} in a for expression`);
       this.ya.v(a4);
-      yg(a4);
-      this.xb = Cg(a4, this.ma, this.Nb);
+      Cg(a4);
+      this.yb = Gg(a4, this.ma, this.Pb);
       if (this.A) {
         if (this.A.prefix && (this.A.namespaceURI = a4.$(this.A.prefix), !this.A.namespaceURI && this.A.prefix))
-          throw Error(`XPST0081: Could not resolve namespace for prefix ${this.R} in the positionalVariableBinding in a for expression`);
-        this.La = Cg(a4, this.A.namespaceURI, this.A.localName);
+          throw Error(`XPST0081: Could not resolve namespace for prefix ${this.P} in the positionalVariableBinding in a for expression`);
+        this.La = Gg(a4, this.A.namespaceURI, this.A.localName);
       }
       this.l.v(a4);
-      Eg(a4);
-      if (this.ya.J)
-        throw Je();
-      this.l.J && (this.J = true);
+      Ig(a4);
+      if (this.ya.I)
+        throw Ne();
+      this.l.I && (this.I = true);
     }
   };
-  var Sh = class extends D3 {
+  var Wh = class extends D3 {
     constructor(a4, b3, c4) {
-      super(new qf({ external: 1 }), [c4], { B: false, P: "unsorted" });
-      this.R = a4.map(({ name: d4 }) => d4);
+      super(new uf({ external: 1 }), [c4], { B: false, R: "unsorted" });
+      this.P = a4.map(({ name: d4 }) => d4);
       this.A = a4.map(({ type: d4 }) => d4);
       this.s = null;
       this.L = b3;
       this.l = c4;
     }
     h(a4, b3) {
-      const c4 = new Va({ j: this.A, arity: this.A.length, Ya: true, J: this.l.J, localName: "dynamic-function", namespaceURI: "", i: this.L, value: (d4, e4, f4, ...h4) => {
+      const c4 = new Va({ j: this.A, arity: this.A.length, Ya: true, I: this.l.I, localName: "dynamic-function", namespaceURI: "", i: this.L, value: (d4, e4, f4, ...h4) => {
         d4 = hc(bc(a4, -1, null, w4.empty()), this.s.reduce((k3, l4, n4) => {
           k3[l4] = Ra(h4[n4]);
           return k3;
@@ -23929,25 +24003,25 @@ var fontoxpath = function(xspattern, prsc) {
       return w4.m(c4);
     }
     v(a4) {
-      yg(a4);
-      this.s = this.R.map((b3) => Cg(
+      Cg(a4);
+      this.s = this.P.map((b3) => Gg(
         a4,
         b3.namespaceURI,
         b3.localName
       ));
       this.l.v(a4);
-      Eg(a4);
-      if (this.l.J)
+      Ig(a4);
+      if (this.l.I)
         throw Error("Not implemented: inline functions can not yet be updating.");
     }
   };
-  var Th = class extends Ph {
+  var Xh = class extends Th {
     constructor(a4, b3, c4) {
-      super(b3.o.add(c4.o), [b3, c4], { B: false, W: c4.W, P: c4.ia, subtree: c4.subtree }, c4);
+      super(b3.o.add(c4.o), [b3, c4], { B: false, W: c4.W, R: c4.ia, subtree: c4.subtree }, c4);
       if (a4.prefix || a4.namespaceURI)
         throw Error("Not implemented: let expressions with namespace usage.");
       this.A = a4.prefix;
-      this.R = a4.namespaceURI;
+      this.P = a4.namespaceURI;
       this.La = a4.localName;
       this.ma = b3;
       this.ya = null;
@@ -23963,21 +24037,21 @@ var fontoxpath = function(xspattern, prsc) {
       } });
     }
     v(a4) {
-      if (this.A && (this.R = a4.$(this.A), !this.R && this.A))
+      if (this.A && (this.P = a4.$(this.A), !this.P && this.A))
         throw Error(`XPST0081: Could not resolve namespace for prefix ${this.A} using in a for expression`);
       this.ma.v(a4);
-      yg(a4);
-      this.ya = Cg(a4, this.R, this.La);
+      Cg(a4);
+      this.ya = Gg(a4, this.P, this.La);
       this.l.v(a4);
-      Eg(a4);
-      this.J = this.l.J;
-      if (this.ma.J)
-        throw Je();
+      Ig(a4);
+      this.I = this.l.I;
+      if (this.ma.I)
+        throw Ne();
     }
   };
-  var Uh = class extends D3 {
+  var Yh = class extends D3 {
     constructor(a4, b3) {
-      super(new qf({}), [], { B: true, P: "sorted" }, false, b3);
+      super(new uf({}), [], { B: true, R: "sorted" }, false, b3);
       let c4;
       switch (b3.type) {
         case 5:
@@ -23999,27 +24073,27 @@ var fontoxpath = function(xspattern, prsc) {
       return this.l();
     }
   };
-  var Vh = class extends D3 {
+  var Zh = class extends D3 {
     constructor(a4, b3) {
-      super(new qf({ external: 1 }), a4.reduce((c4, { key: d4, value: e4 }) => c4.concat(d4, e4), []), { B: false }, false, b3);
+      super(new uf({ external: 1 }), a4.reduce((c4, { key: d4, value: e4 }) => c4.concat(d4, e4), []), { B: false }, false, b3);
       this.l = a4;
     }
     h(a4, b3) {
-      const c4 = this.l.map((d4) => qc(C3(d4.key, a4, b3), b3).Y({ default: () => {
+      const c4 = this.l.map((d4) => qc(C3(d4.key, a4, b3), b3).X({ default: () => {
         throw Error("XPTY0004: A key of a map should be a single atomizable value.");
       }, m: (e4) => e4 }));
       return A2(c4, (d4) => w4.m(new ub(d4.map((e4, f4) => ({ key: e4, value: Ra(C3(this.l[f4].value, a4, b3)) })))));
     }
   };
-  var Wh = class extends D3 {
+  var $h = class extends D3 {
     constructor(a4, b3, c4) {
-      super(new qf({ external: 1 }), [], { B: true }, false, c4);
+      super(new uf({ external: 1 }), [], { B: true }, false, c4);
       this.s = b3;
       this.A = a4;
       this.l = null;
     }
     h() {
-      const a4 = new Va({ j: this.l.j, J: this.l.J, arity: this.s, localName: this.l.localName, namespaceURI: this.l.namespaceURI, i: this.l.i, value: this.l.callFunction });
+      const a4 = new Va({ j: this.l.j, I: this.l.I, arity: this.s, localName: this.l.localName, namespaceURI: this.l.namespaceURI, i: this.l.i, value: this.l.callFunction });
       return w4.m(a4);
     }
     v(a4) {
@@ -24028,18 +24102,18 @@ var fontoxpath = function(xspattern, prsc) {
       if (null === b3) {
         const e4 = a4.Sa({ localName: c4, prefix: d4 }, this.s);
         if (!e4)
-          throw Error(`XPST0017: The function ${d4 ? d4 + ":" : ""}${c4} with arity ${this.s} could not be resolved. ${hg(c4)}`);
+          throw Error(`XPST0017: The function ${d4 ? d4 + ":" : ""}${c4} with arity ${this.s} could not be resolved. ${lg(c4)}`);
         b3 = e4.namespaceURI;
         c4 = e4.localName;
       }
       this.l = a4.va(b3, c4, this.s) || null;
       if (!this.l)
-        throw a4 = this.A, Error(`XPST0017: Function ${`${a4.namespaceURI ? `Q{${a4.namespaceURI}}` : a4.prefix ? `${a4.prefix}:` : ""}${a4.localName}`} with arity of ${this.s} not registered. ${hg(c4)}`);
+        throw a4 = this.A, Error(`XPST0017: Function ${`${a4.namespaceURI ? `Q{${a4.namespaceURI}}` : a4.prefix ? `${a4.prefix}:` : ""}${a4.localName}`} with arity of ${this.s} not registered. ${lg(c4)}`);
       super.v(a4);
     }
   };
-  const Xh = { [5]: 5, [27]: 5, [28]: 5, [31]: 5, [32]: 5, [33]: 5, [34]: 5, [30]: 5, [36]: 5, [35]: 5, [38]: 5, [37]: 5, [29]: 5, [4]: 4, [6]: 6, [3]: 3 };
-  var Yh = class extends D3 {
+  const ai = { [5]: 5, [27]: 5, [28]: 5, [31]: 5, [32]: 5, [33]: 5, [34]: 5, [30]: 5, [36]: 5, [35]: 5, [38]: 5, [37]: 5, [29]: 5, [4]: 4, [6]: 6, [3]: 3 };
+  var bi = class extends D3 {
     constructor(a4, b3, c4) {
       super(b3.o, [b3], { B: false }, false, c4);
       this.s = b3;
@@ -24054,15 +24128,15 @@ var fontoxpath = function(xspattern, prsc) {
           return c4 = "+" === this.l ? +d4.value : -d4.value, 0 === d4.type && (c4 = Number.NaN), w4.m(g3(c4, this.type.type));
         if (1 < c4.length)
           throw Error("XPTY0004: The operand to a unary operator must be a sequence with a length less than one");
-        return v3(d4.type, 19) ? (d4 = jd(d4, 3).value, w4.m(g3("+" === this.l ? d4 : -d4, 3))) : v3(d4.type, 2) ? "+" === this.l ? w4.m(d4) : w4.m(g3(-1 * d4.value, Xh[d4.type])) : w4.m(g3(Number.NaN, 3));
+        return v3(d4.type, 19) ? (d4 = jd(d4, 3).value, w4.m(g3("+" === this.l ? d4 : -d4, 3))) : v3(d4.type, 2) ? "+" === this.l ? w4.m(d4) : w4.m(g3(-1 * d4.value, ai[d4.type])) : w4.m(g3(Number.NaN, 3));
       });
     }
   };
-  var Zh = class extends D3 {
+  var ci = class extends D3 {
     constructor(a4, b3) {
-      super(a4.reduce((c4, d4) => c4.add(d4.o), new qf({})), a4, { B: a4.every((c4) => c4.B) }, false, b3);
+      super(a4.reduce((c4, d4) => c4.add(d4.o), new uf({})), a4, { B: a4.every((c4) => c4.B) }, false, b3);
       this.l = a4;
-      this.s = a4.reduce((c4, d4) => th(c4, d4.D()), null);
+      this.s = a4.reduce((c4, d4) => xh(c4, d4.D()), null);
     }
     h(a4, b3) {
       let c4 = 0, d4 = null, e4 = false, f4 = null;
@@ -24094,9 +24168,9 @@ var fontoxpath = function(xspattern, prsc) {
       return this.s;
     }
   };
-  var $h = class extends D3 {
+  var di = class extends D3 {
     constructor(a4, b3) {
-      super(a4.reduce((d4, e4) => 0 < pf(d4, e4.o) ? d4 : e4.o, new qf({})), a4, { B: a4.every((d4) => d4.B) }, false, b3);
+      super(a4.reduce((d4, e4) => 0 < tf(d4, e4.o) ? d4 : e4.o, new uf({})), a4, { B: a4.every((d4) => d4.B) }, false, b3);
       let c4;
       for (b3 = 0; b3 < a4.length; ++b3) {
         void 0 === c4 && (c4 = a4[b3].D());
@@ -24142,7 +24216,7 @@ var fontoxpath = function(xspattern, prsc) {
       return this.s;
     }
   };
-  function ai(a4, b3) {
+  function ei(a4, b3) {
     let c4;
     return w4.create({ next: (d4) => {
       for (; ; ) {
@@ -24161,147 +24235,147 @@ var fontoxpath = function(xspattern, prsc) {
     } });
   }
   ;
-  function bi(a4, b3) {
+  function fi(a4, b3) {
     if ("eqOp" === a4)
       return (c4, d4) => {
-        const { T: e4, U: f4 } = b3(c4, d4);
+        const { U: e4, V: f4 } = b3(c4, d4);
         return e4.value.namespaceURI === f4.value.namespaceURI && e4.value.localName === f4.value.localName;
       };
     if ("neOp" === a4)
       return (c4, d4) => {
-        const { T: e4, U: f4 } = b3(c4, d4);
+        const { U: e4, V: f4 } = b3(c4, d4);
         return e4.value.namespaceURI !== f4.value.namespaceURI || e4.value.localName !== f4.value.localName;
       };
     throw Error('XPTY0004: Only the "eq" and "ne" comparison is defined for xs:QName');
   }
-  function ci(a4, b3) {
+  function gi(a4, b3) {
     switch (a4) {
       case "eqOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return e4.value === f4.value;
         };
       case "neOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return e4.value !== f4.value;
         };
       case "ltOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return e4.value < f4.value;
         };
       case "leOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return e4.value <= f4.value;
         };
       case "gtOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return e4.value > f4.value;
         };
       case "geOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return e4.value >= f4.value;
         };
     }
   }
-  function di(a4, b3) {
+  function hi(a4, b3) {
     switch (a4) {
       case "ltOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return e4.value.ea < f4.value.ea;
         };
       case "leOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return vb(e4.value, f4.value) || e4.value.ea < f4.value.ea;
         };
       case "gtOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return e4.value.ea > f4.value.ea;
         };
       case "geOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return vb(e4.value, f4.value) || e4.value.ea > f4.value.ea;
         };
     }
   }
-  function ei(a4, b3) {
+  function ii(a4, b3) {
     switch (a4) {
       case "eqOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return vb(e4.value, f4.value);
         };
       case "ltOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return e4.value.ca < f4.value.ca;
         };
       case "leOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return vb(e4.value, f4.value) || e4.value.ca < f4.value.ca;
         };
       case "gtOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return e4.value.ca > f4.value.ca;
         };
       case "geOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return vb(e4.value, f4.value) || e4.value.ca > f4.value.ca;
         };
     }
   }
-  function fi(a4, b3) {
+  function ji(a4, b3) {
     switch (a4) {
       case "eqOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return vb(e4.value, f4.value);
         };
       case "neOp":
         return (c4, d4) => {
-          const { T: e4, U: f4 } = b3(c4, d4);
+          const { U: e4, V: f4 } = b3(c4, d4);
           return !vb(e4.value, f4.value);
         };
     }
   }
-  function gi(a4, b3) {
+  function ki(a4, b3) {
     switch (a4) {
       case "eqOp":
         return (c4, d4, e4) => {
-          const { T: f4, U: h4 } = b3(c4, d4);
+          const { U: f4, V: h4 } = b3(c4, d4);
           return Ob(f4.value, h4.value, fc(e4));
         };
       case "neOp":
         return (c4, d4, e4) => {
-          const { T: f4, U: h4 } = b3(c4, d4);
+          const { U: f4, V: h4 } = b3(c4, d4);
           return !Ob(f4.value, h4.value, fc(e4));
         };
       case "ltOp":
         return (c4, d4, e4) => {
-          const { T: f4, U: h4 } = b3(c4, d4);
+          const { U: f4, V: h4 } = b3(c4, d4);
           c4 = fc(e4);
           return 0 > Nb(f4.value, h4.value, c4);
         };
       case "leOp":
         return (c4, d4, e4) => {
-          const { T: f4, U: h4 } = b3(c4, d4);
+          const { U: f4, V: h4 } = b3(c4, d4);
           (c4 = Ob(f4.value, h4.value, fc(e4))) || (e4 = fc(e4), c4 = 0 > Nb(f4.value, h4.value, e4));
           return c4;
         };
       case "gtOp":
         return (c4, d4, e4) => {
-          const { T: f4, U: h4 } = b3(c4, d4);
+          const { U: f4, V: h4 } = b3(c4, d4);
           c4 = fc(e4);
           return 0 < Nb(
             f4.value,
@@ -24311,29 +24385,29 @@ var fontoxpath = function(xspattern, prsc) {
         };
       case "geOp":
         return (c4, d4, e4) => {
-          const { T: f4, U: h4 } = b3(c4, d4);
+          const { U: f4, V: h4 } = b3(c4, d4);
           (c4 = Ob(f4.value, h4.value, fc(e4))) || (e4 = fc(e4), c4 = 0 < Nb(f4.value, h4.value, e4));
           return c4;
         };
     }
   }
-  function hi(a4, b3) {
+  function li(a4, b3) {
     switch (a4) {
       case "eqOp":
         return (c4, d4, e4) => {
-          const { T: f4, U: h4 } = b3(c4, d4);
+          const { U: f4, V: h4 } = b3(c4, d4);
           return Ob(f4.value, h4.value, fc(e4));
         };
       case "neOp":
         return (c4, d4, e4) => {
-          const { T: f4, U: h4 } = b3(c4, d4);
+          const { U: f4, V: h4 } = b3(c4, d4);
           return !Ob(f4.value, h4.value, fc(e4));
         };
     }
   }
-  function ii(a4, b3, c4) {
+  function mi(a4, b3, c4) {
     function d4(n4, t4) {
-      return { T: h4 ? h4(n4) : n4, U: k3 ? k3(t4) : t4 };
+      return { U: h4 ? h4(n4) : n4, V: k3 ? k3(t4) : t4 };
     }
     function e4(n4) {
       return v3(b3, n4) && v3(c4, n4);
@@ -24344,32 +24418,32 @@ var fontoxpath = function(xspattern, prsc) {
     let h4 = null, k3 = null;
     v3(b3, 19) && v3(c4, 19) ? b3 = c4 = 1 : v3(b3, 19) ? (h4 = (n4) => jd(n4, c4), b3 = c4) : v3(c4, 19) && (k3 = (n4) => jd(n4, b3), c4 = b3);
     if (v3(b3, 23) && v3(c4, 23))
-      return bi(a4, d4);
+      return fi(a4, d4);
     if (e4(0) || f4([1, 47, 61]) || f4([2, 47, 61]) || e4(20) || e4(22) || e4(21) || f4([1, 20])) {
-      var l4 = ci(a4, d4);
+      var l4 = gi(a4, d4);
       if (void 0 !== l4)
         return l4;
     }
-    if (e4(16) && (l4 = di(a4, d4), void 0 !== l4) || e4(17) && (l4 = ei(a4, d4), void 0 !== l4) || e4(18) && (l4 = fi(a4, d4), void 0 !== l4))
+    if (e4(16) && (l4 = hi(a4, d4), void 0 !== l4) || e4(17) && (l4 = ii(a4, d4), void 0 !== l4) || e4(18) && (l4 = ji(a4, d4), void 0 !== l4))
       return l4;
     if (e4(9) || e4(7) || e4(8)) {
-      if (l4 = gi(a4, d4), void 0 !== l4)
+      if (l4 = ki(a4, d4), void 0 !== l4)
         return l4;
     }
     if (e4(11) || e4(12) || e4(13) || e4(14) || e4(15)) {
-      if (l4 = hi(a4, d4), void 0 !== l4)
+      if (l4 = li(a4, d4), void 0 !== l4)
         return l4;
     }
     throw Error(`XPTY0004: ${a4} not available for ${Da[b3]} and ${Da[c4]}`);
   }
-  const ji = /* @__PURE__ */ Object.create(null);
-  function ki(a4, b3, c4) {
+  const ni = /* @__PURE__ */ Object.create(null);
+  function oi(a4, b3, c4) {
     const d4 = `${b3}~${c4}~${a4}`;
-    let e4 = ji[d4];
-    e4 ||= ji[d4] = ii(a4, b3, c4);
+    let e4 = ni[d4];
+    e4 ||= ni[d4] = mi(a4, b3, c4);
     return e4;
   }
-  var li = class extends D3 {
+  var pi = class extends D3 {
     constructor(a4, b3, c4) {
       super(b3.o.add(c4.o), [b3, c4], { B: false });
       this.l = b3;
@@ -24377,10 +24451,10 @@ var fontoxpath = function(xspattern, prsc) {
       this.s = a4;
     }
     h(a4, b3) {
-      const c4 = C3(this.l, a4, b3), d4 = C3(this.A, a4, b3), e4 = ai(c4, b3), f4 = ai(d4, b3);
-      return e4.Y({ empty: () => w4.empty(), m: () => f4.Y({ empty: () => w4.empty(), m: () => {
+      const c4 = C3(this.l, a4, b3), d4 = C3(this.A, a4, b3), e4 = ei(c4, b3), f4 = ei(d4, b3);
+      return e4.X({ empty: () => w4.empty(), m: () => f4.X({ empty: () => w4.empty(), m: () => {
         const h4 = e4.first(), k3 = f4.first();
-        return ki(this.s, h4.type, k3.type)(h4, k3, a4) ? w4.aa() : w4.V();
+        return oi(this.s, h4.type, k3.type)(h4, k3, a4) ? w4.aa() : w4.T();
       }, multiple: () => {
         throw Error("XPTY0004: Sequences to compare are not singleton.");
       } }), multiple: () => {
@@ -24388,26 +24462,26 @@ var fontoxpath = function(xspattern, prsc) {
       } });
     }
   };
-  const mi = { equalOp: "eqOp", notEqualOp: "neOp", lessThanOrEqualOp: "leOp", lessThanOp: "ltOp", greaterThanOrEqualOp: "geOp", greaterThanOp: "gtOp" };
-  function ni(a4, b3, c4, d4) {
-    a4 = mi[a4];
+  const qi = { equalOp: "eqOp", notEqualOp: "neOp", lessThanOrEqualOp: "leOp", lessThanOp: "ltOp", greaterThanOrEqualOp: "geOp", greaterThanOp: "gtOp" };
+  function ri(a4, b3, c4, d4) {
+    a4 = qi[a4];
     return c4.N((e4) => b3.filter((f4) => {
       for (let l4 = 0, n4 = e4.length; l4 < n4; ++l4) {
         let t4 = e4[l4], u4 = void 0, z3 = void 0;
         var h4 = f4.type, k3 = t4.type;
         if (v3(h4, 19) || v3(k3, 19))
           v3(h4, 2) ? u4 = 3 : v3(k3, 2) ? z3 = 3 : v3(h4, 17) ? u4 = 17 : v3(k3, 17) ? z3 = 17 : v3(h4, 16) ? u4 = 16 : v3(k3, 16) ? z3 = 16 : v3(h4, 19) ? z3 = k3 : v3(k3, 19) && (u4 = h4);
-        const [y3, F3] = [z3, u4];
+        const [y3, G3] = [z3, u4];
         h4 = y3;
-        k3 = F3;
+        k3 = G3;
         h4 ? f4 = jd(f4, h4) : k3 && (t4 = jd(t4, k3));
-        if (ki(a4, f4.type, t4.type)(f4, t4, d4))
+        if (oi(a4, f4.type, t4.type)(f4, t4, d4))
           return true;
       }
       return false;
-    }).Y({ default: () => w4.aa(), empty: () => w4.V() }));
+    }).X({ default: () => w4.aa(), empty: () => w4.T() }));
   }
-  var oi = class extends D3 {
+  var si = class extends D3 {
     constructor(a4, b3, c4) {
       super(b3.o.add(c4.o), [b3, c4], { B: false });
       this.l = b3;
@@ -24416,18 +24490,18 @@ var fontoxpath = function(xspattern, prsc) {
     }
     h(a4, b3) {
       const c4 = C3(this.l, a4, b3), d4 = C3(this.A, a4, b3);
-      return c4.Y({ empty: () => w4.V(), default: () => d4.Y({ empty: () => w4.V(), default: () => {
-        const e4 = ai(c4, b3), f4 = ai(d4, b3);
-        return ni(this.s, e4, f4, a4);
+      return c4.X({ empty: () => w4.T(), default: () => d4.X({ empty: () => w4.T(), default: () => {
+        const e4 = ei(c4, b3), f4 = ei(d4, b3);
+        return ri(this.s, e4, f4, a4);
       } }) });
     }
   };
-  function pi(a4, b3, c4, d4) {
+  function ti(a4, b3, c4, d4) {
     if (!v3(c4, 53) || !v3(d4, 53))
       throw Error("XPTY0004: Sequences to compare are not nodes");
     switch (a4) {
       case "isOp":
-        return qi(c4, d4);
+        return ui(c4, d4);
       case "nodeBeforeOp":
         return b3 ? (e4, f4) => 0 > sd(b3, e4.first(), f4.first()) : void 0;
       case "nodeAfterOp":
@@ -24436,10 +24510,10 @@ var fontoxpath = function(xspattern, prsc) {
         throw Error("Unexpected operator");
     }
   }
-  function qi(a4, b3) {
+  function ui(a4, b3) {
     return a4 !== b3 || 47 !== a4 && 53 !== a4 && 54 !== a4 && 55 !== a4 && 56 !== a4 && 57 !== a4 && 58 !== a4 ? () => false : (c4, d4) => md(c4.first().value, d4.first().value);
   }
-  var ri = class extends D3 {
+  var vi = class extends D3 {
     constructor(a4, b3, c4) {
       super(b3.o.add(c4.o), [b3, c4], { B: false });
       this.l = b3;
@@ -24448,33 +24522,33 @@ var fontoxpath = function(xspattern, prsc) {
     }
     h(a4, b3) {
       const c4 = C3(this.l, a4, b3), d4 = C3(this.A, a4, b3);
-      return c4.Y({ empty: () => w4.empty(), multiple: () => {
+      return c4.X({ empty: () => w4.empty(), multiple: () => {
         throw Error("XPTY0004: Sequences to compare are not singleton");
-      }, m: () => d4.Y({ empty: () => w4.empty(), multiple: () => {
+      }, m: () => d4.X({ empty: () => w4.empty(), multiple: () => {
         throw Error("XPTY0004: Sequences to compare are not singleton");
       }, m: () => {
         const e4 = c4.first(), f4 = d4.first();
-        return pi(this.s, b3.h, e4.type, f4.type)(c4, d4, a4) ? w4.aa() : w4.V();
+        return ti(this.s, b3.h, e4.type, f4.type)(c4, d4, a4) ? w4.aa() : w4.T();
       } }) });
     }
   };
-  function si(a4, b3, c4, d4) {
+  function wi(a4, b3, c4, d4) {
     return c4.N((e4) => {
       if (e4.some((f4) => !v3(f4.type, 53)))
         throw Error(`XPTY0004: Sequences given to ${a4} should only contain nodes.`);
       return "sorted" === d4 ? w4.create(e4) : "reverse-sorted" === d4 ? w4.create(e4.reverse()) : w4.create(td(b3, e4));
     });
   }
-  var ti = class extends D3 {
+  var xi = class extends D3 {
     constructor(a4, b3, c4, d4) {
-      super(0 < pf(b3.o, c4.o) ? b3.o : c4.o, [b3, c4], { B: b3.B && c4.B }, false, d4);
+      super(0 < tf(b3.o, c4.o) ? b3.o : c4.o, [b3, c4], { B: b3.B && c4.B }, false, d4);
       this.l = a4;
       this.s = b3;
       this.A = c4;
     }
     h(a4, b3) {
-      const c4 = si(this.l, b3.h, C3(this.s, a4, b3), this.s.ia);
-      a4 = si(this.l, b3.h, C3(this.A, a4, b3), this.A.ia);
+      const c4 = wi(this.l, b3.h, C3(this.s, a4, b3), this.s.ia);
+      a4 = wi(this.l, b3.h, C3(this.A, a4, b3), this.A.ia);
       const d4 = c4.value, e4 = a4.value;
       let f4 = null, h4 = null, k3 = false, l4 = false;
       return w4.create({ next: () => {
@@ -24511,17 +24585,17 @@ var fontoxpath = function(xspattern, prsc) {
       } });
     }
   };
-  var ui = class extends mf {
+  var yi = class extends qf {
     constructor(a4, b3) {
-      super(a4.reduce((c4, d4) => c4.add(d4.o), new qf({})), a4, { P: "unsorted", B: a4.every((c4) => c4.B) }, b3);
+      super(a4.reduce((c4, d4) => c4.add(d4.o), new uf({})), a4, { R: "unsorted", B: a4.every((c4) => c4.B) }, b3);
     }
     A(a4, b3, c4) {
       return c4.length ? jc(c4.map((d4) => d4(a4))) : w4.empty();
     }
   };
-  var vi = class extends D3 {
+  var zi = class extends D3 {
     constructor(a4, b3, c4) {
-      super(new qf({}).add(a4.o), [a4, b3], { B: a4.B && b3.B }, false, c4);
+      super(new uf({}).add(a4.o), [a4, b3], { B: a4.B && b3.B }, false, c4);
       this.l = a4;
       this.s = b3;
     }
@@ -24542,7 +24616,7 @@ var fontoxpath = function(xspattern, prsc) {
       } });
     }
   };
-  var wi = class extends D3 {
+  var Ai = class extends D3 {
     constructor(a4, b3, c4) {
       super(a4.o, [a4], { B: false });
       this.l = Ia(b3.prefix ? `${b3.prefix}:${b3.localName}` : b3.localName);
@@ -24555,10 +24629,10 @@ var fontoxpath = function(xspattern, prsc) {
     }
     h(a4, b3) {
       const c4 = qc(C3(this.A, a4, b3), b3);
-      return c4.Y({ empty: () => this.s ? w4.aa() : w4.V(), m: () => c4.map((d4) => id(d4, this.l).u ? va : wa), multiple: () => w4.V() });
+      return c4.X({ empty: () => this.s ? w4.aa() : w4.T(), m: () => c4.map((d4) => id(d4, this.l).u ? va : wa), multiple: () => w4.T() });
     }
   };
-  var xi = class extends D3 {
+  var Bi = class extends D3 {
     constructor(a4, b3, c4) {
       super(a4.o, [a4], { B: false });
       this.l = Ia(b3.prefix ? `${b3.prefix}:${b3.localName}` : b3.localName);
@@ -24571,7 +24645,7 @@ var fontoxpath = function(xspattern, prsc) {
     }
     h(a4, b3) {
       const c4 = qc(C3(this.A, a4, b3), b3);
-      return c4.Y({ empty: () => {
+      return c4.X({ empty: () => {
         if (!this.s)
           throw Error("XPTY0004: Sequence to cast is empty while target type is singleton.");
         return w4.empty();
@@ -24580,7 +24654,7 @@ var fontoxpath = function(xspattern, prsc) {
       } });
     }
   };
-  function yi(a4, b3) {
+  function Ci(a4, b3) {
     const c4 = a4.value;
     let d4 = null, e4 = false;
     return w4.create({ next: () => {
@@ -24600,7 +24674,7 @@ var fontoxpath = function(xspattern, prsc) {
     } });
   }
   ;
-  var zi = class extends D3 {
+  var Di = class extends D3 {
     constructor(a4, b3, c4, d4) {
       super(a4.o, [a4], { B: false }, false, d4);
       this.A = a4;
@@ -24609,21 +24683,21 @@ var fontoxpath = function(xspattern, prsc) {
     }
     h(a4, b3) {
       const c4 = C3(this.A, a4, b3);
-      return c4.Y({ empty: () => "?" === this.l || "*" === this.l ? w4.aa() : w4.V(), multiple: () => "+" === this.l || "*" === this.l ? yi(c4, (d4) => {
+      return c4.X({ empty: () => "?" === this.l || "*" === this.l ? w4.aa() : w4.T(), multiple: () => "+" === this.l || "*" === this.l ? Ci(c4, (d4) => {
         const e4 = w4.m(d4);
         d4 = bc(a4, 0, d4, e4);
         return C3(this.s, d4, b3);
-      }) : w4.V(), m: () => yi(c4, (d4) => {
+      }) : w4.T(), m: () => Ci(c4, (d4) => {
         const e4 = w4.m(d4);
         d4 = bc(a4, 0, d4, e4);
         return C3(this.s, d4, b3);
       }) });
     }
   };
-  function Ai(a4, b3) {
+  function Ei(a4, b3) {
     return null !== a4 && null !== b3 && v3(a4.type, 53) && v3(b3.type, 53) ? md(a4.value, b3.value) : false;
   }
-  function Bi(a4) {
+  function Fi(a4) {
     let b3 = a4.next(0);
     if (b3.done)
       return w4.empty();
@@ -24640,12 +24714,12 @@ var fontoxpath = function(xspattern, prsc) {
             return f4;
           c4 = b3.value.value;
         }
-      while (f4.done || Ai(f4.value, d4));
+      while (f4.done || Ei(f4.value, d4));
       d4 = f4.value;
       return f4;
     } });
   }
-  function Ci(a4, b3) {
+  function Gi(a4, b3) {
     const c4 = [];
     (function() {
       for (var f4 = b3.next(0); !f4.done; ) {
@@ -24682,21 +24756,21 @@ var fontoxpath = function(xspattern, prsc) {
           }
           c4.splice(k3, 0, h4);
         }
-      } while (Ai(f4.value, d4));
+      } while (Ei(f4.value, d4));
       d4 = f4.value;
       return f4;
     } });
   }
   ;
-  var Di = class extends D3 {
+  var Hi = class extends D3 {
     constructor(a4, b3) {
-      super(a4.reduce((c4, d4) => 0 < pf(c4, d4.o) ? c4 : d4.o, new qf({})), a4, { B: a4.every((c4) => c4.B) }, false, b3);
+      super(a4.reduce((c4, d4) => 0 < tf(c4, d4.o) ? c4 : d4.o, new uf({})), a4, { B: a4.every((c4) => c4.B) }, false, b3);
       this.l = a4;
     }
     h(a4, b3) {
       if (this.l.every((c4) => "sorted" === c4.ia)) {
         let c4 = 0;
-        return Ci(b3.h, { next: () => c4 >= this.l.length ? p3 : q3(C3(this.l[c4++], a4, b3)) }).map((d4) => {
+        return Gi(b3.h, { next: () => c4 >= this.l.length ? p3 : q3(C3(this.l[c4++], a4, b3)) }).map((d4) => {
           if (!v3(d4.type, 53))
             throw Error("XPTY0004: The sequences to union are not of type node()*");
           return d4;
@@ -24713,16 +24787,16 @@ var fontoxpath = function(xspattern, prsc) {
       });
     }
   };
-  function Ei(a4) {
+  function Ii(a4) {
     return a4.every((b3) => null === b3 || v3(b3.type, 5) || v3(b3.type, 4)) || null !== a4.map((b3) => b3 ? rc(b3.type) : null).reduce((b3, c4) => null === c4 ? b3 : c4 === b3 ? b3 : null) ? a4 : a4.every((b3) => null === b3 || v3(b3.type, 1) || v3(b3.type, 20)) ? a4.map((b3) => b3 ? jd(b3, 1) : null) : a4.every((b3) => null === b3 || v3(b3.type, 4) || v3(b3.type, 6)) ? a4.map((b3) => b3 ? jd(b3, 6) : b3) : a4.every((b3) => null === b3 || v3(b3.type, 4) || v3(b3.type, 6) || v3(b3.type, 3)) ? a4.map((b3) => b3 ? jd(b3, 3) : b3) : null;
   }
   ;
-  function Fi(a4) {
+  function Ji(a4) {
     return (a4 = a4.find((b3) => !!b3)) ? rc(a4.type) : null;
   }
-  var Gi = class extends Ph {
+  var Ki = class extends Th {
     constructor(a4, b3) {
-      super(new qf({}), [b3, ...a4.map((c4) => c4.ba)], { B: false, W: false, P: "unsorted", subtree: false }, b3);
+      super(new uf({}), [b3, ...a4.map((c4) => c4.ba)], { B: false, W: false, R: "unsorted", subtree: false }, b3);
       this.A = a4;
     }
     L(a4, b3, c4, d4) {
@@ -24736,59 +24810,59 @@ var fontoxpath = function(xspattern, prsc) {
           for (var t4 = b3.next(0); !t4.done; )
             e4.push(t4.value), t4 = b3.next(0);
           t4 = e4.map((z3) => n4.ba.h(z3, c4)).map((z3) => qc(z3, c4));
-          if (t4.find((z3) => !z3.G() && !z3.ua()))
+          if (t4.find((z3) => !z3.F() && !z3.oa()))
             throw Error("XPTY0004: Order by only accepts empty or singleton sequences");
           h4 = t4.map((z3) => z3.first());
           h4 = h4.map((z3) => null === z3 ? z3 : v3(19, z3.type) ? jd(z3, 1) : z3);
-          if (Fi(h4) && (h4 = Ei(h4), !h4))
+          if (Ji(h4) && (h4 = Ii(h4), !h4))
             throw Error("XPTY0004: Could not cast values");
           t4 = h4.length;
           k3 = h4.map((z3, y3) => y3);
           for (let z3 = 0; z3 < t4; z3++)
             if (z3 + 1 !== t4)
               for (let y3 = z3; 0 <= y3; y3--) {
-                const F3 = y3, N3 = y3 + 1;
+                const G3 = y3, N3 = y3 + 1;
                 if (N3 === t4)
                   continue;
-                const U2 = h4[k3[F3]], ba = h4[k3[N3]];
-                if (null !== ba || null !== U2) {
-                  if (n4.ac) {
+                const U2 = h4[k3[G3]], ca = h4[k3[N3]];
+                if (null !== ca || null !== U2) {
+                  if (n4.cc) {
                     if (null === U2)
                       continue;
-                    if (null === ba && null !== U2) {
-                      [k3[F3], k3[N3]] = [k3[N3], k3[F3]];
+                    if (null === ca && null !== U2) {
+                      [k3[G3], k3[N3]] = [k3[N3], k3[G3]];
                       continue;
                     }
-                    if (isNaN(ba.value) && null !== U2 && !isNaN(U2.value)) {
-                      [k3[F3], k3[N3]] = [k3[N3], k3[F3]];
+                    if (isNaN(ca.value) && null !== U2 && !isNaN(U2.value)) {
+                      [k3[G3], k3[N3]] = [k3[N3], k3[G3]];
                       continue;
                     }
                   } else {
-                    if (null === ba)
+                    if (null === ca)
                       continue;
-                    if (null === U2 && null !== ba) {
-                      [k3[F3], k3[N3]] = [k3[N3], k3[F3]];
+                    if (null === U2 && null !== ca) {
+                      [k3[G3], k3[N3]] = [k3[N3], k3[G3]];
                       continue;
                     }
-                    if (isNaN(U2.value) && null !== ba && !isNaN(ba.value)) {
-                      [k3[F3], k3[N3]] = [k3[N3], k3[F3]];
+                    if (isNaN(U2.value) && null !== ca && !isNaN(ca.value)) {
+                      [k3[G3], k3[N3]] = [k3[N3], k3[G3]];
                       continue;
                     }
                   }
-                  ki("gtOp", U2.type, ba.type)(U2, ba, a4) && ([k3[F3], k3[N3]] = [k3[N3], k3[F3]]);
+                  oi("gtOp", U2.type, ca.type)(U2, ca, a4) && ([k3[G3], k3[N3]] = [k3[N3], k3[G3]]);
                 }
               }
-          let u4 = n4.Ab ? 0 : h4.length - 1;
-          l4 = d4({ next: () => n4.Ab ? u4 >= h4.length ? p3 : q3(e4[k3[u4++]]) : 0 > u4 ? p3 : q3(e4[k3[u4--]]) }).value;
+          let u4 = n4.Bb ? 0 : h4.length - 1;
+          l4 = d4({ next: () => n4.Bb ? u4 >= h4.length ? p3 : q3(e4[k3[u4++]]) : 0 > u4 ? p3 : q3(e4[k3[u4--]]) }).value;
           f4 = true;
         }
         return l4.next(0);
       } });
     }
   };
-  var Hi = class extends D3 {
+  var Li = class extends D3 {
     constructor(a4) {
-      super(a4 ? a4.o : new qf({}), a4 ? [a4] : [], { P: "sorted", subtree: false, W: false, B: false });
+      super(a4 ? a4.o : new uf({}), a4 ? [a4] : [], { R: "sorted", subtree: false, W: false, B: false });
       this.l = a4;
     }
     h(a4, b3) {
@@ -24803,9 +24877,9 @@ var fontoxpath = function(xspattern, prsc) {
       return this.l ? C3(this.l, bc(a4, 0, c4.first(), c4), b3) : c4;
     }
   };
-  var Ii = class extends D3 {
+  var Mi = class extends D3 {
     constructor(a4) {
-      super(new qf({}), [], { P: "sorted" }, false, a4);
+      super(new uf({}), [], { R: "sorted" }, false, a4);
     }
     h(a4) {
       if (null === a4.M)
@@ -24813,7 +24887,7 @@ var fontoxpath = function(xspattern, prsc) {
       return w4.m(a4.M);
     }
   };
-  function Ji(a4, b3) {
+  function Ni(a4, b3) {
     let c4 = false, d4 = false;
     b3.forEach((e4) => {
       v3(e4.type, 53) ? c4 = true : d4 = true;
@@ -24822,10 +24896,10 @@ var fontoxpath = function(xspattern, prsc) {
       throw Error("XPTY0018: The path operator should either return nodes or non-nodes. Mixed sequences are not allowed.");
     return c4 ? td(a4, b3) : b3;
   }
-  var Ki = class extends D3 {
+  var Oi = class extends D3 {
     constructor(a4, b3) {
       const c4 = a4.every((e4) => e4.W), d4 = a4.every((e4) => e4.subtree);
-      super(a4.reduce((e4, f4) => e4.add(f4.o), new qf({})), a4, { B: false, W: c4, P: b3 ? "sorted" : "unsorted", subtree: d4 });
+      super(a4.reduce((e4, f4) => e4.add(f4.o), new uf({})), a4, { B: false, W: c4, R: b3 ? "sorted" : "unsorted", subtree: d4 });
       this.l = a4;
       this.s = b3;
     }
@@ -24856,16 +24930,16 @@ var fontoxpath = function(xspattern, prsc) {
               } };
             case "sorted":
               if (e4.subtree && c4) {
-                k3 = Bi(d4);
+                k3 = Fi(d4);
                 break;
               }
-              k3 = Ci(b3.h, d4);
+              k3 = Gi(b3.h, d4);
               break;
             case "unsorted":
-              return Bi(d4).N((n4) => w4.create(Ji(b3.h, n4)));
+              return Fi(d4).N((n4) => w4.create(Ni(b3.h, n4)));
           }
         else
-          k3 = Bi(d4);
+          k3 = Fi(d4);
         c4 = c4 && e4.W;
         return k3;
       }, null);
@@ -24874,9 +24948,9 @@ var fontoxpath = function(xspattern, prsc) {
       return this.l[0].D();
     }
   };
-  var Li = class extends D3 {
+  var Pi = class extends D3 {
     constructor(a4, b3) {
-      super(a4.o.add(b3.o), [a4, b3], { B: a4.B && b3.B, W: a4.W, P: a4.ia, subtree: a4.subtree });
+      super(a4.o.add(b3.o), [a4, b3], { B: a4.B && b3.B, W: a4.W, R: a4.ia, subtree: a4.subtree });
       this.s = a4;
       this.l = b3;
     }
@@ -24884,7 +24958,7 @@ var fontoxpath = function(xspattern, prsc) {
       const c4 = C3(this.s, a4, b3);
       if (this.l.B) {
         const k3 = C3(this.l, a4, b3);
-        if (k3.G())
+        if (k3.F())
           return k3;
         const l4 = k3.first();
         if (v3(l4.type, 2)) {
@@ -24930,7 +25004,7 @@ var fontoxpath = function(xspattern, prsc) {
       return this.s.D();
     }
   };
-  function Mi(a4, b3, c4) {
+  function Qi(a4, b3, c4) {
     c4 = [c4];
     if (v3(a4.type, 62))
       if ("*" === b3)
@@ -24948,37 +25022,37 @@ var fontoxpath = function(xspattern, prsc) {
       throw Error("XPTY0004: The provided context item is not a map or an array.");
     return jc(c4);
   }
-  function Ni(a4, b3, c4, d4, e4) {
+  function Ri(a4, b3, c4, d4, e4) {
     if ("*" === b3)
-      return Mi(a4, b3, c4);
+      return Qi(a4, b3, c4);
     b3 = C3(b3, d4, e4);
-    b3 = Ra(b3)().N((f4) => f4.reduce((h4, k3) => Mi(a4, k3, h4), new Ba()));
+    b3 = Ra(b3)().N((f4) => f4.reduce((h4, k3) => Qi(a4, k3, h4), new Ba()));
     return jc([c4, b3]);
   }
   ;
-  var Oi = class extends D3 {
+  var Si = class extends D3 {
     constructor(a4, b3) {
-      super(a4.o, [a4].concat("*" === b3 ? [] : [b3]), { B: a4.B, P: a4.ia, subtree: a4.subtree });
+      super(a4.o, [a4].concat("*" === b3 ? [] : [b3]), { B: a4.B, R: a4.ia, subtree: a4.subtree });
       this.l = a4;
       this.s = b3;
     }
     h(a4, b3) {
-      return C3(this.l, a4, b3).N((c4) => c4.reduce((d4, e4) => Ni(e4, this.s, d4, a4, b3), new Ba()));
+      return C3(this.l, a4, b3).N((c4) => c4.reduce((d4, e4) => Ri(e4, this.s, d4, a4, b3), new Ba()));
     }
     D() {
       return this.l.D();
     }
   };
-  var Pi = class extends D3 {
+  var Ti = class extends D3 {
     constructor(a4, b3) {
-      super(new qf({ external: 1 }), "*" === a4 ? [] : [a4], { B: false }, false, b3);
+      super(new uf({ external: 1 }), "*" === a4 ? [] : [a4], { B: false }, false, b3);
       this.l = a4;
     }
     h(a4, b3) {
-      return Ni(a4.M, this.l, new Ba(), a4, b3);
+      return Ri(a4.M, this.l, new Ba(), a4, b3);
     }
   };
-  var Qi = class extends D3 {
+  var Ui = class extends D3 {
     constructor(a4, b3, c4, d4) {
       const e4 = b3.map((f4) => f4.fb);
       b3 = b3.map((f4) => f4.name);
@@ -24986,7 +25060,7 @@ var fontoxpath = function(xspattern, prsc) {
       this.s = a4;
       this.A = b3;
       this.L = e4;
-      this.R = c4;
+      this.P = c4;
       this.l = null;
     }
     h(a4, b3) {
@@ -24997,7 +25071,7 @@ var fontoxpath = function(xspattern, prsc) {
         return n4;
       });
       if (d4.some((k3) => 0 === k3.length))
-        return "every" === this.s ? w4.aa() : w4.V();
+        return "every" === this.s ? w4.aa() : w4.T();
       const e4 = Array(d4.length).fill(0);
       e4[0] = -1;
       for (var f4 = true; f4; ) {
@@ -25013,44 +25087,44 @@ var fontoxpath = function(xspattern, prsc) {
               f4[this.l[h4]] = () => w4.m(n4);
             }
             f4 = hc(a4, f4);
-            f4 = C3(this.R, f4, b3);
+            f4 = C3(this.P, f4, b3);
             if (f4.fa() && "some" === this.s)
               return w4.aa();
             if (!f4.fa() && "every" === this.s)
-              return w4.V();
+              return w4.T();
             f4 = true;
             break;
           }
         }
       }
-      return "every" === this.s ? w4.aa() : w4.V();
+      return "every" === this.s ? w4.aa() : w4.T();
     }
     v(a4) {
       this.l = [];
       for (let c4 = 0, d4 = this.A.length; c4 < d4; ++c4) {
         this.L[c4].v(a4);
-        yg(a4);
+        Cg(a4);
         var b3 = this.A[c4];
         const e4 = b3.prefix ? a4.$(b3.prefix) : null;
-        b3 = Cg(a4, e4, b3.localName);
+        b3 = Gg(a4, e4, b3.localName);
         this.l[c4] = b3;
       }
-      this.R.v(a4);
+      this.P.v(a4);
       for (let c4 = 0, d4 = this.A.length; c4 < d4; ++c4)
-        Eg(a4);
+        Ig(a4);
     }
   };
-  var Ri = class extends D3 {
+  var Vi = class extends D3 {
     constructor(a4) {
       super(a4, [], { B: false });
     }
     h(a4) {
-      return this.l(a4.M) ? w4.aa() : w4.V();
+      return this.l(a4.M) ? w4.aa() : w4.T();
     }
   };
-  var Si = class extends Ri {
+  var Wi = class extends Vi {
     constructor(a4) {
-      super(new qf({ nodeType: 1 }));
+      super(new uf({ nodeType: 1 }));
       this.s = a4;
     }
     l(a4) {
@@ -25063,37 +25137,37 @@ var fontoxpath = function(xspattern, prsc) {
       return `type-${this.s}`;
     }
   };
-  var Ti = class extends Ri {
+  var Xi = class extends Vi {
     constructor(a4, b3 = { kind: null }) {
       const c4 = a4.prefix, d4 = a4.namespaceURI;
       a4 = a4.localName;
       const e4 = {};
       "*" !== a4 && (e4.nodeName = 1);
       e4.nodeType = 1;
-      super(new qf(e4));
+      super(new uf(e4));
       this.s = a4;
       this.L = d4;
       this.A = c4;
-      this.R = b3.kind;
+      this.P = b3.kind;
     }
     l(a4) {
       const b3 = v3(a4.type, 54), c4 = v3(a4.type, 47);
       if (!b3 && !c4)
         return false;
       a4 = a4.value;
-      return null !== this.R && (1 === this.R && !b3 || 2 === this.R && !c4) ? false : null === this.A && "" !== this.L && "*" === this.s ? true : "*" === this.A ? "*" === this.s ? true : this.s === a4.node.localName : "*" !== this.s && this.s !== a4.node.localName ? false : (a4.node.namespaceURI || null) === (("" === this.A ? b3 ? this.L : null : this.L) || null);
+      return null !== this.P && (1 === this.P && !b3 || 2 === this.P && !c4) ? false : null === this.A && "" !== this.L && "*" === this.s ? true : "*" === this.A ? "*" === this.s ? true : this.s === a4.node.localName : "*" !== this.s && this.s !== a4.node.localName ? false : (a4.node.namespaceURI || null) === (("" === this.A ? b3 ? this.L : null : this.L) || null);
     }
     D() {
-      return "*" === this.s ? null === this.R ? "type-1-or-type-2" : `type-${this.R}` : `name-${this.s}`;
+      return "*" === this.s ? null === this.P ? "type-1-or-type-2" : `type-${this.P}` : `name-${this.s}`;
     }
     v(a4) {
       if (null === this.L && "*" !== this.A && (this.L = a4.$(this.A || "") || null, !this.L && this.A))
         throw Error(`XPST0081: The prefix ${this.A} could not be resolved.`);
     }
   };
-  var Ui = class extends Ri {
+  var Yi = class extends Vi {
     constructor(a4) {
-      super(new qf({ nodeName: 1 }));
+      super(new uf({ nodeName: 1 }));
       this.s = a4;
     }
     l(a4) {
@@ -25103,30 +25177,30 @@ var fontoxpath = function(xspattern, prsc) {
       return "type-7";
     }
   };
-  var Vi = class extends Ri {
+  var Zi = class extends Vi {
     constructor(a4) {
-      super(new qf({}));
+      super(new uf({}));
       this.s = a4;
     }
     l(a4) {
       return v3(a4.type, Ia(this.s.prefix ? this.s.prefix + ":" + this.s.localName : this.s.localName));
     }
   };
-  var Wi = class extends D3 {
+  var $i = class extends D3 {
     constructor(a4, b3, c4) {
-      super(new qf({}), [], { B: false, P: "unsorted" });
+      super(new uf({}), [], { B: false, R: "unsorted" });
       this.A = c4;
       this.s = b3;
       this.L = a4;
       this.l = null;
     }
     h(a4, b3) {
-      if (!a4.qa[this.l]) {
-        if (this.R)
-          return this.R(a4, b3);
+      if (!a4.ra[this.l]) {
+        if (this.P)
+          return this.P(a4, b3);
         throw Error("XQDY0054: The variable " + this.A + " is declared but not in scope.");
       }
-      return a4.qa[this.l]();
+      return a4.ra[this.l]();
     }
     v(a4) {
       null === this.s && this.L && (this.s = a4.$(this.L));
@@ -25134,12 +25208,12 @@ var fontoxpath = function(xspattern, prsc) {
       if (!this.l)
         throw Error("XPST0008, The variable " + this.A + " is not in scope.");
       if (a4 = a4.Ea[this.l])
-        this.R = a4;
+        this.P = a4;
     }
   };
-  var Xi = class extends Ph {
+  var aj = class extends Th {
     constructor(a4, b3) {
-      super(new qf({}), [a4, b3], { B: false, W: false, P: "unsorted", subtree: false }, b3);
+      super(new uf({}), [a4, b3], { B: false, W: false, R: "unsorted", subtree: false }, b3);
       this.A = a4;
     }
     L(a4, b3, c4, d4) {
@@ -25162,128 +25236,128 @@ var fontoxpath = function(xspattern, prsc) {
       } });
     }
   };
-  var Yi = class {
+  var bj = class {
     constructor(a4) {
       this.type = a4;
     }
   };
-  var Zi = class extends Yi {
+  var cj = class extends bj {
     constructor(a4) {
       super("delete");
       this.target = a4;
     }
     h(a4) {
-      return { type: this.type, target: Wf(this.target, a4, false) };
+      return { type: this.type, target: $f(this.target, a4, false) };
     }
   };
-  var $i = class extends Yi {
+  var dj = class extends bj {
     constructor(a4, b3, c4) {
       super(c4);
       this.target = a4;
       this.content = b3;
     }
     h(a4) {
-      return { type: this.type, target: Wf(this.target, a4, false), content: this.content.map((b3) => Wf(b3, a4, true)) };
+      return { type: this.type, target: $f(this.target, a4, false), content: this.content.map((b3) => $f(b3, a4, true)) };
     }
   };
-  var aj = class extends $i {
+  var ej = class extends dj {
     constructor(a4, b3) {
       super(a4, b3, "insertAfter");
     }
   };
-  var bj = class extends Yi {
+  var fj = class extends bj {
     constructor(a4, b3) {
       super("insertAttributes");
       this.target = a4;
       this.content = b3;
     }
     h(a4) {
-      return { type: this.type, target: Wf(this.target, a4, false), content: this.content.map((b3) => Wf(b3, a4, true)) };
+      return { type: this.type, target: $f(this.target, a4, false), content: this.content.map((b3) => $f(b3, a4, true)) };
     }
   };
-  var cj = class extends $i {
+  var gj = class extends dj {
     constructor(a4, b3) {
       super(a4, b3, "insertBefore");
     }
   };
-  var dj = class extends $i {
+  var hj = class extends dj {
     constructor(a4, b3) {
       super(a4, b3, "insertIntoAsFirst");
     }
   };
-  var ej = class extends $i {
+  var ij = class extends dj {
     constructor(a4, b3) {
       super(a4, b3, "insertIntoAsLast");
     }
   };
-  var fj = class extends $i {
+  var jj = class extends dj {
     constructor(a4, b3) {
       super(a4, b3, "insertInto");
     }
   };
-  var gj = class extends Yi {
+  var kj = class extends bj {
     constructor(a4, b3) {
       super("rename");
       this.target = a4;
       this.o = b3.za ? b3 : new Sa(b3.prefix, b3.namespaceURI, b3.localName);
     }
     h(a4) {
-      return { type: this.type, target: Wf(this.target, a4, false), newName: { prefix: this.o.prefix, namespaceURI: this.o.namespaceURI, localName: this.o.localName } };
+      return { type: this.type, target: $f(this.target, a4, false), newName: { prefix: this.o.prefix, namespaceURI: this.o.namespaceURI, localName: this.o.localName } };
     }
   };
-  var hj = class extends Yi {
+  var lj = class extends bj {
     constructor(a4, b3) {
       super("replaceElementContent");
       this.target = a4;
       this.text = b3;
     }
     h(a4) {
-      return { type: this.type, target: Wf(this.target, a4, false), text: this.text ? Wf(this.text, a4, true) : null };
+      return { type: this.type, target: $f(this.target, a4, false), text: this.text ? $f(this.text, a4, true) : null };
     }
   };
-  var ij = class extends Yi {
+  var mj = class extends bj {
     constructor(a4, b3) {
       super("replaceNode");
       this.target = a4;
       this.o = b3;
     }
     h(a4) {
-      return { type: this.type, target: Wf(this.target, a4, false), replacement: this.o.map((b3) => Wf(b3, a4, true)) };
+      return { type: this.type, target: $f(this.target, a4, false), replacement: this.o.map((b3) => $f(b3, a4, true)) };
     }
   };
-  var jj = class extends Yi {
+  var nj = class extends bj {
     constructor(a4, b3) {
       super("replaceValue");
       this.target = a4;
       this.o = b3;
     }
     h(a4) {
-      return { type: this.type, target: Wf(this.target, a4, false), ["string-value"]: this.o };
+      return { type: this.type, target: $f(this.target, a4, false), ["string-value"]: this.o };
     }
   };
-  var kj = (a4, b3) => new ij(a4, b3);
-  var lj = class extends jf {
+  var oj = (a4, b3) => new mj(a4, b3);
+  var pj = class extends nf {
     constructor(a4) {
-      super(new qf({}), [a4], { B: false, P: "unsorted" });
+      super(new uf({}), [a4], { B: false, R: "unsorted" });
       this.l = a4;
     }
     s(a4, b3) {
-      const c4 = hf(this.l)(a4, b3), d4 = b3.h;
+      const c4 = mf(this.l)(a4, b3), d4 = b3.h;
       let e4, f4;
       return { next: () => {
         if (!e4) {
           const h4 = c4.next(0);
-          if (h4.value.I.some((k3) => !v3(k3.type, 53)))
+          if (h4.value.J.some((k3) => !v3(k3.type, 53)))
             throw Error("XUTY0007: The target of a delete expression must be a sequence of zero or more nodes.");
-          e4 = h4.value.I;
+          e4 = h4.value.J;
           f4 = h4.value.da;
         }
         e4 = e4.filter((h4) => x3(d4, h4.value));
-        return q3({ da: gf(e4.map((h4) => new Zi(h4.value)), f4), I: [] });
+        return q3({ da: lf(e4.map((h4) => new cj(h4.value)), f4), J: [] });
       } };
     }
   };
-  function mj(a4, b3, c4, d4, e4, f4) {
+  function qj(a4, b3, c4, d4, e4, f4) {
     const h4 = b3.h;
     a4.reduce(function t4(l4, n4) {
       if (v3(n4.type, 62))
@@ -25296,15 +25370,15 @@ var fontoxpath = function(xspattern, prsc) {
           throw f4(l4.value, h4);
         c4.push(l4.value.node);
       } else if (v3(l4.type, 46) || v3(l4.type, 53) && 3 === l4.value.node.nodeType) {
-        const u4 = v3(l4.type, 46) ? jd(pc(l4, b3).first(), 1).value : ib(h4, l4.value);
+        const u4 = v3(l4.type, 46) ? jd(pc(l4, b3).first(), 1).value : hb(h4, l4.value);
         0 !== n4 && v3(t4[n4 - 1].type, 46) && v3(l4.type, 46) ? (d4.push({ data: " " + u4, Ra: true, nodeType: 3 }), e4 = true) : u4 && (d4.push({ data: "" + u4, Ra: true, nodeType: 3 }), e4 = true);
       } else if (v3(
         l4.type,
         55
       )) {
         const u4 = [];
-        hb(h4, l4.value).forEach((z3) => u4.push(rb(z3)));
-        e4 = mj(u4, b3, c4, d4, e4, f4);
+        gb(h4, l4.value).forEach((z3) => u4.push(rb(z3)));
+        e4 = qj(u4, b3, c4, d4, e4, f4);
       } else if (v3(l4.type, 53))
         d4.push(l4.value.node), e4 = true;
       else {
@@ -25315,76 +25389,76 @@ var fontoxpath = function(xspattern, prsc) {
     });
     return e4;
   }
-  function nj(a4, b3, c4) {
+  function rj(a4, b3, c4) {
     const d4 = [], e4 = [];
     let f4 = false;
     a4.forEach((h4) => {
-      f4 = mj(h4, b3, d4, e4, f4, c4);
+      f4 = qj(h4, b3, d4, e4, f4, c4);
     });
     return { attributes: d4, Xa: e4 };
   }
   ;
-  function oj(a4, b3, c4, d4, e4) {
+  function sj(a4, b3, c4, d4, e4) {
     const f4 = [];
     switch (a4) {
       case 4:
-        d4.length && f4.push(new bj(b3, d4));
-        e4.length && f4.push(new dj(b3, e4));
+        d4.length && f4.push(new fj(b3, d4));
+        e4.length && f4.push(new hj(b3, e4));
         break;
       case 5:
-        d4.length && f4.push(new bj(b3, d4));
-        e4.length && f4.push(new ej(b3, e4));
+        d4.length && f4.push(new fj(b3, d4));
+        e4.length && f4.push(new ij(b3, e4));
         break;
       case 3:
-        d4.length && f4.push(new bj(b3, d4));
-        e4.length && f4.push(new fj(b3, e4));
+        d4.length && f4.push(new fj(b3, d4));
+        e4.length && f4.push(new jj(b3, e4));
         break;
       case 2:
-        d4.length && f4.push(new bj(c4, d4));
-        e4.length && f4.push(new cj(b3, e4));
+        d4.length && f4.push(new fj(c4, d4));
+        e4.length && f4.push(new gj(b3, e4));
         break;
       case 1:
-        d4.length && f4.push(new bj(c4, d4)), e4.length && f4.push(new aj(b3, e4));
+        d4.length && f4.push(new fj(c4, d4)), e4.length && f4.push(new ej(b3, e4));
     }
     return f4;
   }
-  var pj = class extends jf {
+  var tj = class extends nf {
     constructor(a4, b3, c4) {
-      super(new qf({}), [a4, c4], { B: false, P: "unsorted" });
+      super(new uf({}), [a4, c4], { B: false, R: "unsorted" });
       this.L = a4;
       this.l = b3;
       this.A = c4;
     }
     s(a4, b3) {
-      const c4 = hf(this.L)(a4, b3), d4 = hf(this.A)(a4, b3), e4 = b3.h;
+      const c4 = mf(this.L)(a4, b3), d4 = mf(this.A)(a4, b3), e4 = b3.h;
       let f4, h4, k3, l4, n4, t4;
       return { next: () => {
         if (!f4) {
           var u4 = c4.next(0);
-          const z3 = nj([u4.value.I], b3, Ke);
-          f4 = z3.attributes.map((y3) => ({ node: y3, F: null }));
-          h4 = z3.Xa.map((y3) => ({ node: y3, F: null }));
+          const z3 = rj([u4.value.J], b3, Oe);
+          f4 = z3.attributes.map((y3) => ({ node: y3, G: null }));
+          h4 = z3.Xa.map((y3) => ({ node: y3, G: null }));
           k3 = u4.value.da;
         }
         if (!l4) {
           u4 = d4.next(0);
-          if (0 === u4.value.I.length)
-            throw Te();
+          if (0 === u4.value.J.length)
+            throw Xe();
           if (3 <= this.l) {
-            if (1 !== u4.value.I.length)
-              throw Le();
-            if (!v3(u4.value.I[0].type, 54) && !v3(u4.value.I[0].type, 55))
-              throw Le();
+            if (1 !== u4.value.J.length)
+              throw Pe();
+            if (!v3(u4.value.J[0].type, 54) && !v3(u4.value.J[0].type, 55))
+              throw Pe();
           } else {
-            if (1 !== u4.value.I.length)
-              throw Me();
-            if (!(v3(u4.value.I[0].type, 54) || v3(u4.value.I[0].type, 56) || v3(u4.value.I[0].type, 58) || v3(u4.value.I[0].type, 57)))
-              throw Me();
-            t4 = x3(e4, u4.value.I[0].value, null);
+            if (1 !== u4.value.J.length)
+              throw Qe();
+            if (!(v3(u4.value.J[0].type, 54) || v3(u4.value.J[0].type, 56) || v3(u4.value.J[0].type, 58) || v3(u4.value.J[0].type, 57)))
+              throw Qe();
+            t4 = x3(e4, u4.value.J[0].value, null);
             if (null === t4)
-              throw Error(`XUDY0029: The target ${u4.value.I[0].value.outerHTML} for inserting a node before or after must have a parent.`);
+              throw Error(`XUDY0029: The target ${u4.value.J[0].value.outerHTML} for inserting a node before or after must have a parent.`);
           }
-          l4 = u4.value.I[0];
+          l4 = u4.value.J[0];
           n4 = u4.value.da;
         }
         if (f4.length) {
@@ -25394,37 +25468,37 @@ var fontoxpath = function(xspattern, prsc) {
           } else if (1 !== t4.node.nodeType)
             throw Error("XUDY0030: An insert expression specifies the insertion of an attribute node before or after a child of a document node.");
           f4.reduce((z3, y3) => {
-            const F3 = y3.node.prefix || "";
+            const G3 = y3.node.prefix || "";
             var N3 = y3.node.prefix || "";
-            const U2 = y3.node.namespaceURI, ba = N3 ? l4.value.node.lookupNamespaceURI(N3) : null;
-            if (ba && ba !== U2)
-              throw Re(U2);
+            const U2 = y3.node.namespaceURI, ca = N3 ? l4.value.node.lookupNamespaceURI(N3) : null;
+            if (ca && ca !== U2)
+              throw Ve(U2);
             if ((N3 = z3[N3]) && U2 !== N3)
-              throw Se(U2);
-            z3[F3] = y3.node.namespaceURI;
+              throw We(U2);
+            z3[G3] = y3.node.namespaceURI;
             return z3;
           }, {});
         }
-        return q3({ I: [], da: gf(oj(this.l, l4.value, t4 ? t4 : null, f4, h4), k3, n4) });
+        return q3({ J: [], da: lf(sj(this.l, l4.value, t4 ? t4 : null, f4, h4), k3, n4) });
       } };
     }
   };
-  const qj = () => mc("Casting not supported from given type to a single xs:string or xs:untypedAtomic or any of its derived types."), rj = /([A-Z_a-z\xC0-\xD6\xD8-\xF6\xF8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])/, sj = new RegExp(`${rj.source}${new RegExp(`(${rj.source}|[-.0-9\xB7\u0300-\u036F\u203F\u2040])`).source}*`, "g"), tj = (a4) => (a4 = a4.match(sj)) ? 1 === a4.length : false;
-  function uj(a4, b3) {
-    return qc(b3, a4).Y({ m: (c4) => {
+  const uj = () => mc("Casting not supported from given type to a single xs:string or xs:untypedAtomic or any of its derived types."), vj = /([A-Z_a-z\xC0-\xD6\xD8-\xF6\xF8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])/, wj = new RegExp(`${vj.source}${new RegExp(`(${vj.source}|[-.0-9\xB7\u0300-\u036F\u203F\u2040])`).source}*`, "g"), xj = (a4) => (a4 = a4.match(wj)) ? 1 === a4.length : false;
+  function yj(a4, b3) {
+    return qc(b3, a4).X({ m: (c4) => {
       c4 = c4.first();
       if (v3(c4.type, 1) || v3(c4.type, 19)) {
-        if (!tj(c4.value))
+        if (!xj(c4.value))
           throw Error(`XQDY0041: The value "${c4.value}" of a name expressions cannot be converted to a NCName.`);
         return w4.m(c4);
       }
-      throw qj();
+      throw uj();
     }, default: () => {
-      throw qj();
+      throw uj();
     } }).value;
   }
-  function vj(a4, b3, c4) {
-    return qc(c4, b3).Y({ m: (d4) => {
+  function zj(a4, b3, c4) {
+    return qc(c4, b3).X({ m: (d4) => {
       d4 = d4.first();
       if (v3(d4.type, 23))
         return w4.m(d4);
@@ -25432,86 +25506,86 @@ var fontoxpath = function(xspattern, prsc) {
         let e4, f4;
         d4 = d4.value.split(":");
         1 === d4.length ? d4 = d4[0] : (e4 = d4[0], f4 = a4.$(e4), d4 = d4[1]);
-        if (!tj(d4) || e4 && !tj(e4))
-          throw tg(e4 ? `${e4}:${d4}` : d4);
+        if (!xj(d4) || e4 && !xj(e4))
+          throw xg(e4 ? `${e4}:${d4}` : d4);
         if (e4 && !f4)
-          throw tg(`${e4}:${d4}`);
+          throw xg(`${e4}:${d4}`);
         return w4.m({ type: 23, value: new Sa(e4, f4, d4) });
       }
-      throw qj();
+      throw uj();
     }, default: () => {
-      throw qj();
+      throw uj();
     } }).value;
   }
   ;
-  var wj = class extends jf {
+  var Aj = class extends nf {
     constructor(a4, b3) {
-      super(new qf({}), [a4, b3], { B: false, P: "unsorted" });
+      super(new uf({}), [a4, b3], { B: false, R: "unsorted" });
       this.A = a4;
       this.L = b3;
       this.l = void 0;
     }
     s(a4, b3) {
-      const c4 = hf(this.A)(a4, b3), d4 = hf(this.L)(a4, b3);
+      const c4 = mf(this.A)(a4, b3), d4 = mf(this.L)(a4, b3);
       return { next: () => {
         const e4 = c4.next(0);
-        var f4 = e4.value.I;
+        var f4 = e4.value.J;
         if (0 === f4.length)
-          throw Te();
+          throw Xe();
         if (1 !== f4.length)
-          throw Oe();
+          throw Se();
         if (!v3(f4[0].type, 54) && !v3(f4[0].type, 47) && !v3(f4[0].type, 57))
-          throw Oe();
+          throw Se();
         f4 = f4[0];
         const h4 = d4.next(0);
         a: {
           var k3 = this.l;
-          var l4 = w4.create(h4.value.I);
+          var l4 = w4.create(h4.value.J);
           switch (f4.type) {
             case 54:
-              k3 = vj(k3, b3, l4).next(0).value.value;
+              k3 = zj(k3, b3, l4).next(0).value.value;
               if ((l4 = f4.value.node.lookupNamespaceURI(k3.prefix)) && l4 !== k3.namespaceURI)
-                throw Re(k3.namespaceURI);
+                throw Ve(k3.namespaceURI);
               break a;
             case 47:
-              k3 = vj(k3, b3, l4).next(0).value.value;
+              k3 = zj(k3, b3, l4).next(0).value.value;
               if (k3.namespaceURI && (l4 = f4.value.node.lookupNamespaceURI(k3.prefix)) && l4 !== k3.namespaceURI)
-                throw Re(k3.namespaceURI);
+                throw Ve(k3.namespaceURI);
               break a;
             case 57:
-              k3 = uj(b3, l4).next(0).value.value;
+              k3 = yj(b3, l4).next(0).value.value;
               k3 = new Sa("", null, k3);
               break a;
           }
           k3 = void 0;
         }
-        return q3({ I: [], da: gf([new gj(f4.value, k3)], e4.value.da, h4.value.da) });
+        return q3({ J: [], da: lf([new kj(f4.value, k3)], e4.value.da, h4.value.da) });
       } };
     }
     v(a4) {
-      this.l = Af(a4);
+      this.l = Ef(a4);
       super.v(a4);
     }
   };
-  function Jj(a4, b3, c4) {
+  function Bj(a4, b3, c4) {
     let d4, e4, f4;
     return { next: () => {
       if (!d4) {
-        var h4 = c4.next(0), k3 = nj([h4.value.I], a4, Se);
-        d4 = { attributes: k3.attributes.map((l4) => ({ node: l4, F: null })), Xa: k3.Xa.map((l4) => ({ node: l4, F: null })) };
+        var h4 = c4.next(0), k3 = rj([h4.value.J], a4, We);
+        d4 = { attributes: k3.attributes.map((l4) => ({ node: l4, G: null })), Xa: k3.Xa.map((l4) => ({ node: l4, G: null })) };
         e4 = h4.value.da;
       }
       k3 = b3.next(0);
-      if (0 === k3.value.I.length)
-        throw Te();
-      if (1 !== k3.value.I.length)
-        throw Ne();
-      if (!(v3(k3.value.I[0].type, 54) || v3(k3.value.I[0].type, 47) || v3(k3.value.I[0].type, 56) || v3(k3.value.I[0].type, 58) || v3(k3.value.I[0].type, 57)))
-        throw Ne();
-      f4 = x3(a4.h, k3.value.I[0].value, null);
+      if (0 === k3.value.J.length)
+        throw Xe();
+      if (1 !== k3.value.J.length)
+        throw Re();
+      if (!(v3(k3.value.J[0].type, 54) || v3(k3.value.J[0].type, 47) || v3(k3.value.J[0].type, 56) || v3(k3.value.J[0].type, 58) || v3(k3.value.J[0].type, 57)))
+        throw Re();
+      f4 = x3(a4.h, k3.value.J[0].value, null);
       if (null === f4)
-        throw Error(`XUDY0009: The target ${k3.value.I[0].value.outerHTML} for replacing a node must have a parent.`);
-      h4 = k3.value.I[0];
+        throw Error(`XUDY0009: The target ${k3.value.J[0].value.outerHTML} for replacing a node must have a parent.`);
+      h4 = k3.value.J[0];
       k3 = k3.value.da;
       if (v3(h4.type, 47)) {
         if (d4.Xa.length)
@@ -25521,120 +25595,120 @@ var fontoxpath = function(xspattern, prsc) {
           n4 = n4.node.namespaceURI;
           var u4 = f4.node.lookupNamespaceURI(t4);
           if (u4 && u4 !== n4)
-            throw Re(n4);
+            throw Ve(n4);
           if ((u4 = l4[t4]) && n4 !== u4)
-            throw Se(n4);
+            throw We(n4);
           l4[t4] = n4;
           return l4;
         }, {});
       } else if (d4.attributes.length)
         throw Error("XUTY0010: When replacing an an element, text, comment, or processing instruction node the new value must be a single node.");
-      return q3({ I: [], da: gf([kj(h4.value, [].concat(d4.attributes, d4.Xa))], e4, k3) });
+      return q3({ J: [], da: lf([oj(h4.value, [].concat(d4.attributes, d4.Xa))], e4, k3) });
     } };
   }
-  function Kj(a4, b3, c4) {
+  function Cj(a4, b3, c4) {
     let d4, e4, f4, h4, k3 = false;
     return { next: () => {
       if (k3)
         return p3;
       if (!f4) {
         var l4 = c4.next(0);
-        const n4 = qc(w4.create(l4.value.I), a4).map((t4) => jd(t4, 1)).O().map((t4) => t4.value).join(" ");
-        f4 = 0 === n4.length ? null : { node: a4.Ja.createTextNode(n4), F: null };
+        const n4 = qc(w4.create(l4.value.J), a4).map((t4) => jd(t4, 1)).O().map((t4) => t4.value).join(" ");
+        f4 = 0 === n4.length ? null : { node: a4.Ja.createTextNode(n4), G: null };
         h4 = l4.value.da;
       }
       if (!d4) {
         l4 = b3.next(0);
-        if (0 === l4.value.I.length)
-          throw Te();
-        if (1 !== l4.value.I.length)
-          throw Ne();
-        if (!(v3(l4.value.I[0].type, 54) || v3(l4.value.I[0].type, 47) || v3(l4.value.I[0].type, 56) || v3(l4.value.I[0].type, 58) || v3(l4.value.I[0].type, 57)))
-          throw Ne();
-        d4 = l4.value.I[0];
+        if (0 === l4.value.J.length)
+          throw Xe();
+        if (1 !== l4.value.J.length)
+          throw Re();
+        if (!(v3(l4.value.J[0].type, 54) || v3(l4.value.J[0].type, 47) || v3(l4.value.J[0].type, 56) || v3(l4.value.J[0].type, 58) || v3(l4.value.J[0].type, 57)))
+          throw Re();
+        d4 = l4.value.J[0];
         e4 = l4.value.da;
       }
       if (v3(
         d4.type,
         54
       ))
-        return k3 = true, q3({ I: [], da: gf([new hj(d4.value, f4)], h4, e4) });
+        return k3 = true, q3({ J: [], da: lf([new lj(d4.value, f4)], h4, e4) });
       if (v3(d4.type, 47) || v3(d4.type, 56) || v3(d4.type, 58) || v3(d4.type, 57)) {
-        l4 = f4 ? ib(a4.h, f4) : "";
+        l4 = f4 ? hb(a4.h, f4) : "";
         if (v3(d4.type, 58) && (l4.includes("--") || l4.endsWith("-")))
           throw Error(`XQDY0072: The content "${l4}" for a comment node contains two adjacent hyphens or ends with a hyphen.`);
         if (v3(d4.type, 57) && l4.includes("?>"))
           throw Error(`XQDY0026: The content "${l4}" for a processing instruction node contains "?>".`);
         k3 = true;
-        return q3({ I: [], da: gf([new jj(d4.value, l4)], h4, e4) });
+        return q3({ J: [], da: lf([new nj(d4.value, l4)], h4, e4) });
       }
     } };
   }
-  var Lj = class extends jf {
+  var Qj = class extends nf {
     constructor(a4, b3, c4) {
-      super(new qf({}), [b3, c4], { B: false, P: "unsorted" });
+      super(new uf({}), [b3, c4], { B: false, R: "unsorted" });
       this.L = a4;
       this.l = b3;
       this.A = c4;
     }
     s(a4, b3) {
-      const c4 = hf(this.l)(a4, b3);
-      a4 = hf(this.A)(a4, b3);
-      return this.L ? Kj(b3, c4, a4) : Jj(b3, c4, a4);
+      const c4 = mf(this.l)(a4, b3);
+      a4 = mf(this.A)(a4, b3);
+      return this.L ? Cj(b3, c4, a4) : Bj(b3, c4, a4);
     }
   };
-  function Mj(a4) {
+  function Rj(a4) {
     switch (a4.type) {
       case "delete":
-        return new Zi({ node: a4.target, F: null });
+        return new cj({ node: a4.target, G: null });
       case "insertAfter":
-        return new aj({ node: a4.target, F: null }, a4.content.map((b3) => ({ node: b3, F: null })));
+        return new ej({ node: a4.target, G: null }, a4.content.map((b3) => ({ node: b3, G: null })));
       case "insertBefore":
-        return new cj({ node: a4.target, F: null }, a4.content.map((b3) => ({ node: b3, F: null })));
+        return new gj({ node: a4.target, G: null }, a4.content.map((b3) => ({ node: b3, G: null })));
       case "insertInto":
-        return new fj({ node: a4.target, F: null }, a4.content.map((b3) => ({ node: b3, F: null })));
+        return new jj({ node: a4.target, G: null }, a4.content.map((b3) => ({ node: b3, G: null })));
       case "insertIntoAsFirst":
-        return new dj({ node: a4.target, F: null }, a4.content.map((b3) => ({ node: b3, F: null })));
+        return new hj({ node: a4.target, G: null }, a4.content.map((b3) => ({ node: b3, G: null })));
       case "insertIntoAsLast":
-        return new ej({
+        return new ij({
           node: a4.target,
-          F: null
-        }, a4.content.map((b3) => ({ node: b3, F: null })));
+          G: null
+        }, a4.content.map((b3) => ({ node: b3, G: null })));
       case "insertAttributes":
-        return new bj({ node: a4.target, F: null }, a4.content.map((b3) => ({ node: b3, F: null })));
+        return new fj({ node: a4.target, G: null }, a4.content.map((b3) => ({ node: b3, G: null })));
       case "rename":
-        return new gj({ node: a4.target, F: null }, a4.newName);
+        return new kj({ node: a4.target, G: null }, a4.newName);
       case "replaceNode":
-        return new ij({ node: a4.target, F: null }, a4.replacement.map((b3) => ({ node: b3, F: null })));
+        return new mj({ node: a4.target, G: null }, a4.replacement.map((b3) => ({ node: b3, G: null })));
       case "replaceValue":
-        return new jj({ node: a4.target, F: null }, a4["string-value"]);
+        return new nj({ node: a4.target, G: null }, a4["string-value"]);
       case "replaceElementContent":
-        return new hj({ node: a4.target, F: null }, a4.text ? { node: a4.text, F: null } : null);
+        return new lj({ node: a4.target, G: null }, a4.text ? { node: a4.text, G: null } : null);
       default:
         throw Error(`Unexpected type "${a4.type}" when parsing a transferable pending update.`);
     }
   }
   ;
-  function Nj(a4, b3, c4) {
+  function Sj(a4, b3, c4) {
     if (b3.find((e4) => md(e4, a4)))
       return true;
     const d4 = x3(c4, a4);
-    return d4 ? Nj(d4, b3, c4) : false;
+    return d4 ? Sj(d4, b3, c4) : false;
   }
-  var Oj = class extends jf {
+  var Tj = class extends nf {
     constructor(a4, b3, c4) {
-      super(new qf({}), a4.reduce((d4, e4) => {
+      super(new uf({}), a4.reduce((d4, e4) => {
         d4.push(e4.fb);
         return d4;
-      }, [b3, c4]), { B: false, P: "unsorted" });
+      }, [b3, c4]), { B: false, R: "unsorted" });
       this.l = a4;
       this.L = b3;
       this.A = c4;
-      this.J = null;
+      this.I = null;
     }
     h(a4, b3) {
       a4 = this.s(a4, b3);
-      return kf(a4, () => {
+      return of(a4, () => {
       });
     }
     s(a4, b3) {
@@ -25646,51 +25720,51 @@ var fontoxpath = function(xspattern, prsc) {
           for (var u4 = n4.length; u4 < this.l.length; u4++) {
             const y3 = this.l[u4];
             var z3 = f4[u4];
-            z3 || (f4[u4] = z3 = hf(y3.fb)(a4, b3));
+            z3 || (f4[u4] = z3 = mf(y3.fb)(a4, b3));
             z3 = z3.next(0);
-            if (1 !== z3.value.I.length || !v3(z3.value.I[0].type, 53))
+            if (1 !== z3.value.J.length || !v3(z3.value.J[0].type, 53))
               throw Error("XUTY0013: The source expression of a copy modify expression must return a single node.");
-            const F3 = rb(Sf(z3.value.I[0].value, b3));
-            n4.push(F3.value);
+            const G3 = rb(Wf(z3.value.J[0].value, b3));
+            n4.push(G3.value);
             t4.push(z3.value.da);
-            a4 = hc(a4, { [y3.ec]: () => w4.m(F3) });
+            a4 = hc(a4, { [y3.fc]: () => w4.m(G3) });
           }
-        l4 || (h4 ||= hf(this.L)(a4, b3), l4 = h4.next(0).value.da);
+        l4 || (h4 ||= mf(this.L)(a4, b3), l4 = h4.next(0).value.da);
         l4.forEach((y3) => {
-          if (y3.target && !Nj(y3.target, n4, c4))
+          if (y3.target && !Sj(y3.target, n4, c4))
             throw Error(`XUDY0014: The target ${y3.target.node.outerHTML} must be a node created by the copy clause.`);
           if ("put" === y3.type)
             throw Error("XUDY0037: The modify expression of a copy modify expression can not contain a fn:put.");
         });
         u4 = l4.map((y3) => {
           y3 = y3.h(b3);
-          return Mj(y3);
+          return Rj(y3);
         });
-        ff(u4, c4, d4, e4);
-        k3 ||= hf(this.A)(a4, b3);
+        kf(u4, c4, d4, e4);
+        k3 ||= mf(this.A)(a4, b3);
         u4 = k3.next(0);
         return q3({
-          I: u4.value.I,
-          da: gf(u4.value.da, ...t4)
+          J: u4.value.J,
+          da: lf(u4.value.da, ...t4)
         });
       } };
     }
     v(a4) {
-      yg(a4);
-      this.l.forEach((b3) => b3.ec = Cg(a4, b3.Hb.namespaceURI, b3.Hb.localName));
+      Cg(a4);
+      this.l.forEach((b3) => b3.fc = Gg(a4, b3.Jb.namespaceURI, b3.Jb.localName));
       super.v(a4);
-      Eg(a4);
-      this.J = this.l.some((b3) => b3.fb.J) || this.A.J;
+      Ig(a4);
+      this.I = this.l.some((b3) => b3.fb.I) || this.A.I;
     }
   };
-  function Pj(a4, b3) {
-    return { node: { nodeType: 2, Ra: true, nodeName: a4.za(), namespaceURI: a4.namespaceURI, prefix: a4.prefix, localName: a4.localName, name: a4.za(), value: b3 }, F: null };
+  function Uj(a4, b3) {
+    return { node: { nodeType: 2, Ra: true, nodeName: a4.za(), namespaceURI: a4.namespaceURI, prefix: a4.prefix, localName: a4.localName, name: a4.za(), value: b3 }, G: null };
   }
-  var Qj = class extends D3 {
+  var Vj = class extends D3 {
     constructor(a4, b3) {
       let c4 = b3.nb || [];
       c4 = c4.concat(a4.Na || []);
-      super(new qf({}), c4, { B: false, P: "unsorted" });
+      super(new uf({}), c4, { B: false, R: "unsorted" });
       a4.Na ? this.s = a4.Na : this.name = new Sa(a4.prefix, a4.namespaceURI, a4.localName);
       this.l = b3;
       this.A = void 0;
@@ -25704,32 +25778,32 @@ var fontoxpath = function(xspattern, prsc) {
           if (this.s) {
             if (!c4) {
               var h4 = this.s.h(a4, b3);
-              c4 = vj(this.A, b3, h4);
+              c4 = zj(this.A, b3, h4);
             }
             d4 = c4.next(0).value.value;
           } else
             d4 = this.name;
           if (d4) {
             if ("xmlns" === d4.prefix)
-              throw ng(d4);
+              throw rg(d4);
             if ("" === d4.prefix && "xmlns" === d4.localName)
-              throw ng(d4);
+              throw rg(d4);
             if ("http://www.w3.org/2000/xmlns/" === d4.namespaceURI)
-              throw ng(d4);
+              throw rg(d4);
             if ("xml" === d4.prefix && "http://www.w3.org/XML/1998/namespace" !== d4.namespaceURI)
-              throw ng(d4);
+              throw rg(d4);
             if ("" !== d4.prefix && "xml" !== d4.prefix && "http://www.w3.org/XML/1998/namespace" === d4.namespaceURI)
-              throw ng(d4);
+              throw rg(d4);
           }
         }
         if (this.l.nb)
-          return h4 = this.l.nb, e4 || (e4 = jc(h4.map((k3) => qc(k3.h(a4, b3), b3).N((l4) => w4.m(g3(l4.map((n4) => n4.value).join(" "), 1))))).N((k3) => w4.m(rb(Pj(d4, k3.map((l4) => l4.value).join(""))))).value), e4.next(0);
+          return h4 = this.l.nb, e4 || (e4 = jc(h4.map((k3) => qc(k3.h(a4, b3), b3).N((l4) => w4.m(g3(l4.map((n4) => n4.value).join(" "), 1))))).N((k3) => w4.m(rb(Uj(d4, k3.map((l4) => l4.value).join(""))))).value), e4.next(0);
         f4 = true;
-        return q3(rb(Pj(d4, this.l.value)));
+        return q3(rb(Uj(d4, this.l.value)));
       } });
     }
     v(a4) {
-      this.A = Af(a4);
+      this.A = Ef(a4);
       if (this.name && this.name.prefix && !this.name.namespaceURI) {
         const b3 = a4.$(this.name.prefix);
         if (void 0 === b3 && this.name.prefix)
@@ -25739,13 +25813,13 @@ var fontoxpath = function(xspattern, prsc) {
       super.v(a4);
     }
   };
-  var Rj = class extends D3 {
+  var Wj = class extends D3 {
     constructor(a4) {
-      super(a4 ? a4.o : new qf({}), a4 ? [a4] : [], { B: false, P: "unsorted" });
+      super(a4 ? a4.o : new uf({}), a4 ? [a4] : [], { B: false, R: "unsorted" });
       this.l = a4;
     }
     h(a4, b3) {
-      const c4 = { data: "", Ra: true, nodeType: 8 }, d4 = { node: c4, F: null };
+      const c4 = { data: "", Ra: true, nodeType: 8 }, d4 = { node: c4, G: null };
       if (!this.l)
         return w4.m(rb(d4));
       a4 = C3(this.l, a4, b3);
@@ -25758,11 +25832,11 @@ var fontoxpath = function(xspattern, prsc) {
       });
     }
   };
-  var Sj = class extends D3 {
+  var Xj = class extends D3 {
     constructor(a4, b3, c4, d4) {
-      super(new qf({}), d4.concat(b3).concat(a4.Na || []), { B: false, P: "unsorted" });
+      super(new uf({}), d4.concat(b3).concat(a4.Na || []), { B: false, R: "unsorted" });
       a4.Na ? this.s = a4.Na : this.l = new Sa(a4.prefix, a4.namespaceURI, a4.localName);
-      this.R = c4.reduce((e4, f4) => {
+      this.P = c4.reduce((e4, f4) => {
         if (f4.prefix in e4)
           throw Error(`XQST0071: The namespace declaration with the prefix ${f4.prefix} has already been declared on the constructed element.`);
         e4[f4.prefix || ""] = f4.uri;
@@ -25777,9 +25851,9 @@ var fontoxpath = function(xspattern, prsc) {
       return w4.create({ next: () => {
         if (n4)
           return p3;
-        c4 || (d4 ||= jc(this.L.map((F3) => C3(F3, a4, b3))), e4 = d4.O(), c4 = true);
+        c4 || (d4 ||= jc(this.L.map((G3) => C3(G3, a4, b3))), e4 = d4.O(), c4 = true);
         if (!f4) {
-          h4 ||= this.ma.map((F3) => C3(F3, a4, b3));
+          h4 ||= this.ma.map((G3) => C3(G3, a4, b3));
           var t4 = [];
           for (var u4 = 0; u4 < h4.length; u4++) {
             var z3 = h4[u4].O();
@@ -25788,37 +25862,37 @@ var fontoxpath = function(xspattern, prsc) {
           k3 = t4;
           f4 = true;
         }
-        this.s && (l4 || (t4 = this.s.h(a4, b3), l4 = vj(this.A, b3, t4)), this.l = l4.next(0).value.value);
+        this.s && (l4 || (t4 = this.s.h(a4, b3), l4 = zj(this.A, b3, t4)), this.l = l4.next(0).value.value);
         if ("xmlns" === this.l.prefix || "http://www.w3.org/2000/xmlns/" === this.l.namespaceURI || "xml" === this.l.prefix && "http://www.w3.org/XML/1998/namespace" !== this.l.namespaceURI || this.l.prefix && "xml" !== this.l.prefix && "http://www.w3.org/XML/1998/namespace" === this.l.namespaceURI)
           throw Error(`XQDY0096: The node name "${this.l.za()}" is invalid for a computed element constructor.`);
         const y3 = { nodeType: 1, Ra: true, attributes: [], childNodes: [], nodeName: this.l.za(), namespaceURI: this.l.namespaceURI, prefix: this.l.prefix, localName: this.l.localName };
-        t4 = { node: y3, F: null };
-        e4.forEach((F3) => {
-          y3.attributes.push(F3.value.node);
+        t4 = { node: y3, G: null };
+        e4.forEach((G3) => {
+          y3.attributes.push(G3.value.node);
         });
-        u4 = nj(k3, b3, mg);
-        u4.attributes.forEach((F3) => {
-          if (y3.attributes.find((N3) => N3.namespaceURI === F3.namespaceURI && N3.localName === F3.localName))
-            throw Error(`XQDY0025: The attribute ${F3.name} does not have an unique name in the constructed element.`);
-          y3.attributes.push(F3);
+        u4 = rj(k3, b3, qg);
+        u4.attributes.forEach((G3) => {
+          if (y3.attributes.find((N3) => N3.namespaceURI === G3.namespaceURI && N3.localName === G3.localName))
+            throw Error(`XQDY0025: The attribute ${G3.name} does not have an unique name in the constructed element.`);
+          y3.attributes.push(G3);
         });
-        u4.Xa.forEach((F3) => {
-          y3.childNodes.push(F3);
+        u4.Xa.forEach((G3) => {
+          y3.childNodes.push(G3);
         });
         for (u4 = 0; u4 < y3.childNodes.length; u4++) {
           z3 = y3.childNodes[u4];
           if (!cb(z3) || 3 !== z3.nodeType)
             continue;
-          const F3 = y3.childNodes[u4 - 1];
-          F3 && cb(F3) && 3 === F3.nodeType && (F3.data += z3.data, y3.childNodes.splice(u4, 1), u4--);
+          const G3 = y3.childNodes[u4 - 1];
+          G3 && cb(G3) && 3 === G3.nodeType && (G3.data += z3.data, y3.childNodes.splice(u4, 1), u4--);
         }
         n4 = true;
         return q3(rb(t4));
       } });
     }
     v(a4) {
-      yg(a4);
-      Object.keys(this.R).forEach((b3) => Bg(a4, b3, this.R[b3]));
+      Cg(a4);
+      Object.keys(this.P).forEach((b3) => Fg(a4, b3, this.P[b3]));
       this.Fa.forEach((b3) => b3.v(a4));
       this.L.reduce((b3, c4) => {
         if (c4.name) {
@@ -25835,21 +25909,21 @@ var fontoxpath = function(xspattern, prsc) {
           throw oc(this.l.prefix);
         this.l.namespaceURI = b3;
       }
-      this.A = Af(a4);
-      Eg(a4);
+      this.A = Ef(a4);
+      Ig(a4);
     }
   };
-  function Tj(a4) {
+  function Yj(a4) {
     if (/^xml$/i.test(a4))
       throw Error(`XQDY0064: The target of a created PI may not be "${a4}"`);
   }
-  function Uj(a4, b3) {
-    return { node: { data: b3, Ra: true, nodeName: a4, nodeType: 7, target: a4 }, F: null };
+  function Zj(a4, b3) {
+    return { node: { data: b3, Ra: true, nodeName: a4, nodeType: 7, target: a4 }, G: null };
   }
-  var Vj = class extends D3 {
+  var ak = class extends D3 {
     constructor(a4, b3) {
-      const c4 = a4.wb ? [a4.wb].concat(b3) : [b3];
-      super(c4.reduce((d4, e4) => d4.add(e4.o), new qf({})), c4, { B: false, P: "unsorted" });
+      const c4 = a4.xb ? [a4.xb].concat(b3) : [b3];
+      super(c4.reduce((d4, e4) => d4.add(e4.o), new uf({})), c4, { B: false, R: "unsorted" });
       this.l = a4;
       this.s = b3;
     }
@@ -25859,24 +25933,24 @@ var fontoxpath = function(xspattern, prsc) {
         const e4 = d4.map((h4) => jd(h4, 1).value).join(" ");
         if (-1 !== e4.indexOf("?>"))
           throw Error('XQDY0026: The contents of the data of a processing instruction may not include "?>"');
-        if (null !== this.l.Eb)
-          return d4 = this.l.Eb, Tj(d4), w4.m(rb(Uj(d4, e4)));
-        d4 = C3(this.l.wb, a4, b3);
-        const f4 = uj(b3, d4);
+        if (null !== this.l.Fb)
+          return d4 = this.l.Fb, Yj(d4), w4.m(rb(Zj(d4, e4)));
+        d4 = C3(this.l.xb, a4, b3);
+        const f4 = yj(b3, d4);
         return w4.create({ next: () => {
           var h4 = f4.next(0);
           if (h4.done)
             return h4;
           h4 = h4.value.value;
-          Tj(h4);
-          return q3(rb(Uj(h4, e4)));
+          Yj(h4);
+          return q3(rb(Zj(h4, e4)));
         } });
       });
     }
   };
-  var Wj = class extends D3 {
+  var bk = class extends D3 {
     constructor(a4) {
-      super(a4 ? a4.o : new qf({}), a4 ? [a4] : [], { B: false, P: "unsorted" });
+      super(a4 ? a4.o : new uf({}), a4 ? [a4] : [], { B: false, R: "unsorted" });
       this.l = a4;
     }
     h(a4, b3) {
@@ -25886,23 +25960,23 @@ var fontoxpath = function(xspattern, prsc) {
       return qc(a4, b3).N((c4) => {
         if (0 === c4.length)
           return w4.empty();
-        c4 = { node: { data: c4.map((d4) => jd(d4, 1).value).join(" "), Ra: true, nodeType: 3 }, F: null };
+        c4 = { node: { data: c4.map((d4) => jd(d4, 1).value).join(" "), Ra: true, nodeType: 3 }, G: null };
         return w4.m(rb(c4));
       });
     }
   };
-  var Xj = class extends mf {
+  var ck = class extends qf {
     constructor(a4, b3, c4, d4) {
-      super(new qf({}), [a4, ...b3.map((e4) => e4.Yb), c4].concat(...b3.map((e4) => e4.Gb.map((f4) => f4.Fb))), { B: false, W: false, P: "unsorted", subtree: false }, d4);
+      super(new uf({}), [a4, ...b3.map((e4) => e4.pb), c4].concat(...b3.map((e4) => e4.Ib.map((f4) => f4.Hb))), { B: false, W: false, R: "unsorted", subtree: false }, d4);
       this.L = a4;
       this.l = b3.length;
-      this.R = b3.map((e4) => e4.Gb);
+      this.P = b3.map((e4) => e4.Ib);
     }
     A(a4, b3, c4) {
       return c4[0](a4).N((d4) => {
         for (let e4 = 0; e4 < this.l; e4++)
-          if (this.R[e4].some((f4) => {
-            switch (f4.cc) {
+          if (this.P[e4].some((f4) => {
+            switch (f4.ec) {
               case "?":
                 if (1 < d4.length)
                   return false;
@@ -25920,7 +25994,7 @@ var fontoxpath = function(xspattern, prsc) {
             const h4 = w4.create(d4);
             return d4.every((k3, l4) => {
               k3 = bc(a4, l4, k3, h4);
-              return C3(f4.Fb, k3, b3).fa();
+              return C3(f4.Hb, k3, b3).fa();
             });
           }))
             return c4[e4 + 1](a4);
@@ -25929,25 +26003,60 @@ var fontoxpath = function(xspattern, prsc) {
     }
     v(a4) {
       super.v(a4);
-      if (this.L.J)
-        throw Je();
+      if (this.L.I)
+        throw Ne();
     }
   };
-  var Yj = { Z: false, ra: false }, Zj = { Z: true, ra: false }, ak = { Z: true, ra: true };
+  var dk = class extends qf {
+    constructor(a4, b3, c4, d4) {
+      super(new uf({}), [a4, c4, ...b3.map((e4) => e4.pb)].concat(...b3.map((e4) => e4.Gb.map((f4) => f4))), { B: false, W: false, R: "unsorted", subtree: false }, d4);
+      this.L = a4;
+      this.l = b3.length;
+      this.P = b3.map((e4) => e4.Gb);
+    }
+    A(a4, b3, c4) {
+      const d4 = ei(c4[0](a4), b3), [, e4, ...f4] = c4;
+      return d4.X({ multiple: () => {
+        throw Error("XPTY0004: The operand for a switch expression should result in zero or one item");
+      }, default: () => {
+        const h4 = d4.first(), k3 = !h4;
+        for (let n4 = 0; n4 < this.l; n4++) {
+          var l4 = this.P[n4].map((t4) => C3(t4, a4, b3));
+          for (const t4 of l4)
+            if (l4 = ei(t4, b3), l4.F()) {
+              if (k3)
+                return f4[n4](a4);
+            } else {
+              if (!l4.oa())
+                throw Error("XPTY0004: The operand for a switch case should result in zero or one item");
+              if (!k3 && (l4 = l4.first(), Ge(a4, b3, null, h4, l4).next(0).value))
+                return f4[n4](a4);
+            }
+        }
+        return e4(a4);
+      } });
+    }
+    v(a4) {
+      super.v(a4);
+      if (this.L.I)
+        throw Ne();
+    }
+  };
+  var ek = { Z: false, sa: false }, fk = { Z: true, sa: false }, gk = { Z: true, sa: true };
   function P3(a4) {
-    return a4.Z ? a4.ra ? ak : Zj : Yj;
+    return a4.Z ? a4.sa ? gk : fk : ek;
   }
   function Q2(a4, b3) {
     switch (a4[0]) {
       case "andOp":
         var c4 = I3(a4, "type");
-        return new Zh(bk("andOp", a4, P3(b3)), c4);
+        return new ci(hk("andOp", a4, P3(b3)), c4);
       case "orOp":
-        return c4 = I3(a4, "type"), new $h(bk("orOp", a4, P3(b3)), c4);
+        return c4 = I3(a4, "type"), new di(hk("orOp", a4, P3(b3)), c4);
       case "unaryPlusOp":
-        return c4 = G3(G3(a4, "operand"), "*"), a4 = I3(a4, "type"), new Yh("+", Q2(c4, b3), a4);
+        return c4 = F3(F3(a4, "operand"), "*"), a4 = I3(a4, "type"), new bi("+", Q2(c4, b3), a4);
       case "unaryMinusOp":
-        return c4 = G3(G3(a4, "operand"), "*"), a4 = I3(a4, "type"), new Yh("-", Q2(c4, b3), a4);
+        return c4 = F3(F3(a4, "operand"), "*"), a4 = I3(a4, "type"), new bi("-", Q2(c4, b3), a4);
       case "addOp":
       case "subtractOp":
       case "multiplyOp":
@@ -25957,19 +26066,19 @@ var fontoxpath = function(xspattern, prsc) {
         var d4 = a4[0], e4 = Q2(J3(a4, ["firstOperand", "*"]), P3(b3));
         b3 = Q2(J3(a4, ["secondOperand", "*"]), P3(b3));
         const f4 = I3(a4, "type"), h4 = I3(J3(a4, ["firstOperand", "*"]), "type"), k3 = I3(J3(a4, ["secondOperand", "*"]), "type");
-        h4 && k3 && I3(a4, "type") && (c4 = Ng(d4, h4.type, k3.type));
-        return new Rg(d4, e4, b3, f4, c4);
+        h4 && k3 && I3(a4, "type") && (c4 = Rg(d4, h4.type, k3.type));
+        return new Vg(d4, e4, b3, f4, c4);
       case "sequenceExpr":
-        return ck(a4, b3);
+        return ik(a4, b3);
       case "unionOp":
-        return c4 = I3(a4, "type"), new Di([Q2(J3(a4, ["firstOperand", "*"]), P3(b3)), Q2(J3(a4, ["secondOperand", "*"]), P3(b3))], c4);
+        return c4 = I3(a4, "type"), new Hi([Q2(J3(a4, ["firstOperand", "*"]), P3(b3)), Q2(J3(a4, ["secondOperand", "*"]), P3(b3))], c4);
       case "exceptOp":
       case "intersectOp":
-        return c4 = I3(a4, "type"), new ti(a4[0], Q2(J3(a4, ["firstOperand", "*"]), P3(b3)), Q2(J3(a4, ["secondOperand", "*"]), P3(b3)), c4);
+        return c4 = I3(a4, "type"), new xi(a4[0], Q2(J3(a4, ["firstOperand", "*"]), P3(b3)), Q2(J3(a4, ["secondOperand", "*"]), P3(b3)), c4);
       case "stringConcatenateOp":
-        return dk(a4, b3);
+        return jk(a4, b3);
       case "rangeSequenceExpr":
-        return ek(
+        return kk(
           a4,
           b3
         );
@@ -25979,101 +26088,103 @@ var fontoxpath = function(xspattern, prsc) {
       case "lessThanOp":
       case "greaterThanOrEqualOp":
       case "greaterThanOp":
-        return fk("generalCompare", a4, b3);
+        return lk("generalCompare", a4, b3);
       case "eqOp":
       case "neOp":
       case "ltOp":
       case "leOp":
       case "gtOp":
       case "geOp":
-        return fk("valueCompare", a4, b3);
+        return lk("valueCompare", a4, b3);
       case "isOp":
       case "nodeBeforeOp":
       case "nodeAfterOp":
-        return fk("nodeCompare", a4, b3);
+        return lk("nodeCompare", a4, b3);
       case "pathExpr":
-        return gk(a4, b3);
-      case "contextItemExpr":
-        return new Ii(I3(a4, "type"));
-      case "functionCallExpr":
-        return hk(a4, b3);
-      case "inlineFunctionExpr":
-        return ik(a4, b3);
-      case "arrowExpr":
-        return jk(a4, b3);
-      case "dynamicFunctionInvocationExpr":
-        return kk(a4, b3);
-      case "namedFunctionRef":
-        return b3 = G3(a4, "functionName"), c4 = I3(a4, "type"), a4 = H3(J3(a4, ["integerConstantExpr", "value"])), new Wh(Fg(b3), parseInt(a4, 10), c4);
-      case "integerConstantExpr":
-        return new Uh(H3(G3(a4, "value")), { type: 5, g: 3 });
-      case "stringConstantExpr":
-        return new Uh(H3(G3(a4, "value")), { type: 1, g: 3 });
-      case "decimalConstantExpr":
-        return new Uh(H3(G3(a4, "value")), { type: 4, g: 3 });
-      case "doubleConstantExpr":
-        return new Uh(H3(G3(a4, "value")), { type: 3, g: 3 });
-      case "varRef":
-        const { prefix: l4, namespaceURI: n4, localName: t4 } = Fg(G3(a4, "name"));
-        return new Wi(l4, n4, t4);
-      case "flworExpr":
-        return lk(a4, b3);
-      case "quantifiedExpr":
         return mk(a4, b3);
-      case "ifThenElseExpr":
-        return c4 = I3(a4, "type"), d4 = G3(a4, "ifClause") || K3(a4, "x:stackTrace")[0], e4 = G3(a4, "thenClause") || K3(a4, "x:stackTrace")[1], a4 = G3(a4, "elseClause") || K3(a4, "x:stackTrace")[2], new Lh(Q2(d4, P3(b3)), Q2(e4, b3), Q2(a4, b3), c4);
-      case "instanceOfExpr":
-        return c4 = Q2(J3(a4, ["argExpr", "*"]), b3), d4 = J3(a4, ["sequenceType", "*"]), e4 = J3(a4, ["sequenceType", "occurrenceIndicator"]), a4 = I3(a4, "type"), new zi(c4, Q2(d4, P3(b3)), e4 ? H3(e4) : "", a4);
-      case "castExpr":
-        return b3 = Q2(G3(G3(a4, "argExpr"), "*"), P3(b3)), c4 = G3(a4, "singleType"), a4 = Fg(G3(c4, "atomicType")), c4 = null !== G3(c4, "optional"), new xi(b3, a4, c4);
-      case "castableExpr":
-        return b3 = Q2(G3(G3(a4, "argExpr"), "*"), P3(b3)), c4 = G3(a4, "singleType"), a4 = Fg(G3(c4, "atomicType")), c4 = null !== G3(c4, "optional"), new wi(b3, a4, c4);
-      case "simpleMapExpr":
+      case "contextItemExpr":
+        return new Mi(I3(a4, "type"));
+      case "functionCallExpr":
         return nk(a4, b3);
-      case "mapConstructor":
+      case "inlineFunctionExpr":
         return ok(a4, b3);
-      case "arrayConstructor":
+      case "arrowExpr":
         return pk(a4, b3);
+      case "dynamicFunctionInvocationExpr":
+        return qk(a4, b3);
+      case "namedFunctionRef":
+        return b3 = F3(a4, "functionName"), c4 = I3(a4, "type"), a4 = H3(J3(a4, ["integerConstantExpr", "value"])), new $h(Jg(b3), parseInt(a4, 10), c4);
+      case "integerConstantExpr":
+        return new Yh(H3(F3(a4, "value")), { type: 5, g: 3 });
+      case "stringConstantExpr":
+        return new Yh(H3(F3(a4, "value")), { type: 1, g: 3 });
+      case "decimalConstantExpr":
+        return new Yh(H3(F3(a4, "value")), { type: 4, g: 3 });
+      case "doubleConstantExpr":
+        return new Yh(H3(F3(a4, "value")), { type: 3, g: 3 });
+      case "varRef":
+        const { prefix: l4, namespaceURI: n4, localName: t4 } = Jg(F3(a4, "name"));
+        return new $i(l4, n4, t4);
+      case "flworExpr":
+        return rk(a4, b3);
+      case "quantifiedExpr":
+        return sk(a4, b3);
+      case "ifThenElseExpr":
+        return c4 = I3(a4, "type"), d4 = F3(a4, "ifClause") || K3(a4, "x:stackTrace")[0], e4 = F3(a4, "thenClause") || K3(a4, "x:stackTrace")[1], a4 = F3(a4, "elseClause") || K3(a4, "x:stackTrace")[2], new Ph(Q2(d4, P3(b3)), Q2(e4, b3), Q2(a4, b3), c4);
+      case "instanceOfExpr":
+        return c4 = Q2(J3(a4, ["argExpr", "*"]), b3), d4 = J3(a4, ["sequenceType", "*"]), e4 = J3(a4, ["sequenceType", "occurrenceIndicator"]), a4 = I3(a4, "type"), new Di(c4, Q2(d4, P3(b3)), e4 ? H3(e4) : "", a4);
+      case "castExpr":
+        return b3 = Q2(F3(F3(a4, "argExpr"), "*"), P3(b3)), c4 = F3(a4, "singleType"), a4 = Jg(F3(c4, "atomicType")), c4 = null !== F3(c4, "optional"), new Bi(b3, a4, c4);
+      case "castableExpr":
+        return b3 = Q2(F3(F3(a4, "argExpr"), "*"), P3(b3)), c4 = F3(a4, "singleType"), a4 = Jg(F3(c4, "atomicType")), c4 = null !== F3(c4, "optional"), new Ai(b3, a4, c4);
+      case "simpleMapExpr":
+        return tk(a4, b3);
+      case "mapConstructor":
+        return uk(a4, b3);
+      case "arrayConstructor":
+        return vk(a4, b3);
       case "unaryLookup":
-        return c4 = I3(a4, "type"), new Pi(qk(a4, b3), c4);
+        return c4 = I3(a4, "type"), new Ti(wk(a4, b3), c4);
       case "typeswitchExpr":
-        return rk(
+        return xk(
           a4,
           b3
         );
+      case "switchExpr":
+        return yk(a4, b3);
       case "elementConstructor":
-        return sk(a4, b3);
+        return zk(a4, b3);
       case "attributeConstructor":
-        return tk(a4, b3);
+        return Ak(a4, b3);
       case "computedAttributeConstructor":
-        return (c4 = G3(a4, "tagName")) ? c4 = Fg(c4) : (c4 = G3(a4, "tagNameExpr"), c4 = { Na: Q2(G3(c4, "*"), P3(b3)) }), b3 = Q2(G3(G3(a4, "valueExpr"), "*"), P3(b3)), new Qj(c4, { nb: [b3] });
+        return (c4 = F3(a4, "tagName")) ? c4 = Jg(c4) : (c4 = F3(a4, "tagNameExpr"), c4 = { Na: Q2(F3(c4, "*"), P3(b3)) }), b3 = Q2(F3(F3(a4, "valueExpr"), "*"), P3(b3)), new Vj(c4, { nb: [b3] });
       case "computedCommentConstructor":
         if (!b3.Z)
           throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
-        b3 = (a4 = G3(a4, "argExpr")) ? Q2(G3(a4, "*"), P3(b3)) : null;
-        return new Rj(b3);
+        b3 = (a4 = F3(a4, "argExpr")) ? Q2(F3(a4, "*"), P3(b3)) : null;
+        return new Wj(b3);
       case "computedTextConstructor":
         if (!b3.Z)
           throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
-        b3 = (a4 = G3(a4, "argExpr")) ? Q2(G3(a4, "*"), P3(b3)) : null;
-        return new Wj(b3);
+        b3 = (a4 = F3(a4, "argExpr")) ? Q2(F3(a4, "*"), P3(b3)) : null;
+        return new bk(b3);
       case "computedElementConstructor":
-        return uk(a4, b3);
+        return Bk(a4, b3);
       case "computedPIConstructor":
         if (!b3.Z)
           throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
-        c4 = G3(a4, "piTargetExpr");
-        d4 = G3(a4, "piTarget");
-        e4 = G3(a4, "piValueExpr");
+        c4 = F3(a4, "piTargetExpr");
+        d4 = F3(a4, "piTarget");
+        e4 = F3(a4, "piValueExpr");
         a4 = I3(a4, "type");
-        return new Vj({ wb: c4 ? Q2(G3(c4, "*"), P3(b3)) : null, Eb: d4 ? H3(d4) : null }, e4 ? Q2(G3(e4, "*"), P3(b3)) : new ui([], a4));
+        return new ak({ xb: c4 ? Q2(F3(c4, "*"), P3(b3)) : null, Fb: d4 ? H3(d4) : null }, e4 ? Q2(F3(e4, "*"), P3(b3)) : new yi([], a4));
       case "CDataSection":
-        return new Uh(H3(a4), { type: 1, g: 3 });
+        return new Yh(H3(a4), { type: 1, g: 3 });
       case "deleteExpr":
         return b3 = Q2(
           J3(a4, ["targetExpr", "*"]),
           b3
-        ), new lj(b3);
+        ), new pj(b3);
       case "insertExpr":
         c4 = Q2(J3(a4, ["sourceExpr", "*"]), b3);
         e4 = K3(a4, "*")[1];
@@ -26085,16 +26196,16 @@ var fontoxpath = function(xspattern, prsc) {
             d4 = 2;
             break;
           case "insertInto":
-            d4 = (d4 = G3(e4, "*")) ? "insertAsFirst" === d4[0] ? 4 : 5 : 3;
+            d4 = (d4 = F3(e4, "*")) ? "insertAsFirst" === d4[0] ? 4 : 5 : 3;
         }
         b3 = Q2(J3(a4, ["targetExpr", "*"]), b3);
-        return new pj(c4, d4, b3);
+        return new tj(c4, d4, b3);
       case "renameExpr":
-        return c4 = Q2(J3(a4, ["targetExpr", "*"]), b3), b3 = Q2(J3(a4, ["newNameExpr", "*"]), b3), new wj(c4, b3);
+        return c4 = Q2(J3(a4, ["targetExpr", "*"]), b3), b3 = Q2(J3(a4, ["newNameExpr", "*"]), b3), new Aj(c4, b3);
       case "replaceExpr":
-        return c4 = !!G3(a4, "replaceValue"), d4 = Q2(J3(a4, ["targetExpr", "*"]), b3), b3 = Q2(J3(a4, ["replacementExpr", "*"]), b3), new Lj(c4, d4, b3);
+        return c4 = !!F3(a4, "replaceValue"), d4 = Q2(J3(a4, ["targetExpr", "*"]), b3), b3 = Q2(J3(a4, ["replacementExpr", "*"]), b3), new Qj(c4, d4, b3);
       case "transformExpr":
-        return vk(
+        return Ck(
           a4,
           b3
         );
@@ -26103,77 +26214,77 @@ var fontoxpath = function(xspattern, prsc) {
         for (a4 = c4[2]; "x:stackTrace" === a4[0]; )
           c4 = a4, a4 = a4[2];
         c4 = c4[1];
-        return new Nh(c4, a4[0], Q2(a4, b3), c4.Wa);
+        return new Rh(c4, a4[0], Q2(a4, b3), c4.Wa);
       case "ifClause":
       case "thenClause":
       case "elseClause":
-        return Q2(G3(a4, "*"), b3);
+        return Q2(F3(a4, "*"), b3);
       default:
-        return wk(a4);
+        return Dk(a4);
     }
   }
-  function wk(a4) {
+  function Dk(a4) {
     switch (a4[0]) {
       case "nameTest":
-        return new Ti(Fg(a4));
+        return new Xi(Jg(a4));
       case "piTest":
-        return (a4 = G3(a4, "piTarget")) ? new Ui(H3(a4)) : new Si(7);
+        return (a4 = F3(a4, "piTarget")) ? new Yi(H3(a4)) : new Wi(7);
       case "commentTest":
-        return new Si(8);
+        return new Wi(8);
       case "textTest":
-        return new Si(3);
+        return new Wi(3);
       case "documentTest":
-        return new Si(9);
+        return new Wi(9);
       case "attributeTest":
-        var b3 = (a4 = G3(a4, "attributeName")) && G3(a4, "star");
-        return !a4 || b3 ? new Si(2) : new Ti(Fg(G3(a4, "QName")), { kind: 2 });
+        var b3 = (a4 = F3(a4, "attributeName")) && F3(a4, "star");
+        return !a4 || b3 ? new Wi(2) : new Xi(Jg(F3(a4, "QName")), { kind: 2 });
       case "elementTest":
-        return b3 = (a4 = G3(a4, "elementName")) && G3(a4, "star"), !a4 || b3 ? new Si(1) : new Ti(Fg(G3(a4, "QName")), { kind: 1 });
+        return b3 = (a4 = F3(a4, "elementName")) && F3(a4, "star"), !a4 || b3 ? new Wi(1) : new Xi(Jg(F3(a4, "QName")), { kind: 1 });
       case "anyKindTest":
-        return new Vi({
+        return new Zi({
           prefix: "",
           namespaceURI: null,
           localName: "node()"
         });
       case "anyMapTest":
-        return new Vi({ prefix: "", namespaceURI: null, localName: "map(*)" });
+        return new Zi({ prefix: "", namespaceURI: null, localName: "map(*)" });
       case "anyArrayTest":
-        return new Vi({ prefix: "", namespaceURI: null, localName: "array(*)" });
+        return new Zi({ prefix: "", namespaceURI: null, localName: "array(*)" });
       case "Wildcard":
-        return G3(a4, "star") ? (b3 = G3(a4, "uri")) ? a4 = new Ti({ localName: "*", namespaceURI: H3(b3), prefix: "" }) : (b3 = G3(a4, "NCName"), a4 = "star" === G3(a4, "*")[0] ? new Ti({ localName: H3(b3), namespaceURI: null, prefix: "*" }) : new Ti({ localName: "*", namespaceURI: null, prefix: H3(b3) })) : a4 = new Ti({
+        return F3(a4, "star") ? (b3 = F3(a4, "uri")) ? a4 = new Xi({ localName: "*", namespaceURI: H3(b3), prefix: "" }) : (b3 = F3(a4, "NCName"), a4 = "star" === F3(a4, "*")[0] ? new Xi({ localName: H3(b3), namespaceURI: null, prefix: "*" }) : new Xi({ localName: "*", namespaceURI: null, prefix: H3(b3) })) : a4 = new Xi({
           localName: "*",
           namespaceURI: null,
           prefix: "*"
         }), a4;
       case "atomicType":
-        return new Vi(Fg(a4));
+        return new Zi(Jg(a4));
       case "anyItemType":
-        return new Vi({ prefix: "", namespaceURI: null, localName: "item()" });
+        return new Zi({ prefix: "", namespaceURI: null, localName: "item()" });
       default:
         throw Error("No selector counterpart for: " + a4[0] + ".");
     }
   }
-  function pk(a4, b3) {
+  function vk(a4, b3) {
     const c4 = I3(a4, "type");
-    a4 = G3(a4, "*");
-    const d4 = K3(a4, "arrayElem").map((e4) => Q2(G3(e4, "*"), P3(b3)));
+    a4 = F3(a4, "*");
+    const d4 = K3(a4, "arrayElem").map((e4) => Q2(F3(e4, "*"), P3(b3)));
     switch (a4[0]) {
       case "curlyArray":
-        return new nh(d4, c4);
+        return new rh(d4, c4);
       case "squareArray":
-        return new oh(d4, c4);
+        return new sh(d4, c4);
       default:
         throw Error("Unrecognized arrayType: " + a4[0]);
     }
   }
-  function ok(a4, b3) {
+  function uk(a4, b3) {
     const c4 = I3(a4, "type");
-    return new Vh(K3(a4, "mapConstructorEntry").map((d4) => ({ key: Q2(J3(d4, ["mapKeyExpr", "*"]), P3(b3)), value: Q2(J3(d4, ["mapValueExpr", "*"]), P3(b3)) })), c4);
+    return new Zh(K3(a4, "mapConstructorEntry").map((d4) => ({ key: Q2(J3(d4, ["mapKeyExpr", "*"]), P3(b3)), value: Q2(J3(d4, ["mapValueExpr", "*"]), P3(b3)) })), c4);
   }
-  function bk(a4, b3, c4) {
+  function hk(a4, b3, c4) {
     function d4(f4) {
-      const h4 = G3(G3(f4, "firstOperand"), "*");
-      f4 = G3(G3(f4, "secondOperand"), "*");
+      const h4 = F3(F3(f4, "firstOperand"), "*");
+      f4 = F3(F3(f4, "secondOperand"), "*");
       h4[0] === a4 ? d4(h4) : e4.push(Q2(h4, c4));
       f4[0] === a4 ? d4(f4) : e4.push(Q2(f4, c4));
     }
@@ -26181,44 +26292,44 @@ var fontoxpath = function(xspattern, prsc) {
     d4(b3);
     return e4;
   }
-  function qk(a4, b3) {
-    a4 = G3(a4, "*");
+  function wk(a4, b3) {
+    a4 = F3(a4, "*");
     switch (a4[0]) {
       case "NCName":
-        return new Uh(H3(a4), { type: 1, g: 3 });
+        return new Yh(H3(a4), { type: 1, g: 3 });
       case "star":
         return "*";
       default:
         return Q2(a4, P3(b3));
     }
   }
-  function fk(a4, b3, c4) {
+  function lk(a4, b3, c4) {
     var d4 = J3(b3, ["firstOperand", "*"]);
     const e4 = J3(b3, ["secondOperand", "*"]);
     d4 = Q2(d4, P3(c4));
     c4 = Q2(e4, P3(c4));
     switch (a4) {
       case "valueCompare":
-        return new li(b3[0], d4, c4);
+        return new pi(b3[0], d4, c4);
       case "nodeCompare":
-        return new ri(b3[0], d4, c4);
+        return new vi(b3[0], d4, c4);
       case "generalCompare":
-        return new oi(b3[0], d4, c4);
+        return new si(b3[0], d4, c4);
     }
   }
-  function xk(a4, b3, c4) {
+  function Ek(a4, b3, c4) {
     a4 = K3(a4, "*");
-    return new Gi(a4.filter((d4) => "stable" !== d4[0]).map((d4) => {
-      var e4 = G3(d4, "orderModifier"), f4 = e4 ? G3(e4, "orderingKind") : null;
-      e4 = e4 ? G3(e4, "emptyOrderingMode") : null;
+    return new Ki(a4.filter((d4) => "stable" !== d4[0]).map((d4) => {
+      var e4 = F3(d4, "orderModifier"), f4 = e4 ? F3(e4, "orderingKind") : null;
+      e4 = e4 ? F3(e4, "emptyOrderingMode") : null;
       f4 = f4 ? "ascending" === H3(f4) : true;
       e4 = e4 ? "empty least" === H3(e4) : true;
-      return { ba: Q2(J3(d4, ["orderByExpr", "*"]), b3), Ab: f4, ac: e4 };
+      return { ba: Q2(J3(d4, ["orderByExpr", "*"]), b3), Bb: f4, cc: e4 };
     }), c4);
   }
-  function lk(a4, b3) {
+  function rk(a4, b3) {
     var c4 = K3(a4, "*");
-    a4 = G3(c4[c4.length - 1], "*");
+    a4 = F3(c4[c4.length - 1], "*");
     c4 = c4.slice(0, -1);
     if (1 < c4.length && !b3.Z)
       throw Error("XPST0003: Use of XQuery FLWOR expressions in XPath is no allowed");
@@ -26228,8 +26339,8 @@ var fontoxpath = function(xspattern, prsc) {
           e4 = K3(e4, "*");
           for (var f4 = e4.length - 1; 0 <= f4; --f4) {
             var h4 = e4[f4], k3 = J3(h4, ["forExpr", "*"]);
-            const l4 = G3(h4, "positionalVariableBinding");
-            d4 = new Rh(Fg(J3(h4, ["typedVariableBinding", "varName"])), Q2(k3, P3(b3)), l4 ? Fg(l4) : null, d4);
+            const l4 = F3(h4, "positionalVariableBinding");
+            d4 = new Vh(Jg(J3(h4, ["typedVariableBinding", "varName"])), Q2(k3, P3(b3)), l4 ? Jg(l4) : null, d4);
           }
           return d4;
         case "letClause":
@@ -26238,19 +26349,19 @@ var fontoxpath = function(xspattern, prsc) {
             h4 = e4[f4], k3 = J3(
               h4,
               ["letExpr", "*"]
-            ), d4 = new Th(Fg(J3(h4, ["typedVariableBinding", "varName"])), Q2(k3, P3(b3)), d4);
+            ), d4 = new Xh(Jg(J3(h4, ["typedVariableBinding", "varName"])), Q2(k3, P3(b3)), d4);
           return d4;
         case "whereClause":
           e4 = K3(e4, "*");
           for (f4 = e4.length - 1; 0 <= f4; --f4)
-            d4 = new Xi(Q2(e4[f4], b3), d4);
+            d4 = new aj(Q2(e4[f4], b3), d4);
           return d4;
         case "windowClause":
           throw Error(`Not implemented: ${e4[0]} is not implemented yet.`);
         case "groupByClause":
           throw Error(`Not implemented: ${e4[0]} is not implemented yet.`);
         case "orderByClause":
-          return xk(e4, b3, d4);
+          return Ek(e4, b3, d4);
         case "countClause":
           throw Error(`Not implemented: ${e4[0]} is not implemented yet.`);
         default:
@@ -26258,12 +26369,12 @@ var fontoxpath = function(xspattern, prsc) {
       }
     }, Q2(a4, b3));
   }
-  function hk(a4, b3) {
-    const c4 = G3(a4, "functionName"), d4 = K3(G3(a4, "arguments"), "*");
+  function nk(a4, b3) {
+    const c4 = F3(a4, "functionName"), d4 = K3(F3(a4, "arguments"), "*");
     a4 = I3(a4, "type");
-    return new Bf(new Wh(Fg(c4), d4.length, a4), d4.map((e4) => "argumentPlaceholder" === e4[0] ? null : Q2(e4, b3)), a4);
+    return new Ff(new $h(Jg(c4), d4.length, a4), d4.map((e4) => "argumentPlaceholder" === e4[0] ? null : Q2(e4, b3)), a4);
   }
-  function jk(a4, b3) {
+  function pk(a4, b3) {
     const c4 = I3(a4, "type");
     var d4 = J3(a4, ["argExpr", "*"]);
     a4 = K3(a4, "*").slice(1);
@@ -26274,28 +26385,28 @@ var fontoxpath = function(xspattern, prsc) {
           var e4 = K3(a4[f4 + 1], "*");
           d4 = d4.concat(e4.map((h4) => "argumentPlaceholder" === h4[0] ? null : Q2(h4, b3)));
         }
-        e4 = "EQName" === a4[f4][0] ? new Wh(Fg(a4[f4]), d4.length, c4) : Q2(a4[f4], P3(b3));
-        d4 = [new Bf(e4, d4, c4)];
+        e4 = "EQName" === a4[f4][0] ? new $h(Jg(a4[f4]), d4.length, c4) : Q2(a4[f4], P3(b3));
+        d4 = [new Ff(e4, d4, c4)];
       }
     return d4[0];
   }
-  function kk(a4, b3) {
+  function qk(a4, b3) {
     const c4 = J3(a4, ["functionItem", "*"]), d4 = I3(a4, "type");
-    a4 = G3(a4, "arguments");
+    a4 = F3(a4, "arguments");
     let e4 = [];
     a4 && (e4 = K3(a4, "*").map((f4) => "argumentPlaceholder" === f4[0] ? null : Q2(f4, b3)));
-    return new Bf(Q2(c4, b3), e4, d4);
+    return new Ff(Q2(c4, b3), e4, d4);
   }
-  function ik(a4, b3) {
-    const c4 = K3(G3(a4, "paramList"), "*"), d4 = J3(a4, ["functionBody", "*"]), e4 = I3(a4, "type");
-    return new Sh(c4.map((f4) => ({ name: Fg(G3(f4, "varName")), type: Gg(f4) })), Gg(a4), d4 ? Q2(d4, b3) : new ui([], e4));
+  function ok(a4, b3) {
+    const c4 = K3(F3(a4, "paramList"), "*"), d4 = J3(a4, ["functionBody", "*"]), e4 = I3(a4, "type");
+    return new Wh(c4.map((f4) => ({ name: Jg(F3(f4, "varName")), type: Kg(f4) })), Kg(a4), d4 ? Q2(d4, b3) : new yi([], e4));
   }
-  function gk(a4, b3) {
+  function mk(a4, b3) {
     const c4 = I3(a4, "type");
     var d4 = K3(a4, "stepExpr");
     let e4 = false;
     var f4 = d4.map((h4) => {
-      var k3 = G3(h4, "xpathAxis");
+      var k3 = F3(h4, "xpathAxis");
       let l4;
       var n4 = K3(h4, "*");
       const t4 = [];
@@ -26303,56 +26414,56 @@ var fontoxpath = function(xspattern, prsc) {
       for (const y3 of n4)
         switch (y3[0]) {
           case "lookup":
-            t4.push(["lookup", qk(y3, b3)]);
+            t4.push(["lookup", wk(y3, b3)]);
             break;
           case "predicate":
           case "predicates":
-            for (const F3 of K3(y3, "*")) {
-              n4 = Q2(F3, P3(b3));
+            for (const G3 of K3(y3, "*")) {
+              n4 = Q2(G3, P3(b3));
               if (!z3) {
                 const N3 = n4.D();
-                null === N3 ? z3 = true : u4 = th(u4, N3);
+                null === N3 ? z3 = true : u4 = xh(u4, N3);
               }
               t4.push(["predicate", n4]);
             }
         }
       if (k3)
-        switch (e4 = true, h4 = G3(h4, "attributeTest anyElementTest piTest documentTest elementTest commentTest namespaceTest anyKindTest textTest anyFunctionTest typedFunctionTest schemaAttributeTest atomicType anyItemType parenthesizedItemType typedMapTest typedArrayTest nameTest Wildcard".split(" ")), h4 = wk(h4), H3(k3)) {
+        switch (e4 = true, h4 = F3(h4, "attributeTest anyElementTest piTest documentTest elementTest commentTest namespaceTest anyKindTest textTest anyFunctionTest typedFunctionTest schemaAttributeTest atomicType anyItemType parenthesizedItemType typedMapTest typedArrayTest nameTest Wildcard".split(" ")), h4 = Dk(h4), H3(k3)) {
           case "ancestor":
-            l4 = new rh(h4, { Qa: false });
+            l4 = new vh(h4, { Qa: false });
             break;
           case "ancestor-or-self":
-            l4 = new rh(h4, { Qa: true });
+            l4 = new vh(h4, { Qa: true });
             break;
           case "attribute":
-            l4 = new uh(h4, u4);
+            l4 = new yh(h4, u4);
             break;
           case "child":
-            l4 = new vh(h4, u4);
+            l4 = new zh(h4, u4);
             break;
           case "descendant":
-            l4 = new yh(h4, { Qa: false });
+            l4 = new Ch(h4, { Qa: false });
             break;
           case "descendant-or-self":
-            l4 = new yh(h4, { Qa: true });
+            l4 = new Ch(h4, { Qa: true });
             break;
           case "parent":
-            l4 = new Fh(h4, u4);
-            break;
-          case "following-sibling":
-            l4 = new Eh(h4, u4);
-            break;
-          case "preceding-sibling":
             l4 = new Jh(h4, u4);
             break;
+          case "following-sibling":
+            l4 = new Ih(h4, u4);
+            break;
+          case "preceding-sibling":
+            l4 = new Nh(h4, u4);
+            break;
           case "following":
-            l4 = new Ch(h4);
+            l4 = new Gh(h4);
             break;
           case "preceding":
-            l4 = new Hh(h4);
+            l4 = new Lh(h4);
             break;
           case "self":
-            l4 = new Kh(h4, u4);
+            l4 = new Oh(h4, u4);
         }
       else
         k3 = J3(
@@ -26362,109 +26473,119 @@ var fontoxpath = function(xspattern, prsc) {
       for (const y3 of t4)
         switch (y3[0]) {
           case "lookup":
-            l4 = new Oi(l4, y3[1]);
+            l4 = new Si(l4, y3[1]);
             break;
           case "predicate":
-            l4 = new Li(l4, y3[1]);
+            l4 = new Pi(l4, y3[1]);
         }
       l4.type = c4;
       return l4;
     });
-    a4 = G3(a4, "rootExpr");
+    a4 = F3(a4, "rootExpr");
     d4 = e4 || null !== a4 || 1 < d4.length;
     if (!d4 && 1 === f4.length || !a4 && 1 === f4.length && "sorted" === f4[0].ia)
       return f4[0];
     if (a4 && 0 === f4.length)
-      return new Hi(null);
-    f4 = new Ki(f4, d4);
-    return a4 ? new Hi(f4) : f4;
+      return new Li(null);
+    f4 = new Oi(f4, d4);
+    return a4 ? new Li(f4) : f4;
   }
-  function mk(a4, b3) {
-    const c4 = I3(a4, "type"), d4 = H3(G3(a4, "quantifier")), e4 = J3(a4, ["predicateExpr", "*"]);
+  function sk(a4, b3) {
+    const c4 = I3(a4, "type"), d4 = H3(F3(a4, "quantifier")), e4 = J3(a4, ["predicateExpr", "*"]);
     a4 = K3(a4, "quantifiedExprInClause").map((f4) => {
-      const h4 = Fg(J3(f4, ["typedVariableBinding", "varName"]));
+      const h4 = Jg(J3(f4, ["typedVariableBinding", "varName"]));
       f4 = J3(f4, ["sourceExpr", "*"]);
       return { name: h4, fb: Q2(f4, P3(b3)) };
     });
-    return new Qi(d4, a4, Q2(e4, P3(b3)), c4);
+    return new Ui(d4, a4, Q2(e4, P3(b3)), c4);
   }
-  function ck(a4, b3) {
+  function ik(a4, b3) {
     var c4 = K3(a4, "*").map((d4) => Q2(d4, b3));
     if (1 === c4.length)
       return c4[0];
     c4 = I3(a4, "type");
-    return new ui(K3(a4, "*").map((d4) => Q2(d4, b3)), c4);
-  }
-  function nk(a4, b3) {
-    const c4 = I3(a4, "type");
-    return K3(a4, "*").reduce((d4, e4) => null === d4 ? Q2(e4, P3(b3)) : new vi(d4, Q2(e4, P3(b3)), c4), null);
-  }
-  function dk(a4, b3) {
-    const c4 = I3(a4, "type");
-    a4 = [J3(a4, ["firstOperand", "*"]), J3(a4, ["secondOperand", "*"])];
-    return new Bf(new Wh({ localName: "concat", namespaceURI: "http://www.w3.org/2005/xpath-functions", prefix: "" }, a4.length, c4), a4.map((d4) => Q2(d4, P3(b3))), c4);
-  }
-  function ek(a4, b3) {
-    const c4 = I3(a4, "type");
-    a4 = [G3(G3(a4, "startExpr"), "*"), G3(G3(a4, "endExpr"), "*")];
-    const d4 = new Wh({ localName: "to", namespaceURI: "http://fontoxpath/operators", prefix: "" }, a4.length, c4);
-    return new Bf(d4, a4.map((e4) => Q2(e4, P3(b3))), c4);
-  }
-  function sk(a4, b3) {
-    if (!b3.Z)
-      throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
-    const c4 = Fg(G3(a4, "tagName"));
-    var d4 = G3(a4, "attributeList");
-    const e4 = d4 ? K3(d4, "attributeConstructor").map((f4) => Q2(f4, P3(b3))) : [];
-    d4 = d4 ? K3(d4, "namespaceDeclaration").map((f4) => {
-      const h4 = G3(f4, "prefix");
-      return { prefix: h4 ? H3(h4) : "", uri: H3(G3(f4, "uri")) };
-    }) : [];
-    a4 = (a4 = G3(a4, "elementContent")) ? K3(a4, "*").map((f4) => Q2(f4, P3(b3))) : [];
-    return new Sj(c4, e4, d4, a4);
+    return new yi(K3(a4, "*").map((d4) => Q2(d4, b3)), c4);
   }
   function tk(a4, b3) {
+    const c4 = I3(a4, "type");
+    return K3(a4, "*").reduce((d4, e4) => null === d4 ? Q2(e4, P3(b3)) : new zi(d4, Q2(e4, P3(b3)), c4), null);
+  }
+  function jk(a4, b3) {
+    const c4 = I3(a4, "type");
+    a4 = [J3(a4, ["firstOperand", "*"]), J3(a4, ["secondOperand", "*"])];
+    return new Ff(new $h({ localName: "concat", namespaceURI: "http://www.w3.org/2005/xpath-functions", prefix: "" }, a4.length, c4), a4.map((d4) => Q2(d4, P3(b3))), c4);
+  }
+  function kk(a4, b3) {
+    const c4 = I3(a4, "type");
+    a4 = [F3(F3(a4, "startExpr"), "*"), F3(F3(a4, "endExpr"), "*")];
+    const d4 = new $h({ localName: "to", namespaceURI: "http://fontoxpath/operators", prefix: "" }, a4.length, c4);
+    return new Ff(d4, a4.map((e4) => Q2(e4, P3(b3))), c4);
+  }
+  function zk(a4, b3) {
     if (!b3.Z)
       throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
-    const c4 = Fg(G3(a4, "attributeName"));
-    var d4 = G3(a4, "attributeValue");
+    const c4 = Jg(F3(a4, "tagName"));
+    var d4 = F3(a4, "attributeList");
+    const e4 = d4 ? K3(d4, "attributeConstructor").map((f4) => Q2(f4, P3(b3))) : [];
+    d4 = d4 ? K3(d4, "namespaceDeclaration").map((f4) => {
+      const h4 = F3(f4, "prefix");
+      return { prefix: h4 ? H3(h4) : "", uri: H3(F3(f4, "uri")) };
+    }) : [];
+    a4 = (a4 = F3(a4, "elementContent")) ? K3(a4, "*").map((f4) => Q2(f4, P3(b3))) : [];
+    return new Xj(c4, e4, d4, a4);
+  }
+  function Ak(a4, b3) {
+    if (!b3.Z)
+      throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
+    const c4 = Jg(F3(a4, "attributeName"));
+    var d4 = F3(a4, "attributeValue");
     d4 = d4 ? H3(d4) : null;
-    a4 = (a4 = G3(a4, "attributeValueExpr")) ? K3(a4, "*").map((e4) => Q2(e4, P3(b3))) : null;
-    return new Qj(c4, { value: d4, nb: a4 });
+    a4 = (a4 = F3(a4, "attributeValueExpr")) ? K3(a4, "*").map((e4) => Q2(e4, P3(b3))) : null;
+    return new Vj(c4, { value: d4, nb: a4 });
   }
-  function uk(a4, b3) {
-    var c4 = G3(a4, "tagName");
-    c4 ? c4 = Fg(c4) : (c4 = G3(a4, "tagNameExpr"), c4 = { Na: Q2(G3(c4, "*"), P3(b3)) });
-    a4 = (a4 = G3(a4, "contentExpr")) ? K3(a4, "*").map((d4) => Q2(d4, P3(b3))) : [];
-    return new Sj(c4, [], [], a4);
+  function Bk(a4, b3) {
+    var c4 = F3(a4, "tagName");
+    c4 ? c4 = Jg(c4) : (c4 = F3(a4, "tagNameExpr"), c4 = { Na: Q2(F3(c4, "*"), P3(b3)) });
+    a4 = (a4 = F3(a4, "contentExpr")) ? K3(a4, "*").map((d4) => Q2(d4, P3(b3))) : [];
+    return new Xj(c4, [], [], a4);
   }
-  function vk(a4, b3) {
-    const c4 = K3(G3(a4, "transformCopies"), "transformCopy").map((e4) => {
-      const f4 = Fg(G3(G3(e4, "varRef"), "name"));
-      return { fb: Q2(G3(G3(e4, "copySource"), "*"), b3), Hb: new Sa(f4.prefix, f4.namespaceURI, f4.localName) };
-    }), d4 = Q2(G3(G3(a4, "modifyExpr"), "*"), b3);
-    a4 = Q2(G3(G3(a4, "returnExpr"), "*"), b3);
-    return new Oj(c4, d4, a4);
+  function Ck(a4, b3) {
+    const c4 = K3(F3(a4, "transformCopies"), "transformCopy").map((e4) => {
+      const f4 = Jg(F3(F3(e4, "varRef"), "name"));
+      return { fb: Q2(F3(F3(e4, "copySource"), "*"), b3), Jb: new Sa(f4.prefix, f4.namespaceURI, f4.localName) };
+    }), d4 = Q2(F3(F3(a4, "modifyExpr"), "*"), b3);
+    a4 = Q2(F3(F3(a4, "returnExpr"), "*"), b3);
+    return new Tj(c4, d4, a4);
   }
-  function rk(a4, b3) {
+  function xk(a4, b3) {
     if (!b3.Z)
       throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
-    const c4 = I3(a4, "type"), d4 = Q2(G3(G3(a4, "argExpr"), "*"), b3), e4 = K3(a4, "typeswitchExprCaseClause").map((f4) => {
-      const h4 = 0 === K3(f4, "sequenceTypeUnion").length ? [G3(f4, "sequenceType")] : K3(G3(f4, "sequenceTypeUnion"), "sequenceType");
-      return { Yb: Q2(J3(f4, ["resultExpr", "*"]), b3), Gb: h4.map((k3) => {
-        const l4 = G3(k3, "occurrenceIndicator");
-        return { cc: l4 ? H3(l4) : "", Fb: Q2(G3(k3, "*"), b3) };
+    const c4 = I3(a4, "type"), d4 = Q2(F3(F3(a4, "argExpr"), "*"), b3), e4 = K3(a4, "typeswitchExprCaseClause").map((f4) => {
+      const h4 = 0 === K3(f4, "sequenceTypeUnion").length ? [F3(f4, "sequenceType")] : K3(F3(f4, "sequenceTypeUnion"), "sequenceType");
+      return { pb: Q2(J3(f4, ["resultExpr", "*"]), b3), Ib: h4.map((k3) => {
+        const l4 = F3(k3, "occurrenceIndicator");
+        return { ec: l4 ? H3(l4) : "", Hb: Q2(F3(k3, "*"), b3) };
       }) };
     });
     a4 = Q2(J3(a4, ["typeswitchExprDefaultClause", "resultExpr", "*"]), b3);
-    return new Xj(d4, e4, a4, c4);
+    return new ck(d4, e4, a4, c4);
   }
   function yk(a4, b3) {
+    if (!b3.Z)
+      throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
+    const c4 = I3(a4, "type"), d4 = Q2(F3(F3(a4, "argExpr"), "*"), b3), e4 = K3(a4, "switchExprCaseClause").map((f4) => {
+      const h4 = K3(f4, "switchCaseExpr");
+      return { pb: Q2(J3(f4, ["resultExpr", "*"]), b3), Gb: h4.map((k3) => Q2(F3(k3, "*"), b3)) };
+    });
+    a4 = Q2(J3(a4, ["switchExprDefaultClause", "resultExpr", "*"]), b3);
+    return new dk(d4, e4, a4, c4);
+  }
+  function Fk(a4, b3) {
     return Q2(a4, b3);
   }
   ;
-  const zk = /* @__PURE__ */ new Map();
-  class Ak {
+  const Gk = /* @__PURE__ */ new Map();
+  class Hk {
     constructor(a4, b3, c4, d4, e4, f4) {
       this.v = a4;
       this.D = b3;
@@ -26474,25 +26595,25 @@ var fontoxpath = function(xspattern, prsc) {
       this.l = f4;
     }
   }
-  function Bk(a4, b3, c4, d4, e4, f4, h4, k3) {
-    a4 = zk.get(a4);
+  function Ik(a4, b3, c4, d4, e4, f4, h4, k3) {
+    a4 = Gk.get(a4);
     if (!a4)
       return null;
     b3 = a4[b3 + (f4 ? "_DEBUG" : "")];
     return b3 ? (b3 = b3.find((l4) => l4.o === h4 && l4.v.every((n4) => c4(n4.prefix) === n4.namespaceURI) && l4.D.every((n4) => void 0 !== d4[n4.name]) && l4.kb.every((n4) => e4[n4.prefix] === n4.namespaceURI) && l4.l.every((n4) => {
-      const t4 = k3(n4.bc, n4.arity);
-      return t4 && t4.namespaceURI === n4.Cb.namespaceURI && t4.localName === n4.Cb.localName;
-    }))) ? { ba: b3.h, fc: false } : null : null;
+      const t4 = k3(n4.dc, n4.arity);
+      return t4 && t4.namespaceURI === n4.Db.namespaceURI && t4.localName === n4.Db.localName;
+    }))) ? { ba: b3.h, hc: false } : null : null;
   }
-  function Ck(a4, b3, c4, d4, e4, f4, h4) {
-    let k3 = zk.get(a4);
-    k3 || (k3 = /* @__PURE__ */ Object.create(null), zk.set(a4, k3));
+  function Jk(a4, b3, c4, d4, e4, f4, h4) {
+    let k3 = Gk.get(a4);
+    k3 || (k3 = /* @__PURE__ */ Object.create(null), Gk.set(a4, k3));
     a4 = b3 + (f4 ? "_DEBUG" : "");
     (b3 = k3[a4]) || (b3 = k3[a4] = []);
-    b3.push(new Ak(Object.values(c4.h), Object.values(c4.o), e4, Object.keys(d4).map((l4) => ({ namespaceURI: d4[l4], prefix: l4 })), h4, c4.D));
+    b3.push(new Hk(Object.values(c4.h), Object.values(c4.o), e4, Object.keys(d4).map((l4) => ({ namespaceURI: d4[l4], prefix: l4 })), h4, c4.D));
   }
   ;
-  function Dk(a4) {
+  function Kk(a4) {
     var b3 = new Za();
     if ("http://www.w3.org/2005/XQueryX" !== a4.namespaceURI && "http://www.w3.org/2005/XQueryX" !== a4.namespaceURI && "http://fontoxml.com/fontoxpath" !== a4.namespaceURI && "http://www.w3.org/2007/xquery-update-10" !== a4.namespaceURI)
       throw mc("The XML structure passed as an XQueryX program was not valid XQueryX");
@@ -26505,7 +26626,7 @@ var fontoxpath = function(xspattern, prsc) {
     for (const e4 of b3)
       switch (e4.nodeType) {
         case 1:
-          c4.push(Dk(e4));
+          c4.push(Kk(e4));
           break;
         case 3:
           c4.push(e4.data);
@@ -26513,50 +26634,50 @@ var fontoxpath = function(xspattern, prsc) {
     return c4;
   }
   ;
-  const Ek = /* @__PURE__ */ Object.create(null);
-  var Fk = (a4, b3) => {
-    let c4 = Ek[a4];
-    c4 ||= Ek[a4] = { Ia: [], Ta: [], oa: null, source: b3.source };
-    const d4 = c4.oa || (() => {
+  const Lk = /* @__PURE__ */ Object.create(null);
+  var Mk = (a4, b3) => {
+    let c4 = Lk[a4];
+    c4 ||= Lk[a4] = { Ia: [], Ta: [], pa: null, source: b3.source };
+    const d4 = c4.pa || (() => {
     });
     c4.Ia = c4.Ia.concat(b3.Ia);
     c4.Ta = c4.Ta.concat(b3.Ta);
-    c4.oa = (e4) => {
+    c4.pa = (e4) => {
       d4(e4);
-      b3.oa && b3.oa(e4);
+      b3.pa && b3.pa(e4);
     };
-  }, Gk = (a4, b3) => {
-    const c4 = Ek[b3];
+  }, Nk = (a4, b3) => {
+    const c4 = Lk[b3];
     if (!c4)
       throw Error(`XQST0051: No modules found with the namespace uri ${b3}`);
     c4.Ia.forEach((d4) => {
-      d4.cb && Ag(a4, b3, d4.localName, d4.arity, d4);
+      d4.cb && Eg(a4, b3, d4.localName, d4.arity, d4);
     });
     c4.Ta.forEach((d4) => {
-      Cg(a4, b3, d4.localName);
-      Dg(a4, b3, d4.localName, (e4, f4) => C3(d4.ba, e4, f4));
+      Gg(a4, b3, d4.localName);
+      Hg(a4, b3, d4.localName, (e4, f4) => C3(d4.ba, e4, f4));
     });
-  }, Hk = () => {
-    Object.keys(Ek).forEach((a4) => {
-      a4 = Ek[a4];
-      if (a4.oa)
+  }, Ok = () => {
+    Object.keys(Lk).forEach((a4) => {
+      a4 = Lk[a4];
+      if (a4.pa)
         try {
-          a4.oa(a4);
+          a4.pa(a4);
         } catch (b3) {
-          a4.oa = null, cg(
+          a4.pa = null, gg(
             a4.source,
             b3
           );
         }
-      a4.oa = null;
+      a4.pa = null;
     });
   };
-  function Ik(a4) {
+  function Pk(a4) {
     return a4.replace(/(\x0D\x0A)|(\x0D(?!\x0A))/g, String.fromCharCode(10));
   }
   ;
   var R2 = prsc;
-  function Jk(a4, b3) {
+  function Qk(a4, b3) {
     return (c4, d4) => {
       if (b3.has(d4))
         return b3.get(d4);
@@ -26571,69 +26692,71 @@ var fontoxpath = function(xspattern, prsc) {
   function T2(a4, b3) {
     return a4.reverse().reduce((c4, d4) => (0, R2.preceded)(d4, c4), b3);
   }
-  function Kk(a4, b3, c4, d4) {
+  function Rk(a4, b3, c4, d4) {
     return (0, R2.then)((0, R2.then)(a4, b3, (e4, f4) => [e4, f4]), c4, ([e4, f4], h4) => d4(e4, f4, h4));
   }
-  function Lk(a4, b3, c4, d4, e4) {
+  function Sk(a4, b3, c4, d4, e4) {
     return (0, R2.then)((0, R2.then)((0, R2.then)(a4, b3, (f4, h4) => [f4, h4]), c4, ([f4, h4], k3) => [f4, h4, k3]), d4, ([f4, h4, k3], l4) => e4(f4, h4, k3, l4));
   }
-  function Mk(a4, b3, c4, d4, e4, f4) {
+  function Tk(a4, b3, c4, d4, e4, f4) {
     return (0, R2.then)((0, R2.then)((0, R2.then)((0, R2.then)(a4, b3, (h4, k3) => [h4, k3]), c4, ([h4, k3], l4) => [h4, k3, l4]), d4, ([h4, k3, l4], n4) => [h4, k3, l4, n4]), e4, ([h4, k3, l4, n4], t4) => f4(h4, k3, l4, n4, t4));
   }
-  function Nk(a4) {
+  function Uk(a4) {
     return (0, R2.map)(a4, (b3) => [b3]);
   }
-  function Ok(a4, b3) {
+  function Vk(a4, b3) {
     return (0, R2.map)((0, R2.or)(a4), () => b3);
   }
-  function Pk(a4) {
+  function Wk(a4) {
     return (b3, c4) => (b3 = a4.exec(b3.substring(c4))) && 0 === b3.index ? (0, R2.okWithValue)(c4 + b3[0].length, b3[0]) : (0, R2.error)(c4, [a4.source], false);
   }
   ;
-  var Qk = (0, R2.or)([(0, R2.token)(" "), (0, R2.token)("	"), (0, R2.token)("\r"), (0, R2.token)("\n")]), Rk = (0, R2.token)("(:"), Sk = (0, R2.token)(":)"), Tk = (0, R2.token)("(#"), Uk = (0, R2.token)("#)"), Vk = (0, R2.token)("("), Wk = (0, R2.token)(")"), Xk = (0, R2.token)("["), Yk = (0, R2.token)("]"), Zk = (0, R2.token)("{"), $k = (0, R2.token)("}"), al = (0, R2.token)("{{"), bl = (0, R2.token)("}}"), cl = (0, R2.token)("'"), dl = (0, R2.token)("''"), el = (0, R2.token)('"'), fl = (0, R2.token)('""'), gl = (0, R2.token)("<![CDATA["), hl = (0, R2.token)("]]>"), il = (0, R2.token)("/>"), jl = (0, R2.token)("</"), kl = (0, R2.token)("<!--"), ll = (0, R2.token)("-->"), ml = (0, R2.token)("<?"), nl = (0, R2.token)("?>"), ol = (0, R2.token)("&#x"), pl = (0, R2.token)("&#"), ql = (0, R2.token)(":*"), rl = (0, R2.token)("*:"), sl = (0, R2.token)(":="), tl = (0, R2.token)("&"), ul = (0, R2.token)(":"), vl = (0, R2.token)(";"), wl = (0, R2.token)("*"), xl = (0, R2.token)("@"), yl = (0, R2.token)("$"), zl = (0, R2.token)("#"), Al = (0, R2.token)("%"), Bl = (0, R2.token)("?"), Cl = (0, R2.token)("="), Dl = (0, R2.followed)((0, R2.token)("!"), (0, R2.not)((0, R2.peek)(Cl), [])), El = (0, R2.followed)((0, R2.token)("|"), (0, R2.not)(
+  var Xk = (0, R2.or)([(0, R2.token)(" "), (0, R2.token)("	"), (0, R2.token)("\r"), (0, R2.token)("\n")]), Yk = (0, R2.token)("(:"), Zk = (0, R2.token)(":)"), $k = (0, R2.token)("(#"), al = (0, R2.token)("#)"), bl = (0, R2.token)("("), cl = (0, R2.token)(")"), dl = (0, R2.token)("["), el = (0, R2.token)("]"), fl = (0, R2.token)("{"), gl = (0, R2.token)("}"), hl = (0, R2.token)("{{"), il = (0, R2.token)("}}"), jl = (0, R2.token)("'"), kl = (0, R2.token)("''"), ll = (0, R2.token)('"'), ml = (0, R2.token)('""'), nl = (0, R2.token)("<![CDATA["), ol = (0, R2.token)("]]>"), pl = (0, R2.token)("/>"), ql = (0, R2.token)("</"), rl = (0, R2.token)("<!--"), sl = (0, R2.token)("-->"), tl = (0, R2.token)("<?"), ul = (0, R2.token)("?>"), vl = (0, R2.token)("&#x"), wl = (0, R2.token)("&#"), xl = (0, R2.token)(":*"), yl = (0, R2.token)("*:"), zl = (0, R2.token)(":="), Al = (0, R2.token)("&"), Bl = (0, R2.token)(":"), Cl = (0, R2.token)(";"), Dl = (0, R2.token)("*"), El = (0, R2.token)("@"), Fl = (0, R2.token)("$"), Gl = (0, R2.token)("#"), Hl = (0, R2.token)("%"), Il = (0, R2.token)("?"), Jl = (0, R2.token)("="), Kl = (0, R2.followed)((0, R2.token)("!"), (0, R2.not)((0, R2.peek)(Jl), [])), Ll = (0, R2.followed)((0, R2.token)("|"), (0, R2.not)(
     (0, R2.peek)((0, R2.token)("|")),
     []
-  )), Fl = (0, R2.token)("||"), Gl = (0, R2.token)("!="), Hl = (0, R2.token)("<"), Il = (0, R2.token)("<<"), Jl = (0, R2.token)("<="), Kl = (0, R2.token)(">"), Ll = (0, R2.token)(">>"), Ml = (0, R2.token)(">="), Nl = (0, R2.token)(","), Ol = (0, R2.token)("."), Pl = (0, R2.token)(".."), Ql = (0, R2.token)("+"), Rl = (0, R2.token)("-"), Sl = (0, R2.token)("/"), Tl = (0, R2.token)("//"), Ul = (0, R2.token)("=>"), Vl = (0, R2.token)("e"), Wl = (0, R2.token)("E");
+  )), Ml = (0, R2.token)("||"), Nl = (0, R2.token)("!="), Ol = (0, R2.token)("<"), Pl = (0, R2.token)("<<"), Ql = (0, R2.token)("<="), Rl = (0, R2.token)(">"), Sl = (0, R2.token)(">>"), Tl = (0, R2.token)(">="), Ul = (0, R2.token)(","), Vl = (0, R2.token)("."), Wl = (0, R2.token)(".."), Xl = (0, R2.token)("+"), Yl = (0, R2.token)("-"), Zl = (0, R2.token)("/"), $l = (0, R2.token)("//"), am = (0, R2.token)("=>"), bm = (0, R2.token)("e"), cm = (0, R2.token)("E");
   (0, R2.token)("l");
   (0, R2.token)("L");
   (0, R2.token)("m");
   (0, R2.token)("M");
-  var Xl = (0, R2.token)("Q");
+  var dm = (0, R2.token)("Q");
   (0, R2.token)("x");
   (0, R2.token)("X");
-  var Yl = (0, R2.token)("as"), Zl = (0, R2.token)("cast"), $l = (0, R2.token)("castable"), am = (0, R2.token)("treat"), bm = (0, R2.token)("instance"), cm = (0, R2.token)("of"), dm = (0, R2.token)("node"), em = (0, R2.token)("nodes"), fm = (0, R2.token)("delete"), gm = (0, R2.token)("value"), hm = (0, R2.token)("function"), im = (0, R2.token)("map"), jm = (0, R2.token)("element"), km = (0, R2.token)("attribute"), lm = (0, R2.token)("schema-element"), mm = (0, R2.token)("intersect"), nm = (0, R2.token)("except"), om = (0, R2.token)("union"), pm = (0, R2.token)("to"), qm = (0, R2.token)("is"), rm = (0, R2.token)("or"), sm = (0, R2.token)("and"), tm = (0, R2.token)("div"), um = (0, R2.token)("idiv"), vm = (0, R2.token)("mod"), wm = (0, R2.token)("eq"), xm = (0, R2.token)("ne"), ym = (0, R2.token)("lt"), zm = (0, R2.token)("le"), Am = (0, R2.token)("gt"), Bm = (0, R2.token)("ge"), Cm = (0, R2.token)("amp"), Dm = (0, R2.token)("quot"), Em = (0, R2.token)("apos"), Fm = (0, R2.token)("if"), Gm = (0, R2.token)("then"), Hm = (0, R2.token)("else"), Im = (0, R2.token)("allowing"), Jm = (0, R2.token)("empty"), Km = (0, R2.token)("at"), Lm = (0, R2.token)("in"), Mm = (0, R2.token)("for"), Nm = (0, R2.token)("let"), Om = (0, R2.token)("where"), Pm = (0, R2.token)("collation"), Qm = (0, R2.token)("group"), Rm = (0, R2.token)("by"), Sm = (0, R2.token)("order"), Tm = (0, R2.token)("stable"), Um = (0, R2.token)("return"), Vm = (0, R2.token)("array"), Wm = (0, R2.token)("document"), Xm = (0, R2.token)("namespace"), Ym = (0, R2.token)("text"), Zm = (0, R2.token)("comment"), $m = (0, R2.token)("processing-instruction"), an = (0, R2.token)("lax"), bn = (0, R2.token)("strict"), cn = (0, R2.token)("validate"), dn = (0, R2.token)("type"), en = (0, R2.token)("declare"), fn = (0, R2.token)("default"), gn = (0, R2.token)("boundary-space"), hn = (0, R2.token)("strip"), jn = (0, R2.token)("preserve"), kn = (0, R2.token)("no-preserve"), ln = (0, R2.token)("inherit"), mn = (0, R2.token)("no-inherit"), nn = (0, R2.token)("greatest"), on = (0, R2.token)("least"), pn = (0, R2.token)("copy-namespaces"), qn = (0, R2.token)("decimal-format"), rn = (0, R2.token)("case"), sn = (0, R2.token)("typeswitch"), tn = (0, R2.token)("some"), un = (0, R2.token)("every"), vn = (0, R2.token)("satisfies"), wn = (0, R2.token)("replace"), xn = (0, R2.token)("with"), yn = (0, R2.token)("copy"), zn = (0, R2.token)("modify"), An = (0, R2.token)("first"), Bn = (0, R2.token)("last"), Cn = (0, R2.token)("before"), Dn = (0, R2.token)("after"), En = (0, R2.token)("into"), Fn = (0, R2.token)("insert"), Gn = (0, R2.token)("rename"), Hn = (0, R2.token)("switch"), In = (0, R2.token)("variable"), Jn = (0, R2.token)("external"), Kn = (0, R2.token)("updating"), Ln = (0, R2.token)("import"), Mn = (0, R2.token)("schema"), Nn = (0, R2.token)("module"), On = (0, R2.token)("base-uri"), Pn = (0, R2.token)("construction"), Qn = (0, R2.token)("ordering"), Rn = (0, R2.token)("ordered"), Sn = (0, R2.token)("unordered"), Tn = (0, R2.token)("option"), Un = (0, R2.token)("context"), Vn = (0, R2.token)("item"), Wn = (0, R2.token)("xquery"), Xn = (0, R2.token)("version"), Yn = (0, R2.token)("encoding"), Zn = (0, R2.token)("document-node"), $n = (0, R2.token)("namespace-node"), ao = (0, R2.token)("schema-attribute"), bo = (0, R2.token)("ascending"), co = (0, R2.token)("descending"), eo = (0, R2.token)("empty-sequence"), fo = (0, R2.token)("child::"), go = (0, R2.token)("descendant::"), ho = (0, R2.token)("attribute::"), io = (0, R2.token)("self::"), jo = (0, R2.token)("descendant-or-self::"), ko = (0, R2.token)("following-sibling::"), lo = (0, R2.token)("following::"), mo = (0, R2.token)("parent::"), no = (0, R2.token)("ancestor::"), oo = (0, R2.token)("preceding-sibling::"), po = (0, R2.token)("preceding::"), qo = (0, R2.token)("ancestor-or-self::"), ro = (0, R2.token)("decimal-separator"), so = (0, R2.token)("grouping-separator"), to = (0, R2.token)("infinity"), uo = (0, R2.token)("minus-sign"), vo = (0, R2.token)("NaN"), wo = (0, R2.token)("per-mille"), xo = (0, R2.token)("zero-digit"), yo = (0, R2.token)("digit"), zo = (0, R2.token)("pattern-separator"), Ao = (0, R2.token)("exponent-separator"), Bo = (0, R2.token)("schema-attribute("), Co = (0, R2.token)("document-node("), Do = (0, R2.token)("processing-instruction("), Eo = (0, R2.token)("processing-instruction()"), Fo = (0, R2.token)("comment()"), Go = (0, R2.token)("text()"), Ho = (0, R2.token)("namespace-node()"), Io = (0, R2.token)("node()"), Jo = (0, R2.token)("item()"), Ko = (0, R2.token)("empty-sequence()");
-  var Lo = /* @__PURE__ */ new Map(), Mo = /* @__PURE__ */ new Map(), No = (0, R2.or)([Pk(/[\t\n\r -\uD7FF\uE000\uFFFD]/), Pk(/[\uD800-\uDBFF][\uDC00-\uDFFF]/)]), Oo = (0, R2.preceded)((0, R2.peek)((0, R2.not)((0, R2.or)([Rk, Sk]), ['comment contents cannot contain "(:" or ":)"'])), No), Po = (0, R2.map)((0, R2.delimited)(Rk, (0, R2.star)((0, R2.or)([Oo, function(a4, b3) {
-    return Po(a4, b3);
-  }])), Sk, true), (a4) => a4.join("")), Qo = (0, R2.or)([Qk, Po]), Ro = (0, R2.map)((0, R2.plus)(Qk), (a4) => a4.join("")), V2 = Jk((0, R2.map)((0, R2.star)(Qo), (a4) => a4.join("")), Lo), X2 = Jk((0, R2.map)((0, R2.plus)(Qo), (a4) => a4.join("")), Mo);
-  const So = (0, R2.or)([Pk(/[A-Z_a-z\xC0-\xD6\xD8-\xF6\xF8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/), (0, R2.then)(Pk(/[\uD800-\uDB7F]/), Pk(/[\uDC00-\uDFFF]/), (a4, b3) => a4 + b3)]), To = (0, R2.or)([So, Pk(/[\-\.0-9\xB7\u0300-\u036F\u203F\u2040]/)]);
-  var Uo = (0, R2.then)(So, (0, R2.star)(To), (a4, b3) => a4 + b3.join("")), Vo = (0, R2.map)(Uo, (a4) => ["prefix", a4]);
-  const Wo = (0, R2.or)([So, ul]), Xo = (0, R2.or)([To, ul]);
-  (0, R2.then)(Wo, (0, R2.star)(Xo), (a4, b3) => a4 + b3.join(""));
-  const Yo = (0, R2.map)(Uo, (a4) => [{ prefix: "", URI: null }, a4]), Zo = (0, R2.then)(Uo, (0, R2.preceded)(ul, Uo), (a4, b3) => [{ prefix: a4, URI: null }, b3]);
-  var $o = (0, R2.or)([Zo, Yo]), ap = (0, R2.followed)(T2([Xl, V2, Zk], (0, R2.map)((0, R2.star)(Pk(/[^{}]/)), (a4) => a4.join("").replace(/\s+/g, " ").trim())), $k);
-  const bp = (0, R2.then)(ap, Uo, (a4, b3) => [a4, b3]);
-  var cp = (0, R2.or)([(0, R2.map)(bp, (a4) => [{ prefix: null, URI: a4[0] }, a4[1]]), $o]), dp = (0, R2.or)([(0, R2.map)(cp, (a4) => ["QName", ...a4]), (0, R2.map)(wl, () => ["star"])]), ep = (0, R2.map)((0, R2.preceded)(yl, cp), (a4) => ["varRef", ["name", ...a4]]);
-  var fp = (0, R2.peek)((0, R2.or)([Vk, el, cl, Qo])), gp = (0, R2.map)((0, R2.or)([fo, go, ho, io, jo, ko, lo]), (a4) => a4.substring(0, a4.length - 2)), hp = (0, R2.map)((0, R2.or)([mo, no, oo, po, qo]), (a4) => a4.substring(0, a4.length - 2)), ip = Kk(tl, (0, R2.or)([ym, Am, Cm, Dm, Em]), vl, (a4, b3, c4) => a4 + b3 + c4), jp = (0, R2.or)([Kk(ol, Pk(/[0-9a-fA-F]+/), vl, (a4, b3, c4) => a4 + b3 + c4), Kk(pl, Pk(/[0-9]+/), vl, (a4, b3, c4) => a4 + b3 + c4)]), kp = Ok([fl], '"'), lp = Ok([dl], "'"), mp = Nk(Ok([Fo], "commentTest")), np = Nk(Ok([Go], "textTest")), op = Nk(Ok([Ho], "namespaceTest")), pp = Nk(Ok([Io], "anyKindTest"));
-  const qp = Pk(/[0-9]+/), rp = (0, R2.then)((0, R2.or)([(0, R2.then)(Ol, qp, (a4, b3) => a4 + b3), (0, R2.then)(qp, (0, R2.optional)((0, R2.preceded)(Ol, Pk(/[0-9]*/))), (a4, b3) => a4 + (null !== b3 ? "." + b3 : ""))]), Kk((0, R2.or)([Vl, Wl]), (0, R2.optional)((0, R2.or)([Ql, Rl])), qp, (a4, b3, c4) => a4 + (b3 ? b3 : "") + c4), (a4, b3) => ["doubleConstantExpr", ["value", a4 + b3]]), sp = (0, R2.or)([(0, R2.map)((0, R2.preceded)(Ol, qp), (a4) => ["decimalConstantExpr", ["value", "." + a4]]), (0, R2.then)((0, R2.followed)(qp, Ol), (0, R2.optional)(qp), (a4, b3) => ["decimalConstantExpr", ["value", a4 + "." + (null !== b3 ? b3 : "")]])]);
-  var tp = (0, R2.map)(qp, (a4) => ["integerConstantExpr", ["value", a4]]), up = (0, R2.followed)((0, R2.or)([rp, sp, tp]), (0, R2.peek)((0, R2.not)(Pk(/[a-zA-Z]/), ["no alphabetical characters after numeric literal"]))), vp = (0, R2.map)((0, R2.followed)(Ol, (0, R2.peek)((0, R2.not)(Ol, ["context item should not be followed by another ."]))), () => ["contextItemExpr"]), wp = (0, R2.or)([Vm, km, Zm, Zn, jm, eo, hm, Fm, Vn, im, $n, dm, $m, ao, lm, Hn, Ym, sn]), xp = Nk(Ok([Bl], "argumentPlaceholder")), yp = (0, R2.or)([Bl, wl, Ql]), zp = (0, R2.preceded)((0, R2.peek)((0, R2.not)(
-    Pk(/[{}<&]/),
+  var em = (0, R2.token)("as"), fm = (0, R2.token)("cast"), gm = (0, R2.token)("castable"), hm = (0, R2.token)("treat"), im = (0, R2.token)("instance"), jm = (0, R2.token)("of"), km = (0, R2.token)("node"), lm = (0, R2.token)("nodes"), mm = (0, R2.token)("delete"), nm = (0, R2.token)("value"), om = (0, R2.token)("function"), pm = (0, R2.token)("map"), qm = (0, R2.token)("element"), rm = (0, R2.token)("attribute"), sm = (0, R2.token)("schema-element"), tm = (0, R2.token)("intersect"), um = (0, R2.token)("except"), vm = (0, R2.token)("union"), wm = (0, R2.token)("to"), xm = (0, R2.token)("is"), ym = (0, R2.token)("or"), zm = (0, R2.token)("and"), Am = (0, R2.token)("div"), Bm = (0, R2.token)("idiv"), Cm = (0, R2.token)("mod"), Dm = (0, R2.token)("eq"), Em = (0, R2.token)("ne"), Fm = (0, R2.token)("lt"), Gm = (0, R2.token)("le"), Hm = (0, R2.token)("gt"), Im = (0, R2.token)("ge"), Jm = (0, R2.token)("amp"), Km = (0, R2.token)("quot"), Lm = (0, R2.token)("apos"), Mm = (0, R2.token)("if"), Nm = (0, R2.token)("then"), Om = (0, R2.token)("else"), Pm = (0, R2.token)("allowing"), Qm = (0, R2.token)("empty"), Rm = (0, R2.token)("at"), Sm = (0, R2.token)("in"), Tm = (0, R2.token)("for"), Um = (0, R2.token)("let"), Vm = (0, R2.token)("where"), Wm = (0, R2.token)("collation"), Xm = (0, R2.token)("group"), Ym = (0, R2.token)("by"), Zm = (0, R2.token)("order"), $m = (0, R2.token)("stable"), an = (0, R2.token)("return"), bn = (0, R2.token)("array"), cn = (0, R2.token)("document"), dn = (0, R2.token)("namespace"), en = (0, R2.token)("text"), fn = (0, R2.token)("comment"), gn = (0, R2.token)("processing-instruction"), hn = (0, R2.token)("lax"), jn = (0, R2.token)("strict"), kn = (0, R2.token)("validate"), ln = (0, R2.token)("type"), mn = (0, R2.token)("declare"), nn = (0, R2.token)("default"), on = (0, R2.token)("boundary-space"), pn = (0, R2.token)("strip"), qn = (0, R2.token)("preserve"), rn = (0, R2.token)("no-preserve"), sn = (0, R2.token)("inherit"), tn = (0, R2.token)("no-inherit"), un = (0, R2.token)("greatest"), vn = (0, R2.token)("least"), wn = (0, R2.token)("copy-namespaces"), xn = (0, R2.token)("decimal-format"), yn = (0, R2.token)("case"), zn = (0, R2.token)("typeswitch"), An = (0, R2.token)("some"), Bn = (0, R2.token)("every"), Cn = (0, R2.token)("satisfies"), Dn = (0, R2.token)("replace"), En = (0, R2.token)("with"), Fn = (0, R2.token)("copy"), Gn = (0, R2.token)("modify"), Hn = (0, R2.token)("first"), In = (0, R2.token)("last"), Jn = (0, R2.token)("before"), Kn = (0, R2.token)("after"), Ln = (0, R2.token)("into"), Mn = (0, R2.token)("insert"), Nn = (0, R2.token)("rename"), On = (0, R2.token)("switch"), Pn = (0, R2.token)("variable"), Qn = (0, R2.token)("external"), Rn = (0, R2.token)("updating"), Sn = (0, R2.token)("import"), Tn = (0, R2.token)("schema"), Un = (0, R2.token)("module"), Vn = (0, R2.token)("base-uri"), Wn = (0, R2.token)("construction"), Xn = (0, R2.token)("ordering"), Yn = (0, R2.token)("ordered"), Zn = (0, R2.token)("unordered"), $n = (0, R2.token)("option"), ao = (0, R2.token)("context"), bo = (0, R2.token)("item"), co = (0, R2.token)("xquery"), eo = (0, R2.token)("version"), fo = (0, R2.token)("encoding"), go = (0, R2.token)("document-node"), ho = (0, R2.token)("namespace-node"), io = (0, R2.token)("schema-attribute"), jo = (0, R2.token)("ascending"), ko = (0, R2.token)("descending"), lo = (0, R2.token)("empty-sequence"), mo = (0, R2.token)("child::"), no = (0, R2.token)("descendant::"), oo = (0, R2.token)("attribute::"), po = (0, R2.token)("self::"), qo = (0, R2.token)("descendant-or-self::"), ro = (0, R2.token)("following-sibling::"), so = (0, R2.token)("following::"), to = (0, R2.token)("parent::"), uo = (0, R2.token)("ancestor::"), vo = (0, R2.token)("preceding-sibling::"), wo = (0, R2.token)("preceding::"), xo = (0, R2.token)("ancestor-or-self::"), yo = (0, R2.token)("decimal-separator"), zo = (0, R2.token)("grouping-separator"), Ao = (0, R2.token)("infinity"), Bo = (0, R2.token)("minus-sign"), Co = (0, R2.token)("NaN"), Do = (0, R2.token)("per-mille"), Eo = (0, R2.token)("zero-digit"), Fo = (0, R2.token)("digit"), Go = (0, R2.token)("pattern-separator"), Ho = (0, R2.token)("exponent-separator"), Io = (0, R2.token)("schema-attribute("), Jo = (0, R2.token)("document-node("), Ko = (0, R2.token)("processing-instruction("), Lo = (0, R2.token)("processing-instruction()"), Mo = (0, R2.token)("comment()"), No = (0, R2.token)("text()"), Oo = (0, R2.token)("namespace-node()"), Po = (0, R2.token)("node()"), Qo = (0, R2.token)("item()"), Ro = (0, R2.token)("empty-sequence()");
+  (0, R2.token)("`");
+  var So = (0, R2.token)("``["), To = (0, R2.token)("]``"), Uo = (0, R2.token)("`{"), Vo = (0, R2.token)("}`");
+  var Wo = /* @__PURE__ */ new Map(), Xo = /* @__PURE__ */ new Map(), Yo = (0, R2.or)([Wk(/[\t\n\r -\uD7FF\uE000\uFFFD]/), Wk(/[\uD800-\uDBFF][\uDC00-\uDFFF]/)]), Zo = (0, R2.preceded)((0, R2.peek)((0, R2.not)((0, R2.or)([Yk, Zk]), ['comment contents cannot contain "(:" or ":)"'])), Yo), $o = (0, R2.map)((0, R2.delimited)(Yk, (0, R2.star)((0, R2.or)([Zo, function(a4, b3) {
+    return $o(a4, b3);
+  }])), Zk, true), (a4) => a4.join("")), ap = (0, R2.or)([Xk, $o]), bp = (0, R2.map)((0, R2.plus)(Xk), (a4) => a4.join("")), V2 = Qk((0, R2.map)((0, R2.star)(ap), (a4) => a4.join("")), Wo), X2 = Qk((0, R2.map)((0, R2.plus)(ap), (a4) => a4.join("")), Xo);
+  const cp = (0, R2.or)([Wk(/[A-Z_a-z\xC0-\xD6\xD8-\xF6\xF8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/), (0, R2.then)(Wk(/[\uD800-\uDB7F]/), Wk(/[\uDC00-\uDFFF]/), (a4, b3) => a4 + b3)]), dp = (0, R2.or)([cp, Wk(/[\-\.0-9\xB7\u0300-\u036F\u203F\u2040]/)]);
+  var ep = (0, R2.then)(cp, (0, R2.star)(dp), (a4, b3) => a4 + b3.join("")), fp = (0, R2.map)(ep, (a4) => ["prefix", a4]);
+  const gp = (0, R2.or)([cp, Bl]), hp = (0, R2.or)([dp, Bl]);
+  (0, R2.then)(gp, (0, R2.star)(hp), (a4, b3) => a4 + b3.join(""));
+  const ip = (0, R2.map)(ep, (a4) => [{ prefix: "", URI: null }, a4]), jp = (0, R2.then)(ep, (0, R2.preceded)(Bl, ep), (a4, b3) => [{ prefix: a4, URI: null }, b3]);
+  var kp = (0, R2.or)([jp, ip]), lp = (0, R2.followed)(T2([dm, V2, fl], (0, R2.map)((0, R2.star)(Wk(/[^{}]/)), (a4) => a4.join("").replace(/\s+/g, " ").trim())), gl);
+  const mp = (0, R2.then)(lp, ep, (a4, b3) => [a4, b3]);
+  var np = (0, R2.or)([(0, R2.map)(mp, (a4) => [{ prefix: null, URI: a4[0] }, a4[1]]), kp]), op = (0, R2.or)([(0, R2.map)(np, (a4) => ["QName", ...a4]), (0, R2.map)(Dl, () => ["star"])]), pp = (0, R2.map)((0, R2.preceded)(Fl, np), (a4) => ["varRef", ["name", ...a4]]);
+  var qp = (0, R2.peek)((0, R2.or)([bl, ll, jl, ap])), rp = (0, R2.map)((0, R2.or)([mo, no, oo, po, qo, ro, so]), (a4) => a4.substring(0, a4.length - 2)), sp = (0, R2.map)((0, R2.or)([to, uo, vo, wo, xo]), (a4) => a4.substring(0, a4.length - 2)), tp = Rk(Al, (0, R2.or)([Fm, Hm, Jm, Km, Lm]), Cl, (a4, b3, c4) => a4 + b3 + c4), up = (0, R2.or)([Rk(vl, Wk(/[0-9a-fA-F]+/), Cl, (a4, b3, c4) => a4 + b3 + c4), Rk(wl, Wk(/[0-9]+/), Cl, (a4, b3, c4) => a4 + b3 + c4)]), vp = Vk([ml], '"'), wp = Vk([kl], "'"), xp = Uk(Vk([Mo], "commentTest")), yp = Uk(Vk([No], "textTest")), zp = Uk(Vk([Oo], "namespaceTest")), Ap = Uk(Vk([Po], "anyKindTest"));
+  const Bp = Wk(/[0-9]+/), Cp = (0, R2.then)((0, R2.or)([(0, R2.then)(Vl, Bp, (a4, b3) => a4 + b3), (0, R2.then)(Bp, (0, R2.optional)((0, R2.preceded)(Vl, Wk(/[0-9]*/))), (a4, b3) => a4 + (null !== b3 ? "." + b3 : ""))]), Rk((0, R2.or)([bm, cm]), (0, R2.optional)((0, R2.or)([Xl, Yl])), Bp, (a4, b3, c4) => a4 + (b3 ? b3 : "") + c4), (a4, b3) => ["doubleConstantExpr", ["value", a4 + b3]]), Dp = (0, R2.or)([(0, R2.map)((0, R2.preceded)(Vl, Bp), (a4) => ["decimalConstantExpr", ["value", "." + a4]]), (0, R2.then)((0, R2.followed)(Bp, Vl), (0, R2.optional)(Bp), (a4, b3) => ["decimalConstantExpr", ["value", a4 + "." + (null !== b3 ? b3 : "")]])]);
+  var Ep = (0, R2.map)(Bp, (a4) => ["integerConstantExpr", ["value", a4]]), Fp = (0, R2.followed)((0, R2.or)([Cp, Dp, Ep]), (0, R2.peek)((0, R2.not)(Wk(/[a-zA-Z]/), ["no alphabetical characters after numeric literal"]))), Gp = (0, R2.map)((0, R2.followed)(Vl, (0, R2.peek)((0, R2.not)(Vl, ["context item should not be followed by another ."]))), () => ["contextItemExpr"]), Hp = (0, R2.or)([bn, rm, fn, go, qm, lo, om, Mm, bo, pm, ho, km, gn, io, sm, On, en, zn]), Ip = Uk(Vk([Il], "argumentPlaceholder")), Jp = (0, R2.or)([Il, Dl, Xl]), Kp = (0, R2.preceded)((0, R2.peek)((0, R2.not)(
+    Wk(/[{}<&]/),
     ["elementContentChar cannot be {, }, <, or &"]
-  )), No), Ap = (0, R2.map)((0, R2.delimited)(gl, (0, R2.star)((0, R2.preceded)((0, R2.peek)((0, R2.not)(hl, ['CDataSection content may not contain "]]>"'])), No)), hl, true), (a4) => ["CDataSection", a4.join("")]), Bp = (0, R2.preceded)((0, R2.peek)((0, R2.not)(Pk(/["{}<&]/), ['quotAttrValueContentChar cannot be ", {, }, <, or &'])), No), Cp = (0, R2.preceded)((0, R2.peek)((0, R2.not)(Pk(/['{}<&]/), ["aposAttrValueContentChar cannot be ', {, }, <, or &"])), No), Dp = (0, R2.map)((0, R2.star)((0, R2.or)([(0, R2.preceded)((0, R2.peek)((0, R2.not)(
-    Rl,
+  )), Yo), Lp = (0, R2.map)((0, R2.delimited)(nl, (0, R2.star)((0, R2.preceded)((0, R2.peek)((0, R2.not)(ol, ['CDataSection content may not contain "]]>"'])), Yo)), ol, true), (a4) => ["CDataSection", a4.join("")]), Mp = (0, R2.preceded)((0, R2.peek)((0, R2.not)(Wk(/["{}<&]/), ['quotAttrValueContentChar cannot be ", {, }, <, or &'])), Yo), Np = (0, R2.preceded)((0, R2.peek)((0, R2.not)(Wk(/['{}<&]/), ["aposAttrValueContentChar cannot be ', {, }, <, or &"])), Yo), Op = (0, R2.map)((0, R2.star)((0, R2.or)([(0, R2.preceded)((0, R2.peek)((0, R2.not)(
+    Yl,
     []
-  )), No), (0, R2.map)(T2([Rl, (0, R2.peek)((0, R2.not)(Rl, []))], No), (a4) => "-" + a4)])), (a4) => a4.join("")), Ep = (0, R2.map)((0, R2.delimited)(kl, Dp, ll, true), (a4) => ["computedCommentConstructor", ["argExpr", ["stringConstantExpr", ["value", a4]]]]);
-  const Fp = (0, R2.filter)(Uo, (a4) => "xml" !== a4.toLowerCase(), ['A processing instruction target cannot be "xml"']), Gp = (0, R2.map)((0, R2.star)((0, R2.preceded)((0, R2.peek)((0, R2.not)(nl, [])), No)), (a4) => a4.join(""));
-  var Hp = (0, R2.then)((0, R2.preceded)(ml, (0, R2.cut)(Fp)), (0, R2.cut)((0, R2.followed)((0, R2.optional)((0, R2.preceded)(Ro, Gp)), nl)), (a4, b3) => ["computedPIConstructor", ["piTarget", a4], ["piValueExpr", ["stringConstantExpr", ["value", b3]]]]), Ip = (0, R2.map)(Tl, () => ["stepExpr", ["xpathAxis", "descendant-or-self"], ["anyKindTest"]]), Jp = (0, R2.or)([an, bn]), Kp = (0, R2.map)((0, R2.star)((0, R2.followed)(No, (0, R2.peek)((0, R2.not)(Uk, ["Pragma contents should not contain '#)'"])))), (a4) => a4.join("")), Lp = (0, R2.map)((0, R2.followed)((0, R2.or)([
-    wm,
-    xm,
-    ym,
-    zm,
-    Am,
-    Bm
-  ]), fp), (a4) => a4 + "Op"), Mp = (0, R2.or)([(0, R2.followed)(Ok([qm], "isOp"), fp), Ok([Il], "nodeBeforeOp"), Ok([Ll], "nodeAfterOp")]), Np = (0, R2.or)([Ok([Cl], "equalOp"), Ok([Gl], "notEqualOp"), Ok([Jl], "lessThanOrEqualOp"), Ok([Hl], "lessThanOp"), Ok([Ml], "greaterThanOrEqualOp"), Ok([Kl], "greaterThanOp")]), Op = (0, R2.map)(Kn, () => ["annotation", ["annotationName", "updating"]]);
-  const Pp = (0, R2.or)([jn, kn]), Qp = (0, R2.or)([ln, mn]);
-  var Rp = (0, R2.or)([ro, so, to, uo, vo, Al, wo, xo, yo, zo, Ao]), Sp = (0, R2.map)(T2([en, X2, gn, X2], (0, R2.or)([jn, hn])), (a4) => ["boundarySpaceDecl", a4]), Tp = (0, R2.map)(T2([en, X2, Pn, X2], (0, R2.or)([jn, hn])), (a4) => ["constructionDecl", a4]), Up = (0, R2.map)(T2([en, X2, Qn, X2], (0, R2.or)([Rn, Sn])), (a4) => ["orderingModeDecl", a4]), Vp = (0, R2.map)(T2([en, X2, fn, X2, Sm, X2, Jm, X2], (0, R2.or)([nn, on])), (a4) => ["emptyOrderDecl", a4]), Wp = (0, R2.then)(T2([en, X2, pn, X2], Pp), T2([V2, Nl, V2], Qp), (a4, b3) => ["copyNamespacesDecl", ["preserveMode", a4], ["inheritMode", b3]]);
-  function Xp(a4) {
+  )), Yo), (0, R2.map)(T2([Yl, (0, R2.peek)((0, R2.not)(Yl, []))], Yo), (a4) => "-" + a4)])), (a4) => a4.join("")), Pp = (0, R2.map)((0, R2.delimited)(rl, Op, sl, true), (a4) => ["computedCommentConstructor", ["argExpr", ["stringConstantExpr", ["value", a4]]]]);
+  const Qp = (0, R2.filter)(ep, (a4) => "xml" !== a4.toLowerCase(), ['A processing instruction target cannot be "xml"']), Rp = (0, R2.map)((0, R2.star)((0, R2.preceded)((0, R2.peek)((0, R2.not)(ul, [])), Yo)), (a4) => a4.join(""));
+  var Sp = (0, R2.then)((0, R2.preceded)(tl, (0, R2.cut)(Qp)), (0, R2.cut)((0, R2.followed)((0, R2.optional)((0, R2.preceded)(bp, Rp)), ul)), (a4, b3) => ["computedPIConstructor", ["piTarget", a4], ["piValueExpr", ["stringConstantExpr", ["value", b3]]]]), Tp = (0, R2.map)($l, () => ["stepExpr", ["xpathAxis", "descendant-or-self"], ["anyKindTest"]]), Up = (0, R2.or)([hn, jn]), Vp = (0, R2.map)((0, R2.star)((0, R2.followed)(Yo, (0, R2.peek)((0, R2.not)(al, ["Pragma contents should not contain '#)'"])))), (a4) => a4.join("")), Wp = (0, R2.map)((0, R2.followed)((0, R2.or)([
+    Dm,
+    Em,
+    Fm,
+    Gm,
+    Hm,
+    Im
+  ]), qp), (a4) => a4 + "Op"), Xp = (0, R2.or)([(0, R2.followed)(Vk([xm], "isOp"), qp), Vk([Pl], "nodeBeforeOp"), Vk([Sl], "nodeAfterOp")]), Yp = (0, R2.or)([Vk([Jl], "equalOp"), Vk([Nl], "notEqualOp"), Vk([Ql], "lessThanOrEqualOp"), Vk([Ol], "lessThanOp"), Vk([Tl], "greaterThanOrEqualOp"), Vk([Rl], "greaterThanOp")]), Zp = (0, R2.map)(Rn, () => ["annotation", ["annotationName", "updating"]]);
+  const $p = (0, R2.or)([qn, rn]), aq = (0, R2.or)([sn, tn]);
+  var bq = (0, R2.or)([yo, zo, Ao, Bo, Co, Hl, Do, Eo, Fo, Go, Ho]), cq = (0, R2.map)(T2([mn, X2, on, X2], (0, R2.or)([qn, pn])), (a4) => ["boundarySpaceDecl", a4]), dq = (0, R2.map)(T2([mn, X2, Wn, X2], (0, R2.or)([qn, pn])), (a4) => ["constructionDecl", a4]), eq = (0, R2.map)(T2([mn, X2, Xn, X2], (0, R2.or)([Yn, Zn])), (a4) => ["orderingModeDecl", a4]), fq = (0, R2.map)(T2([mn, X2, nn, X2, Zm, X2, Qm, X2], (0, R2.or)([un, vn])), (a4) => ["emptyOrderDecl", a4]), gq = (0, R2.then)(T2([mn, X2, wn, X2], $p), T2([V2, Ul, V2], aq), (a4, b3) => ["copyNamespacesDecl", ["preserveMode", a4], ["inheritMode", b3]]);
+  function hq(a4) {
     switch (a4[0]) {
       case "constantExpr":
       case "varRef":
@@ -26664,16 +26787,16 @@ var fontoxpath = function(xspattern, prsc) {
       a4
     ];
   }
-  function Yp(a4) {
+  function iq(a4) {
     if (!(1 <= a4 && 55295 >= a4 || 57344 <= a4 && 65533 >= a4 || 65536 <= a4 && 1114111 >= a4))
       throw Error("XQST0090: The character reference " + a4 + " (" + a4.toString(16) + ") does not reference a valid codePoint.");
   }
-  function Zp(a4) {
+  function jq(a4) {
     return a4.replace(/(&[^;]+);/g, (b3) => {
       if (/^&#x/.test(b3))
-        return b3 = parseInt(b3.slice(3, -1), 16), Yp(b3), String.fromCodePoint(b3);
+        return b3 = parseInt(b3.slice(3, -1), 16), iq(b3), String.fromCodePoint(b3);
       if (/^&#/.test(b3))
-        return b3 = parseInt(b3.slice(2, -1), 10), Yp(b3), String.fromCodePoint(b3);
+        return b3 = parseInt(b3.slice(2, -1), 10), iq(b3), String.fromCodePoint(b3);
       switch (b3) {
         case "&lt;":
           return "<";
@@ -26689,7 +26812,7 @@ var fontoxpath = function(xspattern, prsc) {
       throw Error('XPST0003: Unknown character reference: "' + b3 + '"');
     });
   }
-  function $p(a4, b3, c4) {
+  function kq(a4, b3, c4) {
     if (!a4.length)
       return [];
     let d4 = [a4[0]];
@@ -26704,9 +26827,9 @@ var fontoxpath = function(xspattern, prsc) {
         e4.push(f4);
       else if (c4 && /^\s*$/.test(f4)) {
         const k3 = d4[h4 + 1];
-        k3 && "CDataSection" === k3[0] ? e4.push(Zp(f4)) : (h4 = d4[h4 - 1]) && "CDataSection" === h4[0] && e4.push(Zp(f4));
+        k3 && "CDataSection" === k3[0] ? e4.push(jq(f4)) : (h4 = d4[h4 - 1]) && "CDataSection" === h4[0] && e4.push(jq(f4));
       } else
-        e4.push(Zp(f4));
+        e4.push(jq(f4));
       return e4;
     }, []);
     if (!d4.length)
@@ -26716,90 +26839,95 @@ var fontoxpath = function(xspattern, prsc) {
         "string" === typeof d4[a4] && (d4[a4] = ["stringConstantExpr", ["value", d4[a4]]]);
     return d4;
   }
-  function aq(a4) {
+  function lq(a4) {
     return a4[0].prefix ? a4[0].prefix + ":" + a4[1] : a4[1];
   }
   ;
-  var bq = (0, R2.then)(cp, (0, R2.optional)(Bl), (a4, b3) => null !== b3 ? ["singleType", ["atomicType", ...a4], ["optional"]] : ["singleType", ["atomicType", ...a4]]), cq = (0, R2.map)(cp, (a4) => ["atomicType", ...a4]);
-  const dq = /* @__PURE__ */ new Map();
-  function eq(a4) {
+  var mq = (0, R2.then)(np, (0, R2.optional)(Il), (a4, b3) => null !== b3 ? ["singleType", ["atomicType", ...a4], ["optional"]] : ["singleType", ["atomicType", ...a4]]), nq = (0, R2.map)(np, (a4) => ["atomicType", ...a4]);
+  const oq = /* @__PURE__ */ new Map();
+  function pq(a4) {
     function b3(m3, r4) {
       return r4.reduce((B3, W2) => [W2[0], ["firstOperand", B3], ["secondOperand", W2[1]]], m3);
     }
     function c4(m3, r4, B3) {
-      return (0, R2.then)(m3, (0, R2.star)((0, R2.then)(S3(r4, V2), (0, R2.cut)(m3), (W2, da) => [W2, da])), B3);
+      return (0, R2.then)(m3, (0, R2.star)((0, R2.then)(S3(r4, V2), (0, R2.cut)(m3), (W2, ea) => [W2, ea])), B3);
     }
     function d4(m3, r4, B3 = "firstOperand", W2 = "secondOperand") {
-      return (0, R2.then)(m3, (0, R2.optional)((0, R2.then)(S3(r4, V2), (0, R2.cut)(m3), (da, Fa) => [da, Fa])), (da, Fa) => null === Fa ? da : [Fa[0], [B3, da], [W2, Fa[1]]]);
+      return (0, R2.then)(m3, (0, R2.optional)((0, R2.then)(S3(r4, V2), (0, R2.cut)(m3), (ea, Fa) => [ea, Fa])), (ea, Fa) => null === Fa ? ea : [Fa[0], [B3, ea], [W2, Fa[1]]]);
     }
     function e4(m3) {
       return a4.mb ? (r4, B3) => {
         r4 = m3(r4, B3);
         if (!r4.success)
           return r4;
-        const W2 = n4.has(B3) ? n4.get(B3) : { offset: B3, line: -1, ha: -1 }, da = n4.has(r4.offset) ? n4.get(r4.offset) : { offset: r4.offset, line: -1, ha: -1 };
+        const W2 = n4.has(B3) ? n4.get(B3) : { offset: B3, line: -1, ha: -1 }, ea = n4.has(r4.offset) ? n4.get(r4.offset) : { offset: r4.offset, line: -1, ha: -1 };
         n4.set(B3, W2);
-        n4.set(r4.offset, da);
+        n4.set(r4.offset, ea);
         B3 = r4.value.Wa;
-        return (0, R2.okWithValue)(r4.offset, ["x:stackTrace", Object.assign({ start: W2, end: da }, B3 ? { Wa: B3 } : {}), r4.value]);
+        return (0, R2.okWithValue)(r4.offset, ["x:stackTrace", Object.assign({ start: W2, end: ea }, B3 ? { Wa: B3 } : {}), r4.value]);
       } : m3;
     }
     function f4(m3, r4) {
-      return xj(m3, r4);
+      return Dj(m3, r4);
     }
     function h4(m3, r4) {
-      return vf(m3, r4);
+      return xf(m3, r4);
     }
     function k3(m3, r4) {
-      return e4((0, R2.or)([sr, tr, ur, vr, wr, xr, yr, zr, Ar, Br, Cr]))(m3, r4);
+      return e4((0, R2.or)([Dr, Er, Fr, Gr, Hr, Ir, Jr, Kr, Lr, Mr, Nr]))(m3, r4);
     }
     function l4(m3, r4) {
-      return c4(k3, Nl, (B3, W2) => 0 === W2.length ? B3 : ["sequenceExpr", B3, ...W2.map((da) => da[1])])(m3, r4);
+      return c4(k3, Ul, (B3, W2) => 0 === W2.length ? B3 : ["sequenceExpr", B3, ...W2.map((ea) => ea[1])])(m3, r4);
     }
-    const n4 = /* @__PURE__ */ new Map(), t4 = (0, R2.preceded)(Xk, (0, R2.followed)(S3(
+    const n4 = /* @__PURE__ */ new Map(), t4 = (0, R2.preceded)(dl, (0, R2.followed)(S3(
       l4,
       V2
-    ), Yk)), u4 = (0, R2.map)(a4.Za ? (0, R2.or)([S3((0, R2.star)((0, R2.or)([ip, jp, kp, Pk(/[^"&]/)])), el), S3((0, R2.star)((0, R2.or)([ip, jp, lp, Pk(/[^'&]/)])), cl)]) : (0, R2.or)([S3((0, R2.star)((0, R2.or)([kp, Pk(/[^"]/)])), el), S3((0, R2.star)((0, R2.or)([lp, Pk(/[^']/)])), cl)]), (m3) => m3.join("")), z3 = (0, R2.or)([(0, R2.map)(T2([jm, V2], (0, R2.delimited)((0, R2.followed)(Vk, V2), (0, R2.then)(dp, T2([V2, Nl, V2], cp), (m3, r4) => [["elementName", m3], ["typeName", ...r4]]), (0, R2.preceded)(V2, Wk))), ([m3, r4]) => ["elementTest", m3, r4]), (0, R2.map)(T2([jm, V2], (0, R2.delimited)(Vk, dp, Wk)), (m3) => [
+    ), el)), u4 = (0, R2.map)(a4.Za ? (0, R2.or)([S3((0, R2.star)((0, R2.or)([tp, up, vp, Wk(/[^"&]/)])), ll), S3((0, R2.star)((0, R2.or)([tp, up, wp, Wk(/[^'&]/)])), jl)]) : (0, R2.or)([S3((0, R2.star)((0, R2.or)([vp, Wk(/[^"]/)])), ll), S3((0, R2.star)((0, R2.or)([wp, Wk(/[^']/)])), jl)]), (m3) => m3.join("")), z3 = (0, R2.or)([(0, R2.map)(T2([qm, V2], (0, R2.delimited)((0, R2.followed)(bl, V2), (0, R2.then)(op, T2([V2, Ul, V2], np), (m3, r4) => [["elementName", m3], ["typeName", ...r4]]), (0, R2.preceded)(V2, cl))), ([m3, r4]) => ["elementTest", m3, r4]), (0, R2.map)(T2([qm, V2], (0, R2.delimited)(bl, op, cl)), (m3) => [
       "elementTest",
       ["elementName", m3]
-    ]), (0, R2.map)(T2([jm, V2], (0, R2.delimited)(Vk, V2, Wk)), () => ["elementTest"])]), y3 = (0, R2.or)([(0, R2.map)(cp, (m3) => ["QName", ...m3]), (0, R2.map)(wl, () => ["star"])]), F3 = (0, R2.or)([(0, R2.map)(T2([km, V2], (0, R2.delimited)((0, R2.followed)(Vk, V2), (0, R2.then)(y3, T2([V2, Nl, V2], cp), (m3, r4) => [["attributeName", m3], ["typeName", ...r4]]), (0, R2.preceded)(V2, Wk))), ([m3, r4]) => ["attributeTest", m3, r4]), (0, R2.map)(T2([km, V2], (0, R2.delimited)(Vk, y3, Wk)), (m3) => ["attributeTest", ["attributeName", m3]]), (0, R2.map)(T2([km, V2], (0, R2.delimited)(Vk, V2, Wk)), () => ["attributeTest"])]), N3 = (0, R2.map)(T2([lm, V2, Vk], (0, R2.followed)(cp, Wk)), (m3) => ["schemaElementTest", ...m3]), U2 = (0, R2.map)((0, R2.delimited)(Bo, S3(cp, V2), Wk), (m3) => ["schemaAttributeTest", ...m3]), ba = (0, R2.map)((0, R2.preceded)(Co, (0, R2.followed)(S3((0, R2.optional)((0, R2.or)([z3, N3])), V2), Wk)), (m3) => ["documentTest", ...m3 ? [m3] : []]), Ga = (0, R2.or)([(0, R2.map)((0, R2.preceded)(Do, (0, R2.followed)(S3((0, R2.or)([Uo, u4]), V2), Wk)), (m3) => ["piTest", ["piTarget", m3]]), Nk(Ok([Eo], "piTest"))]), Gb = (0, R2.or)([ba, z3, F3, N3, U2, Ga, mp, np, op, pp]), Xb = (0, R2.or)([(0, R2.map)((0, R2.preceded)(rl, Uo), (m3) => ["Wildcard", ["star"], ["NCName", m3]]), Nk(Ok([wl], "Wildcard")), (0, R2.map)((0, R2.followed)(ap, wl), (m3) => ["Wildcard", ["uri", m3], ["star"]]), (0, R2.map)((0, R2.followed)(Uo, ql), (m3) => ["Wildcard", ["NCName", m3], ["star"]])]), ed = (0, R2.or)([Xb, (0, R2.map)(cp, (m3) => ["nameTest", ...m3])]), Yb = (0, R2.or)([Gb, ed]), Dr = (0, R2.then)((0, R2.optional)(xl), Yb, (m3, r4) => null !== m3 || "attributeTest" === r4[0] || "schemaAttributeTest" === r4[0] ? ["stepExpr", ["xpathAxis", "attribute"], r4] : ["stepExpr", ["xpathAxis", "child"], r4]), Er = (0, R2.or)([(0, R2.then)(gp, Yb, (m3, r4) => [
+    ]), (0, R2.map)(T2([qm, V2], (0, R2.delimited)(bl, V2, cl)), () => ["elementTest"])]), y3 = (0, R2.or)([(0, R2.map)(np, (m3) => ["QName", ...m3]), (0, R2.map)(Dl, () => ["star"])]), G3 = (0, R2.or)([(0, R2.map)(T2([rm, V2], (0, R2.delimited)((0, R2.followed)(bl, V2), (0, R2.then)(y3, T2([V2, Ul, V2], np), (m3, r4) => [["attributeName", m3], ["typeName", ...r4]]), (0, R2.preceded)(V2, cl))), ([m3, r4]) => ["attributeTest", m3, r4]), (0, R2.map)(T2([rm, V2], (0, R2.delimited)(bl, y3, cl)), (m3) => ["attributeTest", ["attributeName", m3]]), (0, R2.map)(T2([rm, V2], (0, R2.delimited)(bl, V2, cl)), () => ["attributeTest"])]), N3 = (0, R2.map)(T2([sm, V2, bl], (0, R2.followed)(np, cl)), (m3) => ["schemaElementTest", ...m3]), U2 = (0, R2.map)((0, R2.delimited)(Io, S3(np, V2), cl), (m3) => ["schemaAttributeTest", ...m3]), ca = (0, R2.map)((0, R2.preceded)(Jo, (0, R2.followed)(S3((0, R2.optional)((0, R2.or)([z3, N3])), V2), cl)), (m3) => ["documentTest", ...m3 ? [m3] : []]), Ga = (0, R2.or)([(0, R2.map)((0, R2.preceded)(Ko, (0, R2.followed)(S3((0, R2.or)([ep, u4]), V2), cl)), (m3) => ["piTest", ["piTarget", m3]]), Uk(Vk([Lo], "piTest"))]), Gb = (0, R2.or)([ca, z3, G3, N3, U2, Ga, xp, yp, zp, Ap]), Xb = (0, R2.or)([(0, R2.map)((0, R2.preceded)(yl, ep), (m3) => ["Wildcard", ["star"], ["NCName", m3]]), Uk(Vk([Dl], "Wildcard")), (0, R2.map)((0, R2.followed)(lp, Dl), (m3) => ["Wildcard", ["uri", m3], ["star"]]), (0, R2.map)((0, R2.followed)(ep, xl), (m3) => ["Wildcard", ["NCName", m3], ["star"]])]), fd = (0, R2.or)([Xb, (0, R2.map)(np, (m3) => ["nameTest", ...m3])]), Yb = (0, R2.or)([Gb, fd]), Or = (0, R2.then)((0, R2.optional)(El), Yb, (m3, r4) => null !== m3 || "attributeTest" === r4[0] || "schemaAttributeTest" === r4[0] ? ["stepExpr", ["xpathAxis", "attribute"], r4] : ["stepExpr", ["xpathAxis", "child"], r4]), Pr = (0, R2.or)([(0, R2.then)(rp, Yb, (m3, r4) => [
       "stepExpr",
       ["xpathAxis", m3],
       r4
-    ]), Dr]), Fr = (0, R2.map)(Pl, () => ["stepExpr", ["xpathAxis", "parent"], ["anyKindTest"]]), Gr = (0, R2.or)([(0, R2.then)(hp, Yb, (m3, r4) => ["stepExpr", ["xpathAxis", m3], r4]), Fr]), Hr = (0, R2.map)((0, R2.star)((0, R2.preceded)(V2, t4)), (m3) => 0 < m3.length ? ["predicates", ...m3] : void 0), Ir = (0, R2.then)((0, R2.or)([Gr, Er]), Hr, (m3, r4) => void 0 === r4 ? m3 : m3.concat([r4])), wf = (0, R2.or)([up, (0, R2.map)(u4, (m3) => ["stringConstantExpr", ["value", a4.Za ? Zp(m3) : m3]])]), xf = (0, R2.or)([(0, R2.delimited)(Vk, S3(l4, V2), Wk), (0, R2.map)((0, R2.delimited)(Vk, V2, Wk), () => ["sequenceExpr"])]), yj = (0, R2.or)([k3, xp]), de = (0, R2.map)((0, R2.delimited)(Vk, S3((0, R2.optional)((0, R2.then)(yj, (0, R2.star)((0, R2.preceded)(S3(Nl, V2), yj)), (m3, r4) => [m3, ...r4])), V2), Wk), (m3) => null !== m3 ? m3 : []), Jr = (0, R2.preceded)((0, R2.not)(Kk(wp, V2, Vk, () => {
-    }), ["cannot use reserved keyword for function names"]), e4((0, R2.then)(cp, (0, R2.preceded)(V2, de), (m3, r4) => {
+    ]), Or]), Qr = (0, R2.map)(Wl, () => ["stepExpr", ["xpathAxis", "parent"], ["anyKindTest"]]), Rr = (0, R2.or)([(0, R2.then)(sp, Yb, (m3, r4) => ["stepExpr", ["xpathAxis", m3], r4]), Qr]), Sr = (0, R2.map)((0, R2.star)((0, R2.preceded)(V2, t4)), (m3) => 0 < m3.length ? ["predicates", ...m3] : void 0), Tr = (0, R2.then)((0, R2.or)([Rr, Pr]), Sr, (m3, r4) => void 0 === r4 ? m3 : m3.concat([r4])), yf = (0, R2.or)([Fp, (0, R2.map)(u4, (m3) => ["stringConstantExpr", ["value", a4.Za ? jq(m3) : m3]])]), zf = (0, R2.or)([(0, R2.delimited)(bl, S3(l4, V2), cl), (0, R2.map)((0, R2.delimited)(bl, V2, cl), () => ["sequenceExpr"])]), Ej = (0, R2.or)([k3, Ip]), de = (0, R2.map)((0, R2.delimited)(bl, S3((0, R2.optional)((0, R2.then)(Ej, (0, R2.star)((0, R2.preceded)(S3(Ul, V2), Ej)), (m3, r4) => [m3, ...r4])), V2), cl), (m3) => null !== m3 ? m3 : []), Ur = (0, R2.preceded)((0, R2.not)(Rk(Hp, V2, bl, () => {
+    }), ["cannot use reserved keyword for function names"]), e4((0, R2.then)(np, (0, R2.preceded)(V2, de), (m3, r4) => {
       r4 = ["functionCallExpr", ["functionName", ...m3], null !== r4 ? ["arguments", ...r4] : ["arguments"]];
       const B3 = m3[0].prefix, W2 = m3[0].URI;
       m3 = m3[1];
       r4.Wa = B3 ? `${B3}:${m3}` : W2 ? `Q{${W2}}${m3}` : m3;
       return r4;
-    }))), Kr = (0, R2.then)(
-      cp,
-      (0, R2.preceded)(zl, tp),
+    }))), Vr = (0, R2.then)(
+      np,
+      (0, R2.preceded)(Gl, Ep),
       (m3, r4) => ["namedFunctionRef", ["functionName", ...m3], r4]
-    ), Ta = (0, R2.delimited)(Zk, S3((0, R2.optional)(l4), V2), $k), zj = (0, R2.map)(Ta, (m3) => m3 ? m3 : ["sequenceExpr"]), gb = (0, R2.or)([(0, R2.map)(Ko, () => [["voidSequenceType"]]), (0, R2.then)(f4, (0, R2.optional)((0, R2.preceded)(V2, yp)), (m3, r4) => [m3, ...null !== r4 ? [["occurrenceIndicator", r4]] : []])]), yf = (0, R2.then)(T2([Al, V2], cp), (0, R2.optional)((0, R2.followed)((0, R2.then)(T2([Vk, V2], wf), (0, R2.star)(T2([Nl, V2], wf)), (m3, r4) => m3.concat(r4)), Wk)), (m3, r4) => [
+    ), Ua = (0, R2.delimited)(fl, S3((0, R2.optional)(l4), V2), gl), Fj = (0, R2.map)(Ua, (m3) => m3 ? m3 : ["sequenceExpr"]), jb = (0, R2.or)([(0, R2.map)(Ro, () => [["voidSequenceType"]]), (0, R2.then)(f4, (0, R2.optional)((0, R2.preceded)(V2, Jp)), (m3, r4) => [m3, ...null !== r4 ? [["occurrenceIndicator", r4]] : []])]), Af = (0, R2.then)(T2([Hl, V2], np), (0, R2.optional)((0, R2.followed)((0, R2.then)(T2([bl, V2], yf), (0, R2.star)(T2([Ul, V2], yf)), (m3, r4) => m3.concat(r4)), cl)), (m3, r4) => [
       "annotation",
       ["annotationName", ...m3],
       ...r4 ? ["arguments", r4] : []
-    ]), Lr = (0, R2.map)(T2([hm, V2, Vk, V2, wl, V2], Wk), () => ["anyFunctionTest"]), Mr = (0, R2.then)(T2([hm, V2, Vk, V2], (0, R2.optional)(c4(gb, Nl, (m3, r4) => m3.concat.apply(m3, r4.map((B3) => B3[1]))))), T2([V2, Wk, X2, Yl, X2], gb), (m3, r4) => ["typedFunctionTest", ["paramTypeList", ["sequenceType", ...m3 ? m3 : []]], ["sequenceType", ...r4]]), Nr = (0, R2.then)((0, R2.star)(yf), (0, R2.or)([Lr, Mr]), (m3, r4) => [r4[0], ...m3, ...r4.slice(1)]), Or = (0, R2.map)(T2([im, V2, Vk, V2, wl, V2], Wk), () => ["anyMapTest"]), Pr = (0, R2.then)(T2([im, V2, Vk, V2], cq), T2([V2, Nl], (0, R2.followed)(
-      S3(gb, V2),
-      Wk
-    )), (m3, r4) => ["typedMapTest", m3, ["sequenceType", ...r4]]), Qr = (0, R2.or)([Or, Pr]), Rr = (0, R2.map)(T2([Vm, V2, Vk, V2, wl, V2], Wk), () => ["anyArrayTest"]), Sr = (0, R2.map)(T2([Vm, V2, Vk], (0, R2.followed)(S3(gb, V2), Wk)), (m3) => ["typedArrayTest", ["sequenceType", ...m3]]), Tr = (0, R2.or)([Rr, Sr]), Ur = (0, R2.map)((0, R2.delimited)(Vk, S3(f4, V2), Wk), (m3) => ["parenthesizedItemType", m3]), xj = (0, R2.or)([Gb, Nk(Ok([Jo], "anyItemType")), Nr, Qr, Tr, cq, Ur]), yc = (0, R2.map)(T2([Yl, X2], gb), (m3) => ["typeDeclaration", ...m3]), Vr = (0, R2.then)((0, R2.preceded)(yl, cp), (0, R2.optional)((0, R2.preceded)(
+    ]), Wr = (0, R2.map)(T2([om, V2, bl, V2, Dl, V2], cl), () => ["anyFunctionTest"]), Xr = (0, R2.then)(T2([om, V2, bl, V2], (0, R2.optional)(c4(jb, Ul, (m3, r4) => m3.concat.apply(m3, r4.map((B3) => B3[1]))))), T2([V2, cl, X2, em, X2], jb), (m3, r4) => ["typedFunctionTest", ["paramTypeList", ["sequenceType", ...m3 ? m3 : []]], ["sequenceType", ...r4]]), Yr = (0, R2.then)((0, R2.star)(Af), (0, R2.or)([Wr, Xr]), (m3, r4) => [r4[0], ...m3, ...r4.slice(1)]), Zr = (0, R2.map)(T2([pm, V2, bl, V2, Dl, V2], cl), () => ["anyMapTest"]), $r = (0, R2.then)(T2([pm, V2, bl, V2], nq), T2([V2, Ul], (0, R2.followed)(
+      S3(jb, V2),
+      cl
+    )), (m3, r4) => ["typedMapTest", m3, ["sequenceType", ...r4]]), as = (0, R2.or)([Zr, $r]), bs = (0, R2.map)(T2([bn, V2, bl, V2, Dl, V2], cl), () => ["anyArrayTest"]), cs = (0, R2.map)(T2([bn, V2, bl], (0, R2.followed)(S3(jb, V2), cl)), (m3) => ["typedArrayTest", ["sequenceType", ...m3]]), ds = (0, R2.or)([bs, cs]), es = (0, R2.map)((0, R2.delimited)(bl, S3(f4, V2), cl), (m3) => ["parenthesizedItemType", m3]), Dj = (0, R2.or)([Gb, Uk(Vk([Qo], "anyItemType")), Yr, as, ds, nq, es]), Ac = (0, R2.map)(T2([em, X2], jb), (m3) => ["typeDeclaration", ...m3]), fs = (0, R2.then)((0, R2.preceded)(Fl, np), (0, R2.optional)((0, R2.preceded)(
       X2,
-      yc
-    )), (m3, r4) => ["param", ["varName", ...m3], ...r4 ? [r4] : []]), Aj = c4(Vr, Nl, (m3, r4) => [m3, ...r4.map((B3) => B3[1])]), Wr = Lk((0, R2.star)(yf), T2([V2, hm, V2, Vk, V2], (0, R2.optional)(Aj)), T2([V2, Wk, V2], (0, R2.optional)((0, R2.map)(T2([Yl, V2], (0, R2.followed)(gb, V2)), (m3) => ["typeDeclaration", ...m3]))), zj, (m3, r4, B3, W2) => ["inlineFunctionExpr", ...m3, ["paramList", ...r4 ? r4 : []], ...B3 ? [B3] : [], ["functionBody", W2]]), Xr = (0, R2.or)([Kr, Wr]), Yr = (0, R2.map)(k3, (m3) => ["mapKeyExpr", m3]), Zr = (0, R2.map)(k3, (m3) => ["mapValueExpr", m3]), $r = (0, R2.then)(Yr, (0, R2.preceded)(S3(ul, V2), Zr), (m3, r4) => [
+      Ac
+    )), (m3, r4) => ["param", ["varName", ...m3], ...r4 ? [r4] : []]), Gj = c4(fs, Ul, (m3, r4) => [m3, ...r4.map((B3) => B3[1])]), gs = Sk((0, R2.star)(Af), T2([V2, om, V2, bl, V2], (0, R2.optional)(Gj)), T2([V2, cl, V2], (0, R2.optional)((0, R2.map)(T2([em, V2], (0, R2.followed)(jb, V2)), (m3) => ["typeDeclaration", ...m3]))), Fj, (m3, r4, B3, W2) => ["inlineFunctionExpr", ...m3, ["paramList", ...r4 ? r4 : []], ...B3 ? [B3] : [], ["functionBody", W2]]), hs = (0, R2.or)([Vr, gs]), is = (0, R2.map)(k3, (m3) => ["mapKeyExpr", m3]), js = (0, R2.map)(k3, (m3) => ["mapValueExpr", m3]), ks = (0, R2.then)(is, (0, R2.preceded)(S3(Bl, V2), js), (m3, r4) => [
       "mapConstructorEntry",
       m3,
       r4
-    ]), as = (0, R2.preceded)(im, (0, R2.delimited)(S3(Zk, V2), (0, R2.map)((0, R2.optional)(c4($r, S3(Nl, V2), (m3, r4) => [m3, ...r4.map((B3) => B3[1])])), (m3) => m3 ? ["mapConstructor", ...m3] : ["mapConstructor"]), (0, R2.preceded)(V2, $k))), bs = (0, R2.map)((0, R2.delimited)(Xk, S3((0, R2.optional)(c4(k3, Nl, (m3, r4) => [m3, ...r4.map((B3) => B3[1])].map((B3) => ["arrayElem", B3]))), V2), Yk), (m3) => ["squareArray", ...null !== m3 ? m3 : []]), cs = (0, R2.map)((0, R2.preceded)(Vm, (0, R2.preceded)(V2, Ta)), (m3) => ["curlyArray", ...null !== m3 ? [["arrayElem", m3]] : []]), ds = (0, R2.map)((0, R2.or)([bs, cs]), (m3) => [
+    ]), ls = (0, R2.preceded)(pm, (0, R2.delimited)(S3(fl, V2), (0, R2.map)((0, R2.optional)(c4(ks, S3(Ul, V2), (m3, r4) => [m3, ...r4.map((B3) => B3[1])])), (m3) => m3 ? ["mapConstructor", ...m3] : ["mapConstructor"]), (0, R2.preceded)(V2, gl))), ms = (0, R2.map)((0, R2.delimited)(dl, S3((0, R2.optional)(c4(k3, Ul, (m3, r4) => [m3, ...r4.map((B3) => B3[1])].map((B3) => ["arrayElem", B3]))), V2), el), (m3) => ["squareArray", ...null !== m3 ? m3 : []]), ns = (0, R2.map)((0, R2.preceded)(bn, (0, R2.preceded)(V2, Ua)), (m3) => ["curlyArray", ...null !== m3 ? [["arrayElem", m3]] : []]), os = (0, R2.map)((0, R2.or)([ms, ns]), (m3) => [
       "arrayConstructor",
       m3
-    ]), Bj = (0, R2.or)([Uo, tp, xf, wl]), es = (0, R2.map)((0, R2.preceded)(Bl, (0, R2.preceded)(V2, Bj)), (m3) => "*" === m3 ? ["unaryLookup", ["star"]] : "string" === typeof m3 ? ["unaryLookup", ["NCName", m3]] : ["unaryLookup", m3]), zf = (0, R2.or)([ip, jp, Ok([al], "{"), Ok([bl], "}"), (0, R2.map)(Ta, (m3) => m3 || ["sequenceExpr"])]), fs = (0, R2.or)([Ap, function(m3, r4) {
-      return Cj(m3, r4);
-    }, zf, zp]), gs = (0, R2.or)([(0, R2.map)(Bp, (m3) => m3.replace(/[\x20\x0D\x0A\x09]/g, " ")), zf]), hs = (0, R2.or)([(0, R2.map)(Cp, (m3) => m3.replace(/[\x20\x0D\x0A\x09]/g, " ")), zf]), is = (0, R2.map)((0, R2.or)([S3((0, R2.star)((0, R2.or)([
-      kp,
-      gs
-    ])), el), S3((0, R2.star)((0, R2.or)([lp, hs])), cl)]), (m3) => $p(m3, false, false)), js = (0, R2.then)($o, (0, R2.preceded)(S3(Cl, (0, R2.optional)(Ro)), is), (m3, r4) => {
+    ]), Hj = (0, R2.map)((0, R2.star)((0, R2.preceded)((0, R2.peek)((0, R2.not)((0, R2.or)([Uo, Vo, To]), ["String constructors can not contain interpolation characters"])), Yo)), (m3) => ["stringConstructorChars", m3.join("")]), ps = (0, R2.map)((0, R2.delimited)(Uo, l4, Vo, true), (m3) => ["stringConstructorInterpolation", m3]), qs = (0, R2.then)(Hj, (0, R2.star)((0, R2.then)(ps, Hj, (m3, r4) => [m3, r4])), (m3, r4) => {
+      m3 = [m3];
+      for (const [B3, W2] of r4)
+        m3.push(B3, W2);
+      return m3;
+    }), rs = (0, R2.map)((0, R2.delimited)(So, qs, To, true), (m3) => ["stringConstructor", ...m3]), Ij = (0, R2.or)([ep, Ep, zf, Dl]), ss = (0, R2.map)((0, R2.preceded)(Il, (0, R2.preceded)(V2, Ij)), (m3) => "*" === m3 ? ["unaryLookup", ["star"]] : "string" === typeof m3 ? ["unaryLookup", ["NCName", m3]] : ["unaryLookup", m3]), Bf = (0, R2.or)([tp, up, Vk([hl], "{"), Vk([il], "}"), (0, R2.map)(Ua, (m3) => m3 || ["sequenceExpr"])]), ts = (0, R2.or)([Lp, function(m3, r4) {
+      return Jj(m3, r4);
+    }, Bf, Kp]), us = (0, R2.or)([(0, R2.map)(Mp, (m3) => m3.replace(/[\x20\x0D\x0A\x09]/g, " ")), Bf]), vs = (0, R2.or)([(0, R2.map)(Np, (m3) => m3.replace(/[\x20\x0D\x0A\x09]/g, " ")), Bf]), ws = (0, R2.map)((0, R2.or)([S3((0, R2.star)((0, R2.or)([vp, us])), ll), S3((0, R2.star)((0, R2.or)([
+      wp,
+      vs
+    ])), jl)]), (m3) => kq(m3, false, false)), xs = (0, R2.then)(kp, (0, R2.preceded)(S3(Jl, (0, R2.optional)(bp)), ws), (m3, r4) => {
       if ("" === m3[0].prefix && "xmlns" === m3[1]) {
         if (r4.length && "string" !== typeof r4[0])
           throw Error("XQST0022: A namespace declaration may not contain enclosed expressions");
@@ -26808,226 +26936,232 @@ var fontoxpath = function(xspattern, prsc) {
       if ("xmlns" === m3[0].prefix) {
         if (r4.length && "string" !== typeof r4[0])
           throw Error("XQST0022: The namespace declaration for 'xmlns:" + m3[1] + "' may not contain enclosed expressions");
-        return ["namespaceDeclaration", ["prefix", m3[1]], r4.length ? ["uri", r4[0]] : ["uri"]];
+        return [
+          "namespaceDeclaration",
+          ["prefix", m3[1]],
+          r4.length ? ["uri", r4[0]] : ["uri"]
+        ];
       }
       return ["attributeConstructor", ["attributeName"].concat(m3), 0 === r4.length ? ["attributeValue"] : 1 === r4.length && "string" === typeof r4[0] ? ["attributeValue", r4[0]] : ["attributeValueExpr"].concat(r4)];
-    }), ks = (0, R2.map)((0, R2.star)((0, R2.preceded)(Ro, (0, R2.optional)(js))), (m3) => m3.filter(Boolean)), ls = Kk((0, R2.preceded)(Hl, $o), ks, (0, R2.or)([(0, R2.map)(il, () => null), (0, R2.then)((0, R2.preceded)(Kl, (0, R2.star)(fs)), T2([V2, jl], (0, R2.followed)($o, (0, R2.then)(
-      (0, R2.optional)(Ro),
-      Kl,
-      () => null
-    ))), (m3, r4) => [$p(m3, true, true), r4])]), (m3, r4, B3) => {
+    }), ys = (0, R2.map)((0, R2.star)((0, R2.preceded)(bp, (0, R2.optional)(xs))), (m3) => m3.filter(Boolean)), zs = Rk((0, R2.preceded)(Ol, kp), ys, (0, R2.or)([(0, R2.map)(pl, () => null), (0, R2.then)((0, R2.preceded)(Rl, (0, R2.star)(ts)), T2([V2, ql], (0, R2.followed)(kp, (0, R2.then)((0, R2.optional)(bp), Rl, () => null))), (m3, r4) => [kq(m3, true, true), r4])]), (m3, r4, B3) => {
       var W2 = B3;
       if (B3 && B3.length) {
-        W2 = aq(m3);
-        const da = aq(B3[1]);
-        if (W2 !== da)
-          throw Error('XQST0118: The start and the end tag of an element constructor must be equal. "' + W2 + '" does not match "' + da + '"');
+        W2 = lq(m3);
+        const ea = lq(B3[1]);
+        if (W2 !== ea)
+          throw Error('XQST0118: The start and the end tag of an element constructor must be equal. "' + W2 + '" does not match "' + ea + '"');
         W2 = B3[0];
       }
       return ["elementConstructor", ["tagName", ...m3], ...r4.length ? [["attributeList", ...r4]] : [], ...W2 && W2.length ? [["elementContent", ...W2]] : []];
-    }), Cj = (0, R2.or)([ls, Ep, Hp]), ms = (0, R2.map)(T2([Wm, V2], Ta), (m3) => ["computedDocumentConstructor", ...m3 ? [["argExpr", m3]] : []]), ns = (0, R2.map)(
-      Ta,
-      (m3) => m3 ? [["contentExpr", m3]] : []
-    ), os = (0, R2.then)(T2([jm, V2], (0, R2.or)([(0, R2.map)(cp, (m3) => ["tagName", ...m3]), (0, R2.map)((0, R2.delimited)(Zk, S3(l4, V2), $k), (m3) => ["tagNameExpr", m3])])), (0, R2.preceded)(V2, ns), (m3, r4) => ["computedElementConstructor", m3, ...r4]), ps = (0, R2.then)((0, R2.preceded)(km, (0, R2.or)([(0, R2.map)(T2([fp, V2], cp), (m3) => ["tagName", ...m3]), (0, R2.map)((0, R2.preceded)(V2, (0, R2.delimited)(Zk, S3(l4, V2), $k)), (m3) => ["tagNameExpr", m3])])), (0, R2.preceded)(V2, Ta), (m3, r4) => ["computedAttributeConstructor", m3, ["valueExpr", r4 ? r4 : ["sequenceExpr"]]]), qs = (0, R2.map)(
-      Ta,
-      (m3) => m3 ? [["prefixExpr", m3]] : []
-    ), rs = (0, R2.map)(Ta, (m3) => m3 ? [["URIExpr", m3]] : []), ss = (0, R2.then)(T2([Xm, V2], (0, R2.or)([Vo, qs])), (0, R2.preceded)(V2, rs), (m3, r4) => ["computedNamespaceConstructor", ...m3, ...r4]), ts = (0, R2.map)(T2([Ym, V2], Ta), (m3) => ["computedTextConstructor", ...m3 ? [["argExpr", m3]] : []]), us = (0, R2.map)(T2([Zm, V2], Ta), (m3) => ["computedCommentConstructor", ...m3 ? [["argExpr", m3]] : []]), vs = T2([$m, V2], (0, R2.then)((0, R2.or)([(0, R2.map)(Uo, (m3) => ["piTarget", m3]), (0, R2.map)((0, R2.delimited)(Zk, S3(l4, V2), $k), (m3) => ["piTargetExpr", m3])]), (0, R2.preceded)(
-      V2,
-      Ta
-    ), (m3, r4) => ["computedPIConstructor", m3, ...r4 ? [["piValueExpr", r4]] : []])), ws = (0, R2.or)([ms, os, ps, ss, ts, us, vs]), xs = (0, R2.or)([Cj, ws]), Dj = (0, R2.or)([wf, ep, xf, vp, Jr, xs, Xr, as, ds, es]), Ej = (0, R2.map)(T2([Bl, V2], Bj), (m3) => "*" === m3 ? ["lookup", ["star"]] : "string" === typeof m3 ? ["lookup", ["NCName", m3]] : ["lookup", m3]), ys = (0, R2.then)((0, R2.map)(Dj, (m3) => Xp(m3)), (0, R2.star)((0, R2.or)([(0, R2.map)((0, R2.preceded)(V2, t4), (m3) => ["predicate", m3]), (0, R2.map)((0, R2.preceded)(V2, de), (m3) => ["argumentList", m3]), (0, R2.preceded)(V2, Ej)])), (m3, r4) => {
+    }), Jj = (0, R2.or)([zs, Pp, Sp]), As = (0, R2.map)(T2([cn, V2], Ua), (m3) => ["computedDocumentConstructor", ...m3 ? [["argExpr", m3]] : []]), Bs = (0, R2.map)(Ua, (m3) => m3 ? [[
+      "contentExpr",
+      m3
+    ]] : []), Cs = (0, R2.then)(T2([qm, V2], (0, R2.or)([(0, R2.map)(np, (m3) => ["tagName", ...m3]), (0, R2.map)((0, R2.delimited)(fl, S3(l4, V2), gl), (m3) => ["tagNameExpr", m3])])), (0, R2.preceded)(V2, Bs), (m3, r4) => ["computedElementConstructor", m3, ...r4]), Ds = (0, R2.then)((0, R2.preceded)(rm, (0, R2.or)([(0, R2.map)(T2([qp, V2], np), (m3) => ["tagName", ...m3]), (0, R2.map)((0, R2.preceded)(V2, (0, R2.delimited)(fl, S3(l4, V2), gl)), (m3) => ["tagNameExpr", m3])])), (0, R2.preceded)(V2, Ua), (m3, r4) => ["computedAttributeConstructor", m3, ["valueExpr", r4 ? r4 : ["sequenceExpr"]]]), Es = (0, R2.map)(Ua, (m3) => m3 ? [[
+      "prefixExpr",
+      m3
+    ]] : []), Fs = (0, R2.map)(Ua, (m3) => m3 ? [["URIExpr", m3]] : []), Gs = (0, R2.then)(T2([dn, V2], (0, R2.or)([fp, Es])), (0, R2.preceded)(V2, Fs), (m3, r4) => ["computedNamespaceConstructor", ...m3, ...r4]), Hs = (0, R2.map)(T2([en, V2], Ua), (m3) => ["computedTextConstructor", ...m3 ? [["argExpr", m3]] : []]), Is = (0, R2.map)(T2([fn, V2], Ua), (m3) => ["computedCommentConstructor", ...m3 ? [["argExpr", m3]] : []]), Js = T2([gn, V2], (0, R2.then)((0, R2.or)([(0, R2.map)(ep, (m3) => ["piTarget", m3]), (0, R2.map)((0, R2.delimited)(fl, S3(l4, V2), gl), (m3) => ["piTargetExpr", m3])]), (0, R2.preceded)(V2, Ua), (m3, r4) => [
+      "computedPIConstructor",
+      m3,
+      ...r4 ? [["piValueExpr", r4]] : []
+    ])), Ks = (0, R2.or)([As, Cs, Ds, Gs, Hs, Is, Js]), Ls = (0, R2.or)([Jj, Ks]), Kj = (0, R2.or)([yf, pp, zf, Gp, Ur, Ls, hs, ls, os, rs, ss]), Lj = (0, R2.map)(T2([Il, V2], Ij), (m3) => "*" === m3 ? ["lookup", ["star"]] : "string" === typeof m3 ? ["lookup", ["NCName", m3]] : ["lookup", m3]), Ms = (0, R2.then)((0, R2.map)(Kj, (m3) => hq(m3)), (0, R2.star)((0, R2.or)([(0, R2.map)((0, R2.preceded)(V2, t4), (m3) => ["predicate", m3]), (0, R2.map)((0, R2.preceded)(V2, de), (m3) => ["argumentList", m3]), (0, R2.preceded)(V2, Lj)])), (m3, r4) => {
       function B3() {
-        Fj && 1 === Fa.length ? zc.push(["predicate", Fa[0]]) : 0 !== Fa.length && zc.push(["predicates", ...Fa]);
+        Mj && 1 === Fa.length ? Bc.push([
+          "predicate",
+          Fa[0]
+        ]) : 0 !== Fa.length && Bc.push(["predicates", ...Fa]);
         Fa.length = 0;
       }
       function W2(Zb) {
         B3();
-        0 !== zc.length ? ("sequenceExpr" === da[0][0] && 2 < da[0].length && (da = [["sequenceExpr", ...da]]), da = [["filterExpr", ...da], ...zc], zc.length = 0) : Zb && (da = [["filterExpr", ...da]]);
+        0 !== Bc.length ? ("sequenceExpr" === ea[0][0] && 2 < ea[0].length && (ea = [["sequenceExpr", ...ea]]), ea = [["filterExpr", ...ea], ...Bc], Bc.length = 0) : Zb && (ea = [["filterExpr", ...ea]]);
       }
-      let da = [m3];
-      const Fa = [], zc = [];
-      let Fj = false;
+      let ea = [m3];
+      const Fa = [], Bc = [];
+      let Mj = false;
       for (const Zb of r4)
         switch (Zb[0]) {
           case "predicate":
             Fa.push(Zb[1]);
             break;
           case "lookup":
-            Fj = true;
+            Mj = true;
             B3();
-            zc.push(Zb);
+            Bc.push(Zb);
             break;
           case "argumentList":
             W2(false);
-            1 < da.length && (da = [["sequenceExpr", [
-              "pathExpr",
-              ["stepExpr", ...da]
-            ]]]);
-            da = [["dynamicFunctionInvocationExpr", ["functionItem", ...da], ...Zb[1].length ? [["arguments", ...Zb[1]]] : []]];
+            1 < ea.length && (ea = [["sequenceExpr", ["pathExpr", ["stepExpr", ...ea]]]]);
+            ea = [[
+              "dynamicFunctionInvocationExpr",
+              ["functionItem", ...ea],
+              ...Zb[1].length ? [["arguments", ...Zb[1]]] : []
+            ]];
             break;
           default:
             throw Error("unreachable");
         }
       W2(true);
-      return da;
-    }), Ac = (0, R2.or)([(0, R2.map)(ys, (m3) => ["stepExpr", ...m3]), Ir]), zs = (0, R2.followed)(Dj, (0, R2.peek)((0, R2.not)((0, R2.preceded)(V2, (0, R2.or)([t4, de, Ej])), ["primary expression not followed by predicate, argumentList, or lookup"]))), As = (0, R2.or)([Kk(Ac, (0, R2.preceded)(V2, Ip), (0, R2.preceded)(V2, h4), (m3, r4, B3) => ["pathExpr", m3, r4, ...B3]), (0, R2.then)(
-      Ac,
-      (0, R2.preceded)(S3(Sl, V2), h4),
-      (m3, r4) => ["pathExpr", m3, ...r4]
-    ), zs, (0, R2.map)(Ac, (m3) => ["pathExpr", m3])]), vf = (0, R2.or)([Kk(Ac, (0, R2.preceded)(V2, Ip), (0, R2.preceded)(V2, h4), (m3, r4, B3) => [m3, r4, ...B3]), (0, R2.then)(Ac, (0, R2.preceded)(S3(Sl, V2), h4), (m3, r4) => [m3, ...r4]), (0, R2.map)(Ac, (m3) => [m3])]), Bs = (0, R2.or)([(0, R2.map)(T2([Sl, V2], vf), (m3) => ["pathExpr", ["rootExpr"], ...m3]), (0, R2.then)(Ip, (0, R2.preceded)(V2, vf), (m3, r4) => ["pathExpr", ["rootExpr"], m3, ...r4]), (0, R2.map)(
-      (0, R2.followed)(Sl, (0, R2.not)((0, R2.preceded)(V2, a4.Za ? Pk(/[*<a-zA-Z]/) : Pk(/[*a-zA-Z]/)), ["Single rootExpr cannot be by followed by something that can be interpreted as a relative path"])),
+      return ea;
+    }), Cc = (0, R2.or)([(0, R2.map)(Ms, (m3) => ["stepExpr", ...m3]), Tr]), Ns = (0, R2.followed)(Kj, (0, R2.peek)((0, R2.not)((0, R2.preceded)(V2, (0, R2.or)([t4, de, Lj])), ["primary expression not followed by predicate, argumentList, or lookup"]))), Os = (0, R2.or)([
+      Rk(Cc, (0, R2.preceded)(V2, Tp), (0, R2.preceded)(V2, h4), (m3, r4, B3) => ["pathExpr", m3, r4, ...B3]),
+      (0, R2.then)(Cc, (0, R2.preceded)(S3(Zl, V2), h4), (m3, r4) => ["pathExpr", m3, ...r4]),
+      Ns,
+      (0, R2.map)(Cc, (m3) => ["pathExpr", m3])
+    ]), xf = (0, R2.or)([Rk(Cc, (0, R2.preceded)(V2, Tp), (0, R2.preceded)(V2, h4), (m3, r4, B3) => [m3, r4, ...B3]), (0, R2.then)(Cc, (0, R2.preceded)(S3(Zl, V2), h4), (m3, r4) => [m3, ...r4]), (0, R2.map)(Cc, (m3) => [m3])]), Ps = (0, R2.or)([(0, R2.map)(T2([Zl, V2], xf), (m3) => ["pathExpr", ["rootExpr"], ...m3]), (0, R2.then)(Tp, (0, R2.preceded)(V2, xf), (m3, r4) => ["pathExpr", ["rootExpr"], m3, ...r4]), (0, R2.map)(
+      (0, R2.followed)(Zl, (0, R2.not)((0, R2.preceded)(V2, a4.Za ? Wk(/[*<a-zA-Z]/) : Wk(/[*a-zA-Z]/)), ["Single rootExpr cannot be by followed by something that can be interpreted as a relative path"])),
       () => ["pathExpr", ["rootExpr"]]
-    )]), Cs = Jk((0, R2.or)([As, Bs]), dq), Ds = (0, R2.preceded)(cn, (0, R2.then)((0, R2.optional)((0, R2.or)([(0, R2.map)((0, R2.preceded)(V2, Jp), (m3) => ["validationMode", m3]), (0, R2.map)(T2([V2, dn, V2], cp), (m3) => ["type", ...m3])])), (0, R2.delimited)((0, R2.preceded)(V2, Zk), S3(l4, V2), $k), (m3, r4) => ["validateExpr", ...m3 ? [m3] : [], ["argExpr", r4]])), Es = (0, R2.delimited)(Tk, (0, R2.then)((0, R2.preceded)(V2, cp), (0, R2.optional)((0, R2.preceded)(X2, Kp)), (m3, r4) => r4 ? ["pragma", ["pragmaName", m3], ["pragmaContents", r4]] : ["pragma", ["pragmaName", m3]]), (0, R2.preceded)(
+    )]), Qs = Qk((0, R2.or)([Os, Ps]), oq), Rs = (0, R2.preceded)(kn, (0, R2.then)((0, R2.optional)((0, R2.or)([(0, R2.map)((0, R2.preceded)(V2, Up), (m3) => ["validationMode", m3]), (0, R2.map)(T2([V2, ln, V2], np), (m3) => ["type", ...m3])])), (0, R2.delimited)((0, R2.preceded)(V2, fl), S3(l4, V2), gl), (m3, r4) => ["validateExpr", ...m3 ? [m3] : [], ["argExpr", r4]])), Ss = (0, R2.delimited)($k, (0, R2.then)((0, R2.preceded)(V2, np), (0, R2.optional)((0, R2.preceded)(X2, Vp)), (m3, r4) => r4 ? ["pragma", ["pragmaName", m3], ["pragmaContents", r4]] : ["pragma", ["pragmaName", m3]]), (0, R2.preceded)(
       V2,
-      Uk
-    )), Fs = (0, R2.map)((0, R2.followed)((0, R2.plus)(Es), (0, R2.preceded)(V2, (0, R2.delimited)(Zk, S3((0, R2.optional)(l4), V2), $k))), (m3) => ["extensionExpr", ...m3]), Gs = e4(c4(Cs, Dl, (m3, r4) => 0 === r4.length ? m3 : ["simpleMapExpr", "pathExpr" === m3[0] ? m3 : ["pathExpr", ["stepExpr", ["filterExpr", Xp(m3)]]]].concat(r4.map((B3) => {
+      al
+    )), Ts = (0, R2.map)((0, R2.followed)((0, R2.plus)(Ss), (0, R2.preceded)(V2, (0, R2.delimited)(fl, S3((0, R2.optional)(l4), V2), gl))), (m3) => ["extensionExpr", ...m3]), Us = e4(c4(Qs, Kl, (m3, r4) => 0 === r4.length ? m3 : ["simpleMapExpr", "pathExpr" === m3[0] ? m3 : ["pathExpr", ["stepExpr", ["filterExpr", hq(m3)]]]].concat(r4.map((B3) => {
       B3 = B3[1];
-      return "pathExpr" === B3[0] ? B3 : ["pathExpr", ["stepExpr", ["filterExpr", Xp(B3)]]];
-    })))), Hs = (0, R2.or)([Ds, Fs, Gs]), Gj = (0, R2.or)([(0, R2.then)((0, R2.or)([Ok([Rl], "unaryMinusOp"), Ok([Ql], "unaryPlusOp")]), (0, R2.preceded)(V2, function(m3, r4) {
-      return Gj(
+      return "pathExpr" === B3[0] ? B3 : ["pathExpr", ["stepExpr", ["filterExpr", hq(B3)]]];
+    })))), Vs = (0, R2.or)([Rs, Ts, Us]), Nj = (0, R2.or)([(0, R2.then)((0, R2.or)([Vk([Yl], "unaryMinusOp"), Vk([Xl], "unaryPlusOp")]), (0, R2.preceded)(V2, function(m3, r4) {
+      return Nj(
         m3,
         r4
       );
-    }), (m3, r4) => [m3, ["operand", r4]]), Hs]), Is = (0, R2.or)([(0, R2.map)(cp, (m3) => ["EQName", ...m3]), ep, xf]), Js = (0, R2.then)(Gj, (0, R2.star)(T2([V2, Ul, V2], (0, R2.then)(Is, (0, R2.preceded)(V2, de), (m3, r4) => [m3, r4]))), (m3, r4) => r4.reduce((B3, W2) => ["arrowExpr", ["argExpr", B3], W2[0], ["arguments", ...W2[1]]], m3)), Ks = (0, R2.then)(Js, (0, R2.optional)(T2([V2, Zl, X2, Yl, fp, V2], bq)), (m3, r4) => null !== r4 ? ["castExpr", ["argExpr", m3], r4] : m3), Ls = (0, R2.then)(Ks, (0, R2.optional)(T2([V2, $l, X2, Yl, fp, V2], bq)), (m3, r4) => null !== r4 ? ["castableExpr", ["argExpr", m3], r4] : m3), Ms = (0, R2.then)(Ls, (0, R2.optional)(T2([
+    }), (m3, r4) => [m3, ["operand", r4]]), Vs]), Ws = (0, R2.or)([(0, R2.map)(np, (m3) => ["EQName", ...m3]), pp, zf]), Xs = (0, R2.then)(Nj, (0, R2.star)(T2([V2, am, V2], (0, R2.then)(Ws, (0, R2.preceded)(V2, de), (m3, r4) => [m3, r4]))), (m3, r4) => r4.reduce((B3, W2) => ["arrowExpr", ["argExpr", B3], W2[0], ["arguments", ...W2[1]]], m3)), Ys = (0, R2.then)(Xs, (0, R2.optional)(T2([V2, fm, X2, em, qp, V2], mq)), (m3, r4) => null !== r4 ? ["castExpr", ["argExpr", m3], r4] : m3), Zs = (0, R2.then)(Ys, (0, R2.optional)(T2([V2, gm, X2, em, qp, V2], mq)), (m3, r4) => null !== r4 ? ["castableExpr", ["argExpr", m3], r4] : m3), $s = (0, R2.then)(Zs, (0, R2.optional)(T2([
       V2,
-      am,
+      hm,
       X2,
-      Yl,
-      fp,
+      em,
+      qp,
       V2
-    ], gb)), (m3, r4) => null !== r4 ? ["treatExpr", ["argExpr", m3], ["sequenceType", ...r4]] : m3), Ns = (0, R2.then)(Ms, (0, R2.optional)(T2([V2, bm, X2, cm, fp, V2], gb)), (m3, r4) => null !== r4 ? ["instanceOfExpr", ["argExpr", m3], ["sequenceType", ...r4]] : m3), Os = c4(Ns, (0, R2.followed)((0, R2.or)([Ok([mm], "intersectOp"), Ok([nm], "exceptOp")]), fp), b3), Ps = c4(Os, (0, R2.or)([Ok([El], "unionOp"), (0, R2.followed)(Ok([om], "unionOp"), fp)]), b3), Qs = c4(Ps, (0, R2.or)([Ok([wl], "multiplyOp"), (0, R2.followed)(Ok([tm], "divOp"), fp), (0, R2.followed)(Ok([um], "idivOp"), fp), (0, R2.followed)(Ok(
-      [vm],
+    ], jb)), (m3, r4) => null !== r4 ? ["treatExpr", ["argExpr", m3], ["sequenceType", ...r4]] : m3), at = (0, R2.then)($s, (0, R2.optional)(T2([V2, im, X2, jm, qp, V2], jb)), (m3, r4) => null !== r4 ? ["instanceOfExpr", ["argExpr", m3], ["sequenceType", ...r4]] : m3), bt = c4(at, (0, R2.followed)((0, R2.or)([Vk([tm], "intersectOp"), Vk([um], "exceptOp")]), qp), b3), ct = c4(bt, (0, R2.or)([Vk([Ll], "unionOp"), (0, R2.followed)(Vk([vm], "unionOp"), qp)]), b3), dt = c4(ct, (0, R2.or)([Vk([Dl], "multiplyOp"), (0, R2.followed)(Vk([Am], "divOp"), qp), (0, R2.followed)(Vk([Bm], "idivOp"), qp), (0, R2.followed)(Vk(
+      [Cm],
       "modOp"
-    ), fp)]), b3), Rs = c4(Qs, (0, R2.or)([Ok([Rl], "subtractOp"), Ok([Ql], "addOp")]), b3), Ss = d4(Rs, (0, R2.followed)(Ok([pm], "rangeSequenceExpr"), fp), "startExpr", "endExpr"), Ts = c4(Ss, Ok([Fl], "stringConcatenateOp"), b3), Us = d4(Ts, (0, R2.or)([Lp, Mp, Np])), Vs = c4(Us, (0, R2.followed)(Ok([sm], "andOp"), fp), b3), Cr = c4(Vs, (0, R2.followed)(Ok([rm], "orOp"), fp), b3), Ws = e4((0, R2.map)(l4, (m3) => ["ifClause", m3])), Xs = e4((0, R2.map)(k3, (m3) => ["thenClause", m3])), Ys = e4((0, R2.map)(k3, (m3) => ["elseClause", m3])), wr = (0, R2.then)((0, R2.then)(T2([Fm, V2, Vk, V2], Ws), T2(
-      [V2, Wk, V2, Gm, fp, V2],
-      Xs
-    ), (m3, r4) => [m3, r4]), T2([V2, Hm, fp, V2], Ys), (m3, r4) => ["ifThenElseExpr", m3[0], m3[1], r4]), Zs = (0, R2.delimited)(Im, X2, Jm), $s = (0, R2.map)(T2([Km, X2, yl], cp), (m3) => ["positionalVariableBinding", ...m3]), at = Mk((0, R2.preceded)(yl, (0, R2.cut)(cp)), (0, R2.cut)((0, R2.preceded)(V2, (0, R2.optional)(yc))), (0, R2.cut)((0, R2.preceded)(V2, (0, R2.optional)(Zs))), (0, R2.cut)((0, R2.preceded)(V2, (0, R2.optional)($s))), (0, R2.cut)((0, R2.preceded)(S3(Lm, V2), k3)), (m3, r4, B3, W2, da) => ["forClauseItem", ["typedVariableBinding", ["varName", ...m3, ...r4 ? [r4] : []]], ...B3 ? [["allowingEmpty"]] : [], ...W2 ? [W2] : [], ["forExpr", da]]), bt = T2([Mm, X2], c4(at, Nl, (m3, r4) => ["forClause", m3, ...r4.map((B3) => B3[1])])), ct = Kk((0, R2.preceded)(yl, cp), (0, R2.preceded)(V2, (0, R2.optional)(yc)), (0, R2.preceded)(S3(sl, V2), k3), (m3, r4, B3) => ["letClauseItem", ["typedVariableBinding", ["varName", ...m3], ...r4 ? [r4] : []], ["letExpr", B3]]), dt = (0, R2.map)(T2([Nm, V2], c4(ct, Nl, (m3, r4) => [m3, ...r4.map((B3) => B3[1])])), (m3) => ["letClause", ...m3]), Hj = (0, R2.or)([bt, dt]), et = (0, R2.map)(T2([Om, fp, V2], k3), (m3) => ["whereClause", m3]), ft = (0, R2.map)((0, R2.preceded)(yl, cp), (m3) => ["varName", ...m3]), gt = (0, R2.then)((0, R2.preceded)(V2, (0, R2.optional)(yc)), (0, R2.preceded)(S3(sl, V2), k3), (m3, r4) => ["groupVarInitialize", ...m3 ? [["typeDeclaration", ...m3]] : [], ["varValue", r4]]), ht = Kk(ft, (0, R2.optional)(gt), (0, R2.optional)((0, R2.map)((0, R2.preceded)(S3(Pm, V2), u4), (m3) => ["collation", m3])), (m3, r4, B3) => ["groupingSpec", m3, ...r4 ? [r4] : [], ...B3 ? [B3] : []]), it = c4(ht, Nl, (m3, r4) => [m3, ...r4.map((B3) => B3[1])]), jt = (0, R2.map)(T2([Qm, X2, Rm, V2], it), (m3) => ["groupByClause", ...m3]), kt = Kk((0, R2.optional)((0, R2.or)([bo, co])), (0, R2.optional)(T2([V2, Jm, V2], (0, R2.or)([nn, on].map((m3) => (0, R2.map)(m3, (r4) => "empty " + r4))))), (0, R2.preceded)(V2, (0, R2.optional)(T2([Pm, V2], u4))), (m3, r4, B3) => m3 || r4 || B3 ? ["orderModifier", ...m3 ? [["orderingKind", m3]] : [], ...r4 ? [["emptyOrderingMode", r4]] : [], ...B3 ? [["collation", B3]] : []] : null), lt = (0, R2.then)(k3, (0, R2.preceded)(V2, kt), (m3, r4) => ["orderBySpec", ["orderByExpr", m3], ...r4 ? [r4] : []]), mt = c4(lt, Nl, (m3, r4) => [m3, ...r4.map((B3) => B3[1])]), nt = (0, R2.then)((0, R2.or)([(0, R2.map)(T2([Sm, X2], Rm), () => false), (0, R2.map)(T2([Tm, X2, Sm, X2], Rm), () => true)]), (0, R2.preceded)(V2, mt), (m3, r4) => ["orderByClause", ...m3 ? [["stable"]] : [], ...r4]), ot = (0, R2.or)([Hj, et, jt, nt]), pt = (0, R2.map)(T2([Um, V2], k3), (m3) => ["returnClause", m3]), sr = Kk(Hj, (0, R2.cut)((0, R2.star)((0, R2.preceded)(V2, ot))), (0, R2.cut)((0, R2.preceded)(V2, pt)), (m3, r4, B3) => ["flworExpr", m3, ...r4, B3]), qt = c4(gb, El, (m3, r4) => 0 === r4.length ? ["sequenceType", ...m3] : ["sequenceTypeUnion", ["sequenceType", ...m3], ...r4.map((B3) => ["sequenceType", ...B3[1]])]), rt = Kk(T2([rn, V2], (0, R2.optional)((0, R2.preceded)(yl, (0, R2.followed)((0, R2.followed)(cp, X2), Yl)))), (0, R2.preceded)(V2, qt), T2([X2, Um, X2], k3), (m3, r4, B3) => ["typeswitchExprCaseClause"].concat(m3 ? [["variableBinding", ...m3]] : [], [r4], [["resultExpr", B3]])), vr = Lk((0, R2.preceded)(sn, S3((0, R2.delimited)(Vk, S3(l4, V2), Wk), V2)), (0, R2.plus)((0, R2.followed)(rt, V2)), T2([fn, X2], (0, R2.optional)((0, R2.preceded)(yl, (0, R2.followed)(cp, X2)))), T2([Um, X2], k3), (m3, r4, B3, W2) => ["typeswitchExpr", ["argExpr", m3], ...r4, ["typeswitchExprDefaultClause", ...B3 || [], ["resultExpr", W2]]]), st = Kk((0, R2.preceded)(yl, cp), (0, R2.optional)((0, R2.preceded)(X2, yc)), (0, R2.preceded)(S3(Lm, X2), k3), (m3, r4, B3) => ["quantifiedExprInClause", [
+    ), qp)]), b3), et = c4(dt, (0, R2.or)([Vk([Yl], "subtractOp"), Vk([Xl], "addOp")]), b3), ft = d4(et, (0, R2.followed)(Vk([wm], "rangeSequenceExpr"), qp), "startExpr", "endExpr"), gt = c4(ft, Vk([Ml], "stringConcatenateOp"), b3), ht = d4(gt, (0, R2.or)([Wp, Xp, Yp])), it = c4(ht, (0, R2.followed)(Vk([zm], "andOp"), qp), b3), Nr = c4(it, (0, R2.followed)(Vk([ym], "orOp"), qp), b3), jt = e4((0, R2.map)(l4, (m3) => ["ifClause", m3])), kt = e4((0, R2.map)(k3, (m3) => ["thenClause", m3])), lt = e4((0, R2.map)(k3, (m3) => ["elseClause", m3])), Hr = (0, R2.then)((0, R2.then)(T2([Mm, V2, bl, V2], jt), T2(
+      [V2, cl, V2, Nm, qp, V2],
+      kt
+    ), (m3, r4) => [m3, r4]), T2([V2, Om, qp, V2], lt), (m3, r4) => ["ifThenElseExpr", m3[0], m3[1], r4]), mt = (0, R2.delimited)(Pm, X2, Qm), nt = (0, R2.map)(T2([Rm, X2, Fl], np), (m3) => ["positionalVariableBinding", ...m3]), ot = Tk((0, R2.preceded)(Fl, (0, R2.cut)(np)), (0, R2.cut)((0, R2.preceded)(V2, (0, R2.optional)(Ac))), (0, R2.cut)((0, R2.preceded)(V2, (0, R2.optional)(mt))), (0, R2.cut)((0, R2.preceded)(V2, (0, R2.optional)(nt))), (0, R2.cut)((0, R2.preceded)(S3(Sm, V2), k3)), (m3, r4, B3, W2, ea) => ["forClauseItem", ["typedVariableBinding", ["varName", ...m3, ...r4 ? [r4] : []]], ...B3 ? [["allowingEmpty"]] : [], ...W2 ? [W2] : [], ["forExpr", ea]]), pt = T2([Tm, X2], c4(ot, Ul, (m3, r4) => ["forClause", m3, ...r4.map((B3) => B3[1])])), qt = Rk((0, R2.preceded)(Fl, np), (0, R2.preceded)(V2, (0, R2.optional)(Ac)), (0, R2.preceded)(S3(zl, V2), k3), (m3, r4, B3) => ["letClauseItem", ["typedVariableBinding", ["varName", ...m3], ...r4 ? [r4] : []], ["letExpr", B3]]), rt = (0, R2.map)(T2([Um, V2], c4(qt, Ul, (m3, r4) => [m3, ...r4.map((B3) => B3[1])])), (m3) => ["letClause", ...m3]), Oj = (0, R2.or)([pt, rt]), st = (0, R2.map)(T2([Vm, qp, V2], k3), (m3) => ["whereClause", m3]), tt = (0, R2.map)((0, R2.preceded)(Fl, np), (m3) => ["varName", ...m3]), ut = (0, R2.then)((0, R2.preceded)(V2, (0, R2.optional)(Ac)), (0, R2.preceded)(S3(zl, V2), k3), (m3, r4) => ["groupVarInitialize", ...m3 ? [["typeDeclaration", ...m3]] : [], ["varValue", r4]]), vt = Rk(tt, (0, R2.optional)(ut), (0, R2.optional)((0, R2.map)((0, R2.preceded)(S3(Wm, V2), u4), (m3) => ["collation", m3])), (m3, r4, B3) => ["groupingSpec", m3, ...r4 ? [r4] : [], ...B3 ? [B3] : []]), wt = c4(vt, Ul, (m3, r4) => [m3, ...r4.map((B3) => B3[1])]), xt = (0, R2.map)(T2([Xm, X2, Ym, V2], wt), (m3) => ["groupByClause", ...m3]), yt = Rk((0, R2.optional)((0, R2.or)([jo, ko])), (0, R2.optional)(T2([V2, Qm, V2], (0, R2.or)([un, vn].map((m3) => (0, R2.map)(m3, (r4) => "empty " + r4))))), (0, R2.preceded)(V2, (0, R2.optional)(T2([Wm, V2], u4))), (m3, r4, B3) => m3 || r4 || B3 ? ["orderModifier", ...m3 ? [["orderingKind", m3]] : [], ...r4 ? [["emptyOrderingMode", r4]] : [], ...B3 ? [["collation", B3]] : []] : null), zt = (0, R2.then)(k3, (0, R2.preceded)(V2, yt), (m3, r4) => ["orderBySpec", ["orderByExpr", m3], ...r4 ? [r4] : []]), At = c4(zt, Ul, (m3, r4) => [m3, ...r4.map((B3) => B3[1])]), Bt = (0, R2.then)((0, R2.or)([(0, R2.map)(T2([Zm, X2], Ym), () => false), (0, R2.map)(T2([$m, X2, Zm, X2], Ym), () => true)]), (0, R2.preceded)(V2, At), (m3, r4) => ["orderByClause", ...m3 ? [["stable"]] : [], ...r4]), Ct = (0, R2.or)([Oj, st, xt, Bt]), Dt = (0, R2.map)(T2([an, V2], k3), (m3) => ["returnClause", m3]), Dr = Rk(Oj, (0, R2.cut)((0, R2.star)((0, R2.preceded)(V2, Ct))), (0, R2.cut)((0, R2.preceded)(V2, Dt)), (m3, r4, B3) => ["flworExpr", m3, ...r4, B3]), Et = c4(jb, Ll, (m3, r4) => 0 === r4.length ? ["sequenceType", ...m3] : ["sequenceTypeUnion", ["sequenceType", ...m3], ...r4.map((B3) => ["sequenceType", ...B3[1]])]), Ft = Rk(T2([yn, V2], (0, R2.optional)((0, R2.preceded)(Fl, (0, R2.followed)((0, R2.followed)(np, X2), em)))), (0, R2.preceded)(V2, Et), T2([X2, an, X2], k3), (m3, r4, B3) => ["typeswitchExprCaseClause"].concat(m3 ? [["variableBinding", ...m3]] : [], [r4], [["resultExpr", B3]])), Gr = Sk((0, R2.preceded)(zn, S3((0, R2.delimited)(bl, S3(l4, V2), cl), V2)), (0, R2.plus)((0, R2.followed)(Ft, V2)), T2([nn, X2], (0, R2.optional)((0, R2.preceded)(Fl, (0, R2.followed)(np, X2)))), T2([an, X2], k3), (m3, r4, B3, W2) => ["typeswitchExpr", ["argExpr", m3], ...r4, ["typeswitchExprDefaultClause", ...B3 || [], ["resultExpr", W2]]]), Gt = Rk((0, R2.preceded)(Fl, np), (0, R2.optional)((0, R2.preceded)(X2, Ac)), (0, R2.preceded)(S3(Sm, X2), k3), (m3, r4, B3) => ["quantifiedExprInClause", [
       "typedVariableBinding",
       ["varName", ...m3],
       ...r4 ? [r4] : []
-    ], ["sourceExpr", B3]]), tt = c4(st, Nl, (m3, r4) => [m3, ...r4.map((B3) => B3[1])]), tr = Kk((0, R2.or)([tn, un]), (0, R2.preceded)(X2, tt), (0, R2.preceded)(S3(vn, V2), k3), (m3, r4, B3) => ["quantifiedExpr", ["quantifier", m3], ...r4, ["predicateExpr", B3]]), yr = (0, R2.map)(T2([fm, X2, (0, R2.or)([em, dm]), X2], k3), (m3) => ["deleteExpr", ["targetExpr", m3]]), Ar = Kk(T2([wn, X2], (0, R2.optional)(T2([gm, X2, cm], X2))), T2([dm, X2], k3), (0, R2.preceded)(S3(xn, X2), k3), (m3, r4, B3) => m3 ? ["replaceExpr", ["replaceValue"], ["targetExpr", r4], ["replacementExpr", B3]] : ["replaceExpr", ["targetExpr", r4], [
+    ], ["sourceExpr", B3]]), Ht = c4(Gt, Ul, (m3, r4) => [m3, ...r4.map((B3) => B3[1])]), Er = Rk((0, R2.or)([An, Bn]), (0, R2.preceded)(X2, Ht), (0, R2.preceded)(S3(Cn, V2), k3), (m3, r4, B3) => ["quantifiedExpr", ["quantifier", m3], ...r4, ["predicateExpr", B3]]), Jr = (0, R2.map)(T2([mm, X2, (0, R2.or)([lm, km]), X2], k3), (m3) => ["deleteExpr", ["targetExpr", m3]]), Lr = Rk(T2([Dn, X2], (0, R2.optional)(T2([nm, X2, jm], X2))), T2([km, X2], k3), (0, R2.preceded)(S3(En, X2), k3), (m3, r4, B3) => m3 ? ["replaceExpr", ["replaceValue"], ["targetExpr", r4], ["replacementExpr", B3]] : ["replaceExpr", ["targetExpr", r4], [
       "replacementExpr",
       B3
-    ]]), ut = (0, R2.then)(ep, (0, R2.preceded)(S3(sl, V2), k3), (m3, r4) => ["transformCopy", m3, ["copySource", r4]]), Br = Kk(T2([yn, X2], c4(ut, Nl, (m3, r4) => [m3, ...r4.map((B3) => B3[1])])), T2([V2, zn, X2], k3), (0, R2.preceded)(S3(Um, X2), k3), (m3, r4, B3) => ["transformExpr", ["transformCopies", ...m3], ["modifyExpr", r4], ["returnExpr", B3]]), vt = (0, R2.or)([
-      (0, R2.followed)((0, R2.map)((0, R2.optional)((0, R2.followed)(T2([Yl, X2], (0, R2.or)([(0, R2.map)(An, () => ["insertAsFirst"]), (0, R2.map)(Bn, () => ["insertAsLast"])])), X2)), (m3) => m3 ? ["insertInto", m3] : ["insertInto"]), En),
-      (0, R2.map)(Dn, () => ["insertAfter"]),
-      (0, R2.map)(Cn, () => ["insertBefore"])
-    ]), xr = Kk(T2([Fn, X2, (0, R2.or)([em, dm]), X2], k3), (0, R2.preceded)(X2, vt), (0, R2.preceded)(X2, k3), (m3, r4, B3) => ["insertExpr", ["sourceExpr", m3], r4, ["targetExpr", B3]]), zr = (0, R2.then)(T2([Gn, X2, dm, V2], k3), T2([X2, Yl, X2], k3), (m3, r4) => ["renameExpr", ["targetExpr", m3], ["newNameExpr", r4]]), wt = (0, R2.then)((0, R2.plus)((0, R2.map)(T2([rn, X2], k3), (m3) => ["switchCaseExpr", m3])), T2([X2, Um, X2], k3), (m3, r4) => ["switchExprCaseClause", ...m3, ["resultExpr", r4]]), ur = Kk(T2([Hn, V2, Vk], l4), T2([V2, Wk, V2], (0, R2.plus)((0, R2.followed)(wt, V2))), T2(
-      [fn, X2, Um, X2],
-      k3
-    ), (m3, r4, B3) => ["switchExpr", ["argExpr", m3], ...r4, ["switchExprDefaultClause", ["resultExpr", B3]]]), xt = (0, R2.map)(l4, (m3) => ["queryBody", m3]), yt = T2([en, X2, Xm, X2], (0, R2.cut)((0, R2.then)(Uo, (0, R2.preceded)(S3(Cl, V2), u4), (m3, r4) => ["namespaceDecl", ["prefix", m3], ["uri", r4]]))), zt = (0, R2.then)(T2([In, X2, yl, V2], (0, R2.then)(cp, (0, R2.optional)((0, R2.preceded)(V2, yc)), (m3, r4) => [m3, r4])), (0, R2.cut)((0, R2.or)([(0, R2.map)(T2([V2, sl, V2], k3), (m3) => ["varValue", m3]), (0, R2.map)(T2([X2, Jn], (0, R2.optional)(T2([V2, sl, V2], k3))), (m3) => ["external", ...m3 ? [["varValue", m3]] : []])])), ([
-      m3,
-      r4
-    ], B3) => ["varDecl", ["varName", ...m3], ...null !== r4 ? [r4] : [], B3]), At = Lk(T2([hm, X2, (0, R2.cut)((0, R2.peek)((0, R2.not)((0, R2.followed)(wp, (0, R2.not)(ul, [""])), ["Cannot use reserved function name"])))], cp), (0, R2.cut)(T2([V2, Vk, V2], (0, R2.optional)(Aj))), (0, R2.cut)(T2([V2, Wk], (0, R2.optional)(T2([X2, Yl, X2], gb)))), (0, R2.cut)((0, R2.preceded)(V2, (0, R2.or)([(0, R2.map)(zj, (m3) => ["functionBody", m3]), (0, R2.map)(Jn, () => ["externalDefinition"])]))), (m3, r4, B3, W2) => ["functionDecl", ["functionName", ...m3], ["paramList", ...r4 || []], ...B3 ? [[
-      "typeDeclaration",
-      ...B3
-    ]] : [], W2]), Bt = T2([en, X2], (0, R2.then)((0, R2.star)((0, R2.followed)((0, R2.or)([yf, Op]), X2)), (0, R2.or)([zt, At]), (m3, r4) => [r4[0], ...m3, ...r4.slice(1)])), Ct = (0, R2.then)(T2([en, X2, fn, X2], (0, R2.or)([jm, hm])), T2([X2, Xm, X2], u4), (m3, r4) => ["defaultNamespaceDecl", ["defaultNamespaceCategory", m3], ["uri", r4]]), Dt = (0, R2.or)([(0, R2.map)((0, R2.followed)(T2([Xm, X2], Uo), (0, R2.preceded)(V2, Cl)), (m3) => ["namespacePrefix", m3]), (0, R2.map)(T2([fn, X2, jm, X2], Xm), () => ["defaultElementNamespace"])]), Et = T2([Ln, X2, Mn], Kk((0, R2.optional)((0, R2.preceded)(X2, Dt)), (0, R2.preceded)(
-      V2,
-      u4
-    ), (0, R2.optional)((0, R2.then)(T2([X2, Km, X2], u4), (0, R2.star)(T2([V2, Nl, V2], u4)), (m3, r4) => [m3, ...r4])), (m3, r4, B3) => ["schemaImport", ...m3 ? [m3] : [], ["targetNamespace", r4], ...B3 ? [B3] : []])), Ft = T2([Ln, X2, Nn], Kk((0, R2.optional)((0, R2.followed)(T2([X2, Xm, X2], Uo), (0, R2.preceded)(V2, Cl))), (0, R2.preceded)(V2, u4), (0, R2.optional)((0, R2.then)(T2([X2, Km, X2], u4), (0, R2.star)(T2([V2, Nl, V2], u4)), (m3, r4) => [m3, ...r4])), (m3, r4) => ["moduleImport", ["namespacePrefix", m3], ["targetNamespace", r4]])), Gt = (0, R2.or)([Et, Ft]), Ht = (0, R2.map)(T2([en, X2, fn, X2, Pm, X2], u4), (m3) => [
-      "defaultCollationDecl",
+    ]]), It = (0, R2.then)(pp, (0, R2.preceded)(S3(zl, V2), k3), (m3, r4) => ["transformCopy", m3, ["copySource", r4]]), Mr = Rk(T2([Fn, X2], c4(It, Ul, (m3, r4) => [m3, ...r4.map((B3) => B3[1])])), T2([V2, Gn, X2], k3), (0, R2.preceded)(S3(an, X2), k3), (m3, r4, B3) => ["transformExpr", ["transformCopies", ...m3], ["modifyExpr", r4], ["returnExpr", B3]]), Jt = (0, R2.or)([
+      (0, R2.followed)((0, R2.map)((0, R2.optional)((0, R2.followed)(T2([em, X2], (0, R2.or)([(0, R2.map)(Hn, () => ["insertAsFirst"]), (0, R2.map)(In, () => ["insertAsLast"])])), X2)), (m3) => m3 ? ["insertInto", m3] : ["insertInto"]), Ln),
+      (0, R2.map)(Kn, () => ["insertAfter"]),
+      (0, R2.map)(Jn, () => ["insertBefore"])
+    ]), Ir = Rk(T2([Mn, X2, (0, R2.or)([lm, km]), X2], k3), (0, R2.preceded)(X2, Jt), (0, R2.preceded)(X2, k3), (m3, r4, B3) => ["insertExpr", ["sourceExpr", m3], r4, ["targetExpr", B3]]), Kr = (0, R2.then)(T2([Nn, X2, km, V2], k3), T2([X2, em, X2], k3), (m3, r4) => ["renameExpr", ["targetExpr", m3], ["newNameExpr", r4]]), Kt = (0, R2.then)((0, R2.plus)((0, R2.then)((0, R2.map)(T2([yn, X2], (0, R2.cut)(k3)), (m3) => ["switchCaseExpr", m3]), (0, R2.cut)(X2), (m3) => m3)), (0, R2.cut)(T2([an, X2], (0, R2.cut)(k3))), (m3, r4) => ["switchExprCaseClause", ...m3, ["resultExpr", r4]]), Fr = Rk(T2(
+      [On, V2, bl],
+      (0, R2.cut)(l4)
+    ), (0, R2.cut)(T2([V2, cl, (0, R2.cut)(V2)], (0, R2.plus)((0, R2.followed)(Kt, V2)))), (0, R2.cut)(T2([nn, X2, an, X2], k3)), (m3, r4, B3) => ["switchExpr", ["argExpr", m3], ...r4, ["switchExprDefaultClause", ["resultExpr", B3]]]), Lt = (0, R2.map)(l4, (m3) => ["queryBody", m3]), Mt = T2([mn, X2, dn, X2], (0, R2.cut)((0, R2.then)(ep, (0, R2.preceded)(S3(Jl, V2), u4), (m3, r4) => ["namespaceDecl", ["prefix", m3], ["uri", r4]]))), Nt = (0, R2.then)(T2([Pn, X2, Fl, V2], (0, R2.then)(np, (0, R2.optional)((0, R2.preceded)(V2, Ac)), (m3, r4) => [m3, r4])), (0, R2.cut)((0, R2.or)([(0, R2.map)(T2([V2, zl, V2], k3), (m3) => [
+      "varValue",
       m3
-    ]), It = (0, R2.map)(T2([en, X2, On, X2], u4), (m3) => ["baseUriDecl", m3]), Jt = (0, R2.then)(T2([en, X2], (0, R2.or)([(0, R2.map)(T2([qn, X2], cp), (m3) => ["decimalFormatName", ...m3]), (0, R2.map)(T2([fn, X2], qn), () => null)])), (0, R2.star)((0, R2.then)((0, R2.preceded)(X2, Rp), (0, R2.preceded)(S3(Cl, X2), u4), (m3, r4) => ["decimalFormatParam", ["decimalFormatParamName", m3], ["decimalFormatParamValue", r4]])), (m3, r4) => ["decimalFormatDecl", ...m3 ? [m3] : [], ...r4]), Kt = (0, R2.or)([Sp, Ht, It, Tp, Up, Vp, Wp, Jt]), Lt = (0, R2.then)(T2([en, X2, Tn, X2], cp), (0, R2.preceded)(X2, u4), (m3, r4) => ["optionDecl", [
-      "optionName",
+    ]), (0, R2.map)(T2([X2, Qn], (0, R2.optional)(T2([V2, zl, V2], k3))), (m3) => ["external", ...m3 ? [["varValue", m3]] : []])])), ([m3, r4], B3) => ["varDecl", ["varName", ...m3], ...null !== r4 ? [r4] : [], B3]), Ot = Sk(
+      T2([om, X2, (0, R2.cut)((0, R2.peek)((0, R2.not)((0, R2.followed)(Hp, (0, R2.not)(Bl, [""])), ["Cannot use reserved function name"])))], np),
+      (0, R2.cut)(T2([V2, bl, V2], (0, R2.optional)(Gj))),
+      (0, R2.cut)(T2([V2, cl], (0, R2.optional)(T2([X2, em, X2], jb)))),
+      (0, R2.cut)((0, R2.preceded)(V2, (0, R2.or)([(0, R2.map)(Fj, (m3) => ["functionBody", m3]), (0, R2.map)(Qn, () => ["externalDefinition"])]))),
+      (m3, r4, B3, W2) => ["functionDecl", ["functionName", ...m3], ["paramList", ...r4 || []], ...B3 ? [["typeDeclaration", ...B3]] : [], W2]
+    ), Pt = T2([mn, X2], (0, R2.then)((0, R2.star)((0, R2.followed)((0, R2.or)([Af, Zp]), X2)), (0, R2.or)([Nt, Ot]), (m3, r4) => [r4[0], ...m3, ...r4.slice(1)])), Qt = (0, R2.then)(T2([mn, X2, nn, X2], (0, R2.or)([qm, om])), T2([X2, dn, X2], u4), (m3, r4) => ["defaultNamespaceDecl", ["defaultNamespaceCategory", m3], ["uri", r4]]), Rt = (0, R2.or)([(0, R2.map)((0, R2.followed)(T2([dn, X2], ep), (0, R2.preceded)(V2, Jl)), (m3) => ["namespacePrefix", m3]), (0, R2.map)(
+      T2([nn, X2, qm, X2], dn),
+      () => ["defaultElementNamespace"]
+    )]), St = T2([Sn, X2, Tn], Rk((0, R2.optional)((0, R2.preceded)(X2, Rt)), (0, R2.preceded)(V2, u4), (0, R2.optional)((0, R2.then)(T2([X2, Rm, X2], u4), (0, R2.star)(T2([V2, Ul, V2], u4)), (m3, r4) => [m3, ...r4])), (m3, r4, B3) => ["schemaImport", ...m3 ? [m3] : [], ["targetNamespace", r4], ...B3 ? [B3] : []])), Tt = T2([Sn, X2, Un], Rk((0, R2.optional)((0, R2.followed)(T2([X2, dn, X2], ep), (0, R2.preceded)(V2, Jl))), (0, R2.preceded)(V2, u4), (0, R2.optional)((0, R2.then)(T2([X2, Rm, X2], u4), (0, R2.star)(T2([V2, Ul, V2], u4)), (m3, r4) => [m3, ...r4])), (m3, r4) => ["moduleImport", [
+      "namespacePrefix",
       m3
-    ], ["optionContents", r4]]), Mt = (0, R2.then)(T2([en, X2, Un, X2, Vn], (0, R2.optional)(T2([X2, Yl], xj))), (0, R2.or)([(0, R2.map)((0, R2.preceded)(S3(sl, V2), k3), (m3) => ["varValue", m3]), (0, R2.map)(T2([X2, Jn], (0, R2.optional)((0, R2.preceded)(S3(sl, V2), k3))), () => ["external"])]), (m3, r4) => ["contextItemDecl", ...m3 ? [["contextItemType", m3]] : [], r4]), Ij = (0, R2.then)((0, R2.star)((0, R2.followed)((0, R2.or)([Ct, Kt, yt, Gt]), (0, R2.cut)(S3(vl, V2)))), (0, R2.star)((0, R2.followed)((0, R2.or)([Mt, Bt, Lt]), (0, R2.cut)(S3(vl, V2)))), (m3, r4) => 0 === m3.length && 0 === r4.length ? null : [
-      "prolog",
-      ...m3,
-      ...r4
-    ]), Nt = T2([Nn, X2, Xm, X2], (0, R2.then)((0, R2.followed)(Uo, S3(Cl, V2)), (0, R2.followed)(u4, S3(vl, V2)), (m3, r4) => ["moduleDecl", ["prefix", m3], ["uri", r4]])), Ot = (0, R2.then)(Nt, (0, R2.preceded)(V2, Ij), (m3, r4) => ["libraryModule", m3, ...r4 ? [r4] : []]), Pt = (0, R2.then)(Ij, (0, R2.preceded)(V2, xt), (m3, r4) => ["mainModule", ...m3 ? [m3] : [], r4]), Qt = (0, R2.map)(T2([Wn, V2], (0, R2.followed)((0, R2.or)([(0, R2.then)((0, R2.preceded)(Yn, X2), u4, (m3) => ["encoding", m3]), (0, R2.then)(T2([Xn, X2], u4), (0, R2.optional)(T2([X2, Yn, X2], u4)), (m3, r4) => [["version", m3], ...r4 ? [["encoding", r4]] : []])]), (0, R2.preceded)(
-      V2,
-      vl
-    ))), (m3) => ["versionDecl", ...m3]), Rt = (0, R2.then)((0, R2.optional)(S3(Qt, V2)), (0, R2.or)([Ot, Pt]), (m3, r4) => ["module", ...m3 ? [m3] : [], r4]), St = (0, R2.complete)(S3(Rt, V2));
+    ], ["targetNamespace", r4]])), Ut = (0, R2.or)([St, Tt]), Vt = (0, R2.map)(T2([mn, X2, nn, X2, Wm, X2], u4), (m3) => ["defaultCollationDecl", m3]), Wt = (0, R2.map)(T2([mn, X2, Vn, X2], u4), (m3) => ["baseUriDecl", m3]), Xt = (0, R2.then)(T2([mn, X2], (0, R2.or)([(0, R2.map)(T2([xn, X2], np), (m3) => ["decimalFormatName", ...m3]), (0, R2.map)(T2([nn, X2], xn), () => null)])), (0, R2.star)((0, R2.then)((0, R2.preceded)(X2, bq), (0, R2.preceded)(S3(Jl, X2), u4), (m3, r4) => ["decimalFormatParam", ["decimalFormatParamName", m3], ["decimalFormatParamValue", r4]])), (m3, r4) => ["decimalFormatDecl", ...m3 ? [m3] : [], ...r4]), Yt = (0, R2.or)([cq, Vt, Wt, dq, eq, fq, gq, Xt]), Zt = (0, R2.then)(T2([mn, X2, $n, X2], np), (0, R2.preceded)(X2, u4), (m3, r4) => ["optionDecl", ["optionName", m3], ["optionContents", r4]]), $t = (0, R2.then)(T2([mn, X2, ao, X2, bo], (0, R2.optional)(T2([X2, em], Dj))), (0, R2.or)([(0, R2.map)((0, R2.preceded)(S3(zl, V2), k3), (m3) => ["varValue", m3]), (0, R2.map)(T2([X2, Qn], (0, R2.optional)((0, R2.preceded)(S3(zl, V2), k3))), () => ["external"])]), (m3, r4) => ["contextItemDecl", ...m3 ? [["contextItemType", m3]] : [], r4]), Pj = (0, R2.then)(
+      (0, R2.star)((0, R2.followed)((0, R2.or)([Qt, Yt, Mt, Ut]), (0, R2.cut)(S3(Cl, V2)))),
+      (0, R2.star)((0, R2.followed)((0, R2.or)([$t, Pt, Zt]), (0, R2.cut)(S3(Cl, V2)))),
+      (m3, r4) => 0 === m3.length && 0 === r4.length ? null : ["prolog", ...m3, ...r4]
+    ), au = T2([Un, X2, dn, X2], (0, R2.then)((0, R2.followed)(ep, S3(Jl, V2)), (0, R2.followed)(u4, S3(Cl, V2)), (m3, r4) => ["moduleDecl", ["prefix", m3], ["uri", r4]])), bu = (0, R2.then)(au, (0, R2.preceded)(V2, Pj), (m3, r4) => ["libraryModule", m3, ...r4 ? [r4] : []]), cu = (0, R2.then)(Pj, (0, R2.preceded)(V2, Lt), (m3, r4) => ["mainModule", ...m3 ? [m3] : [], r4]), du = (0, R2.map)(T2([co, V2], (0, R2.followed)((0, R2.or)([(0, R2.then)((0, R2.preceded)(fo, X2), u4, (m3) => [
+      "encoding",
+      m3
+    ]), (0, R2.then)(T2([eo, X2], u4), (0, R2.optional)(T2([X2, fo, X2], u4)), (m3, r4) => [["version", m3], ...r4 ? [["encoding", r4]] : []])]), (0, R2.preceded)(V2, Cl))), (m3) => ["versionDecl", ...m3]), eu = (0, R2.then)((0, R2.optional)(S3(du, V2)), (0, R2.or)([bu, cu]), (m3, r4) => ["module", ...m3 ? [m3] : [], r4]), fu = (0, R2.complete)(S3(eu, V2));
     return (m3, r4) => {
       n4.clear();
-      r4 = St(m3, r4);
+      r4 = fu(m3, r4);
       let B3 = 1, W2 = 1;
-      for (let da = 0; da < m3.length + 1; da++) {
-        if (n4.has(da)) {
-          const Fa = n4.get(da);
+      for (let ea = 0; ea < m3.length + 1; ea++) {
+        if (n4.has(ea)) {
+          const Fa = n4.get(ea);
           Fa.line = W2;
           Fa.ha = B3;
         }
-        "\n" === m3[da] ? (W2++, B3 = 1) : B3++;
+        "\n" === m3[ea] ? (W2++, B3 = 1) : B3++;
       }
       return r4;
     };
   }
-  const fq = eq({ mb: false, Za: false }), gq = eq({ mb: true, Za: false }), hq = eq({ mb: false, Za: true }), iq = eq({ mb: true, Za: true });
-  function jq(a4, b3) {
+  const qq = pq({ mb: false, Za: false }), rq = pq({ mb: true, Za: false }), sq = pq({ mb: false, Za: true }), tq = pq({ mb: true, Za: true });
+  function uq(a4, b3) {
     var c4 = !!b3.Z;
     b3 = !!b3.debug;
-    Lo.clear();
-    Mo.clear();
-    dq.clear();
-    c4 = c4 ? b3 ? iq(a4, 0) : hq(a4, 0) : b3 ? gq(a4, 0) : fq(a4, 0);
+    Wo.clear();
+    Xo.clear();
+    oq.clear();
+    c4 = c4 ? b3 ? tq(a4, 0) : sq(a4, 0) : b3 ? rq(a4, 0) : qq(a4, 0);
     if (true === c4.success)
       return c4.value;
     a4 = a4.substring(0, c4.offset).split("\n");
     b3 = a4[a4.length - 1].length + 1;
-    throw new Mh({ start: { offset: c4.offset, line: a4.length, ha: b3 }, end: { offset: c4.offset + 1, line: a4.length, ha: b3 + 1 } }, "", "", Error(`XPST0003: Failed to parse script. Expected ${[...new Set(c4.expected)]}`));
+    throw new Qh({ start: { offset: c4.offset, line: a4.length, ha: b3 }, end: { offset: c4.offset + 1, line: a4.length, ha: b3 + 1 } }, "", "", Error(`XPST0003: Failed to parse script. Expected ${[...new Set(c4.expected)]}`));
   }
   ;
-  const kq = "http://www.w3.org/XML/1998/namespace http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema-instance http://www.w3.org/2005/xpath-functions http://www.w3.org/2005/xpath-functions/math http://www.w3.org/2012/xquery http://www.w3.org/2005/xpath-functions/array http://www.w3.org/2005/xpath-functions/map".split(" ");
-  function lq(a4, b3, c4, d4, e4) {
-    var f4 = G3(a4, "functionName"), h4 = I3(f4, "prefix") || "";
+  const vq = "http://www.w3.org/XML/1998/namespace http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema-instance http://www.w3.org/2005/xpath-functions http://www.w3.org/2005/xpath-functions/math http://www.w3.org/2012/xquery http://www.w3.org/2005/xpath-functions/array http://www.w3.org/2005/xpath-functions/map".split(" ");
+  function wq(a4, b3, c4, d4, e4) {
+    var f4 = F3(a4, "functionName"), h4 = I3(f4, "prefix") || "";
     let k3 = I3(f4, "URI");
     const l4 = H3(f4);
     if (null === k3 && (k3 = "" === h4 ? null === b3.v ? "http://www.w3.org/2005/xpath-functions" : b3.v : b3.$(h4), !k3 && h4))
-      throw ug(h4);
-    if (kq.includes(k3))
-      throw og();
-    h4 = K3(a4, "annotation").map((y3) => G3(y3, "annotationName"));
+      throw yg(h4);
+    if (vq.includes(k3))
+      throw sg();
+    h4 = K3(a4, "annotation").map((y3) => F3(y3, "annotationName"));
     f4 = h4.every((y3) => !I3(y3, "URI") && "private" !== H3(y3));
     h4 = h4.some((y3) => !I3(y3, "URI") && "updating" === H3(y3));
     if (!k3)
-      throw qg();
-    const n4 = Gg(a4), t4 = K3(G3(a4, "paramList"), "param"), u4 = t4.map((y3) => G3(y3, "varName")), z3 = t4.map((y3) => Gg(y3));
-    if (a4 = G3(a4, "functionBody")) {
+      throw ug();
+    const n4 = Kg(a4), t4 = K3(F3(a4, "paramList"), "param"), u4 = t4.map((y3) => F3(y3, "varName")), z3 = t4.map((y3) => Kg(y3));
+    if (a4 = F3(a4, "functionBody")) {
       if (b3.va(
         k3,
         l4,
         z3.length
       ))
-        throw pg(k3, l4);
+        throw tg(k3, l4);
       if (!e4)
         return;
-      const y3 = yk(a4[1], { ra: false, Z: true }), F3 = new xg(b3), N3 = u4.map((U2) => {
-        let ba = I3(U2, "URI");
+      const y3 = Fk(a4[1], { sa: false, Z: true }), G3 = new Bg(b3), N3 = u4.map((U2) => {
+        let ca = I3(U2, "URI");
         const Ga = I3(U2, "prefix");
         U2 = H3(U2);
-        Ga && null === ba && (ba = b3.$(Ga || ""));
-        return Cg(F3, ba, U2);
+        Ga && null === ca && (ca = b3.$(Ga || ""));
+        return Gg(G3, ca, U2);
       });
-      e4 = h4 ? { j: z3, arity: u4.length, callFunction: (U2, ba, Ga, ...Gb) => {
-        U2 = hc(bc(U2, -1, null, w4.empty()), N3.reduce((Xb, ed, Yb) => {
-          Xb[ed] = Ra(Gb[Yb]);
+      e4 = h4 ? { j: z3, arity: u4.length, callFunction: (U2, ca, Ga, ...Gb) => {
+        U2 = hc(bc(U2, -1, null, w4.empty()), N3.reduce((Xb, fd, Yb) => {
+          Xb[fd] = Ra(Gb[Yb]);
           return Xb;
         }, /* @__PURE__ */ Object.create(null)));
-        return y3.s(U2, ba);
-      }, vb: false, J: true, cb: f4, localName: l4, namespaceURI: k3, i: n4 } : { j: z3, arity: u4.length, callFunction: (U2, ba, Ga, ...Gb) => {
-        U2 = hc(bc(U2, -1, null, w4.empty()), N3.reduce((Xb, ed, Yb) => {
-          Xb[ed] = Ra(Gb[Yb]);
+        return y3.s(U2, ca);
+      }, wb: false, I: true, cb: f4, localName: l4, namespaceURI: k3, i: n4 } : { j: z3, arity: u4.length, callFunction: (U2, ca, Ga, ...Gb) => {
+        U2 = hc(bc(U2, -1, null, w4.empty()), N3.reduce((Xb, fd, Yb) => {
+          Xb[fd] = Ra(Gb[Yb]);
           return Xb;
         }, /* @__PURE__ */ Object.create(null)));
-        return C3(y3, U2, ba);
-      }, vb: false, J: false, cb: f4, localName: l4, namespaceURI: k3, i: n4 };
-      c4.push({ ba: y3, Db: F3 });
-      d4.push({ arity: u4.length, ba: y3, zb: e4, localName: l4, namespaceURI: k3, cb: f4 });
+        return C3(y3, U2, ca);
+      }, wb: false, I: false, cb: f4, localName: l4, namespaceURI: k3, i: n4 };
+      c4.push({ ba: y3, Eb: G3 });
+      d4.push({ arity: u4.length, ba: y3, Ab: e4, localName: l4, namespaceURI: k3, cb: f4 });
     } else {
       if (h4)
         throw Error("Updating external function declarations are not supported");
-      e4 = { j: z3, arity: u4.length, callFunction: (y3, F3, N3, ...U2) => {
-        const ba = N3.va(k3, l4, u4.length, true);
-        if (!ba)
-          throw Error(`XPST0017: Function Q{${k3}}${l4} with arity of ${u4.length} not registered. ${hg(l4)}`);
-        if (ba.i.type !== n4.type || ba.j.some((Ga, Gb) => Ga.type !== z3[Gb].type))
+      e4 = { j: z3, arity: u4.length, callFunction: (y3, G3, N3, ...U2) => {
+        const ca = N3.va(k3, l4, u4.length, true);
+        if (!ca)
+          throw Error(`XPST0017: Function Q{${k3}}${l4} with arity of ${u4.length} not registered. ${lg(l4)}`);
+        if (ca.i.type !== n4.type || ca.j.some((Ga, Gb) => Ga.type !== z3[Gb].type))
           throw Error("External function declaration types do not match actual function");
-        return ba.callFunction(y3, F3, N3, ...U2);
-      }, vb: true, J: false, localName: l4, namespaceURI: k3, cb: f4, i: n4 };
+        return ca.callFunction(y3, G3, N3, ...U2);
+      }, wb: true, I: false, localName: l4, namespaceURI: k3, cb: f4, i: n4 };
     }
-    Ag(b3, k3, l4, u4.length, e4);
+    Eg(b3, k3, l4, u4.length, e4);
   }
-  function mq(a4, b3, c4, d4) {
+  function xq(a4, b3, c4, d4) {
     const e4 = [], f4 = [];
     K3(a4, "*").forEach((t4) => {
       switch (t4[0]) {
@@ -27043,92 +27177,92 @@ var fontoxpath = function(xspattern, prsc) {
     });
     const h4 = /* @__PURE__ */ new Set();
     K3(a4, "moduleImport").forEach((t4) => {
-      const u4 = H3(G3(t4, "namespacePrefix"));
-      t4 = H3(G3(t4, "targetNamespace"));
+      const u4 = H3(F3(t4, "namespacePrefix"));
+      t4 = H3(F3(t4, "targetNamespace"));
       if (h4.has(t4))
         throw Error(`XQST0047: The namespace "${t4}" is imported more than once.`);
       h4.add(t4);
-      Bg(b3, u4, t4);
+      Fg(b3, u4, t4);
     });
     K3(a4, "namespaceDecl").forEach((t4) => {
-      const u4 = H3(G3(t4, "prefix"));
-      t4 = H3(G3(t4, "uri"));
+      const u4 = H3(F3(t4, "prefix"));
+      t4 = H3(F3(t4, "uri"));
       if ("xml" === u4 || "xmlns" === u4)
-        throw sg();
+        throw wg();
       if ("http://www.w3.org/XML/1998/namespace" === t4 || "http://www.w3.org/2000/xmlns/" === t4)
-        throw sg();
-      Bg(b3, u4, t4);
+        throw wg();
+      Fg(b3, u4, t4);
     });
     let k3 = null, l4 = null;
     for (const t4 of K3(a4, "defaultNamespaceDecl")) {
-      const u4 = H3(G3(t4, "defaultNamespaceCategory")), z3 = H3(G3(t4, "uri"));
+      const u4 = H3(F3(t4, "defaultNamespaceCategory")), z3 = H3(F3(t4, "uri"));
       if (!z3)
-        throw qg();
+        throw ug();
       if ("http://www.w3.org/XML/1998/namespace" === z3 || "http://www.w3.org/2000/xmlns/" === z3)
-        throw sg();
+        throw wg();
       if ("function" === u4) {
         if (k3)
-          throw rg();
+          throw vg();
         k3 = z3;
       } else if ("element" === u4) {
         if (l4)
-          throw rg();
+          throw vg();
         l4 = z3;
       }
     }
     k3 && (b3.v = k3);
-    l4 && Bg(b3, "", l4);
+    l4 && Fg(b3, "", l4);
     K3(a4, "functionDecl").forEach((t4) => {
-      lq(t4, b3, e4, f4, c4);
+      wq(t4, b3, e4, f4, c4);
     });
     const n4 = [];
     K3(a4, "varDecl").forEach((t4) => {
-      const u4 = Fg(G3(t4, "varName"));
+      const u4 = Jg(F3(t4, "varName"));
       let z3 = u4.namespaceURI;
       if (null === z3 && (z3 = b3.$(u4.prefix), !z3 && u4.prefix))
-        throw ug(u4.prefix);
-      if (kq.includes(z3))
-        throw og();
-      var y3 = G3(t4, "external");
-      t4 = G3(t4, "varValue");
-      let F3, N3;
-      null !== y3 ? (y3 = G3(y3, "varValue"), null !== y3 && (F3 = G3(y3, "*"))) : null !== t4 && (F3 = G3(t4, "*"));
+        throw yg(u4.prefix);
+      if (vq.includes(z3))
+        throw sg();
+      var y3 = F3(t4, "external");
+      t4 = F3(t4, "varValue");
+      let G3, N3;
+      null !== y3 ? (y3 = F3(y3, "varValue"), null !== y3 && (G3 = F3(y3, "*"))) : null !== t4 && (G3 = F3(t4, "*"));
       if (n4.some((U2) => U2.namespaceURI === z3 && U2.localName === u4.localName))
         throw Error(`XQST0049: The variable ${z3 ? `Q{${z3}}` : ""}${u4.localName} has already been declared.`);
-      Cg(b3, z3 || "", u4.localName);
-      if (c4 && (F3 && (N3 = yk(F3, { ra: false, Z: true })), F3 && !zg(b3, z3 || "", u4.localName))) {
+      Gg(b3, z3 || "", u4.localName);
+      if (c4 && (G3 && (N3 = Fk(G3, { sa: false, Z: true })), G3 && !Dg(b3, z3 || "", u4.localName))) {
         let U2 = null;
-        Dg(b3, z3, u4.localName, (ba, Ga) => {
+        Hg(b3, z3, u4.localName, (ca, Ga) => {
           if (U2)
             return U2();
-          U2 = Ra(C3(N3, ba, Ga));
+          U2 = Ra(C3(N3, ca, Ga));
           return U2();
         });
-        e4.push({ ba: N3, Db: new xg(b3) });
+        e4.push({ ba: N3, Eb: new Bg(b3) });
         n4.push({ ba: N3, localName: u4.localName, namespaceURI: z3 });
       }
     });
     f4.forEach((t4) => {
-      if (!t4.zb.J && t4.ba.J)
-        throw Je(`The function Q{${t4.namespaceURI}}${t4.localName} is updating but the %updating annotation is missing.`);
+      if (!t4.Ab.I && t4.ba.I)
+        throw Ne(`The function Q{${t4.namespaceURI}}${t4.localName} is updating but the %updating annotation is missing.`);
     });
     return {
-      Ia: f4.map((t4) => t4.zb),
+      Ia: f4.map((t4) => t4.Ab),
       Ta: n4,
       source: d4,
-      oa: (t4) => {
+      pa: (t4) => {
         h4.forEach((u4) => {
-          Gk(b3, u4);
+          Nk(b3, u4);
         });
-        e4.forEach(({ ba: u4, Db: z3 }) => {
+        e4.forEach(({ ba: u4, Eb: z3 }) => {
           h4.forEach((y3) => {
-            Gk(z3, y3);
+            Nk(z3, y3);
           });
           t4.Ia.forEach((y3) => {
-            z3.va(y3.namespaceURI, y3.localName, y3.arity, true) || y3.cb && Ag(z3, y3.namespaceURI, y3.localName, y3.arity, y3);
+            z3.va(y3.namespaceURI, y3.localName, y3.arity, true) || y3.cb && Eg(z3, y3.namespaceURI, y3.localName, y3.arity, y3);
           });
           t4.Ta.forEach((y3) => {
-            z3.eb(y3.namespaceURI, y3.localName) || Cg(z3, y3.namespaceURI, y3.localName);
+            z3.eb(y3.namespaceURI, y3.localName) || Gg(z3, y3.namespaceURI, y3.localName);
           });
           u4.v(z3);
         });
@@ -27136,55 +27270,55 @@ var fontoxpath = function(xspattern, prsc) {
     };
   }
   ;
-  function nq(a4, b3, c4, d4, e4, f4, h4) {
+  function yq(a4, b3, c4, d4, e4, f4, h4) {
     const k3 = b3.Z ? "XQuery" : "XPath";
-    c4 = b3.Ha ? null : Bk(a4, k3, c4, d4, e4, b3.debug, f4, h4);
-    return null !== c4 ? { state: c4.fc ? 1 : 2, ba: c4.ba } : { state: 0, Xb: "string" === typeof a4 ? jq(a4, b3) : Dk(a4) };
+    c4 = b3.Ha ? null : Ik(a4, k3, c4, d4, e4, b3.debug, f4, h4);
+    return null !== c4 ? { state: c4.hc ? 1 : 2, ba: c4.ba } : { state: 0, Zb: "string" === typeof a4 ? uq(a4, b3) : Kk(a4) };
   }
-  function oq(a4, b3, c4, d4) {
-    const e4 = G3(a4, "mainModule");
+  function zq(a4, b3, c4, d4) {
+    const e4 = F3(a4, "mainModule");
     if (!e4)
       throw Error("Can not execute a library module.");
-    const f4 = G3(e4, "prolog");
+    const f4 = F3(e4, "prolog");
     if (f4) {
       if (!b3.Z)
         throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
-      Hk();
-      d4 = mq(f4, c4, true, d4);
-      d4.oa(d4);
+      Ok();
+      d4 = xq(f4, c4, true, d4);
+      d4.pa(d4);
     }
-    O2(a4, new mh(c4));
+    O2(a4, new qh(c4));
     a4 = J3(e4, ["queryBody", "*"]);
     return Q2(a4, b3);
   }
-  function pq(a4, b3, c4, d4, e4, f4, h4) {
-    const k3 = new lg(c4, d4, f4, h4), l4 = new xg(k3);
-    0 < Object.keys(e4).length && Hk();
+  function Aq(a4, b3, c4, d4, e4, f4, h4) {
+    const k3 = new pg(c4, d4, f4, h4), l4 = new Bg(k3);
+    0 < Object.keys(e4).length && Ok();
     Object.keys(e4).forEach((n4) => {
       const t4 = e4[n4];
-      Gk(l4, t4);
-      Bg(l4, n4, t4);
+      Nk(l4, t4);
+      Fg(l4, n4, t4);
     });
-    "string" === typeof a4 && (a4 = Ik(a4));
-    c4 = nq(a4, b3, c4, d4, e4, f4, h4);
+    "string" === typeof a4 && (a4 = Pk(a4));
+    c4 = yq(a4, b3, c4, d4, e4, f4, h4);
     switch (c4.state) {
       case 2:
         return { ga: l4, ba: c4.ba };
       case 1:
-        return c4.ba.v(l4), Ck(a4, b3.Z ? "XQuery" : "XPath", k3, e4, c4.ba, b3.debug, f4), { ga: l4, ba: c4.ba };
+        return c4.ba.v(l4), Jk(a4, b3.Z ? "XQuery" : "XPath", k3, e4, c4.ba, b3.debug, f4), { ga: l4, ba: c4.ba };
       case 0:
-        return c4 = oq(c4.Xb, b3, l4, a4), c4.v(l4), b3.Ha || Ck(a4, b3.Z ? "XQuery" : "XPath", k3, e4, c4, b3.debug, f4), { ga: l4, ba: c4 };
+        return c4 = zq(c4.Zb, b3, l4, a4), c4.v(l4), b3.Ha || Jk(a4, b3.Z ? "XQuery" : "XPath", k3, e4, c4, b3.debug, f4), { ga: l4, ba: c4 };
     }
   }
   ;
-  function qq(a4) {
+  function Bq(a4) {
     if (v3(a4.type, 1))
       return a4.value;
     if (v3(a4.type, 54))
       return a4.value.node;
     throw mc(`Unable to convert selector argument of type ${Da[a4.type]} to either an ${Da[1]} or an ${Da[54]} representing an XQueryX program while calling 'fontoxpath:evaluate'`);
   }
-  function rq(a4, b3, c4, d4) {
+  function Cq(a4, b3, c4, d4) {
     a4 = a4.first();
     const e4 = b3.first().h.reduce((f4, h4) => {
       f4[h4.key.value] = Ra(h4.value());
@@ -27192,35 +27326,33 @@ var fontoxpath = function(xspattern, prsc) {
     }, /* @__PURE__ */ Object.create(null));
     b3 = e4["."] ? e4["."]() : w4.empty();
     delete e4["."];
+    a4 = Bq(a4);
     try {
-      const { ba: f4, ga: h4 } = pq(qq(a4), { ra: false, Z: true, debug: d4.debug, Ha: d4.Ha }, (n4) => c4.$(n4), Object.keys(e4).reduce((n4, t4) => {
+      const { ba: f4, ga: h4 } = Aq(a4, { sa: false, Z: true, debug: d4.debug, Ha: d4.Ha }, (n4) => c4.$(n4), Object.keys(e4).reduce((n4, t4) => {
         n4[t4] = t4;
         return n4;
-      }, {}), {}, "http://www.w3.org/2005/xpath-functions", (n4, t4) => c4.Sa(n4, t4)), k3 = !b3.G(), l4 = new cc({ M: k3 ? b3.first() : null, Aa: k3 ? 0 : -1, sa: b3, qa: Object.keys(e4).reduce((n4, t4) => {
+      }, {}), {}, "http://www.w3.org/2005/xpath-functions", (n4, t4) => c4.Sa(n4, t4)), k3 = !b3.F(), l4 = new cc({ M: k3 ? b3.first() : null, Aa: k3 ? 0 : -1, ta: b3, ra: Object.keys(e4).reduce((n4, t4) => {
         n4[h4.eb(null, t4)] = e4[t4];
         return n4;
       }, /* @__PURE__ */ Object.create(null)) });
-      return { hc: f4.h(
-        l4,
-        d4
-      ).value, dc: a4 };
+      return { ic: f4.h(l4, d4).value, ac: a4 };
     } catch (f4) {
-      cg(a4.value, f4);
+      gg(a4, f4);
     }
   }
   ;
-  function sq(a4, b3, c4) {
+  function Dq(a4, b3, c4) {
     if (1 !== b3.node.nodeType && 9 !== b3.node.nodeType)
       return [];
-    const d4 = hb(a4, b3).reduce((e4, f4) => {
-      for (const h4 of sq(a4, f4, c4))
+    const d4 = gb(a4, b3).reduce((e4, f4) => {
+      for (const h4 of Dq(a4, f4, c4))
         e4.push(h4);
       return e4;
     }, []);
     c4(b3) && d4.unshift(b3);
     return d4;
   }
-  const tq = (a4, b3, c4, d4, e4) => {
+  const Eq = (a4, b3, c4, d4, e4) => {
     a4 = e4.first();
     if (!a4)
       throw lc("The context is absent, it needs to be present to use id function.");
@@ -27235,7 +27367,7 @@ var fontoxpath = function(xspattern, prsc) {
     for (b3 = a4.value; 9 !== b3.node.nodeType; )
       if (b3 = x3(f4, b3), null === b3)
         throw Error("FODC0001: the root node of the target node is not a document node.");
-    b3 = sq(f4, b3, (k3) => {
+    b3 = Dq(f4, b3, (k3) => {
       if (1 !== k3.node.nodeType)
         return false;
       k3 = fb(f4, k3, "id");
@@ -27245,7 +27377,7 @@ var fontoxpath = function(xspattern, prsc) {
       return true;
     });
     return w4.create(b3.map((k3) => rb(k3)));
-  }, uq = (a4, b3, c4, d4, e4) => {
+  }, Fq = (a4, b3, c4, d4, e4) => {
     a4 = e4.first();
     if (!a4)
       throw lc("The context is absent, it needs to be present to use idref function.");
@@ -27258,28 +27390,28 @@ var fontoxpath = function(xspattern, prsc) {
     for (b3 = a4.value; 9 !== b3.node.nodeType; )
       if (b3 = x3(f4, b3), null === b3)
         throw Error("FODC0001: the root node of the context node is not a document node.");
-    b3 = sq(f4, b3, (k3) => 1 !== k3.node.nodeType ? false : (k3 = fb(f4, k3, "idref")) ? k3.split(/\s+/).some((l4) => h4[l4]) : false);
+    b3 = Dq(f4, b3, (k3) => 1 !== k3.node.nodeType ? false : (k3 = fb(f4, k3, "idref")) ? k3.split(/\s+/).some((l4) => h4[l4]) : false);
     return w4.create(b3.map((k3) => rb(k3)));
   };
-  function vq(a4) {
+  function Gq(a4) {
     switch (typeof a4) {
       case "object":
-        return Array.isArray(a4) ? w4.m(new pb(a4.map((b3) => Ra(vq(b3))))) : null === a4 ? w4.empty() : w4.m(new ub(Object.keys(a4).map((b3) => ({ key: g3(b3, 1), value: Ra(vq(a4[b3])) }))));
+        return Array.isArray(a4) ? w4.m(new pb(a4.map((b3) => Ra(Gq(b3))))) : null === a4 ? w4.empty() : w4.m(new ub(Object.keys(a4).map((b3) => ({ key: g3(b3, 1), value: Ra(Gq(a4[b3])) }))));
       case "number":
         return w4.m(g3(a4, 3));
       case "string":
         return w4.m(g3(a4, 1));
       case "boolean":
-        return a4 ? w4.aa() : w4.V();
+        return a4 ? w4.aa() : w4.T();
       default:
         throw Error("Unexpected type in JSON parse");
     }
   }
   ;
-  const wq = (a4, b3, c4, d4, e4) => {
+  const Hq = (a4, b3, c4, d4, e4) => {
     const f4 = w4.m(g3("duplicates", 1));
     a4 = tb(a4, b3, c4, e4, f4);
-    const h4 = a4.G() ? "use-first" : a4.first().value;
+    const h4 = a4.F() ? "use-first" : a4.first().value;
     return d4.N((k3) => w4.m(new ub(k3.reduce((l4, n4) => {
       n4.h.forEach((t4) => {
         const u4 = l4.findIndex((z3) => sb(z3.key, t4.key));
@@ -27301,7 +27433,7 @@ var fontoxpath = function(xspattern, prsc) {
       return l4;
     }, []))));
   };
-  function xq(a4, b3, c4) {
+  function Iq(a4, b3, c4) {
     let d4 = 1;
     const e4 = a4.value;
     a4 = a4.Pa(true);
@@ -27318,19 +27450,19 @@ var fontoxpath = function(xspattern, prsc) {
       return k3;
     } }, f4);
   }
-  function yq(a4) {
+  function Jq(a4) {
     return a4.map((b3) => v3(b3.type, 19) ? jd(b3, 3) : b3);
   }
-  function zq(a4) {
-    a4 = yq(a4);
+  function Kq(a4) {
+    a4 = Jq(a4);
     if (a4.some((b3) => Number.isNaN(b3.value)))
       return [g3(NaN, 3)];
-    a4 = Ei(a4);
+    a4 = Ii(a4);
     if (!a4)
       throw Error("FORG0006: Incompatible types to be converted to a common type");
     return a4;
   }
-  const Aq = (a4, b3, c4, d4, e4, f4) => A2([e4, f4], ([h4, k3]) => {
+  const Lq = (a4, b3, c4, d4, e4, f4) => A2([e4, f4], ([h4, k3]) => {
     if (Infinity === h4.value)
       return w4.empty();
     if (-Infinity === h4.value)
@@ -27340,12 +27472,12 @@ var fontoxpath = function(xspattern, prsc) {
         return w4.empty();
       Infinity === k3.value && (k3 = null);
     }
-    return isNaN(h4.value) ? w4.empty() : xq(d4, Math.round(h4.value), k3 ? Math.round(k3.value) : null);
-  }), Bq = (a4, b3, c4, d4, e4) => {
-    if (d4.G())
+    return isNaN(h4.value) ? w4.empty() : Iq(d4, Math.round(h4.value), k3 ? Math.round(k3.value) : null);
+  }), Mq = (a4, b3, c4, d4, e4) => {
+    if (d4.F())
       return e4;
-    a4 = yq(d4.O());
-    a4 = Ei(a4);
+    a4 = Jq(d4.O());
+    a4 = Ii(a4);
     if (!a4)
       throw Error("FORG0006: Incompatible types to be converted to a common type");
     if (!a4.every((f4) => v3(f4.type, 2)))
@@ -27353,12 +27485,12 @@ var fontoxpath = function(xspattern, prsc) {
     b3 = a4.reduce((f4, h4) => f4 + h4.value, 0);
     return a4.every((f4) => v3(f4.type, 5)) ? w4.m(g3(b3, 5)) : a4.every((f4) => v3(f4.type, 3)) ? w4.m(g3(b3, 3)) : a4.every((f4) => v3(f4.type, 4)) ? w4.m(g3(b3, 4)) : w4.m(g3(b3, 6));
   };
-  var Cq = [].concat(If, [{ namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "boolean", j: [{ type: 59, g: 2 }], i: { type: 0, g: 3 }, callFunction: (a4, b3, c4, d4) => d4.fa() ? w4.aa() : w4.V() }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "true", j: [], i: { type: 0, g: 3 }, callFunction: () => w4.aa() }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "not", j: [{ type: 59, g: 2 }], i: { type: 0, g: 3 }, callFunction: (a4, b3, c4, d4) => false === d4.fa() ? w4.aa() : w4.V() }, {
+  var Nq = [].concat(Mf, [{ namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "boolean", j: [{ type: 59, g: 2 }], i: { type: 0, g: 3 }, callFunction: (a4, b3, c4, d4) => d4.fa() ? w4.aa() : w4.T() }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "true", j: [], i: { type: 0, g: 3 }, callFunction: () => w4.aa() }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "not", j: [{ type: 59, g: 2 }], i: { type: 0, g: 3 }, callFunction: (a4, b3, c4, d4) => false === d4.fa() ? w4.aa() : w4.T() }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "false",
     j: [],
     i: { type: 0, g: 3 },
-    callFunction: () => w4.V()
+    callFunction: () => w4.T()
   }], [{ namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "last", j: [], i: { type: 5, g: 3 }, callFunction: (a4) => {
     if (null === a4.M)
       throw lc("The fn:last() function depends on dynamic context, which is absent.");
@@ -27366,7 +27498,7 @@ var fontoxpath = function(xspattern, prsc) {
     return w4.create({ next: () => {
       if (b3)
         return p3;
-      const c4 = a4.sa.Pa();
+      const c4 = a4.ta.Pa();
       b3 = true;
       return q3(g3(c4, 5));
     } }, 1);
@@ -27380,28 +27512,28 @@ var fontoxpath = function(xspattern, prsc) {
     j: [],
     i: { type: 17, g: 3 },
     callFunction: (a4) => w4.m(g3(fc(a4), 17))
-  }], Jf, Rf, Yf, [{ namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "years-from-duration", j: [{ type: 18, g: 0 }], i: { type: 5, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.G() ? d4 : w4.m(g3(d4.first().value.bb(), 5)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "months-from-duration", j: [{ type: 18, g: 0 }], i: { type: 5, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.G() ? d4 : w4.m(g3(d4.first().value.ab(), 5)) }, {
+  }], Nf, Vf, bg, [{ namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "years-from-duration", j: [{ type: 18, g: 0 }], i: { type: 5, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.F() ? d4 : w4.m(g3(d4.first().value.bb(), 5)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "months-from-duration", j: [{ type: 18, g: 0 }], i: { type: 5, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.F() ? d4 : w4.m(g3(d4.first().value.ab(), 5)) }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "days-from-duration",
     j: [{ type: 18, g: 0 }],
     i: { type: 5, g: 0 },
-    callFunction: (a4, b3, c4, d4) => d4.G() ? d4 : w4.m(g3(d4.first().value.$a(), 5))
-  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "hours-from-duration", j: [{ type: 18, g: 0 }], i: { type: 5, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.G() ? d4 : w4.m(g3(d4.first().value.getHours(), 5)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "minutes-from-duration", j: [{ type: 18, g: 0 }], i: { type: 5, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.G() ? d4 : w4.m(g3(d4.first().value.getMinutes(), 5)) }, {
+    callFunction: (a4, b3, c4, d4) => d4.F() ? d4 : w4.m(g3(d4.first().value.$a(), 5))
+  }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "hours-from-duration", j: [{ type: 18, g: 0 }], i: { type: 5, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.F() ? d4 : w4.m(g3(d4.first().value.getHours(), 5)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "minutes-from-duration", j: [{ type: 18, g: 0 }], i: { type: 5, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.F() ? d4 : w4.m(g3(d4.first().value.getMinutes(), 5)) }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "seconds-from-duration",
     j: [{ type: 18, g: 0 }],
     i: { type: 4, g: 0 },
-    callFunction: (a4, b3, c4, d4) => d4.G() ? d4 : w4.m(g3(d4.first().value.getSeconds(), 4))
-  }], $f, [{ namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "id", j: [{ type: 1, g: 2 }, { type: 53, g: 3 }], i: { type: 54, g: 2 }, callFunction: tq }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "id", j: [{ type: 1, g: 2 }], i: { type: 54, g: 2 }, callFunction(a4, b3, c4, d4) {
-    return tq(a4, b3, c4, d4, w4.m(a4.M));
+    callFunction: (a4, b3, c4, d4) => d4.F() ? d4 : w4.m(g3(d4.first().value.getSeconds(), 4))
+  }], dg, [{ namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "id", j: [{ type: 1, g: 2 }, { type: 53, g: 3 }], i: { type: 54, g: 2 }, callFunction: Eq }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "id", j: [{ type: 1, g: 2 }], i: { type: 54, g: 2 }, callFunction(a4, b3, c4, d4) {
+    return Eq(a4, b3, c4, d4, w4.m(a4.M));
   } }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "idref",
     j: [{ type: 1, g: 2 }, { type: 53, g: 3 }],
     i: { type: 53, g: 2 },
-    callFunction: uq
+    callFunction: Fq
   }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "idref", j: [{ type: 1, g: 2 }], i: { type: 53, g: 2 }, callFunction(a4, b3, c4, d4) {
-    return uq(a4, b3, c4, d4, w4.m(a4.M));
+    return Fq(a4, b3, c4, d4, w4.m(a4.M));
   } }], [{ namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "parse-json", j: [{ type: 1, g: 3 }], i: { type: 59, g: 0 }, callFunction: (a4, b3, c4, d4) => {
     let e4;
     try {
@@ -27409,13 +27541,13 @@ var fontoxpath = function(xspattern, prsc) {
     } catch (f4) {
       throw Error("FOJS0001: parsed JSON string contains illegal JSON.");
     }
-    return vq(e4);
+    return Gq(e4);
   } }], [{
     namespaceURI: "http://www.w3.org/2005/xpath-functions/map",
     localName: "contains",
     j: [{ type: 61, g: 3 }, { type: 46, g: 3 }],
     i: { type: 0, g: 3 },
-    callFunction: (a4, b3, c4, d4, e4) => A2([d4, e4], ([f4, h4]) => f4.h.some((k3) => sb(k3.key, h4)) ? w4.aa() : w4.V())
+    callFunction: (a4, b3, c4, d4, e4) => A2([d4, e4], ([f4, h4]) => f4.h.some((k3) => sb(k3.key, h4)) ? w4.aa() : w4.T())
   }, { namespaceURI: "http://www.w3.org/2005/xpath-functions/map", localName: "entry", j: [{ type: 46, g: 3 }, { type: 59, g: 2 }], i: { type: 61, g: 3 }, callFunction: (a4, b3, c4, d4, e4) => d4.map((f4) => new ub([{ key: f4, value: Ra(e4) }])) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions/map", localName: "for-each", j: [{ type: 61, g: 3 }, { type: 59, g: 2 }], i: { type: 59, g: 2 }, callFunction: (a4, b3, c4, d4, e4) => A2([
     d4,
     e4
@@ -27424,9 +27556,9 @@ var fontoxpath = function(xspattern, prsc) {
     localName: "merge",
     j: [{ type: 61, g: 2 }, { type: 61, g: 3 }],
     i: { type: 61, g: 3 },
-    callFunction: wq
+    callFunction: Hq
   }, { namespaceURI: "http://www.w3.org/2005/xpath-functions/map", localName: "merge", j: [{ type: 61, g: 2 }], i: { type: 61, g: 3 }, callFunction(a4, b3, c4, d4) {
-    return wq(a4, b3, c4, d4, w4.m(new ub([{ key: g3("duplicates", 1), value: () => w4.m(g3("use-first", 1)) }])));
+    return Hq(a4, b3, c4, d4, w4.m(new ub([{ key: g3("duplicates", 1), value: () => w4.m(g3("use-first", 1)) }])));
   } }, { namespaceURI: "http://www.w3.org/2005/xpath-functions/map", localName: "put", j: [{ type: 61, g: 3 }, { type: 46, g: 3 }, { type: 59, g: 2 }], i: { type: 61, g: 3 }, callFunction: (a4, b3, c4, d4, e4, f4) => A2([d4, e4], ([h4, k3]) => {
     h4 = h4.h.concat();
     const l4 = h4.findIndex((n4) => sb(n4.key, k3));
@@ -27454,7 +27586,7 @@ var fontoxpath = function(xspattern, prsc) {
   }], i: { type: 3, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.map((e4) => g3(Math.cos(e4.value), 3)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions/math", localName: "tan", j: [{ type: 3, g: 0 }], i: { type: 3, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.map((e4) => g3(Math.tan(e4.value), 3)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions/math", localName: "asin", j: [{ type: 3, g: 0 }], i: { type: 3, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.map((e4) => g3(Math.asin(e4.value), 3)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions/math", localName: "acos", j: [{
     type: 3,
     g: 0
-  }], i: { type: 3, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.map((e4) => g3(Math.acos(e4.value), 3)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions/math", localName: "atan", j: [{ type: 3, g: 0 }], i: { type: 3, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.map((e4) => g3(Math.atan(e4.value), 3)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions/math", localName: "atan2", j: [{ type: 3, g: 0 }, { type: 3, g: 3 }], i: { type: 3, g: 0 }, callFunction: (a4, b3, c4, d4, e4) => e4.N(([f4]) => d4.map((h4) => g3(Math.atan2(h4.value, f4.value), 3))) }], ve, Yd, [{
+  }], i: { type: 3, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.map((e4) => g3(Math.acos(e4.value), 3)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions/math", localName: "atan", j: [{ type: 3, g: 0 }], i: { type: 3, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.map((e4) => g3(Math.atan(e4.value), 3)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions/math", localName: "atan2", j: [{ type: 3, g: 0 }, { type: 3, g: 3 }], i: { type: 3, g: 0 }, callFunction: (a4, b3, c4, d4, e4) => e4.N(([f4]) => d4.map((h4) => g3(Math.atan2(h4.value, f4.value), 3))) }], ze, Zd, [{
     namespaceURI: "http://fontoxpath/operators",
     localName: "to",
     j: [{ type: 5, g: 0 }, { type: 5, g: 0 }],
@@ -27475,7 +27607,7 @@ var fontoxpath = function(xspattern, prsc) {
     f4 = f4 ? f4.value || null : null;
     if (null === f4 && h4.includes(":"))
       throw Error("FOCA0002: The URI of a QName may not be empty if a prefix is provided.");
-    if (d4.G())
+    if (d4.F())
       return w4.m(g3(new Sa("", null, h4), 23));
     if (!h4.includes(":"))
       return w4.m(g3(new Sa("", f4, h4), 23));
@@ -27488,20 +27620,20 @@ var fontoxpath = function(xspattern, prsc) {
     return e4.prefix ? w4.m(g3(e4.prefix, 24)) : w4.empty();
   }) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "local-name-from-QName", j: [{ type: 23, g: 0 }], i: { type: 24, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.map((e4) => g3(e4.value.localName, 24)) }, { namespaceURI: "http://www.w3.org/2005/xpath-functions", localName: "namespace-uri-from-QName", j: [{ type: 23, g: 0 }], i: { type: 20, g: 0 }, callFunction: (a4, b3, c4, d4) => d4.map((e4) => g3(e4.value.namespaceURI || "", 20)) }], [{
     j: [{ type: 59, g: 2 }],
-    callFunction: (a4, b3, c4, d4) => d4.Y({ empty: () => w4.aa(), multiple: () => w4.V(), m: () => w4.V() }),
+    callFunction: (a4, b3, c4, d4) => d4.X({ empty: () => w4.aa(), multiple: () => w4.T(), m: () => w4.T() }),
     localName: "empty",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: { type: 0, g: 3 }
-  }, { j: [{ type: 59, g: 2 }], callFunction: (a4, b3, c4, d4) => d4.Y({ empty: () => w4.V(), multiple: () => w4.aa(), m: () => w4.aa() }), localName: "exists", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 0, g: 3 } }, { j: [{ type: 59, g: 2 }], callFunction: (a4, b3, c4, d4) => xq(d4, 1, 1), localName: "head", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 0 } }, {
+  }, { j: [{ type: 59, g: 2 }], callFunction: (a4, b3, c4, d4) => d4.X({ empty: () => w4.T(), multiple: () => w4.aa(), m: () => w4.aa() }), localName: "exists", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 0, g: 3 } }, { j: [{ type: 59, g: 2 }], callFunction: (a4, b3, c4, d4) => Iq(d4, 1, 1), localName: "head", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 0 } }, {
     j: [{ type: 59, g: 2 }],
-    callFunction: (a4, b3, c4, d4) => xq(d4, 2, null),
+    callFunction: (a4, b3, c4, d4) => Iq(d4, 2, null),
     localName: "tail",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: { type: 59, g: 2 }
   }, { j: [{ type: 59, g: 2 }, { type: 5, g: 3 }, { type: 59, g: 2 }], callFunction: (a4, b3, c4, d4, e4, f4) => {
-    if (d4.G())
+    if (d4.F())
       return f4;
-    if (f4.G())
+    if (f4.F())
       return d4;
     a4 = d4.O();
     e4 = e4.first().value - 1;
@@ -27521,18 +27653,18 @@ var fontoxpath = function(xspattern, prsc) {
     localName: "remove",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: { type: 59, g: 2 }
-  }, { j: [{ type: 59, g: 2 }], callFunction: (a4, b3, c4, d4) => d4.N((e4) => w4.create(e4.reverse())), localName: "reverse", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 2 } }, { j: [{ type: 59, g: 2 }, { type: 3, g: 3 }], callFunction: (a4, b3, c4, d4, e4) => Aq(a4, b3, c4, d4, e4, w4.empty()), localName: "subsequence", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 2 } }, {
+  }, { j: [{ type: 59, g: 2 }], callFunction: (a4, b3, c4, d4) => d4.N((e4) => w4.create(e4.reverse())), localName: "reverse", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 2 } }, { j: [{ type: 59, g: 2 }, { type: 3, g: 3 }], callFunction: (a4, b3, c4, d4, e4) => Lq(a4, b3, c4, d4, e4, w4.empty()), localName: "subsequence", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 2 } }, {
     j: [{ type: 59, g: 2 }, { type: 3, g: 3 }, { type: 3, g: 3 }],
-    callFunction: Aq,
+    callFunction: Lq,
     localName: "subsequence",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: { type: 59, g: 2 }
   }, { j: [{ type: 59, g: 2 }], callFunction: (a4, b3, c4, d4) => d4, localName: "unordered", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 2 } }, { j: [{ type: 46, g: 2 }], callFunction: (a4, b3, c4, d4) => {
     const e4 = qc(d4, b3).O();
-    return w4.create(e4).filter((f4, h4) => e4.slice(0, h4).every((k3) => !ye(f4, k3)));
+    return w4.create(e4).filter((f4, h4) => e4.slice(0, h4).every((k3) => !Ce(f4, k3)));
   }, localName: "distinct-values", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 2 } }, { j: [{ type: 46, g: 2 }, { type: 1, g: 3 }], callFunction() {
     throw Error("FOCH0002: No collations are supported");
-  }, localName: "distinct-values", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 2 } }, { j: [{ type: 46, g: 2 }, { type: 46, g: 3 }], callFunction: (a4, b3, c4, d4, e4) => e4.N(([f4]) => qc(d4, b3).map((h4, k3) => ki("eqOp", h4.type, f4.type)(h4, f4, a4) ? g3(k3 + 1, 5) : g3(-1, 5)).filter((h4) => -1 !== h4.value)), localName: "index-of", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 5, g: 2 } }, {
+  }, localName: "distinct-values", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 2 } }, { j: [{ type: 46, g: 2 }, { type: 46, g: 3 }], callFunction: (a4, b3, c4, d4, e4) => e4.N(([f4]) => qc(d4, b3).map((h4, k3) => oi("eqOp", h4.type, f4.type)(h4, f4, a4) ? g3(k3 + 1, 5) : g3(-1, 5)).filter((h4) => -1 !== h4.value)), localName: "index-of", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 5, g: 2 } }, {
     j: [{ type: 46, g: 2 }, { type: 46, g: 3 }, { type: 1, g: 3 }],
     callFunction() {
       throw Error("FOCH0002: No collations are supported");
@@ -27542,7 +27674,7 @@ var fontoxpath = function(xspattern, prsc) {
     i: { type: 5, g: 2 }
   }, { j: [{ type: 59, g: 2 }, { type: 59, g: 2 }], callFunction: (a4, b3, c4, d4, e4) => {
     let f4 = false;
-    const h4 = Be(a4, b3, c4, d4, e4);
+    const h4 = Fe(a4, b3, c4, d4, e4);
     return w4.create({ next: () => {
       if (f4)
         return p3;
@@ -27570,10 +27702,10 @@ var fontoxpath = function(xspattern, prsc) {
       return q3(g3(f4, 5));
     } });
   }, localName: "count", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 5, g: 3 } }, { j: [{ type: 46, g: 2 }], callFunction: (a4, b3, c4, d4) => {
-    if (d4.G())
+    if (d4.F())
       return d4;
-    a4 = yq(d4.O());
-    a4 = Ei(a4);
+    a4 = Jq(d4.O());
+    a4 = Ii(a4);
     if (!a4)
       throw Error("FORG0006: Incompatible types to be converted to a common type");
     if (!a4.every((e4) => v3(e4.type, 2)))
@@ -27581,26 +27713,26 @@ var fontoxpath = function(xspattern, prsc) {
     b3 = a4.reduce((e4, f4) => e4 + f4.value, 0) / a4.length;
     return a4.every((e4) => v3(e4.type, 5) || v3(e4.type, 3)) ? w4.m(g3(b3, 3)) : a4.every((e4) => v3(e4.type, 4)) ? w4.m(g3(b3, 4)) : w4.m(g3(b3, 6));
   }, localName: "avg", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 0 } }, { j: [{ type: 46, g: 2 }], callFunction: (a4, b3, c4, d4) => {
-    if (d4.G())
+    if (d4.F())
       return d4;
-    a4 = zq(d4.O());
+    a4 = Kq(d4.O());
     return w4.m(a4.reduce((e4, f4) => e4.value < f4.value ? f4 : e4));
   }, localName: "max", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 0 } }, { j: [{ type: 46, g: 2 }, { type: 1, g: 3 }], callFunction() {
     throw Error("FOCH0002: No collations are supported");
   }, localName: "max", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 0 } }, { j: [{ type: 46, g: 2 }], callFunction: (a4, b3, c4, d4) => {
-    if (d4.G())
+    if (d4.F())
       return d4;
-    a4 = zq(d4.O());
+    a4 = Kq(d4.O());
     return w4.m(a4.reduce((e4, f4) => e4.value > f4.value ? f4 : e4));
   }, localName: "min", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 0 } }, { j: [{ type: 46, g: 2 }, { type: 1, g: 3 }], callFunction() {
     throw Error("FOCH0002: No collations are supported");
   }, localName: "min", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 0 } }, { j: [{
     type: 46,
     g: 2
-  }], callFunction: (a4, b3, c4, d4) => Bq(a4, b3, c4, d4, w4.m(g3(0, 5))), localName: "sum", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 3 } }, { j: [{ type: 46, g: 2 }, { type: 46, g: 0 }], callFunction: Bq, localName: "sum", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 0 } }, {
+  }], callFunction: (a4, b3, c4, d4) => Mq(a4, b3, c4, d4, w4.m(g3(0, 5))), localName: "sum", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 3 } }, { j: [{ type: 46, g: 2 }, { type: 46, g: 0 }], callFunction: Mq, localName: "sum", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 46, g: 0 } }, {
     j: [{ type: 59, g: 2 }],
     callFunction: (a4, b3, c4, d4) => {
-      if (!d4.G() && !d4.ua())
+      if (!d4.F() && !d4.oa())
         throw Error("FORG0003: The argument passed to fn:zero-or-one contained more than one item.");
       return d4;
     },
@@ -27608,11 +27740,11 @@ var fontoxpath = function(xspattern, prsc) {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: { type: 59, g: 0 }
   }, { j: [{ type: 59, g: 2 }], callFunction: (a4, b3, c4, d4) => {
-    if (d4.G())
+    if (d4.F())
       throw Error("FORG0004: The argument passed to fn:one-or-more was empty.");
     return d4;
   }, localName: "one-or-more", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 1 } }, { j: [{ type: 59, g: 2 }], callFunction: (a4, b3, c4, d4) => {
-    if (!d4.ua())
+    if (!d4.oa())
       throw Error("FORG0005: The argument passed to fn:exactly-one is empty or contained more than one item.");
     return d4;
   }, localName: "exactly-one", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: {
@@ -27621,15 +27753,15 @@ var fontoxpath = function(xspattern, prsc) {
   } }, {
     j: [{ type: 59, g: 2 }, { type: 60, g: 3 }],
     callFunction: (a4, b3, c4, d4, e4) => {
-      if (d4.G())
+      if (d4.F())
         return d4;
       const f4 = e4.first(), h4 = f4.o;
       if (1 !== h4.length)
         throw Error("XPTY0004: signature of function passed to fn:filter is incompatible.");
       return d4.filter((k3) => {
-        k3 = Ad(h4[0], w4.m(k3), b3, "fn:filter", false);
+        k3 = zd(h4[0], w4.m(k3), b3, "fn:filter", false);
         k3 = f4.value.call(void 0, a4, b3, c4, k3);
-        if (!k3.ua() || !v3(k3.first().type, 0))
+        if (!k3.oa() || !v3(k3.first().type, 0))
           throw Error("XPTY0004: signature of function passed to fn:filter is incompatible.");
         return k3.first().value;
       });
@@ -27640,7 +27772,7 @@ var fontoxpath = function(xspattern, prsc) {
   }, {
     j: [{ type: 59, g: 2 }, { type: 60, g: 3 }],
     callFunction: (a4, b3, c4, d4, e4) => {
-      if (d4.G())
+      if (d4.F())
         return d4;
       const f4 = e4.first(), h4 = f4.o;
       if (1 !== h4.length)
@@ -27653,7 +27785,7 @@ var fontoxpath = function(xspattern, prsc) {
             var t4 = k3.next(0);
             if (t4.done)
               return t4;
-            t4 = Ad(h4[0], w4.m(t4.value), b3, "fn:for-each", false);
+            t4 = zd(h4[0], w4.m(t4.value), b3, "fn:for-each", false);
             l4 = f4.value.call(void 0, a4, b3, c4, t4).value;
           }
           t4 = l4.next(n4);
@@ -27667,28 +27799,28 @@ var fontoxpath = function(xspattern, prsc) {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: { type: 59, g: 2 }
   }, { j: [{ type: 59, g: 2 }, { type: 59, g: 2 }, { type: 60, g: 3 }], callFunction: (a4, b3, c4, d4, e4, f4) => {
-    if (d4.G())
+    if (d4.F())
       return d4;
     const h4 = f4.first(), k3 = h4.o;
     if (2 !== k3.length)
       throw Error("XPTY0004: signature of function passed to fn:fold-left is incompatible.");
     return d4.N((l4) => l4.reduce((n4, t4) => {
-      n4 = Ad(k3[0], n4, b3, "fn:fold-left", false);
-      t4 = Ad(k3[1], w4.m(t4), b3, "fn:fold-left", false);
+      n4 = zd(k3[0], n4, b3, "fn:fold-left", false);
+      t4 = zd(k3[1], w4.m(t4), b3, "fn:fold-left", false);
       return h4.value.call(void 0, a4, b3, c4, n4, t4);
     }, e4));
   }, localName: "fold-left", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 2 } }, { j: [{ type: 59, g: 2 }, {
     type: 59,
     g: 2
   }, { type: 60, g: 3 }], callFunction: (a4, b3, c4, d4, e4, f4) => {
-    if (d4.G())
+    if (d4.F())
       return d4;
     const h4 = f4.first(), k3 = h4.o;
     if (2 !== k3.length)
       throw Error("XPTY0004: signature of function passed to fn:fold-right is incompatible.");
     return d4.N((l4) => l4.reduceRight((n4, t4) => {
-      n4 = Ad(k3[0], n4, b3, "fn:fold-right", false);
-      t4 = Ad(k3[1], w4.m(t4), b3, "fn:fold-right", false);
+      n4 = zd(k3[0], n4, b3, "fn:fold-right", false);
+      t4 = zd(k3[1], w4.m(t4), b3, "fn:fold-right", false);
       return h4.value.call(void 0, a4, b3, c4, t4, n4);
     }, e4));
   }, localName: "fold-right", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 59, g: 2 } }, { j: [{ type: 59, g: 2 }], callFunction: (a4, b3, c4, d4) => {
@@ -27697,17 +27829,17 @@ var fontoxpath = function(xspattern, prsc) {
     a4 = d4.O();
     if (!a4.every((e4) => v3(e4.type, 53)))
       throw Error("Expected argument to fn:serialize to resolve to a sequence of Nodes.");
-    return w4.m(g3(a4.map((e4) => b3.Ua.serializeToString(Wf(e4.value, b3, false))).join(""), 1));
+    return w4.m(g3(a4.map((e4) => b3.Ua.serializeToString($f(e4.value, b3, false))).join(""), 1));
   }, localName: "serialize", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 1, g: 3 } }], ke, [{
     j: [{ type: 59, g: 3 }, { type: 61, g: 3 }],
     callFunction: (a4, b3, c4, d4, e4) => {
       let f4, h4;
       return w4.create({ next: () => {
-        f4 || ({ hc: f4, dc: h4 } = rq(d4, e4, c4, b3));
+        f4 || ({ ic: f4, ac: h4 } = Cq(d4, e4, c4, b3));
         try {
           return f4.next(0);
         } catch (k3) {
-          cg(h4.value, k3);
+          gg(h4, k3);
         }
       } });
     },
@@ -27727,7 +27859,7 @@ var fontoxpath = function(xspattern, prsc) {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: { g: 0, type: 60 }
   }, { j: [{ type: 60, g: 3 }], callFunction: (a4, b3, c4, d4) => A2([d4], ([e4]) => e4.Ya() ? w4.empty() : w4.m(g3(new Sa("", e4.l, e4.D), 23))), localName: "function-name", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 23, g: 0 } }, { j: [{ type: 60, g: 3 }], callFunction: (a4, b3, c4, d4) => A2([d4], ([e4]) => w4.m(g3(e4.v, 5))), localName: "function-arity", namespaceURI: "http://www.w3.org/2005/xpath-functions", i: { type: 5, g: 3 } }]);
-  class Dq {
+  class Oq {
     constructor(a4) {
       this.h = a4;
     }
@@ -27754,56 +27886,56 @@ var fontoxpath = function(xspattern, prsc) {
     }
   }
   ;
-  var Eq = Symbol("IS_XPATH_VALUE_SYMBOL");
-  function Fq(a4) {
+  var Pq = Symbol("IS_XPATH_VALUE_SYMBOL");
+  function Qq(a4) {
     return (b3, c4) => {
       b3 = Vb(new nb(null === c4 ? new Za() : c4), b3, Ja(a4));
-      return { [Eq]: true, yb: b3 };
+      return { [Pq]: true, zb: b3 };
     };
   }
   ;
-  Cq.forEach((a4) => {
-    jg(a4.namespaceURI, a4.localName, a4.j, a4.i, a4.callFunction);
+  Nq.forEach((a4) => {
+    ng(a4.namespaceURI, a4.localName, a4.j, a4.i, a4.callFunction);
   });
-  function Gq(a4) {
+  function Rq(a4) {
     return a4 && "object" === typeof a4 && "lookupNamespaceURI" in a4 ? (b3) => a4.lookupNamespaceURI(b3 || null) : () => null;
   }
-  function Hq(a4) {
+  function Sq(a4) {
     return ({ prefix: b3, localName: c4 }) => b3 ? null : { namespaceURI: a4, localName: c4 };
   }
-  function Iq(a4, b3, c4, d4, e4, f4) {
+  function Tq(a4, b3, c4, d4, e4, f4) {
     if (null === d4 || void 0 === d4)
       d4 = d4 || {};
-    const h4 = e4 ? { jb: e4.logger || { trace: console.log.bind(console) }, Ma: e4.documentWriter, kb: e4.moduleImports, Bb: e4.namespaceResolver, $b: e4.functionNameResolver, Ja: e4.nodesFactory, Ua: e4.xmlSerializer } : { jb: { trace: console.log.bind(console) }, kb: {}, Bb: null, Ja: null, Ma: null, Ua: null }, k3 = new nb(null === c4 ? new Za() : c4);
+    const h4 = e4 ? { jb: e4.logger || { trace: console.log.bind(console) }, Ma: e4.documentWriter, kb: e4.moduleImports, Cb: e4.namespaceResolver, bc: e4.functionNameResolver, Ja: e4.nodesFactory, Ua: e4.xmlSerializer } : { jb: { trace: console.log.bind(console) }, kb: {}, Cb: null, Ja: null, Ma: null, Ua: null }, k3 = new nb(null === c4 ? new Za() : c4);
     c4 = h4.kb || /* @__PURE__ */ Object.create(null);
     var l4 = void 0 === e4.defaultFunctionNamespaceURI ? "http://www.w3.org/2005/xpath-functions" : e4.defaultFunctionNamespaceURI;
-    const n4 = pq(
+    const n4 = Aq(
       a4,
       f4,
-      h4.Bb || Gq(b3),
+      h4.Cb || Rq(b3),
       d4,
       c4,
       l4,
-      h4.$b || Hq(l4)
+      h4.bc || Sq(l4)
     );
     a4 = b3 ? Wb(k3, b3) : w4.empty();
-    b3 = !h4.Ja && f4.Z ? new Ve(b3) : new Dq(h4.Ja);
+    b3 = !h4.Ja && f4.Z ? new Ze(b3) : new Oq(h4.Ja);
     c4 = h4.Ma ? new bb(h4.Ma) : ab;
     l4 = h4.Ua;
-    const t4 = Object.keys(d4).reduce((y3, F3) => {
-      const N3 = d4[F3];
-      y3[`Q{}${F3}[0]`] = N3 && "object" === typeof N3 && Eq in N3 ? () => w4.create(N3.yb) : () => Wb(k3, d4[F3]);
+    const t4 = Object.keys(d4).reduce((y3, G3) => {
+      const N3 = d4[G3];
+      y3[`Q{}${G3}[0]`] = N3 && "object" === typeof N3 && Pq in N3 ? () => w4.create(N3.zb) : () => Wb(k3, d4[G3]);
       return y3;
     }, /* @__PURE__ */ Object.create(null));
     let u4;
     for (const y3 of Object.keys(n4.ga.Ea))
       t4[y3] || (t4[y3] = () => (0, n4.ga.Ea[y3])(u4, z3));
-    u4 = new cc({ M: a4.first(), Aa: 0, sa: a4, qa: t4 });
+    u4 = new cc({ M: a4.first(), Aa: 0, ta: a4, ra: t4 });
     const z3 = new ic(f4.debug, f4.Ha, k3, b3, c4, e4.currentContext, /* @__PURE__ */ new Map(), h4.jb, l4);
-    return { sb: u4, tb: z3, ba: n4.ba };
+    return { tb: u4, ub: z3, ba: n4.ba };
   }
   ;
-  function Jq(a4, b3) {
+  function Uq(a4, b3) {
     const c4 = {};
     let d4 = 0, e4 = false, f4 = null;
     return { next: () => {
@@ -27813,7 +27945,7 @@ var fontoxpath = function(xspattern, prsc) {
         const k3 = a4.h[d4].key.value;
         if (!f4) {
           const l4 = a4.h[d4];
-          var h4 = l4.value().Y({ default: (n4) => n4, multiple: () => {
+          var h4 = l4.value().X({ default: (n4) => n4, multiple: () => {
             throw Error(`Serialization error: The value of an entry in a map is expected to be a single item or an empty sequence. Use arrays when putting multiple values in a map. The value of the key ${l4.key.value} holds multiple items`);
           } }).first();
           if (null === h4) {
@@ -27821,7 +27953,7 @@ var fontoxpath = function(xspattern, prsc) {
             d4++;
             continue;
           }
-          f4 = Kq(h4, b3);
+          f4 = Vq(h4, b3);
         }
         h4 = f4.next(0);
         f4 = null;
@@ -27832,7 +27964,7 @@ var fontoxpath = function(xspattern, prsc) {
       return q3(c4);
     } };
   }
-  function Lq(a4, b3) {
+  function Wq(a4, b3) {
     const c4 = [];
     let d4 = 0, e4 = false, f4 = null;
     return { next: () => {
@@ -27840,14 +27972,14 @@ var fontoxpath = function(xspattern, prsc) {
         return p3;
       for (; d4 < a4.h.length; ) {
         if (!f4) {
-          var h4 = a4.h[d4]().Y({ default: (k3) => k3, multiple: () => {
+          var h4 = a4.h[d4]().X({ default: (k3) => k3, multiple: () => {
             throw Error("Serialization error: The value of an entry in an array is expected to be a single item or an empty sequence. Use nested arrays when putting multiple values in an array.");
           } }).first();
           if (null === h4) {
             c4[d4++] = null;
             continue;
           }
-          f4 = Kq(h4, b3);
+          f4 = Vq(h4, b3);
         }
         h4 = f4.next(0);
         f4 = null;
@@ -27857,11 +27989,11 @@ var fontoxpath = function(xspattern, prsc) {
       return q3(c4);
     } };
   }
-  function Kq(a4, b3) {
+  function Vq(a4, b3) {
     if (v3(a4.type, 61))
-      return Jq(a4, b3);
+      return Uq(a4, b3);
     if (v3(a4.type, 62))
-      return Lq(a4, b3);
+      return Wq(a4, b3);
     if (v3(a4.type, 23)) {
       const c4 = a4.value;
       return { next: () => q3(`Q{${c4.namespaceURI || ""}}${c4.localName}`) };
@@ -27885,26 +28017,26 @@ var fontoxpath = function(xspattern, prsc) {
       case 57:
       case 58:
         const d4 = a4.value;
-        return { next: () => q3(Wf(d4, b3, false)) };
+        return { next: () => q3($f(d4, b3, false)) };
       default:
         return { next: () => q3(a4.value) };
     }
   }
   ;
-  var Mq = { ANY: 0, NUMBER: 1, STRING: 2, BOOLEAN: 3, NODES: 7, FIRST_NODE: 9, STRINGS: 10, MAP: 11, ARRAY: 12, NUMBERS: 13, ALL_RESULTS: 14, ASYNC_ITERATOR: 99 };
-  Mq[Mq.ANY] = "ANY";
-  Mq[Mq.NUMBER] = "NUMBER";
-  Mq[Mq.STRING] = "STRING";
-  Mq[Mq.BOOLEAN] = "BOOLEAN";
-  Mq[Mq.NODES] = "NODES";
-  Mq[Mq.FIRST_NODE] = "FIRST_NODE";
-  Mq[Mq.STRINGS] = "STRINGS";
-  Mq[Mq.MAP] = "MAP";
-  Mq[Mq.ARRAY] = "ARRAY";
-  Mq[Mq.NUMBERS] = "NUMBERS";
-  Mq[Mq.ALL_RESULTS] = "ALL_RESULTS";
-  Mq[Mq.ASYNC_ITERATOR] = "ASYNC_ITERATOR";
-  function Nq(a4, b3, c4, d4) {
+  var Xq = { ANY: 0, NUMBER: 1, STRING: 2, BOOLEAN: 3, NODES: 7, FIRST_NODE: 9, STRINGS: 10, MAP: 11, ARRAY: 12, NUMBERS: 13, ALL_RESULTS: 14, ASYNC_ITERATOR: 99 };
+  Xq[Xq.ANY] = "ANY";
+  Xq[Xq.NUMBER] = "NUMBER";
+  Xq[Xq.STRING] = "STRING";
+  Xq[Xq.BOOLEAN] = "BOOLEAN";
+  Xq[Xq.NODES] = "NODES";
+  Xq[Xq.FIRST_NODE] = "FIRST_NODE";
+  Xq[Xq.STRINGS] = "STRINGS";
+  Xq[Xq.MAP] = "MAP";
+  Xq[Xq.ARRAY] = "ARRAY";
+  Xq[Xq.NUMBERS] = "NUMBERS";
+  Xq[Xq.ALL_RESULTS] = "ALL_RESULTS";
+  Xq[Xq.ASYNC_ITERATOR] = "ASYNC_ITERATOR";
+  function Yq(a4, b3, c4, d4) {
     switch (c4) {
       case 3:
         return b3.fa();
@@ -27919,36 +28051,36 @@ var fontoxpath = function(xspattern, prsc) {
         if (null === b3)
           return null;
         if (!v3(b3.type, 53))
-          throw Error("Expected XPath " + ag(a4) + " to resolve to Node. Got " + Da[b3.type]);
-        return Wf(b3.value, d4, false);
+          throw Error("Expected XPath " + eg(a4) + " to resolve to Node. Got " + Da[b3.type]);
+        return $f(b3.value, d4, false);
       case 7:
         b3 = b3.O();
         if (!b3.every((l4) => v3(l4.type, 53)))
-          throw Error("Expected XPath " + ag(a4) + " to resolve to a sequence of Nodes.");
-        return b3.map((l4) => Wf(l4.value, d4, false));
+          throw Error("Expected XPath " + eg(a4) + " to resolve to a sequence of Nodes.");
+        return b3.map((l4) => $f(l4.value, d4, false));
       case 11:
         b3 = b3.O();
         if (1 !== b3.length)
-          throw Error("Expected XPath " + ag(a4) + " to resolve to a single map.");
+          throw Error("Expected XPath " + eg(a4) + " to resolve to a single map.");
         b3 = b3[0];
         if (!v3(b3.type, 61))
-          throw Error("Expected XPath " + ag(a4) + " to resolve to a map");
-        return Jq(b3, d4).next(0).value;
+          throw Error("Expected XPath " + eg(a4) + " to resolve to a map");
+        return Uq(b3, d4).next(0).value;
       case 12:
         b3 = b3.O();
         if (1 !== b3.length)
-          throw Error("Expected XPath " + ag(a4) + " to resolve to a single array.");
+          throw Error("Expected XPath " + eg(a4) + " to resolve to a single array.");
         b3 = b3[0];
         if (!v3(b3.type, 62))
-          throw Error("Expected XPath " + ag(a4) + " to resolve to an array");
-        return Lq(b3, d4).next(0).value;
+          throw Error("Expected XPath " + eg(a4) + " to resolve to an array");
+        return Wq(b3, d4).next(0).value;
       case 13:
         return b3.O().map((l4) => {
           if (!v3(
             l4.type,
             2
           ))
-            throw Error("Expected XPath " + ag(a4) + " to resolve to numbers");
+            throw Error("Expected XPath " + eg(a4) + " to resolve to numbers");
           return l4.value;
         });
       case 99:
@@ -27962,7 +28094,7 @@ var fontoxpath = function(xspattern, prsc) {
                 h4 = true;
                 break;
               }
-              f4 = Kq(l4.value, d4);
+              f4 = Vq(l4.value, d4);
             }
             l4 = f4.next(0);
             f4 = null;
@@ -27973,18 +28105,18 @@ var fontoxpath = function(xspattern, prsc) {
         return "asyncIterator" in Symbol ? { [Symbol.asyncIterator]() {
           return this;
         }, next: () => new Promise((l4) => l4(k3())).catch((l4) => {
-          cg(a4, l4);
+          gg(a4, l4);
         }) } : { next: () => new Promise((l4) => l4(k3())) };
       case 14:
-        return b3.O().map((l4) => Kq(l4, d4).next(0).value);
+        return b3.O().map((l4) => Vq(l4, d4).next(0).value);
       default:
-        return b3 = b3.O(), b3.every((l4) => v3(l4.type, 53) && !v3(l4.type, 47)) ? (b3 = b3.map((l4) => Wf(l4.value, d4, false)), 1 === b3.length ? b3[0] : b3) : 1 === b3.length ? (b3 = b3[0], v3(b3.type, 62) ? Lq(b3, d4).next(0).value : v3(b3.type, 61) ? Jq(b3, d4).next(0).value : pc(b3, d4).first().value) : qc(w4.create(b3), d4).O().map((l4) => l4.value);
+        return b3 = b3.O(), b3.every((l4) => v3(l4.type, 53) && !v3(l4.type, 47)) ? (b3 = b3.map((l4) => $f(l4.value, d4, false)), 1 === b3.length ? b3[0] : b3) : 1 === b3.length ? (b3 = b3[0], v3(b3.type, 62) ? Wq(b3, d4).next(0).value : v3(b3.type, 61) ? Uq(b3, d4).next(0).value : pc(b3, d4).first().value) : qc(w4.create(b3), d4).O().map((l4) => l4.value);
     }
   }
   ;
-  let Oq = false, Pq = null;
-  var Qq = { getPerformanceSummary() {
-    const a4 = Pq.getEntriesByType("measure").filter((b3) => b3.name.startsWith("XPath: "));
+  let Zq = false, $q = null;
+  var ar = { getPerformanceSummary() {
+    const a4 = $q.getEntriesByType("measure").filter((b3) => b3.name.startsWith("XPath: "));
     return Array.from(a4.reduce((b3, c4) => {
       var d4 = c4.name.substring(7);
       b3.has(d4) ? (d4 = b3.get(d4), d4.times += 1, d4.totalDuration += c4.duration) : b3.set(d4, { xpath: d4, times: 1, totalDuration: c4.duration, average: 0 });
@@ -27994,72 +28126,72 @@ var fontoxpath = function(xspattern, prsc) {
       return b3;
     }).sort((b3, c4) => c4.totalDuration - b3.totalDuration);
   }, setPerformanceImplementation(a4) {
-    Pq = a4;
+    $q = a4;
   }, startProfiling() {
-    if (null === Pq)
+    if (null === $q)
       throw Error("Performance API object must be set using `profiler.setPerformanceImplementation` before starting to profile");
-    Pq.clearMarks();
-    Pq.clearMeasures();
-    Oq = true;
+    $q.clearMarks();
+    $q.clearMeasures();
+    Zq = true;
   }, stopProfiling() {
-    Oq = false;
+    Zq = false;
   } };
-  let Rq = 0;
-  var Sq = { XPATH_3_1_LANGUAGE: "XPath3.1", XQUERY_3_1_LANGUAGE: "XQuery3.1", XQUERY_UPDATE_3_1_LANGUAGE: "XQueryUpdate3.1" };
-  const Tq = (a4, b3, c4, d4, e4, f4) => {
+  let br = 0;
+  var cr = { XPATH_3_1_LANGUAGE: "XPath3.1", XQUERY_3_1_LANGUAGE: "XQuery3.1", XQUERY_UPDATE_3_1_LANGUAGE: "XQueryUpdate3.1" };
+  const dr = (a4, b3, c4, d4, e4, f4) => {
     e4 = e4 || 0;
     if (!a4 || "string" !== typeof a4 && !("nodeType" in a4))
       throw new TypeError("Failed to execute 'evaluateXPath': xpathExpression must be a string or an element depicting an XQueryX DOM tree.");
     f4 = f4 || {};
     let h4, k3;
     try {
-      const n4 = Iq(a4, b3, c4 || null, d4 || {}, f4, { ra: "XQueryUpdate3.1" === f4.language, Z: "XQuery3.1" === f4.language || "XQueryUpdate3.1" === f4.language, debug: !!f4.debug, Ha: !!f4.disableCache });
-      var l4 = n4.sb;
-      h4 = n4.tb;
+      const n4 = Tq(a4, b3, c4 || null, d4 || {}, f4, { sa: "XQueryUpdate3.1" === f4.language, Z: "XQuery3.1" === f4.language || "XQueryUpdate3.1" === f4.language, debug: !!f4.debug, Ha: !!f4.disableCache });
+      var l4 = n4.tb;
+      h4 = n4.ub;
       k3 = n4.ba;
     } catch (n4) {
-      cg(a4, n4);
+      gg(a4, n4);
     }
-    if (k3.J)
+    if (k3.I)
       throw Error("XUST0001: Updating expressions should be evaluated as updating expressions");
     if (3 === e4 && b3 && "object" === typeof b3 && "nodeType" in b3 && (c4 = k3.D(), b3 = Ya(b3), null !== c4 && !b3.includes(c4)))
       return false;
     try {
       b3 = a4;
-      Oq && ("string" !== typeof b3 && (b3 = ag(b3)), Pq.mark(`${b3}${0 === Rq ? "" : "@" + Rq}`), Rq++);
-      const n4 = C3(k3, l4, h4), t4 = Nq(a4, n4, e4, h4);
+      Zq && ("string" !== typeof b3 && (b3 = eg(b3)), $q.mark(`${b3}${0 === br ? "" : "@" + br}`), br++);
+      const n4 = C3(k3, l4, h4), t4 = Yq(a4, n4, e4, h4);
       e4 = a4;
-      Oq && ("string" !== typeof e4 && (e4 = ag(e4)), Rq--, l4 = `${e4}${0 === Rq ? "" : "@" + Rq}`, Pq.measure(`XPath: ${e4}`, l4), Pq.clearMarks(l4));
+      Zq && ("string" !== typeof e4 && (e4 = eg(e4)), br--, l4 = `${e4}${0 === br ? "" : "@" + br}`, $q.measure(`XPath: ${e4}`, l4), $q.clearMarks(l4));
       return t4;
     } catch (n4) {
-      cg(a4, n4);
+      gg(a4, n4);
     }
   };
-  Object.assign(Tq, { ic: 14, ANY_TYPE: 0, Jb: 12, Kb: 99, BOOLEAN_TYPE: 3, Mb: 9, Pb: 11, Rb: 7, Sb: 13, NUMBER_TYPE: 1, Tb: 10, STRING_TYPE: 2, jc: "XPath3.1", kc: "XQuery3.1", Wb: "XQueryUpdate3.1" });
-  Object.assign(Tq, { ALL_RESULTS_TYPE: 14, ANY_TYPE: 0, ARRAY_TYPE: 12, ASYNC_ITERATOR_TYPE: 99, BOOLEAN_TYPE: 3, FIRST_NODE_TYPE: 9, MAP_TYPE: 11, NODES_TYPE: 7, NUMBERS_TYPE: 13, NUMBER_TYPE: 1, STRINGS_TYPE: 10, STRING_TYPE: 2, XPATH_3_1_LANGUAGE: "XPath3.1", XQUERY_3_1_LANGUAGE: "XQuery3.1", XQUERY_UPDATE_3_1_LANGUAGE: "XQueryUpdate3.1" });
-  function Uq(a4, b3, c4, d4, e4) {
-    return Tq(a4, b3, c4, d4, Tq.Kb, e4);
+  Object.assign(dr, { jc: 14, ANY_TYPE: 0, Lb: 12, Mb: 99, BOOLEAN_TYPE: 3, Ob: 9, Rb: 11, Tb: 7, Ub: 13, NUMBER_TYPE: 1, Vb: 10, STRING_TYPE: 2, kc: "XPath3.1", lc: "XQuery3.1", Yb: "XQueryUpdate3.1" });
+  Object.assign(dr, { ALL_RESULTS_TYPE: 14, ANY_TYPE: 0, ARRAY_TYPE: 12, ASYNC_ITERATOR_TYPE: 99, BOOLEAN_TYPE: 3, FIRST_NODE_TYPE: 9, MAP_TYPE: 11, NODES_TYPE: 7, NUMBERS_TYPE: 13, NUMBER_TYPE: 1, STRINGS_TYPE: 10, STRING_TYPE: 2, XPATH_3_1_LANGUAGE: "XPath3.1", XQUERY_3_1_LANGUAGE: "XQuery3.1", XQUERY_UPDATE_3_1_LANGUAGE: "XQueryUpdate3.1" });
+  function er(a4, b3, c4, d4, e4) {
+    return dr(a4, b3, c4, d4, dr.Mb, e4);
   }
   ;
-  function Vq(a4, b3, c4, d4) {
-    return { pendingUpdateList: a4.da.map((e4) => e4.h(d4)), xdmValue: Nq(b3, w4.create(a4.I), c4, d4) };
+  function fr(a4, b3, c4, d4) {
+    return { pendingUpdateList: a4.da.map((e4) => e4.h(d4)), xdmValue: Yq(b3, w4.create(a4.J), c4, d4) };
   }
   ;
-  async function Wq(a4, b3, c4, d4, e4) {
+  async function gr(a4, b3, c4, d4, e4) {
     e4 = e4 || {};
-    Hk();
+    Ok();
     let f4, h4;
     try {
-      const n4 = Iq(a4, b3, c4 || null, d4 || {}, e4 || {}, { ra: true, Z: true, debug: !!e4.debug, Ha: !!e4.disableCache });
-      var k3 = n4.sb;
-      f4 = n4.tb;
+      const n4 = Tq(a4, b3, c4 || null, d4 || {}, e4 || {}, { sa: true, Z: true, debug: !!e4.debug, Ha: !!e4.disableCache });
+      var k3 = n4.tb;
+      f4 = n4.ub;
       h4 = n4.ba;
     } catch (n4) {
-      cg(a4, n4);
+      gg(a4, n4);
     }
-    if (!h4.J) {
+    if (!h4.I) {
       k3 = [];
-      a4 = Uq(a4, b3, c4, d4, Object.assign(Object.assign({}, e4), { language: "XQueryUpdate3.1" }));
+      a4 = er(a4, b3, c4, d4, Object.assign(Object.assign({}, e4), { language: "XQueryUpdate3.1" }));
       for (b3 = await a4.next(); !b3.done; b3 = await a4.next())
         k3.push(b3.value);
       return Promise.resolve({ pendingUpdateList: [], xdmValue: k3 });
@@ -28068,172 +28200,172 @@ var fontoxpath = function(xspattern, prsc) {
     try {
       l4 = h4.s(k3, f4).next(0);
     } catch (n4) {
-      cg(a4, n4);
+      gg(a4, n4);
     }
-    return Vq(l4.value, a4, e4.returnType, f4);
+    return fr(l4.value, a4, e4.returnType, f4);
   }
   ;
-  function Xq(a4, b3, c4, d4, e4) {
+  function hr(a4, b3, c4, d4, e4) {
     e4 = e4 || {};
-    Hk();
+    Ok();
     let f4, h4, k3;
     try {
-      const n4 = Iq(a4, b3, c4 || null, d4 || {}, e4 || {}, { ra: true, Z: true, debug: !!e4.debug, Ha: !!e4.disableCache });
-      f4 = n4.sb;
-      h4 = n4.tb;
+      const n4 = Tq(a4, b3, c4 || null, d4 || {}, e4 || {}, { sa: true, Z: true, debug: !!e4.debug, Ha: !!e4.disableCache });
+      f4 = n4.tb;
+      h4 = n4.ub;
       k3 = n4.ba;
     } catch (n4) {
-      cg(a4, n4);
+      gg(a4, n4);
     }
-    if (!k3.J)
-      return { pendingUpdateList: [], xdmValue: Tq(a4, b3, c4, d4, e4.i, Object.assign(Object.assign({}, e4), { language: Tq.Wb })) };
+    if (!k3.I)
+      return { pendingUpdateList: [], xdmValue: dr(a4, b3, c4, d4, e4.i, Object.assign(Object.assign({}, e4), { language: dr.Yb })) };
     let l4;
     try {
       l4 = k3.s(f4, h4).next(0);
     } catch (n4) {
-      cg(a4, n4);
+      gg(a4, n4);
     }
-    return Vq(l4.value, a4, e4.returnType, h4);
+    return fr(l4.value, a4, e4.returnType, h4);
   }
   ;
-  function Yq(a4, b3, c4, d4, e4) {
-    return Tq(a4, b3, c4, d4, Tq.Jb, e4);
+  function ir(a4, b3, c4, d4, e4) {
+    return dr(a4, b3, c4, d4, dr.Lb, e4);
   }
   ;
-  function Zq(a4, b3, c4, d4, e4) {
-    return Tq(a4, b3, c4, d4, Tq.BOOLEAN_TYPE, e4);
+  function jr(a4, b3, c4, d4, e4) {
+    return dr(a4, b3, c4, d4, dr.BOOLEAN_TYPE, e4);
   }
   ;
-  function $q(a4, b3, c4, d4, e4) {
-    return Tq(a4, b3, c4, d4, Tq.Mb, e4);
+  function kr(a4, b3, c4, d4, e4) {
+    return dr(a4, b3, c4, d4, dr.Ob, e4);
   }
   ;
-  function ar(a4, b3, c4, d4, e4) {
-    return Tq(a4, b3, c4, d4, Tq.Pb, e4);
+  function lr(a4, b3, c4, d4, e4) {
+    return dr(a4, b3, c4, d4, dr.Rb, e4);
   }
   ;
-  function br(a4, b3, c4, d4, e4) {
-    return Tq(a4, b3, c4, d4, Tq.Rb, e4);
+  function mr(a4, b3, c4, d4, e4) {
+    return dr(a4, b3, c4, d4, dr.Tb, e4);
   }
   ;
-  function cr(a4, b3, c4, d4, e4) {
-    return Tq(a4, b3, c4, d4, Tq.NUMBER_TYPE, e4);
+  function nr(a4, b3, c4, d4, e4) {
+    return dr(a4, b3, c4, d4, dr.NUMBER_TYPE, e4);
   }
   ;
-  function dr(a4, b3, c4, d4, e4) {
-    return Tq(a4, b3, c4, d4, Tq.Sb, e4);
+  function or(a4, b3, c4, d4, e4) {
+    return dr(a4, b3, c4, d4, dr.Ub, e4);
   }
   ;
-  function er(a4, b3, c4, d4, e4) {
-    return Tq(a4, b3, c4, d4, Tq.STRING_TYPE, e4);
+  function pr(a4, b3, c4, d4, e4) {
+    return dr(a4, b3, c4, d4, dr.STRING_TYPE, e4);
   }
   ;
-  function fr(a4, b3, c4, d4, e4) {
-    return Tq(a4, b3, c4, d4, Tq.Tb, e4);
+  function qr(a4, b3, c4, d4, e4) {
+    return dr(a4, b3, c4, d4, dr.Vb, e4);
   }
   ;
-  function gr(a4, b3, c4, d4) {
+  function rr(a4, b3, c4, d4) {
     b3 = new nb(b3 ? b3 : new Za());
     d4 = d4 ? new bb(d4) : ab;
-    c4 = c4 ? c4 = new Dq(c4) : null;
-    a4 = a4.map(Mj);
-    ff(a4, b3, c4, d4);
+    c4 = c4 ? c4 = new Oq(c4) : null;
+    a4 = a4.map(Rj);
+    kf(a4, b3, c4, d4);
   }
   ;
   function Y2(a4, b3, c4) {
-    return { code: a4, ta: b3, H: c4, isAstAccepted: true };
+    return { code: a4, ua: b3, H: c4, isAstAccepted: true };
   }
-  function hr(a4) {
+  function sr(a4) {
     return { isAstAccepted: false, reason: a4 };
   }
   ;
   function Z2(a4, b3) {
     return a4.isAstAccepted ? b3(a4) : a4;
   }
-  function ir(a4, b3) {
+  function tr(a4, b3) {
     return a4.isAstAccepted ? b3(a4) : [a4, null];
   }
-  function jr(a4, b3, c4) {
+  function ur(a4, b3, c4) {
     return Z2(a4, (d4) => {
-      switch (d4.ta.type) {
+      switch (d4.ua.type) {
         case 0:
           return d4;
         case 1:
-          return Z2(kr(c4, d4, "nodes"), (e4) => Z2(kr(c4, b3, "contextItem"), (f4) => Y2(`(function () {
+          return Z2(vr(c4, d4, "nodes"), (e4) => Z2(vr(c4, b3, "contextItem"), (f4) => Y2(`(function () {
 							const { done, value } = ${e4.code}(${f4.code}).next();
 							return done ? null : value;
 						})()`, { type: 0 }, [...e4.H, ...f4.H])));
         default:
-          throw Error(`invalid generated code type to convert to value: ${d4.ta.type}`);
+          throw Error(`invalid generated code type to convert to value: ${d4.ua.type}`);
       }
     });
   }
-  function lr(a4, b3, c4, d4) {
-    a4 = jr(a4, c4, d4);
+  function wr(a4, b3, c4, d4) {
+    a4 = ur(a4, c4, d4);
     return b3 && 0 === b3.type && 3 === b3.g ? a4 : Z2(a4, (e4) => Y2(`!!${e4.code}`, { type: 0 }, e4.H));
   }
-  function mr(a4, b3, c4) {
-    return b3 ? a4.isAstAccepted && 0 !== a4.ta.type ? hr("Atomization only implemented for single value") : v3(b3.type, 1) ? a4 : v3(b3.type, 47) ? Z2(kr(c4, a4, "attr"), (d4) => Y2(`(${d4.code} ? domFacade.getData(${d4.code}) : null)`, { type: 0 }, d4.H)) : hr("Atomization only implemented for string and attribute") : hr("Can not atomize value if type was not annotated");
+  function xr(a4, b3, c4) {
+    return b3 ? a4.isAstAccepted && 0 !== a4.ua.type ? sr("Atomization only implemented for single value") : v3(b3.type, 1) ? a4 : v3(b3.type, 47) ? Z2(vr(c4, a4, "attr"), (d4) => Y2(`(${d4.code} ? domFacade.getData(${d4.code}) : null)`, { type: 0 }, d4.H)) : sr("Atomization only implemented for string and attribute") : sr("Can not atomize value if type was not annotated");
   }
-  function nr(a4, b3, c4, d4) {
-    a4 = jr(a4, c4, d4);
-    d4 = mr(a4, b3, d4);
+  function yr(a4, b3, c4, d4) {
+    a4 = ur(a4, c4, d4);
+    d4 = xr(a4, b3, d4);
     return wc(b3) ? Z2(d4, (e4) => Y2(`${e4.code} ?? ''`, { type: 0 }, e4.H)) : d4;
   }
-  function or(a4, b3, c4) {
-    return Z2(kr(c4, a4, "node"), (d4) => 1 === d4.ta.type ? d4 : b3 && !v3(b3.type, 53) ? hr("Can not evaluate to node if expression does not result in nodes") : Y2(`(function () {
+  function zr(a4, b3, c4) {
+    return Z2(vr(c4, a4, "node"), (d4) => 1 === d4.ua.type ? d4 : b3 && !v3(b3.type, 53) ? sr("Can not evaluate to node if expression does not result in nodes") : Y2(`(function () {
 				if (${d4.code} !== null && !${d4.code}.nodeType) {
 					throw new Error('XPDY0050: The result of the expression was not a node');
 				}
 				return ${d4.code};
 			})()`, { type: 0 }, d4.H));
   }
-  function pr(a4, b3, c4, d4) {
+  function Ar(a4, b3, c4, d4) {
     return Z2(a4, (e4) => {
-      switch (e4.ta.type) {
+      switch (e4.ua.type) {
         case 1:
-          return Z2(kr(d4, e4, "nodes"), (f4) => Z2(kr(d4, c4, "contextItem"), (h4) => Y2(`Array.from(${f4.code}(${h4.code}))`, { type: 0 }, [...f4.H, ...h4.H])));
+          return Z2(vr(d4, e4, "nodes"), (f4) => Z2(vr(d4, c4, "contextItem"), (h4) => Y2(`Array.from(${f4.code}(${h4.code}))`, { type: 0 }, [...f4.H, ...h4.H])));
         case 0:
-          return Z2(kr(d4, or(e4, b3, d4), "node"), (f4) => Y2(`(${f4.code} === null ? [] : [${f4.code}])`, { type: 0 }, f4.H));
+          return Z2(vr(d4, zr(e4, b3, d4), "node"), (f4) => Y2(`(${f4.code} === null ? [] : [${f4.code}])`, { type: 0 }, f4.H));
         default:
-          return hr("Unsupported code type to evaluate to nodes");
+          return sr("Unsupported code type to evaluate to nodes");
       }
     });
   }
-  function qr(a4, b3) {
+  function Br(a4, b3) {
     return Z2(a4, (c4) => Z2(b3, (d4) => {
-      if (0 !== c4.ta.type || 0 !== d4.ta.type)
+      if (0 !== c4.ua.type || 0 !== d4.ua.type)
         throw Error("can only use emitAnd with value expressions");
       return Y2(`${c4.code} && ${d4.code}`, { type: 0 }, [...c4.H, ...d4.H]);
     }));
   }
   ;
-  function rr(a4, b3, c4, d4) {
-    return (a4 = J3(a4, [b3, "*"])) ? d4.h(a4, c4, d4) : [hr(`${b3} expression not found`), null];
+  function Cr(a4, b3, c4, d4) {
+    return (a4 = J3(a4, [b3, "*"])) ? d4.h(a4, c4, d4) : [sr(`${b3} expression not found`), null];
   }
   ;
-  const Tt = { equalOp: "eqOp", notEqualOp: "neOp", lessThanOrEqualOp: "leOp", lessThanOp: "ltOp", greaterThanOrEqualOp: "geOp", greaterThanOp: "gtOp" }, Ut = { eqOp: "eqOp", neOp: "neOp", leOp: "geOp", ltOp: "gtOp", geOp: "leOp", gtOp: "ltOp" };
-  function Vt(a4, b3, c4, d4) {
+  const gu = { equalOp: "eqOp", notEqualOp: "neOp", lessThanOrEqualOp: "leOp", lessThanOp: "ltOp", greaterThanOrEqualOp: "geOp", greaterThanOp: "gtOp" }, hu = { eqOp: "eqOp", neOp: "neOp", leOp: "geOp", ltOp: "gtOp", geOp: "leOp", gtOp: "ltOp" };
+  function iu(a4, b3, c4, d4) {
     const e4 = I3(J3(a4, ["firstOperand", "*"]), "type"), f4 = I3(J3(a4, ["secondOperand", "*"]), "type");
     if (!e4 || !f4)
-      return hr("Can not generate code for value compare without both types");
+      return sr("Can not generate code for value compare without both types");
     var h4 = [47, 1];
     if (!h4.includes(e4.type) || !h4.includes(f4.type))
-      return hr(`Unsupported types in compare: [${Da[e4.type]}, ${Da[f4.type]}]`);
+      return sr(`Unsupported types in compare: [${Da[e4.type]}, ${Da[f4.type]}]`);
     h4 = /* @__PURE__ */ new Map([["eqOp", "==="], ["neOp", "!=="]]);
     if (!h4.has(b3))
-      return hr(b3 + " not yet implemented");
+      return sr(b3 + " not yet implemented");
     const k3 = h4.get(b3);
-    [b3] = rr(a4, "firstOperand", c4, d4);
-    b3 = jr(b3, c4, d4);
-    b3 = mr(b3, e4, d4);
+    [b3] = Cr(a4, "firstOperand", c4, d4);
+    b3 = ur(b3, c4, d4);
+    b3 = xr(b3, e4, d4);
     return Z2(
-      kr(d4, b3, "first"),
+      vr(d4, b3, "first"),
       (l4) => {
-        var [n4] = rr(a4, "secondOperand", c4, d4);
-        n4 = jr(n4, c4, d4);
-        n4 = mr(n4, f4, d4);
-        return Z2(kr(d4, n4, "second"), (t4) => {
+        var [n4] = Cr(a4, "secondOperand", c4, d4);
+        n4 = ur(n4, c4, d4);
+        n4 = xr(n4, f4, d4);
+        return Z2(vr(d4, n4, "second"), (t4) => {
           const u4 = [];
           wc(e4) && u4.push(`${l4.code} === null`);
           wc(f4) && u4.push(`${t4.code} === null`);
@@ -28242,28 +28374,28 @@ var fontoxpath = function(xspattern, prsc) {
       }
     );
   }
-  function Wt(a4, b3, c4, d4, e4, f4) {
+  function ju(a4, b3, c4, d4, e4, f4) {
     var h4 = I3(J3(a4, [b3, "*"]), "type");
     const k3 = I3(J3(a4, [c4, "*"]), "type");
     if (!h4 || !k3)
-      return hr("Can not generate code for general compare without both types");
+      return sr("Can not generate code for general compare without both types");
     var l4 = [47, 1];
     if (!l4.includes(h4.type) || !l4.includes(k3.type))
-      return hr(`Unsupported types in compare: [${Da[h4.type]}, ${Da[k3.type]}]`);
+      return sr(`Unsupported types in compare: [${Da[h4.type]}, ${Da[k3.type]}]`);
     l4 = /* @__PURE__ */ new Map([["eqOp", "==="], ["neOp", "!=="]]);
     if (!l4.has(d4))
-      return hr(d4 + " not yet implemented");
+      return sr(d4 + " not yet implemented");
     const n4 = l4.get(d4);
-    [b3] = rr(a4, b3, e4, f4);
-    b3 = jr(b3, e4, f4);
-    h4 = mr(b3, h4, f4);
-    return Z2(kr(f4, h4, "single"), (t4) => {
-      const [u4] = rr(a4, c4, e4, f4);
-      return Z2(kr(f4, u4, "multiple"), (z3) => {
-        if (1 !== z3.ta.type)
-          return hr("can only generate general compare for a single value and a generator");
-        const y3 = Xt(f4, Yt(f4, "n")), F3 = mr(y3, k3, f4);
-        return Z2(e4, (N3) => Z2(F3, (U2) => Y2(`(function () {
+    [b3] = Cr(a4, b3, e4, f4);
+    b3 = ur(b3, e4, f4);
+    h4 = xr(b3, h4, f4);
+    return Z2(vr(f4, h4, "single"), (t4) => {
+      const [u4] = Cr(a4, c4, e4, f4);
+      return Z2(vr(f4, u4, "multiple"), (z3) => {
+        if (1 !== z3.ua.type)
+          return sr("can only generate general compare for a single value and a generator");
+        const y3 = ku(f4, lu(f4, "n")), G3 = xr(y3, k3, f4);
+        return Z2(e4, (N3) => Z2(G3, (U2) => Y2(`(function () {
 									for (const ${y3.code} of ${z3.code}(${N3.code})) {
 										${U2.H.join("\n")}
 										if (${U2.code} ${n4} ${t4.code}) {
@@ -28276,119 +28408,119 @@ var fontoxpath = function(xspattern, prsc) {
     });
   }
   ;
-  function Zt(a4) {
+  function mu(a4) {
     return JSON.stringify(a4).replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029");
   }
   ;
-  const eu = { "false#0": $t, "local-name#0": au, "local-name#1": au, "name#0": bu, "name#1": bu, "not#1": cu, "true#0": du }, fu = { ["http://fontoxml.com/fontoxpath"]: ["version#0"], [""]: ["root#1", "path#1"] };
-  function gu(a4, b3, c4, d4) {
+  const su = { "false#0": nu, "local-name#0": ou, "local-name#1": ou, "name#0": pu, "name#1": pu, "not#1": qu, "true#0": ru }, tu = { ["http://fontoxml.com/fontoxpath"]: ["version#0"], [""]: ["root#1", "path#1"] };
+  function uu(a4, b3, c4, d4) {
     const [e4] = d4.h(a4, c4, d4);
     a4 = I3(a4, "type");
     if (b3 ? 2 === b3.g || 1 === b3.g : 1)
-      return hr("Not supported: sequence arguments with multiple items");
+      return sr("Not supported: sequence arguments with multiple items");
     if (v3(b3.type, 53))
-      return b3 = jr(e4, c4, d4), or(b3, a4, d4);
+      return b3 = ur(e4, c4, d4), zr(b3, a4, d4);
     switch (b3.type) {
       case 59:
-        return jr(e4, c4, d4);
+        return ur(e4, c4, d4);
       case 0:
-        return lr(e4, a4, c4, d4);
+        return wr(e4, a4, c4, d4);
       case 1:
-        return nr(e4, a4, c4, d4);
+        return yr(e4, a4, c4, d4);
     }
-    return hr(`Argument types not supported: ${a4 ? Da[a4.type] : "unknown"} -> ${Da[b3.type]}`);
+    return sr(`Argument types not supported: ${a4 ? Da[a4.type] : "unknown"} -> ${Da[b3.type]}`);
   }
-  function hu(a4, b3, c4, d4) {
+  function vu(a4, b3, c4, d4) {
     if (a4.length !== b3.length || b3.some((l4) => 4 === l4))
-      return hr("Not supported: variadic function or mismatch in argument count");
+      return sr("Not supported: variadic function or mismatch in argument count");
     if (0 === a4.length)
       return Y2("", { type: 0 }, []);
     const [e4, ...f4] = a4, [h4, ...k3] = b3;
-    a4 = kr(d4, gu(e4, h4, c4, d4), "arg");
+    a4 = vr(d4, uu(e4, h4, c4, d4), "arg");
     return 0 === f4.length ? a4 : Z2(a4, (l4) => {
-      const n4 = hu(f4, k3, c4, d4);
+      const n4 = vu(f4, k3, c4, d4);
       return Z2(n4, (t4) => Y2(`${l4.code}, ${t4.code}`, { type: 0 }, [...l4.H, ...t4.H]));
     });
   }
-  function iu(a4, b3) {
-    return Z2(a4, (c4) => (b3 ? 2 === b3.g || 1 === b3.g : 1) || ![0, 1].includes(b3.type) && !v3(b3.type, 53) ? hr(`Function return type ${Da[b3.type]} not supported`) : c4);
+  function wu(a4, b3) {
+    return Z2(a4, (c4) => (b3 ? 2 === b3.g || 1 === b3.g : 1) || ![0, 1].includes(b3.type) && !v3(b3.type, 53) ? sr(`Function return type ${Da[b3.type]} not supported`) : c4);
   }
-  function ju(a4, b3, c4) {
-    const { localName: d4, namespaceURI: e4 } = Fg(G3(a4, "functionName")), f4 = K3(G3(a4, "arguments"), "*");
+  function xu(a4, b3, c4) {
+    const { localName: d4, namespaceURI: e4 } = Jg(F3(a4, "functionName")), f4 = K3(F3(a4, "arguments"), "*");
     var h4 = f4.length;
     const k3 = `${d4}#${h4}`, l4 = e4 === c4.D;
     if (l4) {
-      const n4 = eu[k3];
+      const n4 = su[k3];
       if (void 0 !== n4)
         return n4(a4, b3, c4);
     }
-    if ((a4 = fu[l4 ? "" : e4]) && !a4.includes(k3))
-      return hr(`Not supported: built-in function not on allow list: ${k3}`);
-    h4 = ig(e4, d4, h4);
+    if ((a4 = tu[l4 ? "" : e4]) && !a4.includes(k3))
+      return sr(`Not supported: built-in function not on allow list: ${k3}`);
+    h4 = mg(e4, d4, h4);
     if (!h4)
-      return hr(`Unknown function / arity: ${k3}`);
-    if (h4.J)
-      return hr("Not supported: updating functions");
-    b3 = hu(f4, h4.j, b3, c4);
+      return sr(`Unknown function / arity: ${k3}`);
+    if (h4.I)
+      return sr("Not supported: updating functions");
+    b3 = vu(f4, h4.j, b3, c4);
     b3 = Z2(b3, (n4) => Y2(
-      `runtimeLib.callFunction(domFacade, ${Zt(e4)}, ${Zt(d4)}, [${n4.code}], options)`,
+      `runtimeLib.callFunction(domFacade, ${mu(e4)}, ${mu(d4)}, [${n4.code}], options)`,
       { type: 0 },
       n4.H
     ));
-    return iu(b3, h4.i);
+    return wu(b3, h4.i);
   }
-  function ku(a4, b3) {
-    return Z2(kr(b3, a4, "contextItem"), (c4) => Y2(c4.code, { type: 0 }, [...c4.H, `if (${c4.code} === undefined || ${c4.code} === null) {
+  function yu(a4, b3) {
+    return Z2(vr(b3, a4, "contextItem"), (c4) => Y2(c4.code, { type: 0 }, [...c4.H, `if (${c4.code} === undefined || ${c4.code} === null) {
 					throw errXPDY0002('The function which was called depends on dynamic context, which is absent.');
 				}`]));
   }
-  function lu(a4, b3, c4, d4) {
+  function zu(a4, b3, c4, d4) {
     if ((a4 = J3(a4, ["arguments", "*"])) && "contextItemExpr" !== a4[0]) {
       const e4 = I3(a4, "type");
       if (!e4 || !v3(e4.type, 53))
-        return hr("name function only implemented if arg is a node");
+        return sr("name function only implemented if arg is a node");
       [a4] = c4.h(a4, b3, c4);
     } else
-      a4 = ku(b3, c4);
-    b3 = jr(a4, b3, c4);
-    return Z2(kr(c4, b3, "arg"), (e4) => Y2(`(${e4.code} ? ${d4(e4.code)} : '')`, { type: 0 }, e4.H));
+      a4 = yu(b3, c4);
+    b3 = ur(a4, b3, c4);
+    return Z2(vr(c4, b3, "arg"), (e4) => Y2(`(${e4.code} ? ${d4(e4.code)} : '')`, { type: 0 }, e4.H));
   }
-  function bu(a4, b3, c4) {
-    return lu(a4, b3, c4, (d4) => `(((${d4}.prefix || '').length !== 0 ? ${d4}.prefix + ':' : '')
+  function pu(a4, b3, c4) {
+    return zu(a4, b3, c4, (d4) => `(((${d4}.prefix || '').length !== 0 ? ${d4}.prefix + ':' : '')
 		+ (${d4}.localName || ${d4}.target || ''))`);
   }
-  function au(a4, b3, c4) {
-    return lu(a4, b3, c4, (d4) => `(${d4}.localName || ${d4}.target || '')`);
+  function ou(a4, b3, c4) {
+    return zu(a4, b3, c4, (d4) => `(${d4}.localName || ${d4}.target || '')`);
   }
-  function cu(a4, b3, c4) {
+  function qu(a4, b3, c4) {
     var d4 = J3(a4, ["arguments", "*"]);
     a4 = I3(d4, "type");
     [d4] = c4.h(d4, b3, c4);
-    b3 = lr(d4, a4, b3, c4);
+    b3 = wr(d4, a4, b3, c4);
     return Z2(b3, (e4) => Y2(`!${e4.code}`, { type: 0 }, e4.H));
   }
-  function $t() {
+  function nu() {
     return Y2("false", { type: 0 }, []);
   }
-  function du() {
+  function ru() {
     return Y2("true", { type: 0 }, []);
   }
   ;
-  function mu(a4, b3, c4, d4) {
-    const [e4, f4] = rr(a4, "firstOperand", c4, d4);
+  function Au(a4, b3, c4, d4) {
+    const [e4, f4] = Cr(a4, "firstOperand", c4, d4);
     var h4 = I3(J3(a4, ["firstOperand", "*"]), "type");
-    h4 = lr(e4, h4, c4, d4);
-    const [k3, l4] = rr(a4, "secondOperand", c4, d4);
+    h4 = wr(e4, h4, c4, d4);
+    const [k3, l4] = Cr(a4, "secondOperand", c4, d4);
     h4 = Z2(h4, (t4) => {
       var u4 = I3(J3(a4, ["secondOperand", "*"]), "type");
-      u4 = lr(k3, u4, c4, d4);
+      u4 = wr(k3, u4, c4, d4);
       return Z2(u4, (z3) => Y2(`(${t4.code} ${b3} ${z3.code})`, { type: 0 }, [...t4.H, ...z3.H]));
     });
-    const n4 = "&&" === b3 ? th(f4, l4) : f4 === l4 ? f4 : null;
+    const n4 = "&&" === b3 ? xh(f4, l4) : f4 === l4 ? f4 : null;
     return [h4, n4];
   }
   ;
-  function nu(a4, b3, c4) {
+  function Bu(a4, b3, c4) {
     return Z2(a4, (d4) => Z2(b3, (e4) => Z2(c4, (f4) => Y2(`for (${d4.code}) {
 						${e4.H.join("\n")}
 						if (!(${e4.code})) {
@@ -28398,25 +28530,25 @@ var fontoxpath = function(xspattern, prsc) {
 						${f4.code}
 					}`, { type: 2 }, d4.H))));
   }
-  function ou(a4, b3, c4, d4, e4) {
+  function Cu(a4, b3, c4, d4, e4) {
     const f4 = b3 ? `, "${b3}"` : "";
     b3 = Z2(d4, (h4) => Z2(e4, (k3) => Y2(`let ${h4.code} = domFacade.getFirstChild(${k3.code}${f4});
 							${h4.code};
 							${h4.code} = domFacade.getNextSibling(${h4.code}${f4})`, { type: 2 }, [...h4.H, ...k3.H])));
-    return nu(b3, a4, c4);
+    return Bu(b3, a4, c4);
   }
-  function pu(a4, b3, c4, d4, e4) {
-    const f4 = th(b3, "type-2"), h4 = Z2(e4, (k3) => Y2(`(${k3.code} && ${k3.code}.nodeType === /*ELEMENT_NODE*/ ${1} ? domFacade.getAllAttributes(${k3.code}${f4 ? `, "${f4}"` : ""}) : [])`, { type: 0 }, k3.H));
+  function Du(a4, b3, c4, d4, e4) {
+    const f4 = xh(b3, "type-2"), h4 = Z2(e4, (k3) => Y2(`(${k3.code} && ${k3.code}.nodeType === /*ELEMENT_NODE*/ ${1} ? domFacade.getAllAttributes(${k3.code}${f4 ? `, "${f4}"` : ""}) : [])`, { type: 0 }, k3.H));
     b3 = Z2(d4, (k3) => Z2(h4, (l4) => Y2(`const ${k3.code} of ${l4.code}`, { type: 2 }, [...k3.H, ...l4.H])));
-    return nu(b3, a4, c4);
+    return Bu(b3, a4, c4);
   }
-  function qu(a4, b3, c4, d4, e4) {
+  function Eu(a4, b3, c4, d4, e4) {
     const f4 = b3 ? `, "${b3}"` : "";
     b3 = Z2(e4, (h4) => Y2(`domFacade.getParentNode(${h4.code}${f4})`, { type: 0 }, h4.H));
-    return ru(d4, b3, a4, c4);
+    return Fu(d4, b3, a4, c4);
   }
-  function ru(a4, b3, c4, d4) {
-    const e4 = qr(a4, c4);
+  function Fu(a4, b3, c4, d4) {
+    const e4 = Br(a4, c4);
     return Z2(a4, (f4) => Z2(b3, (h4) => Z2(e4, (k3) => Z2(d4, (l4) => Y2(`const ${f4.code} = ${h4.code};
 						${k3.H.join("\n")}
 						if (${k3.code}) {
@@ -28424,29 +28556,29 @@ var fontoxpath = function(xspattern, prsc) {
 							${l4.code}
 						}`, { type: 2 }, [...f4.H, ...h4.H])))));
   }
-  function su(a4, b3, c4, d4, e4, f4) {
+  function Gu(a4, b3, c4, d4, e4, f4) {
     a4 = H3(a4);
     switch (a4) {
       case "attribute":
-        return [pu(b3, c4, d4, e4, f4), "type-1"];
+        return [Du(b3, c4, d4, e4, f4), "type-1"];
       case "child":
-        return [ou(b3, c4, d4, e4, f4), null];
+        return [Cu(b3, c4, d4, e4, f4), null];
       case "parent":
-        return [qu(b3, c4, d4, e4, f4), null];
+        return [Eu(b3, c4, d4, e4, f4), null];
       case "self":
-        return [ru(e4, f4, b3, d4), c4];
+        return [Fu(e4, f4, b3, d4), c4];
       default:
-        return [hr(`Unsupported: the ${a4} axis`), null];
+        return [sr(`Unsupported: the ${a4} axis`), null];
     }
   }
   ;
-  const tu = { Ub: "textTest", Lb: "elementTest", Qb: "nameTest", Vb: "Wildcard", Ib: "anyKindTest" };
-  var uu = Object.values(tu);
-  function vu(a4) {
+  const Hu = { Wb: "textTest", Nb: "elementTest", Sb: "nameTest", Xb: "Wildcard", Kb: "anyKindTest" };
+  var Iu = Object.values(Hu);
+  function Ju(a4) {
     return [Z2(a4, (b3) => Y2(`(${b3.code}.nodeType === /*TEXT_NODE*/ ${3} ||
 				${b3.code}.nodeType === /* CDATA_SECTION_NODE */ ${4})`, { type: 0 }, [])), "type-3"];
   }
-  function wu(a4, b3) {
+  function Ku(a4, b3) {
     if (null === a4.namespaceURI && "*" !== a4.prefix) {
       b3 = b3.$(a4.prefix || "") || null;
       if (!b3 && a4.prefix)
@@ -28454,67 +28586,67 @@ var fontoxpath = function(xspattern, prsc) {
       a4.namespaceURI = b3;
     }
   }
-  function xu(a4, b3, c4, d4) {
-    wu(a4, d4);
+  function Lu(a4, b3, c4, d4) {
+    Ku(a4, d4);
     const e4 = a4.prefix, f4 = a4.namespaceURI, h4 = a4.localName;
-    return ir(c4, (k3) => {
+    return tr(c4, (k3) => {
       var l4 = b3 ? Y2(`${k3.code}.nodeType
 						&& (${k3.code}.nodeType === /*ELEMENT_NODE*/ ${1}
 						|| ${k3.code}.nodeType === /*ATTRIBUTE_NODE*/ ${2})`, { type: 0 }, []) : Y2(`${k3.code}.nodeType
 						&& ${k3.code}.nodeType === /*ELEMENT_NODE*/ ${1}`, { type: 0 }, []);
       if ("*" === e4)
-        return "*" === h4 ? [l4, b3 ? "type-1-or-type-2" : "type-1"] : [qr(l4, Y2(`${k3.code}.localName === ${Zt(h4)}`, { type: 0 }, [])), `name-${h4}`];
-      l4 = "*" === h4 ? l4 : qr(l4, Y2(`${k3.code}.localName === ${Zt(h4)}`, { type: 0 }, []));
-      var n4 = Y2(Zt(f4), { type: 0 }, []);
+        return "*" === h4 ? [l4, b3 ? "type-1-or-type-2" : "type-1"] : [Br(l4, Y2(`${k3.code}.localName === ${mu(h4)}`, { type: 0 }, [])), `name-${h4}`];
+      l4 = "*" === h4 ? l4 : Br(l4, Y2(`${k3.code}.localName === ${mu(h4)}`, { type: 0 }, []));
+      var n4 = Y2(mu(f4), { type: 0 }, []);
       n4 = "" === e4 && b3 ? Z2(n4, (t4) => Y2(`${k3.code}.nodeType === /*ELEMENT_NODE*/ ${1} ? ${t4.code} : null`, { type: 0 }, t4.H)) : n4;
       n4 = Z2(n4, (t4) => Y2(`(${k3.code}.namespaceURI || null) === ((${t4.code}) || null)`, { type: 0 }, t4.H));
-      return [qr(l4, n4), `name-${h4}`];
+      return [Br(l4, n4), `name-${h4}`];
     });
   }
-  function yu(a4, b3, c4) {
-    const d4 = (a4 = G3(a4, "elementName")) && G3(a4, "star");
+  function Mu(a4, b3, c4) {
+    const d4 = (a4 = F3(a4, "elementName")) && F3(a4, "star");
     if (null === a4 || d4)
       return [Z2(b3, (e4) => Y2(`${e4.code}.nodeType === /*ELEMENT_NODE*/ ${1}`, { type: 0 }, [])), "type-1"];
-    a4 = Fg(G3(a4, "QName"));
-    return xu(a4, false, b3, c4);
+    a4 = Jg(F3(a4, "QName"));
+    return Lu(a4, false, b3, c4);
   }
-  function zu(a4) {
+  function Nu(a4) {
     return [Z2(a4, (b3) => Y2(`!!${b3.code}.nodeType`, { type: 0 }, [])), null];
   }
-  function Au(a4, b3, c4, d4) {
+  function Ou(a4, b3, c4, d4) {
     var e4 = a4[0];
     switch (e4) {
-      case tu.Lb:
-        return yu(a4, c4, d4);
-      case tu.Ub:
-        return vu(c4);
-      case tu.Qb:
-        return xu(Fg(a4), b3, c4, d4);
-      case tu.Vb:
-        return G3(a4, "star") ? (e4 = G3(a4, "uri"), null !== e4 ? a4 = xu({ localName: "*", namespaceURI: H3(e4), prefix: "" }, b3, c4, d4) : (e4 = G3(a4, "NCName"), a4 = "star" === G3(a4, "*")[0] ? xu({ localName: H3(e4), namespaceURI: null, prefix: "*" }, b3, c4, d4) : xu({ localName: "*", namespaceURI: null, prefix: H3(e4) }, b3, c4, d4))) : a4 = xu({ localName: "*", namespaceURI: null, prefix: "*" }, b3, c4, d4), a4;
-      case tu.Ib:
-        return zu(c4);
+      case Hu.Nb:
+        return Mu(a4, c4, d4);
+      case Hu.Wb:
+        return Ju(c4);
+      case Hu.Sb:
+        return Lu(Jg(a4), b3, c4, d4);
+      case Hu.Xb:
+        return F3(a4, "star") ? (e4 = F3(a4, "uri"), null !== e4 ? a4 = Lu({ localName: "*", namespaceURI: H3(e4), prefix: "" }, b3, c4, d4) : (e4 = F3(a4, "NCName"), a4 = "star" === F3(a4, "*")[0] ? Lu({ localName: H3(e4), namespaceURI: null, prefix: "*" }, b3, c4, d4) : Lu({ localName: "*", namespaceURI: null, prefix: H3(e4) }, b3, c4, d4))) : a4 = Lu({ localName: "*", namespaceURI: null, prefix: "*" }, b3, c4, d4), a4;
+      case Hu.Kb:
+        return Nu(c4);
       default:
         return [
-          hr(`Test not implemented: '${e4}`),
+          sr(`Test not implemented: '${e4}`),
           null
         ];
     }
   }
   ;
-  function Bu(a4, b3, c4) {
+  function Pu(a4, b3, c4) {
     const [d4, e4] = c4.h(a4, b3, c4);
-    return [lr(d4, I3(a4, "type"), b3, c4), e4];
+    return [wr(d4, I3(a4, "type"), b3, c4), e4];
   }
-  function Cu(a4, b3, c4) {
+  function Qu(a4, b3, c4) {
     a4 = a4 ? K3(a4, "*") : [];
     const [d4, e4] = a4.reduce(([f4, h4], k3) => {
       if (!f4)
-        return Bu(k3, b3, c4);
+        return Pu(k3, b3, c4);
       let l4 = h4;
-      return ir(f4, (n4) => {
-        const [t4, u4] = Bu(k3, b3, c4);
-        l4 = th(h4, u4);
+      return tr(f4, (n4) => {
+        const [t4, u4] = Pu(k3, b3, c4);
+        l4 = xh(h4, u4);
         return [Z2(t4, (z3) => Y2(`${n4.code} && ${z3.code}`, { type: 0 }, [...n4.H, ...z3.H])), l4];
       });
     }, [null, null]);
@@ -28523,59 +28655,59 @@ var fontoxpath = function(xspattern, prsc) {
 							return ${f4.code};
 						})()`, { type: 0 }, [])) : null, e4];
   }
-  function Du(a4, b3, c4, d4) {
+  function Ru(a4, b3, c4, d4) {
     if (0 === a4.length)
       return [Z2(c4, (y3) => Y2(`yield ${y3.code};`, { type: 2 }, y3.H)), null];
     const [e4, ...f4] = a4;
     if (0 < K3(e4, "lookup").length)
-      return [hr("Unsupported: lookups"), null];
-    const h4 = Xt(d4, Yt(d4, "contextItem"));
-    a4 = G3(e4, "predicates");
-    const [k3, l4] = Cu(a4, h4, d4);
-    if (a4 = G3(e4, "xpathAxis")) {
-      var n4 = G3(e4, uu);
+      return [sr("Unsupported: lookups"), null];
+    const h4 = ku(d4, lu(d4, "contextItem"));
+    a4 = F3(e4, "predicates");
+    const [k3, l4] = Qu(a4, h4, d4);
+    if (a4 = F3(e4, "xpathAxis")) {
+      var n4 = F3(e4, Iu);
       if (!n4)
-        return [hr("Unsupported test in step"), null];
+        return [sr("Unsupported test in step"), null];
       var t4 = H3(a4);
       b3 = "attribute" === t4 || "self" === t4 && b3;
-      const [y3, F3] = Au(n4, b3, h4, d4);
-      n4 = null === k3 ? y3 : qr(y3, k3);
-      t4 = th(F3, l4);
-      [b3] = Du(f4, b3, h4, d4);
-      return su(a4, n4, t4, b3, h4, c4);
+      const [y3, G3] = Ou(n4, b3, h4, d4);
+      n4 = null === k3 ? y3 : Br(y3, k3);
+      t4 = xh(G3, l4);
+      [b3] = Ru(f4, b3, h4, d4);
+      return Gu(a4, n4, t4, b3, h4, c4);
     }
     a4 = J3(e4, ["filterExpr", "*"]);
     if (!a4)
-      return [hr("Unsupported: unknown step type"), null];
+      return [sr("Unsupported: unknown step type"), null];
     const [u4, z3] = d4.h(a4, c4, d4);
     return [Z2(u4, (y3) => {
-      const F3 = 0 === f4.length ? Y2("", { type: 2 }, []) : Y2(`if (${h4.code} !== null && !${h4.code}.nodeType) {
+      const G3 = 0 === f4.length ? Y2("", { type: 2 }, []) : Y2(`if (${h4.code} !== null && !${h4.code}.nodeType) {
 									throw new Error('XPTY0019: The result of E1 in a path expression E1/E2 should evaluate to a sequence of nodes.');
-								}`, { type: 2 }, []), [N3] = Du(f4, true, h4, d4), U2 = null === k3 ? N3 : Z2(k3, (ba) => Z2(N3, (Ga) => Y2(`if (${ba.code}) {
+								}`, { type: 2 }, []), [N3] = Ru(f4, true, h4, d4), U2 = null === k3 ? N3 : Z2(k3, (ca) => Z2(N3, (Ga) => Y2(`if (${ca.code}) {
 									${Ga.H.join("\n")}
 									${Ga.code}
-								}`, { type: 2 }, ba.H)));
-      return Z2(U2, (ba) => {
-        switch (y3.ta.type) {
+								}`, { type: 2 }, ca.H)));
+      return Z2(U2, (ca) => {
+        switch (y3.ua.type) {
           case 1:
             return Z2(c4, (Ga) => Y2(`for (const ${h4.code} of ${y3.code}(${Ga.code})) {
-									${ba.H.join("\n")}
-									${ba.code}
-								}`, { type: 2 }, [...h4.H, ...y3.H, ...F3.H]));
+									${ca.H.join("\n")}
+									${ca.code}
+								}`, { type: 2 }, [...h4.H, ...y3.H, ...G3.H]));
           case 0:
             return Y2(`const ${h4.code} = ${y3.code};
-							${F3.code}
+							${G3.code}
 							if (${h4.code} !== null) {
-								${ba.H.join("\n")}
-								${ba.code}
-							}`, { type: 2 }, [...h4.H, ...y3.H, ...F3.H]);
+								${ca.H.join("\n")}
+								${ca.code}
+							}`, { type: 2 }, [...h4.H, ...y3.H, ...G3.H]);
           default:
-            return hr("Unsupported generated code type for filterExpr");
+            return sr("Unsupported generated code type for filterExpr");
         }
       });
     }), z3];
   }
-  function Eu(a4) {
+  function Su(a4) {
     return Z2(a4, (b3) => Y2(`(function () {
 				let n = ${b3.code};
 				while (n.nodeType !== /*DOCUMENT_NODE*/${9}) {
@@ -28587,50 +28719,50 @@ var fontoxpath = function(xspattern, prsc) {
 				return n;
 			})()`, { type: 0 }, b3.H));
   }
-  function Fu(a4, b3, c4) {
-    return ir(b3, (d4) => {
+  function Tu(a4, b3, c4) {
+    return tr(b3, (d4) => {
       if (0 < K3(a4, "lookup").length)
-        return [hr("Unsupported: lookups"), null];
-      var e4 = G3(a4, "predicates");
-      const [f4, h4] = Cu(e4, d4, c4);
-      e4 = G3(a4, uu);
+        return [sr("Unsupported: lookups"), null];
+      var e4 = F3(a4, "predicates");
+      const [f4, h4] = Qu(e4, d4, c4);
+      e4 = F3(a4, Iu);
       if (!e4)
-        return [hr("Unsupported test in step"), null];
-      const [k3, l4] = Au(e4, true, d4, c4);
-      e4 = null === f4 ? k3 : qr(k3, f4);
-      const n4 = th(l4, h4);
+        return [sr("Unsupported test in step"), null];
+      const [k3, l4] = Ou(e4, true, d4, c4);
+      e4 = null === f4 ? k3 : Br(k3, f4);
+      const n4 = xh(l4, h4);
       return [Z2(e4, (t4) => Y2(`((${t4.code}) ? ${d4.code} : null)`, { type: 0 }, [...d4.H, ...t4.H])), n4];
     });
   }
-  function Gu(a4, b3, c4) {
+  function Uu(a4, b3, c4) {
     const d4 = K3(a4, "stepExpr");
     if (1 === d4.length) {
-      const k3 = G3(d4[0], "xpathAxis");
+      const k3 = F3(d4[0], "xpathAxis");
       if (k3 && "self" === H3(k3))
-        return Fu(d4[0], b3, c4);
+        return Tu(d4[0], b3, c4);
     }
-    const e4 = Xt(c4, Yt(c4, "contextItem"));
-    b3 = (a4 = G3(a4, "rootExpr")) ? kr(c4, Eu(e4), "root") : e4;
-    const [f4, h4] = Du(d4, !a4, b3, c4);
+    const e4 = ku(c4, lu(c4, "contextItem"));
+    b3 = (a4 = F3(a4, "rootExpr")) ? vr(c4, Su(e4), "root") : e4;
+    const [f4, h4] = Ru(d4, !a4, b3, c4);
     return [Z2(f4, (k3) => Y2(`(function* (${e4.code}) {
 			${k3.H.join("\n")}
 			${k3.code}
 		})`, { type: 1 }, [])), h4];
   }
   ;
-  function Hu(a4, b3, c4) {
+  function Vu(a4, b3, c4) {
     const d4 = a4[0];
     switch (d4) {
       case "contextItemExpr":
         return [b3, null];
       case "pathExpr":
-        return Gu(a4, b3, c4);
+        return Uu(a4, b3, c4);
       case "andOp":
-        return mu(a4, "&&", b3, c4);
+        return Au(a4, "&&", b3, c4);
       case "orOp":
-        return mu(a4, "||", b3, c4);
+        return Au(a4, "||", b3, c4);
       case "stringConstantExpr":
-        return a4 = G3(a4, "value")[1] || "", a4 = Zt(a4), [Y2(a4, { type: 0 }, []), null];
+        return a4 = F3(a4, "value")[1] || "", a4 = mu(a4), [Y2(a4, { type: 0 }, []), null];
       case "equalOp":
       case "notEqualOp":
       case "lessThanOrEqualOp":
@@ -28655,7 +28787,7 @@ var fontoxpath = function(xspattern, prsc) {
             case "gtOp":
             case "geOp":
             case "isOp":
-              a4 = Vt(a4, d4, b3, c4);
+              a4 = iu(a4, d4, b3, c4);
               break a;
             case "equalOp":
             case "notEqualOp":
@@ -28664,115 +28796,115 @@ var fontoxpath = function(xspattern, prsc) {
             case "greaterThanOrEqualOp":
             case "greaterThanOp":
               const e4 = I3(J3(a4, ["firstOperand", "*"]), "type"), f4 = I3(J3(a4, ["secondOperand", "*"]), "type");
-              a4 = e4 && f4 ? 3 === e4.g && 3 === f4.g ? Vt(a4, Tt[d4], b3, c4) : 3 === e4.g ? Wt(a4, "firstOperand", "secondOperand", Tt[d4], b3, c4) : 3 === f4.g ? Wt(a4, "secondOperand", "firstOperand", Ut[Tt[d4]], b3, c4) : hr("General comparison for sequences is not implemented") : hr("types of compare are not known");
+              a4 = e4 && f4 ? 3 === e4.g && 3 === f4.g ? iu(a4, gu[d4], b3, c4) : 3 === e4.g ? ju(a4, "firstOperand", "secondOperand", gu[d4], b3, c4) : 3 === f4.g ? ju(a4, "secondOperand", "firstOperand", hu[gu[d4]], b3, c4) : sr("General comparison for sequences is not implemented") : sr("types of compare are not known");
               break a;
             default:
-              a4 = hr(`Unsupported compare type: ${d4}`);
+              a4 = sr(`Unsupported compare type: ${d4}`);
           }
         return [
           a4,
           null
         ];
       case "functionCallExpr":
-        return [ju(a4, b3, c4), null];
+        return [xu(a4, b3, c4), null];
       default:
-        return [hr(`Unsupported: the base expression '${d4}'.`), null];
+        return [sr(`Unsupported: the base expression '${d4}'.`), null];
     }
   }
   ;
-  function kr(a4, b3, c4) {
+  function vr(a4, b3, c4) {
     return Z2(b3, (d4) => {
       var e4 = a4.o.get(d4);
-      e4 || (e4 = Yt(a4, c4), e4 = Y2(e4, d4.ta, [...d4.H, `const ${e4} = ${d4.code};`]), a4.o.set(d4, e4), a4.o.set(e4, e4));
+      e4 || (e4 = lu(a4, c4), e4 = Y2(e4, d4.ua, [...d4.H, `const ${e4} = ${d4.code};`]), a4.o.set(d4, e4), a4.o.set(e4, e4));
       return e4;
     });
   }
-  function Yt(a4, b3 = "v") {
+  function lu(a4, b3 = "v") {
     const c4 = a4.v.get(b3) || 0;
     a4.v.set(b3, c4 + 1);
     return `${b3}${c4}`;
   }
-  function Xt(a4, b3) {
+  function ku(a4, b3) {
     b3 = Y2(b3, { type: 0 }, []);
     a4.o.set(b3, b3);
     return b3;
   }
-  var Iu = class {
+  var Wu = class {
     constructor(a4, b3) {
       this.o = /* @__PURE__ */ new Map();
       this.v = /* @__PURE__ */ new Map();
       this.$ = a4;
       this.D = b3;
-      this.h = Hu;
+      this.h = Vu;
     }
   };
-  function Ju(a4) {
+  function Xu(a4) {
     const b3 = K3(a4, "*");
     if ("pathExpr" === a4[0])
       return true;
     for (const c4 of b3)
-      if (Ju(c4))
+      if (Xu(c4))
         return true;
     return false;
   }
   ;
-  function Ku(a4, b3, c4) {
+  function Yu(a4, b3, c4) {
     c4 = c4 || {};
     b3 = b3 || 0;
     if ("string" === typeof a4) {
-      a4 = Ik(a4);
+      a4 = Pk(a4);
       var d4 = { Z: "XQuery3.1" === c4.language || "XQueryUpdate3.1" === c4.language, debug: false };
       try {
-        var e4 = jq(a4, d4);
+        var e4 = uq(a4, d4);
       } catch (h4) {
-        cg(a4, h4);
+        gg(a4, h4);
       }
     } else
-      e4 = Dk(a4);
-    a4 = G3(e4, "mainModule");
+      e4 = Kk(a4);
+    a4 = F3(e4, "mainModule");
     if (!a4)
-      return hr("Unsupported: XQuery Library modules are not supported.");
-    if (G3(a4, "prolog"))
-      return hr("Unsupported: XQuery Prologs are not supported.");
+      return sr("Unsupported: XQuery Library modules are not supported.");
+    if (F3(a4, "prolog"))
+      return sr("Unsupported: XQuery Prologs are not supported.");
     d4 = void 0 === c4.defaultFunctionNamespaceURI ? "http://www.w3.org/2005/xpath-functions" : c4.defaultFunctionNamespaceURI;
-    a4 = new Iu(c4.namespaceResolver || Gq(null), d4);
-    c4 = new mh(new xg(new lg(a4.$, {}, d4, c4.functionNameResolver || Hq("http://www.w3.org/2005/xpath-functions"))));
+    a4 = new Wu(c4.namespaceResolver || Rq(null), d4);
+    c4 = new qh(new Bg(new pg(a4.$, {}, d4, c4.functionNameResolver || Sq("http://www.w3.org/2005/xpath-functions"))));
     O2(e4, c4);
-    if (c4 = G3(e4, "mainModule"))
-      if (G3(c4, "prolog"))
-        a4 = hr("Unsupported: XQuery.");
+    if (c4 = F3(e4, "mainModule"))
+      if (F3(c4, "prolog"))
+        a4 = sr("Unsupported: XQuery.");
       else {
         var f4 = J3(c4, ["queryBody", "*"]);
-        c4 = Xt(a4, "contextItem");
+        c4 = ku(a4, "contextItem");
         [d4] = a4.h(f4, c4, a4);
         b:
           switch (f4 = I3(f4, "type"), b3) {
             case 9:
-              b3 = jr(d4, c4, a4);
-              a4 = or(b3, f4, a4);
+              b3 = ur(d4, c4, a4);
+              a4 = zr(b3, f4, a4);
               break b;
             case 7:
-              a4 = pr(d4, f4, c4, a4);
+              a4 = Ar(d4, f4, c4, a4);
               break b;
             case 3:
-              a4 = lr(d4, f4, c4, a4);
+              a4 = wr(d4, f4, c4, a4);
               break b;
             case 2:
-              a4 = nr(d4, f4, c4, a4);
+              a4 = yr(d4, f4, c4, a4);
               break b;
             default:
-              a4 = hr(`Unsupported: the return type '${b3}'.`);
+              a4 = sr(`Unsupported: the return type '${b3}'.`);
           }
         a4.isAstAccepted && (a4 = `
 		${a4.H.join("\n")}
-		return ${a4.code};`, b3 = "\n	return (contextItem, domFacade, runtimeLib, options) => {\n		const {\n			errXPDY0002,\n		} = runtimeLib;", Ju(e4) && (b3 += '\n		if (!contextItem) {\n			throw errXPDY0002("Context is needed to evaluate the given path expression.");\n		}\n\n		if (!contextItem.nodeType) {\n			throw new Error("Context item must be subtype of node().");\n		}\n		'), a4 = { code: b3 + (a4 + "}\n//# sourceURL=generated.js"), isAstAccepted: true });
+		return ${a4.code};`, b3 = "\n	return (contextItem, domFacade, runtimeLib, options) => {\n		const {\n			errXPDY0002,\n		} = runtimeLib;", Xu(e4) && (b3 += '\n		if (!contextItem) {\n			throw errXPDY0002("Context is needed to evaluate the given path expression.");\n		}\n\n		if (!contextItem.nodeType) {\n			throw new Error("Context item must be subtype of node().");\n		}\n		'), a4 = { code: b3 + (a4 + "}\n//# sourceURL=generated.js"), isAstAccepted: true });
       }
     else
-      a4 = hr("Unsupported: Can not execute a library module.");
+      a4 = sr("Unsupported: Can not execute a library module.");
     return a4;
   }
   ;
-  class Lu extends Error {
+  class Zu extends Error {
     constructor(a4, b3, c4) {
       var d4 = a4.stack;
       d4 && (d4.includes(a4.message) && (d4 = d4.substr(d4.indexOf(a4.message) + a4.message.length).trim()), d4 = d4.split("\n"), d4.splice(10), d4 = d4.map((e4) => e4.startsWith("    ") || e4.startsWith("	") ? e4 : `    ${e4}`), d4 = d4.join("\n"));
@@ -28781,65 +28913,65 @@ ${a4.message}
 ${d4}`);
     }
   }
-  function Mu(a4, b3, c4) {
-    return 0 === b3.g ? a4.G() ? null : Kq(a4.first(), c4).next(0).value : 2 === b3.g || 1 === b3.g ? a4.O().map((d4) => {
+  function $u(a4, b3, c4) {
+    return 0 === b3.g ? a4.F() ? null : Vq(a4.first(), c4).next(0).value : 2 === b3.g || 1 === b3.g ? a4.O().map((d4) => {
       if (v3(d4.type, 47))
         throw Error("Cannot pass attribute nodes to custom functions");
-      return Kq(d4, c4).next(0).value;
-    }) : Kq(a4.first(), c4).next(0).value;
+      return Vq(d4, c4).next(0).value;
+    }) : Vq(a4.first(), c4).next(0).value;
   }
-  function Nu(a4) {
+  function av(a4) {
     if ("object" === typeof a4)
       return a4;
     a4 = a4.split(":");
     if (2 !== a4.length)
       throw Error("Do not register custom functions in the default function namespace");
     const [b3, c4] = a4;
-    a4 = kg[b3];
+    a4 = og[b3];
     if (!a4) {
       a4 = `generated_namespace_uri_${b3}`;
-      if (kg[b3])
+      if (og[b3])
         throw Error("Prefix already registered: Do not register the same prefix twice.");
-      kg[b3] = a4;
+      og[b3] = a4;
     }
     return { localName: c4, namespaceURI: a4 };
   }
-  function Ou(a4, b3, c4, d4) {
-    const { namespaceURI: e4, localName: f4 } = Nu(a4);
+  function bv(a4, b3, c4, d4) {
+    const { namespaceURI: e4, localName: f4 } = av(a4);
     if (!e4)
-      throw qg();
+      throw ug();
     const h4 = b3.map((l4) => Ja(l4)), k3 = Ja(c4);
-    jg(e4, f4, h4, k3, function(l4, n4, t4) {
+    ng(e4, f4, h4, k3, function(l4, n4, t4) {
       var u4 = Array.from(arguments);
       u4.splice(0, 3);
-      u4 = u4.map((F3, N3) => Mu(F3, h4[N3], n4));
+      u4 = u4.map((G3, N3) => $u(G3, h4[N3], n4));
       const z3 = { currentContext: n4.o, domFacade: n4.h.h };
       let y3;
       try {
         y3 = d4.apply(void 0, [z3, ...u4]);
-      } catch (F3) {
-        throw new Lu(F3, f4, e4);
+      } catch (G3) {
+        throw new Zu(G3, f4, e4);
       }
-      return y3 && "object" === typeof y3 && Object.getOwnPropertySymbols(y3).includes(Eq) ? w4.create(y3.yb) : Wb(n4.h, y3, k3);
+      return y3 && "object" === typeof y3 && Object.getOwnPropertySymbols(y3).includes(Pq) ? w4.create(y3.zb) : Wb(n4.h, y3, k3);
     });
   }
   ;
-  var Pu = { callFunction(a4, b3, c4, d4, e4) {
-    const f4 = ig(b3, c4, d4.length);
+  var cv = { callFunction(a4, b3, c4, d4, e4) {
+    const f4 = mg(b3, c4, d4.length);
     if (!f4)
       throw Error("function not found for codegen function call");
-    b3 = new cc({ M: null, Aa: 0, sa: w4.empty(), qa: {} });
+    b3 = new cc({ M: null, Aa: 0, ta: w4.empty(), ra: {} });
     const h4 = new nb(a4);
     a4 = new ic(false, false, h4, null, null, e4 ? e4.currentContext : null, null);
     d4 = f4.callFunction(b3, a4, null, ...d4.map((k3, l4) => Wb(h4, k3, f4.j[l4])));
-    return Mu(d4, { type: 59, g: 0 }, a4);
+    return $u(d4, { type: 59, g: 0 }, a4);
   }, errXPDY0002: lc };
-  var Qu = (a4, b3, c4, d4) => {
+  var dv = (a4, b3, c4, d4) => {
     c4 = c4 ? c4 : new Za();
-    return a4()(null !== b3 && void 0 !== b3 ? b3 : null, c4, Pu, d4);
+    return a4()(null !== b3 && void 0 !== b3 ? b3 : null, c4, cv, d4);
   };
-  const Ru = { ["http://www.w3.org/2005/XQueryX"]: "xqx", ["http://www.w3.org/2007/xquery-update-10"]: "xquf", ["http://fontoxml.com/fontoxpath"]: "x" };
-  function Su(a4, b3) {
+  const ev = { ["http://www.w3.org/2005/XQueryX"]: "xqx", ["http://www.w3.org/2007/xquery-update-10"]: "xquf", ["http://fontoxml.com/fontoxpath"]: "x" };
+  function fv(a4, b3) {
     switch (a4) {
       case "copySource":
       case "insertAfter":
@@ -28869,94 +29001,94 @@ ${d4}`);
         return { localName: a4, lb: "http://www.w3.org/2005/XQueryX" };
     }
   }
-  function Tu(a4, b3, c4, d4, e4) {
+  function gv(a4, b3, c4, d4, e4) {
     if ("string" === typeof c4)
       return 0 === c4.length ? null : b3.createTextNode(c4);
     if (!Array.isArray(c4))
       throw new TypeError("JsonML element should be an array or string");
-    var f4 = Su(c4[0], d4);
+    var f4 = fv(c4[0], d4);
     d4 = f4.localName;
     f4 = f4.lb;
-    const h4 = b3.createElementNS(f4, Ru[f4] + ":" + d4), k3 = c4[1];
+    const h4 = b3.createElementNS(f4, ev[f4] + ":" + d4), k3 = c4[1];
     var l4 = 1;
     if ("object" === typeof k3 && !Array.isArray(k3)) {
       if (null !== k3)
         for (var n4 of Object.keys(k3))
-          l4 = k3[n4], null !== l4 && ("type" === n4 ? void 0 !== l4 && a4.setAttributeNS(h4, f4, "fontoxpath:" + n4, Ha(l4)) : ("start" !== n4 && "end" !== n4 && "comment" !== n4 || "stackTrace" !== d4 || (l4 = JSON.stringify(l4)), e4 && "prefix" === n4 && "" === l4 || a4.setAttributeNS(h4, f4, Ru[f4] + ":" + n4, l4)));
+          l4 = k3[n4], null !== l4 && ("type" === n4 ? void 0 !== l4 && a4.setAttributeNS(h4, f4, "fontoxpath:" + n4, Ha(l4)) : ("start" !== n4 && "end" !== n4 && "comment" !== n4 || "stackTrace" !== d4 || (l4 = JSON.stringify(l4)), e4 && "prefix" === n4 && "" === l4 || a4.setAttributeNS(h4, f4, ev[f4] + ":" + n4, l4)));
       l4 = 2;
     }
     for (let t4 = l4, u4 = c4.length; t4 < u4; ++t4)
-      n4 = Tu(a4, b3, c4[t4], f4, e4), null !== n4 && a4.insertBefore(h4, n4, null);
+      n4 = gv(a4, b3, c4[t4], f4, e4), null !== n4 && a4.insertBefore(h4, n4, null);
     return h4;
   }
-  function Uu(a4, b3, c4, d4 = ab) {
-    a4 = Ik(a4);
+  function hv(a4, b3, c4, d4 = ab) {
+    a4 = Pk(a4);
     let e4;
     try {
-      e4 = jq(a4, { Z: "XQuery3.1" === b3.language || "XQueryUpdate3.1" === b3.language, debug: b3.debug });
+      e4 = uq(a4, { Z: "XQuery3.1" === b3.language || "XQueryUpdate3.1" === b3.language, debug: b3.debug });
     } catch (l4) {
-      cg(a4, l4);
+      gg(a4, l4);
     }
-    var f4 = new lg(b3.namespaceResolver || (() => null), {}, void 0 === b3.defaultFunctionNamespaceURI ? "http://www.w3.org/2005/xpath-functions" : b3.defaultFunctionNamespaceURI, b3.functionNameResolver || (() => null));
-    f4 = new xg(f4);
-    var h4 = G3(e4, ["mainModule", "libraryModule"]), k3 = G3(h4, "moduleDecl");
+    var f4 = new pg(b3.namespaceResolver || (() => null), {}, void 0 === b3.defaultFunctionNamespaceURI ? "http://www.w3.org/2005/xpath-functions" : b3.defaultFunctionNamespaceURI, b3.functionNameResolver || (() => null));
+    f4 = new Bg(f4);
+    var h4 = F3(e4, ["mainModule", "libraryModule"]), k3 = F3(h4, "moduleDecl");
     if (k3) {
-      const l4 = H3(G3(k3, "prefix"));
-      k3 = H3(G3(k3, "uri"));
-      Bg(f4, l4, k3);
+      const l4 = H3(F3(k3, "prefix"));
+      k3 = H3(F3(k3, "uri"));
+      Fg(f4, l4, k3);
     }
-    (h4 = G3(h4, "prolog")) && mq(h4, f4, false, a4);
-    false !== b3.annotateAst && eh(e4, new mh(f4));
+    (h4 = F3(h4, "prolog")) && xq(h4, f4, false, a4);
+    false !== b3.annotateAst && ih(e4, new qh(f4));
     f4 = new Za();
-    b3 = Tu(d4, c4, e4, null, false === b3.lc);
+    b3 = gv(d4, c4, e4, null, false === b3.mc);
     d4.insertBefore(b3, c4.createComment(a4), f4.getFirstChild(b3));
     return b3;
   }
   ;
-  function Vu(a4) {
+  function iv(a4) {
     return Promise.resolve(a4);
   }
   ;
-  function Wu(a4, b3 = { debug: false }) {
+  function jv(a4, b3 = { debug: false }) {
     try {
-      var c4 = jq(a4, { Z: true, debug: b3.debug });
+      var c4 = uq(a4, { Z: true, debug: b3.debug });
     } catch (f4) {
-      cg(a4, f4);
+      gg(a4, f4);
     }
-    eh(c4, new mh());
-    b3 = G3(c4, "libraryModule");
+    ih(c4, new qh());
+    b3 = F3(c4, "libraryModule");
     if (!b3)
       throw Error("XQuery module must be declared in a library module.");
-    c4 = G3(b3, "moduleDecl");
-    var d4 = G3(c4, "uri");
+    c4 = F3(b3, "moduleDecl");
+    var d4 = F3(c4, "uri");
     const e4 = H3(d4);
-    c4 = G3(c4, "prefix");
+    c4 = F3(c4, "prefix");
     d4 = H3(c4);
-    c4 = new xg(new lg(() => null, /* @__PURE__ */ Object.create(null), "http://www.w3.org/2005/xpath-functions", Hq("http://www.w3.org/2005/xpath-functions")));
-    Bg(c4, d4, e4);
-    b3 = G3(b3, "prolog");
+    c4 = new Bg(new pg(() => null, /* @__PURE__ */ Object.create(null), "http://www.w3.org/2005/xpath-functions", Sq("http://www.w3.org/2005/xpath-functions")));
+    Fg(c4, d4, e4);
+    b3 = F3(b3, "prolog");
     if (null !== b3) {
       let f4;
       try {
-        f4 = mq(b3, c4, true, a4);
+        f4 = xq(b3, c4, true, a4);
       } catch (h4) {
-        cg(a4, h4);
+        gg(a4, h4);
       }
       f4.Ia.forEach(({ namespaceURI: h4 }) => {
         if (e4 !== h4)
           throw Error("XQST0048: Functions and variables declared in a module must reside in the module target namespace.");
       });
-      Fk(e4, f4);
+      Mk(e4, f4);
     } else
-      Fk(e4, { Ia: [], Ta: [], oa: null, source: a4 });
+      Mk(e4, { Ia: [], Ta: [], pa: null, source: a4 });
     return e4;
   }
   ;
-  const Xu = /* @__PURE__ */ new Map();
-  function Yu(a4) {
+  const kv = /* @__PURE__ */ new Map();
+  function lv(a4) {
     var b3;
     a: {
-      if (b3 = zk.get(a4)) {
+      if (b3 = Gk.get(a4)) {
         for (const c4 of Object.keys(b3))
           if (b3[c4] && b3[c4].length) {
             b3 = b3[c4][0].h;
@@ -28967,24 +29099,24 @@ ${d4}`);
     }
     if (b3)
       return b3;
-    if (Xu.has(a4))
-      return Xu.get(a4);
-    b3 = "string" === typeof a4 ? jq(a4, { Z: false }) : Dk(a4);
+    if (kv.has(a4))
+      return kv.get(a4);
+    b3 = "string" === typeof a4 ? uq(a4, { Z: false }) : Kk(a4);
     b3 = J3(b3, ["mainModule", "queryBody", "*"]);
     if (null === b3)
       throw Error("Library modules do not have a specificity");
-    b3 = yk(b3, { ra: false, Z: false });
-    Xu.set(a4, b3);
+    b3 = Fk(b3, { sa: false, Z: false });
+    kv.set(a4, b3);
     return b3;
   }
-  function Zu(a4) {
-    return Yu(a4).D();
+  function mv(a4) {
+    return lv(a4).D();
   }
-  function $u(a4, b3) {
-    return pf(Yu(a4).o, Yu(b3).o);
+  function nv(a4, b3) {
+    return tf(lv(a4).o, lv(b3).o);
   }
-  var av = new Za();
-  "undefined" !== typeof fontoxpathGlobal && (fontoxpathGlobal.compareSpecificity = $u, fontoxpathGlobal.compileXPathToJavaScript = Ku, fontoxpathGlobal.domFacade = av, fontoxpathGlobal.evaluateXPath = Tq, fontoxpathGlobal.evaluateXPathToArray = Yq, fontoxpathGlobal.evaluateXPathToAsyncIterator = Uq, fontoxpathGlobal.evaluateXPathToBoolean = Zq, fontoxpathGlobal.evaluateXPathToFirstNode = $q, fontoxpathGlobal.evaluateXPathToMap = ar, fontoxpathGlobal.evaluateXPathToNodes = br, fontoxpathGlobal.evaluateXPathToNumber = cr, fontoxpathGlobal.evaluateXPathToNumbers = dr, fontoxpathGlobal.evaluateXPathToString = er, fontoxpathGlobal.evaluateXPathToStrings = fr, fontoxpathGlobal.evaluateUpdatingExpression = Wq, fontoxpathGlobal.evaluateUpdatingExpressionSync = Xq, fontoxpathGlobal.executeJavaScriptCompiledXPath = Qu, fontoxpathGlobal.executePendingUpdateList = gr, fontoxpathGlobal.getBucketForSelector = Zu, fontoxpathGlobal.getBucketsForNode = Ya, fontoxpathGlobal.precompileXPath = Vu, fontoxpathGlobal.registerXQueryModule = Wu, fontoxpathGlobal.registerCustomXPathFunction = Ou, fontoxpathGlobal.parseScript = Uu, fontoxpathGlobal.profiler = Qq, fontoxpathGlobal.createTypedValueFactory = Fq, fontoxpathGlobal.finalizeModuleRegistration = Hk, fontoxpathGlobal.Language = Sq, fontoxpathGlobal.ReturnType = Mq);
+  var ov = new Za();
+  "undefined" !== typeof fontoxpathGlobal && (fontoxpathGlobal.compareSpecificity = nv, fontoxpathGlobal.compileXPathToJavaScript = Yu, fontoxpathGlobal.domFacade = ov, fontoxpathGlobal.evaluateXPath = dr, fontoxpathGlobal.evaluateXPathToArray = ir, fontoxpathGlobal.evaluateXPathToAsyncIterator = er, fontoxpathGlobal.evaluateXPathToBoolean = jr, fontoxpathGlobal.evaluateXPathToFirstNode = kr, fontoxpathGlobal.evaluateXPathToMap = lr, fontoxpathGlobal.evaluateXPathToNodes = mr, fontoxpathGlobal.evaluateXPathToNumber = nr, fontoxpathGlobal.evaluateXPathToNumbers = or, fontoxpathGlobal.evaluateXPathToString = pr, fontoxpathGlobal.evaluateXPathToStrings = qr, fontoxpathGlobal.evaluateUpdatingExpression = gr, fontoxpathGlobal.evaluateUpdatingExpressionSync = hr, fontoxpathGlobal.executeJavaScriptCompiledXPath = dv, fontoxpathGlobal.executePendingUpdateList = rr, fontoxpathGlobal.getBucketForSelector = mv, fontoxpathGlobal.getBucketsForNode = Ya, fontoxpathGlobal.precompileXPath = iv, fontoxpathGlobal.registerXQueryModule = jv, fontoxpathGlobal.registerCustomXPathFunction = bv, fontoxpathGlobal.parseScript = hv, fontoxpathGlobal.profiler = ar, fontoxpathGlobal.createTypedValueFactory = Qq, fontoxpathGlobal.finalizeModuleRegistration = Ok, fontoxpathGlobal.Language = cr, fontoxpathGlobal.ReturnType = Xq);
   return fontoxpathGlobal;
 }.call(typeof window === "undefined" ? void 0 : window, xspattern_esm_exports, prsc_esm_exports);
 var compareSpecificity = fontoxpath.compareSpecificity;
