@@ -25,7 +25,7 @@ xpath_raw: str = _get_file("xpath.js")
 def _export_wrap(raw: str) -> str:
     """
     Wraps the raw content in a manner that allows it to be executed in a browser context.
-    See https://github.com/microsoft/playwright/issues/16705 for details.
+    See https://github.com/microsoft/playwright/issues/36448 for details.
     """
     return f"""(() => {{
         if (typeof module === 'undefined') {{
