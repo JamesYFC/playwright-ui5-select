@@ -28,14 +28,17 @@ def _export_wrap(raw: str) -> str:
     See https://github.com/microsoft/playwright/issues/36448 for details.
     """
     return f"""(() => {{
-        if (typeof module === 'undefined') {{
+        const useFakeModule = typeof module === 'undefined'
+        if (useFakeModule) {{
             window.module = {{exports: {{}}}};
         }}
         try {{
             {raw};
             return module.exports.default
         }} finally {{
-            delete module
+            if (useFakeModule) {{
+                delete module
+            }}
         }}
     }})()"""
 
