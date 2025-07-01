@@ -31,8 +31,12 @@ def _export_wrap(raw: str) -> str:
         if (typeof module === 'undefined') {{
             window.module = {{exports: {{}}}};
         }}
-        {raw};
-        return module.exports.default
+        try {{
+            {raw};
+            return module.exports.default
+        }} finally {{
+            delete module
+        }}
     }})()"""
 
 
