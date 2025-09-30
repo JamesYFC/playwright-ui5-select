@@ -67,7 +67,7 @@ __export(css_exports, {
 module.exports = __toCommonJS(css_exports);
 
 // src/browser/common.ts
-var isUi5 = () => typeof sap !== "undefined" && typeof sap.ui !== "undefined";
+var isUi5 = () => typeof sap !== "undefined" && sap.ui?.core !== void 0;
 var Ui5SelectorEngineError = class extends Error {
   constructor(selector, error) {
     super(`ui5 selector engine failed on selector: "${selector}"
@@ -1105,7 +1105,7 @@ var querySelector = (root, selector) => selector.rules.flatMap((rule) => {
     rule.tag.name = [rule.tag.name, ...rule.classNames].join(".");
     delete rule.classNames;
   }
-  const controls = sap.ui.core.Element?.registry.filter((element) => {
+  const controls = sap.ui?.core?.Element?.registry.filter((element) => {
     if (rule.tag?.type === "TagName" && rule.tag.name !== element.getMetadata().getName() && (rule.pseudoElement !== "subclass" || !getAllParents(element).includes(rule.tag.name)) || rule.ids && rule.ids[0] !== element.getId()) {
       return false;
     }

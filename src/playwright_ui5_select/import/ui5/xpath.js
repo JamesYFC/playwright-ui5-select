@@ -17565,7 +17565,7 @@ __export(xpath_exports, {
 module.exports = __toCommonJS(xpath_exports);
 
 // src/browser/common.ts
-var isUi5 = () => typeof sap !== "undefined" && typeof sap.ui !== "undefined";
+var isUi5 = () => typeof sap !== "undefined" && sap.ui?.core !== void 0;
 var Ui5SelectorEngineError = class extends Error {
   constructor(selector, error) {
     super(`ui5 selector engine failed on selector: "${selector}"
