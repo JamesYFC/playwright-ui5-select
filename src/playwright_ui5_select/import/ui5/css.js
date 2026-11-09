@@ -26,9 +26,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// node_modules/throw-expression/index.js
+// node_modules/.pnpm/throw-expression@1.0.2/node_modules/throw-expression/index.js
 var require_throw_expression = __commonJS({
-  "node_modules/throw-expression/index.js"(exports) {
+  "node_modules/.pnpm/throw-expression@1.0.2/node_modules/throw-expression/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.throwIfFalsy = exports.throwIfUndefined = exports.throwIfNull = exports.Throw = void 0;
@@ -66,17 +66,7 @@ __export(css_exports, {
 });
 module.exports = __toCommonJS(css_exports);
 
-// src/browser/common.ts
-var isUi5 = () => typeof sap !== "undefined" && sap.ui?.core !== void 0;
-var Ui5SelectorEngineError = class extends Error {
-  constructor(selector, error) {
-    super(`ui5 selector engine failed on selector: "${selector}"
-
-${String(error)}`);
-  }
-};
-
-// node_modules/css-selector-parser/dist/mjs/indexes.js
+// node_modules/.pnpm/css-selector-parser@2.3.2/node_modules/css-selector-parser/dist/mjs/indexes.js
 var emptyMulticharIndex = {};
 var emptyRegularIndex = {};
 function extendIndex(item, index) {
@@ -112,7 +102,7 @@ function createRegularIndex(items) {
   return result;
 }
 
-// node_modules/css-selector-parser/dist/mjs/pseudo-class-signatures.js
+// node_modules/.pnpm/css-selector-parser@2.3.2/node_modules/css-selector-parser/dist/mjs/pseudo-class-signatures.js
 var emptyPseudoClassSignatures = {};
 var defaultPseudoClassSignature = {
   type: "String",
@@ -172,7 +162,7 @@ function calculatePseudoClassSignatures(definitions) {
   return result;
 }
 
-// node_modules/css-selector-parser/dist/mjs/syntax-definitions.js
+// node_modules/.pnpm/css-selector-parser@2.3.2/node_modules/css-selector-parser/dist/mjs/syntax-definitions.js
 var emptyXmlOptions = {};
 var defaultXmlOptions = { wildcard: true };
 function getXmlOptions(param) {
@@ -412,7 +402,7 @@ var cssSyntaxDefinitions = {
   progressive: progressiveSyntaxDefinition
 };
 
-// node_modules/css-selector-parser/dist/mjs/utils.js
+// node_modules/.pnpm/css-selector-parser@2.3.2/node_modules/css-selector-parser/dist/mjs/utils.js
 function isIdentStart(c) {
   return c >= "a" && c <= "z" || c >= "A" && c <= "Z" || c === "-" || c === "_";
 }
@@ -453,7 +443,7 @@ var digitsChars = {
   9: true
 };
 
-// node_modules/css-selector-parser/dist/mjs/parser.js
+// node_modules/.pnpm/css-selector-parser@2.3.2/node_modules/css-selector-parser/dist/mjs/parser.js
 var errorPrefix = `css-selector-parser parse error: `;
 function createParser(options = {}) {
   const { syntax = "latest", substitutes, strict = true } = options;
@@ -1029,7 +1019,7 @@ function createParser(options = {}) {
   };
 }
 
-// node_modules/css-selector-parser/dist/mjs/ast.js
+// node_modules/.pnpm/css-selector-parser@2.3.2/node_modules/css-selector-parser/dist/mjs/ast.js
 function astMethods(type) {
   return (generatorName, checkerName) => ({
     [generatorName]: (props) => ({
@@ -1057,6 +1047,18 @@ var ast = {
 
 // src/browser/css.ts
 var import_throw_expression = __toESM(require_throw_expression());
+
+// src/browser/common.ts
+var isUi5 = () => typeof sap !== "undefined" && sap.ui?.core !== void 0;
+var Ui5SelectorEngineError = class extends Error {
+  constructor(selector, error) {
+    super(`ui5 selector engine failed on selector: "${selector}"
+
+${String(error)}`);
+  }
+};
+
+// src/browser/css.ts
 var getAllParents = (element) => {
   const getParents = (class_) => {
     const parent = class_.getParent();
@@ -1066,23 +1068,6 @@ var getAllParents = (element) => {
     return [class_];
   };
   return getParents(element.getMetadata()).map((parent) => parent.getName());
-};
-var parseSelector = (selector) => {
-  if (selector === "") {
-    throw new Error("ui5 selector is empty");
-  }
-  const parsedSelector = parse(selector);
-  parsedSelector.rules.forEach((rule) => {
-    if (rule.ids && rule.ids.length > 1) {
-      throw new Error("multiple ids are not supported");
-    }
-    if (rule.pseudoElement === "subclass" && rule.tag?.type !== "TagName") {
-      throw new Error(
-        "subclass pseudo-selector cannot be used without specifying a control type"
-      );
-    }
-  });
-  return parsedSelector;
 };
 var parse = createParser({
   syntax: {
@@ -1096,71 +1081,90 @@ var parse = createParser({
     classNames: true
   }
 });
-var querySelector = (root, selector) => selector.rules.flatMap((rule) => {
-  if (rule.tag?.type === "TagName" && rule.classNames) {
-    const sapNamespace = "sap";
-    if (rule.tag.name !== sapNamespace) {
-      rule.tag.name = `${sapNamespace}.${rule.tag.name}`;
-    }
-    rule.tag.name = [rule.tag.name, ...rule.classNames].join(".");
-    delete rule.classNames;
+var parseSelector = (selector) => {
+  if (selector === "") {
+    throw new Error("ui5 selector is empty");
   }
-  const controls = sap.ui?.core?.Element?.registry.filter((element) => {
-    if (rule.tag?.type === "TagName" && rule.tag.name !== element.getMetadata().getName() && (rule.pseudoElement !== "subclass" || !getAllParents(element).includes(rule.tag.name)) || rule.ids && rule.ids[0] !== element.getId()) {
-      return false;
+  const parsedSelector = parse(selector);
+  for (const rule of parsedSelector.rules) {
+    if (rule.ids && rule.ids.length > 1) {
+      throw new Error("multiple ids are not supported");
     }
-    return (rule.attributes ?? []).every((attr) => {
-      let actualValue;
-      try {
-        actualValue = String(element.getProperty(attr.name));
-      } catch {
-        return false;
+    if (rule.pseudoElement === "subclass" && rule.tag?.type !== "TagName") {
+      throw new Error("subclass pseudo-selector cannot be used without specifying a control type");
+    }
+  }
+  return parsedSelector;
+};
+function* querySelector(root, selector) {
+  for (const rule of selector.rules) {
+    if (rule.tag?.type === "TagName" && rule.classNames) {
+      const sapNamespace = "sap";
+      if (rule.tag.name !== sapNamespace) {
+        rule.tag.name = `${sapNamespace}.${rule.tag.name}`;
       }
-      if (!("value" in attr)) {
-        return true;
+      rule.tag.name = [rule.tag.name, ...rule.classNames].join(".");
+      delete rule.classNames;
+    }
+    const controls = sap.ui.require("sap/ui/core/ElementRegistry")?.filter(
+      (element) => {
+        if (rule.tag?.type === "TagName" && rule.tag.name !== element.getMetadata().getName() && (rule.pseudoElement !== "subclass" || !getAllParents(element).includes(rule.tag.name)) || rule.ids && rule.ids[0] !== element.getId()) {
+          return false;
+        }
+        return (rule.attributes ?? []).every((attr) => {
+          let actualValue;
+          try {
+            actualValue = String(element.getProperty(attr.name));
+          } catch {
+            return false;
+          }
+          if (!("value" in attr)) {
+            return true;
+          }
+          const expectedValue = attr.value.value;
+          return {
+            "=": actualValue === expectedValue,
+            "^=": actualValue.startsWith(expectedValue),
+            "$=": actualValue.endsWith(expectedValue),
+            "*=": actualValue.includes(expectedValue),
+            "~=": actualValue.trim() === expectedValue,
+            "|=": actualValue.split("-")[0] === expectedValue
+          }[(0, import_throw_expression.throwIfUndefined)(
+            attr.operator,
+            "attribute operator was undefined when value was set (this should NEVER happen)"
+          )];
+        });
       }
-      const expectedValue = attr.value.value;
-      return {
-        "=": actualValue === expectedValue,
-        "^=": actualValue.startsWith(expectedValue),
-        "$=": actualValue.endsWith(expectedValue),
-        "*=": actualValue.includes(expectedValue),
-        "~=": actualValue.trim() === expectedValue,
-        "|=": actualValue.split("-")[0] === expectedValue
-      }[(0, import_throw_expression.throwIfUndefined)(
-        attr.operator,
-        "attribute operator was undefined when value was set (this should NEVER happen)"
-      )];
-    });
-  }) ?? [];
-  return controls.map((control) => control.getDomRef()).filter((element) => {
-    if (element === null || root.querySelector(`[id='${element.id}']`) === null) {
-      return false;
+    ) ?? [];
+    for (const control of controls) {
+      const element = control.getDomRef();
+      if (element === null || root.querySelector(`[id='${element.id}']`) === null) {
+        continue;
+      }
+      if (rule.pseudoClasses && querySelector(
+        element,
+        (0, import_throw_expression.throwIfUndefined)(
+          rule.pseudoClasses[0],
+          '":has" pseudo-class was specified without an argument'
+        ).argument
+      ).next().done) {
+        continue;
+      }
+      yield element;
     }
-    if (rule.pseudoClasses && querySelector(
-      element,
-      (0, import_throw_expression.throwIfUndefined)(
-        rule.pseudoClasses[0],
-        '":has" pseudo-class was specified without an argument'
-      ).argument
-    ).length === 0) {
-      return false;
-    }
-    return true;
-  });
-});
-var queryAll = (root, selector) => {
+  }
+}
+function* queryAll(root, selector) {
   try {
     const parsedSelector = parseSelector(selector);
-    if (!isUi5()) {
-      return [];
+    if (isUi5()) {
+      yield* querySelector(root, parsedSelector);
     }
-    return querySelector(root, parsedSelector);
-  } catch (e) {
-    throw new Ui5SelectorEngineError(selector, e);
+  } catch (error) {
+    throw new Ui5SelectorEngineError(selector, error);
   }
-};
+}
 var css_default = {
-  queryAll,
-  query: (root, selector) => queryAll(root, selector)[0]
+  queryAll: (root, selector) => [...queryAll(root, selector)],
+  query: (root, selector) => queryAll(root, selector).next().value
 };
