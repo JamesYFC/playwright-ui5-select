@@ -5,7 +5,7 @@ _parent = Path(__file__).parent / "import" / "ui5"
 
 
 def _get_file(name: str) -> str:
-    f"""Get the content of a file in {_parent}."""
+    """Get the content of a file in `_parent`."""
     p = _parent / name
     if not p.exists():
         raise FileNotFoundError(f"File {name} not found in {p}.")
